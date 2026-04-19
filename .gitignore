@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Original / full-resolution media (not served; site uses media/web/)
+media/branding/
+media/logos/
+media/paintings/
+media/photography/
+media/posters/

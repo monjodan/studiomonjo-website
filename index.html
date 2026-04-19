@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Studio Monjo — Jordan Monnet: brand identity, photography, posters, painting, and essays. Based in Seoul.">
+<title>Studio Monjo — Creative Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- CALENDLY MODAL -->
+<div class="modal-overlay" id="calendlyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle">Book a conversation</span>
+      <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close booking dialog">✕</button>
+    </div>
+    <iframe class="modal-iframe" data-src="https://calendly.com/jordan-studiomonjo/studio-monjo-intro" title="Book a time with Studio Monjo" loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lightbox-inner">
+    <button type="button" class="lightbox-close" id="lbClose" aria-label="Close image">✕</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous image">‹</button>
+    <img src="" alt="" id="lbImg">
+    <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next image">›</button>
+    <div class="lightbox-cap" id="lbCap"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Primary">
+  <a href="#main" class="nav-logo">
+    <span class="nav-logo-mark">Studio Monjo</span>
+    <span class="nav-logo-sub">Creative Practice</span>
+  </a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  <div class="nav-right" id="navMenu">
+    <a href="#branding" class="nav-link">Branding</a>
+    <a href="#photography" class="nav-link">Photography</a>
+    <a href="#posters" class="nav-link">Posters</a>
+    <a href="#paintings" class="nav-link">Paintings</a>
+    <a href="#essays" class="nav-link">Essays</a>
+    <div class="nav-divider" aria-hidden="true"></div>
+    <button type="button" class="nav-btn" onclick="openModal()">Contact</button>
+    <a href="#shop" class="nav-shop">Naver Shop ↗</a>
+  </div>
+</nav>
+
+<main id="main">
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="fade-in">
+      <div class="hero-tag">Seoul · Design · Art · Writing</div>
+      <h1 class="hero-title">A practice<br>at the edge of<br><em>form and thought.</em></h1>
+      <p class="hero-body">Studio Monjo is the creative work of Jordan Monnet — brand identity, photography, print, painting, and philosophical writing. Based in Seoul, shaped by multiple cultures.</p>
+    </div>
+    <div class="hero-mosaic fade-in">
+      <div class="mosaic-main is-placeholder"><span class="img-label">Brand work — coming soon</span></div>
+      <div class="mosaic-cell mosaic-sm">
+        <img src="media/web/photography/DSCF7011-HDR.jpg" alt="Photography — selected work" decoding="async" fetchpriority="high">
+        <span class="img-label">Photography</span>
+      </div>
+      <div class="mosaic-cell mosaic-sm2">
+        <img src="media/web/posters/poster.jpg" alt="Print — poster work" loading="lazy" decoding="async">
+        <span class="img-label">Print</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDING -->
+<section id="branding" class="reveal">
+  <div class="work-section">
+    <div class="section-text">
+      <div class="section-num">01</div>
+      <div class="section-label">Branding</div>
+      <h2 class="section-title">Identity that<br><em>earns attention.</em></h2>
+      <p class="section-body">Brand identity work for founders, studios, and institutions. From naming and visual systems to full brand architecture. Each project begins with the question of what deserves to exist — and then makes it visible.</p>
+      <a href="#shop" class="section-cta">Shop prints &amp; objects ↗</a>
+    </div>
+    <div class="section-images">
+      <div class="img-grid-masonry">
+        <div class="img-block tall" role="button" tabindex="0" aria-label="Placeholder: brand project (media coming soon)">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" stroke="#c4c0b6" stroke-width="0.8"/></svg>
+          <span class="img-caption">Placeholder — brand project</span>
+        </div>
+        <div class="img-block landscape" role="button" tabindex="0" aria-label="Placeholder: identity system">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" stroke="#c4c0b6" stroke-width="0.8"/></svg>
+          <span class="img-caption">Placeholder — identity system</span>
+        </div>
+        <div class="img-block square" role="button" tabindex="0" aria-label="Placeholder: logo mark">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" stroke="#c4c0b6" stroke-width="0.8"/></svg>
+          <span class="img-caption">Placeholder — logo mark</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section id="photography" class="reveal" style="border-top: 1px solid var(--warm-line);">
+  <div class="work-section reverse">
+    <div class="section-text">
+      <div class="section-num">02</div>
+      <div class="section-label">Photography</div>
+      <h2 class="section-title">Stillness<br>between<br><em>two cultures.</em></h2>
+      <p class="section-body">Photographs taken in Seoul, Paris, and the spaces between. Documentary work, still life, and architecture. A practice of attention — finding the frame that makes an ordinary moment worth keeping.</p>
+      <a href="#shop" class="section-cta">Shop prints ↗</a>
+    </div>
+    <div class="section-images">
+      <div class="img-grid-3col">
+        <button type="button" class="img-block portrait lightbox-trigger" data-caption="Seoul" data-src="media/web/photography/DSCF4786.jpg" data-alt="Photograph — Seoul">
+          <img src="media/web/photography/DSCF4786.jpg" alt="Photograph — Seoul" loading="lazy" decoding="async" width="900" height="1200">
+          <span class="img-caption">Seoul</span>
+        </button>
+        <button type="button" class="img-block portrait lightbox-trigger ph-stagger-1" data-caption="Paris" data-src="media/web/photography/DSCF5855.jpg" data-alt="Photograph — Paris">
+          <img src="media/web/photography/DSCF5855.jpg" alt="Photograph — Paris" loading="lazy" decoding="async" width="900" height="1200">
+          <span class="img-caption">Paris</span>
+        </button>
+        <button type="button" class="img-block portrait lightbox-trigger" data-caption="Between cities" data-src="media/web/photography/L1010134.jpg" data-alt="Photograph — between cities">
+          <img src="media/web/photography/DSCF1058.jpg" alt="Photograph — between cities" loading="lazy" decoding="async" width="900" height="1200">
+          <span class="img-caption">Between cities</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTERS -->
+<div class="poster-band reveal" id="posters">
+  <div class="poster-section">
+    <div class="section-text">
+      <div class="poster-num">03</div>
+      <div class="poster-label">Posters</div>
+      <h2 class="poster-title">Print as<br><em>a position.</em></h2>
+      <p class="poster-body">Poster work as a form of editorial — typographic, conceptual, and occasionally political. Available as high-quality prints. Each piece begins with an idea before it begins with a layout.</p>
+      <a href="#shop" class="poster-cta">Shop posters ↗</a>
+    </div>
+    <div class="section-images">
+      <div class="poster-grid">
+        <button type="button" class="poster-img lightbox-trigger" data-caption="Poster" data-src="media/web/posters/poster.jpg" data-alt="Poster print">
+          <img src="media/web/posters/poster.jpg" alt="Poster print" loading="lazy" decoding="async" width="800" height="1200">
+        </button>
+        <button type="button" class="poster-img lightbox-trigger" data-caption="Specialty coffee recipe" data-src="media/web/posters/poster-specialty-coffee.png" data-alt="Poster — specialty coffee recipe">
+          <img src="media/web/posters/poster-specialty-coffee.png" alt="Poster — specialty coffee recipe" loading="lazy" decoding="async" width="800" height="1200">
+        </button>
+        <div class="poster-img" role="img" aria-label="Placeholder poster slot">poster</div>
+        <div class="poster-img" role="img" aria-label="Placeholder poster slot">poster</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAINTINGS -->
+<section id="paintings" class="reveal" style="border-top: 1px solid var(--warm-line);">
+  <div class="work-section">
+    <div class="section-text">
+      <div class="section-num">04</div>
+      <div class="section-label">Paintings</div>
+      <h2 class="section-title">Material<br>thinking,<br><em>slowly.</em></h2>
+      <p class="section-body">Original paintings exploring texture, color field, and composition. Work that resists the speed of everything else — made by hand, on paper and canvas. Original works and prints available through the Naver Shop.</p>
+      <a href="#shop" class="section-cta">Shop originals &amp; prints ↗</a>
+    </div>
+    <div class="section-images">
+      <div class="img-grid-2col">
+        <button type="button" class="img-block portrait lightbox-trigger" data-caption="Original work" data-src="media/web/paintings/L1000120.jpg" data-alt="Original painting">
+          <img src="media/web/paintings/L1000154.jpg" alt="Original painting" loading="lazy" decoding="async" width="900" height="1200">
+          <span class="img-caption">Original work</span>
+        </button>
+        <button type="button" class="img-block portrait lightbox-trigger ph-stagger-2" data-caption="Original work" data-src="media/web/paintings/L1000132.jpg" data-alt="Original painting">
+          <img src="media/web/paintings/L1000132.jpg" alt="Original painting" loading="lazy" decoding="async" width="900" height="1200">
+          <span class="img-caption">Original work</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESSAYS -->
+<div class="essays-band reveal" id="essays">
+  <div class="essays-section">
+    <div class="section-text">
+      <div class="section-num">05</div>
+      <div class="section-label">Essays</div>
+      <h2 class="section-title">Philosophy<br>written in<br><em>Korean.</em></h2>
+      <p class="section-body" id="essaysIntro">19 essays published on Brunch. Questions of consciousness, control, aesthetics, and what it means to live between languages and cultures. Written in Korean — the language that fits the thinking.</p>
+      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="section-cta" id="essaysSectionCta">All essays on Brunch ↗</a>
+    </div>
+    <div>
+      <div class="essays-grid" id="essaysGrid">
+        <p class="essays-loading" id="essaysLoading">Loading essays…</p>
+      </div>
+      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="essays-all" id="essaysViewAll">View all <span id="essaysArticleCount">19</span> essays on Brunch ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVER SHOP CTA -->
+<div id="shop" class="reveal">
+  <div class="naver-band">
+    <div class="naver-eyebrow">Original work available</div>
+    <h2 class="naver-title">Art you can<br><em>live with.</em></h2>
+    <p class="naver-sub">Prints, posters, and original paintings — available through the Studio Monjo Naver Shop.<br>Ships within Korea. International orders on request.</p>
+    <a href="#" class="naver-btn" id="naverShopBtn" title="Add your Naver Shop URL in the site source when ready">Visit the Naver Shop ↗</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="reveal">
+  <div class="about-wrap">
+    <div>
+      <div class="about-name">Jordan<br>Monnet<br><em>Studio Monjo</em></div>
+    </div>
+    <div>
+      <p class="about-body">Studio Monjo is where I make things. Brand identity for founders and organizations, photographs taken between Seoul and Paris, poster and print work, original paintings, and philosophical essays written in Korean.<br><br>The practice is intentionally small and personal. If you want to talk about a project, commission, or collaboration — I'm easy to reach.</p>
+      <div class="about-links">
+        <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="about-link">jordanmonnet.com ↗</a>
+        <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="about-link">Essays on Brunch ↗</a>
+        <button type="button" onclick="openModal()" class="about-link">Book a conversation ↗</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Studio Monjo</div>
+  <div class="footer-center">Seoul · © 2026</div>
+  <div class="footer-right">
+    <a href="#" class="footer-link" id="footerInstagram" title="Add your Instagram URL when ready">Instagram</a>
+    <a href="#" class="footer-link" id="footerNaver" title="Add your Naver Shop URL when ready">Naver Shop</a>
+    <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">Jordan Monnet</a>
+  </div>
+</footer>
+
+<script src="js/essays.js"></script>
+<script>
+(function () {
+  var modal = document.getElementById('calendlyModal');
+  var iframe = modal.querySelector('.modal-iframe');
+
+  window.openModal = function () {
+    if (typeof closeNav === 'function') closeNav();
+    if (iframe && iframe.dataset.src && !iframe.src) iframe.src = iframe.dataset.src;
+    modal.hidden = false;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeModal = function () {
+    modal.classList.remove('open');
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeLightbox();
+      closeNav();
+    }
+    if (lb && lb.classList.contains('open')) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        openLightbox((idx - 1 + triggers.length) % triggers.length);
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        openLightbox((idx + 1) % triggers.length);
+      }
+    }
+  });
+
+  /* Mobile nav */
+  var navToggle = document.getElementById('navToggle');
+  var navMenu = document.getElementById('navMenu');
+  var navBackdrop = document.getElementById('navBackdrop');
+
+  function closeNav() {
+    if (!navToggle || !navMenu) return;
+    navMenu.classList.remove('open');
+    if (navBackdrop) navBackdrop.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open menu');
+    if (!modal.classList.contains('open') && (!lb || !lb.classList.contains('open'))) document.body.style.overflow = '';
+  }
+  function openNav() {
+    navMenu.classList.add('open');
+    navBackdrop.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close menu');
+    document.body.style.overflow = 'hidden';
+  }
+  if (navToggle) {
+    navToggle.addEventListener('click', function () {
+      if (navMenu.classList.contains('open')) closeNav(); else openNav();
+    });
+  }
+  if (navBackdrop) navBackdrop.addEventListener('click', closeNav);
+  navMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.matchMedia('(max-width: 900px)').matches) closeNav();
+    });
+  });
+
+  /* Lazy-load Calendly iframe only when needed — already handled in openModal */
+
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('is-visible');
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* Lightbox */
+  var triggers = Array.prototype.slice.call(document.querySelectorAll('.lightbox-trigger'));
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbClose = document.getElementById('lbClose');
+  var lbPrev = document.getElementById('lbPrev');
+  var lbNext = document.getElementById('lbNext');
+  var idx = 0;
+
+  function openLightbox(i) {
+    idx = i;
+    var t = triggers[idx];
+    if (!t) return;
+    lbImg.src = t.dataset.src;
+    lbImg.alt = t.dataset.alt || '';
+    lbCap.textContent = t.dataset.caption || '';
+    lb.hidden = false;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  window.closeLightbox = function () {
+    lb.classList.remove('open');
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+  };
+
+  triggers.forEach(function (el, i) {
+    el.addEventListener('click', function () { openLightbox(i); });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(i);
+      }
+    });
+  });
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb) closeLightbox();
+  });
+  if (lbPrev) lbPrev.addEventListener('click', function (e) {
+    e.stopPropagation();
+    openLightbox((idx - 1 + triggers.length) % triggers.length);
+  });
+  if (lbNext) lbNext.addEventListener('click', function (e) {
+    e.stopPropagation();
+    openLightbox((idx + 1) % triggers.length);
+  });
+
+})();
+</script>
+</body>
+</html>
