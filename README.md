@@ -53,6 +53,38 @@ The RSS URL is `https://brunch.co.kr/rss/@@hqSD` (Brunch exposes this on your pr
 
 Large originals live under `media/`; web-optimized versions are generated under `media/web/` (for example with ImageMagick). Re-run your resize step when you add images.
 
-## GitHub Pages
+## GitHub Pages and custom domain (`studiomonjo.com`)
 
-In the repository **Settings → Pages**, set the source to deploy from the `main` branch and the **root** folder. The `CNAME` file should match your custom domain in the Pages settings.
+### In this repository (already in place)
+
+| Requirement | Status |
+|-------------|--------|
+| `CNAME` in the repo root contains exactly `studiomonjo.com` | Yes |
+| **Settings → Pages → Build and deployment**: source = **Deploy from a branch**, branch = **`main`**, folder = **`/ (root)`** | Confirm in GitHub |
+| **Settings → Pages → Custom domain**: `studiomonjo.com` (save; wait for DNS check) | Confirm in GitHub |
+| Optional: **Enforce HTTPS** enabled after the certificate is issued | After DNS is green |
+
+### DNS at your registrar (for `studiomonjo.com`)
+
+GitHub needs the apex domain to hit their IPs, and usually `www` as an alternate name:
+
+- **A records** for `studiomonjo.com` (apex / `@`) — all four:
+
+  `185.199.108.153`  
+  `185.199.109.153`  
+  `185.199.110.153`  
+  `185.199.111.153`
+
+- **`www`** — **CNAME** to `monjodan.github.io` (no `https://`, no repo name).
+
+Official reference: [Managing a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+
+### If GitHub still shows “NotServedByPagesError” but the site loads
+
+Live checks can show the domain already serving from GitHub while the **Pages settings** panel is still catching up or stuck. Try:
+
+1. **Settings → Pages → Custom domain** — enter `studiomonjo.com` again and click **Save**.
+2. Toggle **Enforce HTTPS** off and on after the certificate exists (if needed).
+3. Wait up to an hour for DNS/propagation caches and GitHub’s recheck.
+
+Removing and re-adding the custom domain in Pages settings (without changing DNS) often clears a stale error.
