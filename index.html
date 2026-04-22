@@ -3,91 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Studio Monjo — hand-painted, hand-bound notebooks made to order in Seoul. A quiet practice by Jordan Monnet.">
-<meta name="theme-color" content="#ffffff">
-<title>Studio Monjo — Hand-painted notebooks, made to order in Seoul</title>
-
-<meta property="og:title" content="Studio Monjo — Hand-painted notebooks">
-<meta property="og:description" content="Hand-painted, hand-bound notebooks, made to order in Seoul. A quiet practice by Jordan Monnet.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://studiomonjo.com/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/L1001423.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
+<title>Studio Monjo — Hand-painted notebooks, made in Seoul</title>
+<meta name="description" content="Studio Monjo — hand-painted, hand-bound notebooks made to order in Seoul. 스튜디오 몬조.">
+<meta name="robots" content="noindex, follow">
+<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/">
+<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/">
+<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/">
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css">
+<script>
+(function () {
+  try {
+    var qs = new URLSearchParams(location.search);
+    var forced = qs.get('lang');
+    var saved = null;
+    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
+    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var locale = forced || saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
+    if (locale !== 'en' && locale !== 'ko') locale = 'en';
+    try { localStorage.setItem('sm-lang', locale); } catch (e) {}
+    var hash = location.hash || '';
+    location.replace('/' + locale + '/' + hash);
+  } catch (e) {
+    location.replace('/en/');
+  }
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/en/"></noscript>
 </head>
-<body class="home">
-
-<a class="skip-link" href="#main">Skip to content</a>
-
-<!-- NAV -->
-<nav aria-label="Primary">
-  <a href="/" class="nav-logo" aria-label="Studio Monjo — home">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nav-mark" width="28" height="28">
-    <span class="nav-word">Studio Monjo</span>
-  </a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-  </button>
-  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-  <div class="nav-right" id="navMenu">
-    <a href="/notebooks/" class="nav-link">Notebooks</a>
-    <a href="/essays/" class="nav-link">Writing</a>
-    <a href="/about/" class="nav-link">About</a>
-    <a href="/notebooks/" class="nav-shop" data-commission="nav">Shop ↗</a>
-  </div>
-</nav>
-
-<main id="main">
-
-<!-- SPLIT HERO: image left, text right -->
-<section class="split-hero">
-  <a href="/notebooks/" class="split-hero-image" aria-label="See the notebooks">
-    <picture>
-      <source srcset="/media/web/notebooks/L1001423.webp" type="image/webp">
-      <img src="/media/web/notebooks/L1001423.jpg" alt="A hand-painted notebook held in a hand — red lotus in ink and watercolour" fetchpriority="high" decoding="async" width="1200" height="1600">
-    </picture>
-  </a>
-  <div class="split-hero-text">
-    <div class="split-hero-inner fade-in">
-      <div class="split-hero-eyebrow">Studio Monjo · Seoul</div>
-      <h1 class="split-hero-title">Hand-painted notebooks,<br>made to order.</h1>
-      <p class="split-hero-sub">Each notebook is painted and hand-bound, one at a time. Two sizes, from ₩38,000. Two weeks, from Seoul to your desk.</p>
-      <div class="split-hero-actions">
-        <a href="/notebooks/" class="btn btn-primary">See the notebooks</a>
-        <a href="/essays/" class="btn-link">Writing &rsaquo;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="/" class="footer-logo">
-      <img src="/media/web/branding/monjo-mark-256.png" alt="" width="20" height="20">
-      <span>Studio Monjo</span>
-    </a>
-    <div class="footer-meta">Seoul · © 2026</div>
-    <div class="footer-links">
-      <a href="/notebooks/" class="footer-link">Notebooks</a>
-      <a href="/essays/" class="footer-link">Writing</a>
-      <a href="#" class="footer-link" id="footerNaver">Naver Shop</a>
-      <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/notebooks.js"></script>
-<script src="/js/commission.js"></script>
-<script src="/js/site.js"></script>
+<body>
+<p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">
+  Redirecting… <a href="/en/">English</a> · <a href="/ko/">한국어</a>
+</p>
 </body>
 </html>

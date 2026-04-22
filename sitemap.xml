@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://studiomonjo.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/en/notebooks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/notebooks/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/en/essays/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/essays/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/essays/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/essays/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/essays/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/essays/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/essays/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/essays/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

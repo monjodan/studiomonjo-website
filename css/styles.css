@@ -593,3 +593,126 @@ footer { border-top: 1px solid var(--line); }
 
 /* BODY LOCK when modals open */
 body.locked { overflow: hidden; }
+
+/* =======================================================
+   i18n — Korean font stack + language switcher
+   ======================================================= */
+
+/* Korean font stack. DM Sans / Cormorant fall back to these
+   when Hangul characters are rendered. On pages with lang="ko",
+   Noto Sans KR leads the sans stack and Nanum Myeongjo leads
+   the serif stack. */
+:root {
+  --sans-ko: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Pretendard', system-ui, sans-serif;
+  --serif-ko: 'Nanum Myeongjo', 'Apple SD Gothic Neo', Georgia, serif;
+}
+html[lang="ko"] body {
+  font-family: var(--sans-ko);
+}
+html[lang="ko"] .split-hero-title,
+html[lang="ko"] .page-hero-title,
+html[lang="ko"] .section-title,
+html[lang="ko"] .shop-title,
+html[lang="ko"] .offer-name {
+  font-family: var(--serif-ko);
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+/* Letter-spacing on uppercase labels looks wrong on Hangul — tighten. */
+html[lang="ko"] .split-hero-eyebrow,
+html[lang="ko"] .page-hero-eyebrow,
+html[lang="ko"] .section-label,
+html[lang="ko"] .feature-label,
+html[lang="ko"] .process-num,
+html[lang="ko"] .btn,
+html[lang="ko"] .btn-link,
+html[lang="ko"] .nav-link,
+html[lang="ko"] .nav-shop,
+html[lang="ko"] .nav-word,
+html[lang="ko"] .footer-logo,
+html[lang="ko"] .footer-meta,
+html[lang="ko"] .footer-link,
+html[lang="ko"] .piece-meta,
+html[lang="ko"] .offer-tag,
+html[lang="ko"] .piece-status {
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+/* Keep natural Korean wrapping on body copy */
+html[lang="ko"] p,
+html[lang="ko"] .split-hero-sub,
+html[lang="ko"] .page-hero-sub,
+html[lang="ko"] .section-lede,
+html[lang="ko"] .about-body,
+html[lang="ko"] .essay-title,
+html[lang="ko"] .essay-excerpt,
+html[lang="ko"] .faq-q,
+html[lang="ko"] .faq-a {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Language switcher — desktop */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+  min-height: 44px;
+}
+.lang-opt {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+  text-decoration: none;
+  padding: 6px 4px;
+  transition: color 0.2s;
+}
+.lang-opt:hover,
+.lang-opt:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+.lang-opt.is-current {
+  color: var(--ink);
+  font-weight: 500;
+}
+.lang-opt[lang="ko"] {
+  letter-spacing: 0;
+  font-size: 12px;
+}
+.lang-sep {
+  color: var(--ink-faint);
+  font-size: 10px;
+  user-select: none;
+}
+
+/* Language switcher — mobile (inside the side drawer) */
+@media (max-width: 900px) {
+  .lang-switch {
+    margin: 16px 24px 0;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    justify-content: center;
+    gap: 10px;
+  }
+  .lang-opt { padding: 8px 10px; font-size: 12px; }
+}
+
+/* Korean-specific: soften uppercase tracking inside the commission
+   modal, which uses lots of small uppercase labels */
+html[lang="ko"] .cmx-label,
+html[lang="ko"] .cmx-title,
+html[lang="ko"] .cmx-submit,
+html[lang="ko"] .cmx-done-close,
+html[lang="ko"] .cmx-piece-label,
+html[lang="ko"] .cmx-radio-tile-name {
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+

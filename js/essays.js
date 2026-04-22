@@ -5,6 +5,7 @@
  */
 (function () {
   var JSON_URL = '/data/brunch-featured.json';
+  var T = (window.SM && window.SM.T) || function (k) { return k; };
 
   var fallbackProfile = 'https://brunch.co.kr/@444d2811f4b84ad';
 
@@ -20,7 +21,7 @@
 
     var lang = document.createElement('div');
     lang.className = 'essay-lang';
-    lang.textContent = '한국어 · Essay';
+    lang.textContent = T('essays.lang');
     text.appendChild(lang);
 
     var title = document.createElement('div');
@@ -37,7 +38,7 @@
 
     var read = document.createElement('span');
     read.className = 'essay-read';
-    read.textContent = 'Read →';
+    read.textContent = T('essays.read');
 
     a.appendChild(text);
     a.appendChild(read);
@@ -49,7 +50,7 @@
     if (!list || !list.length) {
       var p = document.createElement('p');
       p.className = 'essays-error';
-      p.textContent = emptyMsg || 'No essays yet.';
+      p.textContent = emptyMsg || T('essays.empty');
       root.appendChild(p);
       return;
     }
@@ -60,9 +61,7 @@
     var introEl = document.getElementById('essaysIntro');
     if (!introEl || typeof data.articleCount !== 'number') return;
     var n = data.articleCount;
-    introEl.textContent =
-      n + ' essay' + (n === 1 ? '' : 's') +
-      ' on Brunch — on consciousness, control, aesthetics, and living between languages and cultures.';
+    introEl.textContent = T(n === 1 ? 'essays.introSingular' : 'essays.intro', { count: n });
   }
 
   function wireViewAll(data) {
@@ -77,12 +76,12 @@
     wireViewAll(data);
 
     var featuredRoot = document.getElementById('essaysGrid');
-    if (featuredRoot) renderList(featuredRoot, data.featured || [], 'No essays yet.');
+    if (featuredRoot) renderList(featuredRoot, data.featured || [], T('essays.empty'));
 
     var allRoot = document.getElementById('essaysAll');
     if (allRoot) {
       var list = (data.all && data.all.length) ? data.all : (data.featured || []);
-      renderList(allRoot, list, 'Essay list unavailable — visit Brunch directly.');
+      renderList(allRoot, list, T('essays.unavailable'));
     }
   }
 
@@ -96,7 +95,7 @@
           el.innerHTML = '';
           var p = document.createElement('p');
           p.className = 'essays-error';
-          p.textContent = 'Could not load essays. Visit Brunch directly below.';
+          p.textContent = T('essays.networkError');
           el.appendChild(p);
         }
       });

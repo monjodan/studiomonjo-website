@@ -6,14 +6,24 @@
  * → formspreeEndpoint). Posts JSON so the page stays put and can show
  * a success state inline.
  *
- * No email address is ever written into the HTML.
+ * Strings come from window.SM.T (see js/i18n.js).
  */
 (function () {
   var JSON_URL = '/data/notebooks.json';
+  var T = (window.SM && window.SM.T) || function (k) { return k; };
   var config = null;
   var modal = null;
 
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
   function build() {
+    var priceA6 = '\u20A938,000 / \u20AC26';
+    var priceA5 = '\u20A968,000 / \u20AC46';
+
     var wrap = document.createElement('div');
     wrap.className = 'cmx';
     wrap.id = 'commissionModal';
@@ -25,67 +35,68 @@
       '<div class="cmx-backdrop" data-close></div>',
       '<form class="cmx-panel" id="cmxForm" novalidate>',
       '  <div class="cmx-head">',
-      '    <span class="cmx-title" id="cmxTitle">Commission a notebook</span>',
-      '    <button type="button" class="cmx-close" data-close aria-label="Close">✕</button>',
+      '    <span class="cmx-title" id="cmxTitle">' + esc(T('commission.title')) + '</span>',
+      '    <button type="button" class="cmx-close" data-close aria-label="' + esc(T('commission.close')) + '">\u2715</button>',
       '  </div>',
       '  <div class="cmx-body">',
-      '    <p class="cmx-intro" id="cmxIntro">Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.</p>',
+      '    <p class="cmx-intro" id="cmxIntro">' + esc(T('commission.intro')) + '</p>',
       '    <div class="cmx-piece" id="cmxPiece" hidden></div>',
       '    <input type="hidden" name="piece" id="cmxPieceField">',
       '',
       '    <div class="cmx-field">',
-      '      <span class="cmx-label" id="cmxSizeLabel">Size <span class="req">*</span></span>',
+      '      <span class="cmx-label" id="cmxSizeLabel">' + esc(T('commission.size')) + ' <span class="req">' + esc(T('commission.requiredMark')) + '</span></span>',
       '      <div class="cmx-radios" role="radiogroup" aria-labelledby="cmxSizeLabel">',
       '        <label class="cmx-radio">',
       '          <input type="radio" name="size" value="A6" required>',
       '          <span class="cmx-radio-tile">',
-      '            <span class="cmx-radio-tile-name">A6 — Pocket</span>',
-      '            <span class="cmx-radio-tile-meta">₩38,000 / €26</span>',
+      '            <span class="cmx-radio-tile-name">' + esc(T('commission.sizeA6')) + '</span>',
+      '            <span class="cmx-radio-tile-meta">' + priceA6 + '</span>',
       '          </span>',
       '        </label>',
       '        <label class="cmx-radio">',
       '          <input type="radio" name="size" value="A5" required>',
       '          <span class="cmx-radio-tile">',
-      '            <span class="cmx-radio-tile-name">A5 — Desk</span>',
-      '            <span class="cmx-radio-tile-meta">₩68,000 / €46</span>',
+      '            <span class="cmx-radio-tile-name">' + esc(T('commission.sizeA5')) + '</span>',
+      '            <span class="cmx-radio-tile-meta">' + priceA5 + '</span>',
       '          </span>',
       '        </label>',
       '      </div>',
       '    </div>',
       '',
       '    <div class="cmx-field">',
-      '      <label class="cmx-label" for="cmxDirection">Direction <span class="cmx-help" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-light)">— optional</span></label>',
-      '      <textarea class="cmx-textarea" id="cmxDirection" name="direction" placeholder="A mood, a palette, a subject. Or leave blank and I\'ll choose." rows="4"></textarea>',
+      '      <label class="cmx-label" for="cmxDirection">' + esc(T('commission.direction')) + ' <span class="cmx-help" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-light)">' + esc(T('commission.directionOptional')) + '</span></label>',
+      '      <textarea class="cmx-textarea" id="cmxDirection" name="direction" placeholder="' + esc(T('commission.directionPh')) + '" rows="4"></textarea>',
       '    </div>',
       '',
       '    <div class="cmx-field">',
-      '      <label class="cmx-label" for="cmxName">Name <span class="req">*</span></label>',
+      '      <label class="cmx-label" for="cmxName">' + esc(T('commission.name')) + ' <span class="req">' + esc(T('commission.requiredMark')) + '</span></label>',
       '      <input class="cmx-input" type="text" id="cmxName" name="name" required autocomplete="name">',
       '    </div>',
       '',
       '    <div class="cmx-field">',
-      '      <label class="cmx-label" for="cmxEmail">Email <span class="req">*</span></label>',
-      '      <input class="cmx-input" type="email" id="cmxEmail" name="email" required autocomplete="email" placeholder="you@example.com">',
+      '      <label class="cmx-label" for="cmxEmail">' + esc(T('commission.email')) + ' <span class="req">' + esc(T('commission.requiredMark')) + '</span></label>',
+      '      <input class="cmx-input" type="email" id="cmxEmail" name="email" required autocomplete="email" placeholder="' + esc(T('commission.emailPh')) + '">',
       '    </div>',
       '',
       '    <div class="cmx-field">',
-      '      <label class="cmx-label" for="cmxCountry">Country / shipping region <span class="req">*</span></label>',
-      '      <input class="cmx-input" type="text" id="cmxCountry" name="country" required autocomplete="country-name" placeholder="e.g. France, Korea, Japan">',
+      '      <label class="cmx-label" for="cmxCountry">' + esc(T('commission.country')) + ' <span class="req">' + esc(T('commission.requiredMark')) + '</span></label>',
+      '      <input class="cmx-input" type="text" id="cmxCountry" name="country" required autocomplete="country-name" placeholder="' + esc(T('commission.countryPh')) + '">',
       '    </div>',
       '',
       '    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px">',
-      '    <input type="hidden" name="_subject" value="New notebook commission — Studio Monjo">',
+      '    <input type="hidden" name="_subject" value="' + esc(T('commission.subjectCommission')) + '">',
+      '    <input type="hidden" name="locale" value="' + esc((window.SM && window.SM.locale && window.SM.locale()) || 'en') + '">',
       '',
-      '    <button type="submit" class="cmx-submit" id="cmxSubmit">Send enquiry</button>',
+      '    <button type="submit" class="cmx-submit" id="cmxSubmit">' + esc(T('commission.send')) + '</button>',
       '    <div class="cmx-status" id="cmxStatus" hidden></div>',
       '  </div>',
       '  <div class="cmx-done" id="cmxDone" hidden>',
-      '    <div class="cmx-done-mark" aria-hidden="true">&#x2713;</div>',
-      '    <div class="cmx-done-title">Thank you.</div>',
-      '    <p class="cmx-done-body">Your enquiry is on its way. I\'ll reply personally within 24 hours with next steps.</p>',
-      '    <button type="button" class="cmx-done-close" data-close>Close</button>',
+      '    <div class="cmx-done-mark" aria-hidden="true">\u2713</div>',
+      '    <div class="cmx-done-title">' + esc(T('commission.doneTitle')) + '</div>',
+      '    <p class="cmx-done-body">' + esc(T('commission.doneBody')) + '</p>',
+      '    <button type="button" class="cmx-done-close" data-close>' + esc(T('commission.close')) + '</button>',
       '  </div>',
-      '  <div class="cmx-foot">I reply personally, usually within 24 hours. No newsletters, no third-party sharing.</div>',
+      '  <div class="cmx-foot">' + esc(T('commission.foot')) + '</div>',
       '</form>'
     ].join('\n');
     document.body.appendChild(wrap);
@@ -106,12 +117,10 @@
   function open(opts) {
     if (!modal) return;
     var o = (typeof opts === 'string') ? { size: opts } : (opts || {});
-    // Preselect size if given
     if (o.size) {
       var r = modal.querySelector('input[name="size"][value="' + o.size + '"]');
       if (r) r.checked = true;
     }
-    // Piece prefill — shown visibly + submitted as a hidden field
     var pieceEl = modal.querySelector('#cmxPiece');
     var pieceField = modal.querySelector('#cmxPieceField');
     var subjectField = modal.querySelector('input[name="_subject"]');
@@ -119,18 +128,20 @@
     var intro = modal.querySelector('#cmxIntro');
     if (o.piece) {
       pieceEl.hidden = false;
-      pieceEl.innerHTML = '<span class="cmx-piece-label">For</span><span class="cmx-piece-name">' + o.piece + '</span>';
+      pieceEl.innerHTML =
+        '<span class="cmx-piece-label">' + esc(T('commission.pieceLabel')) + '</span>' +
+        '<span class="cmx-piece-name">' + esc(o.piece) + '</span>';
       pieceField.value = o.piece;
-      if (subjectField) subjectField.value = 'Ready-made — ' + o.piece;
-      if (title) title.textContent = 'Reserve a piece';
-      if (intro) intro.textContent = 'You\'re reserving this ready-made piece. I\'ll reply within a day with payment and shipping details.';
+      if (subjectField) subjectField.value = T('commission.subjectReserve', { piece: o.piece });
+      if (title) title.textContent = T('commission.titleReserve');
+      if (intro) intro.textContent = T('commission.introReserve');
     } else {
       pieceEl.hidden = true;
       pieceEl.innerHTML = '';
       pieceField.value = '';
-      if (subjectField) subjectField.value = 'New notebook commission — Studio Monjo';
-      if (title) title.textContent = 'Commission a notebook';
-      if (intro) intro.textContent = 'Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.';
+      if (subjectField) subjectField.value = T('commission.subjectCommission');
+      if (title) title.textContent = T('commission.title');
+      if (intro) intro.textContent = T('commission.intro');
     }
     hideDone();
     setStatus('', '');
@@ -177,13 +188,13 @@
     var endpoint = (config && config.formspreeEndpoint) || '';
 
     if (!endpoint) {
-      setStatus('error', 'The commission form is being set up — please try again shortly.');
+      setStatus('error', T('commission.errorSetup'));
       return;
     }
 
     var submit = form.querySelector('#cmxSubmit');
     submit.disabled = true;
-    submit.textContent = 'Sending…';
+    submit.textContent = T('commission.sending');
     setStatus('', '');
 
     var data = new FormData(form);
@@ -195,30 +206,28 @@
       .then(function (r) {
         if (r.ok) {
           form.reset();
-          submit.textContent = 'Send enquiry';
+          submit.textContent = T('commission.send');
           submit.disabled = false;
           showDone();
         } else {
           return r.json().then(function (j) {
-            var msg = (j && j.errors && j.errors[0] && j.errors[0].message) || 'Something went wrong. Please try again.';
+            var msg = (j && j.errors && j.errors[0] && j.errors[0].message) || T('commission.errorGeneric');
             setStatus('error', msg);
-            submit.textContent = 'Send enquiry';
+            submit.textContent = T('commission.send');
             submit.disabled = false;
           });
         }
       })
       .catch(function () {
-        setStatus('error', 'Network error. Please try again.');
-        submit.textContent = 'Send enquiry';
+        setStatus('error', T('commission.errorNetwork'));
+        submit.textContent = T('commission.send');
         submit.disabled = false;
       });
   }
 
-  // Expose global trigger
   window.openCommission = function (size) { open(size); };
   window.closeCommission = close;
 
-  // Build the modal, then load config
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', build);
   } else {

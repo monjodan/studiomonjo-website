@@ -6,30 +6,35 @@
     {
       "id": "a6",
       "name": "A6",
-      "tag": "Pocket",
+      "tag_en": "Pocket",
+      "tag_ko": "포켓",
       "dimensions": "10.5 × 14.8 cm",
       "pages": 24,
       "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/IMG_4604.jpg",
       "imageWebp": "/media/web/notebooks/IMG_4604.webp",
-      "description": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me."
+      "description_en": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me.",
+      "description_ko": "서울에서 한 권씩 주문 제작해요. 분위기나 색감을 알려 주셔도 되고, 커버는 저에게 맡기셔도 괜찮아요."
     },
     {
       "id": "a5",
       "name": "A5",
-      "tag": "Desk",
+      "tag_en": "Desk",
+      "tag_ko": "데스크",
       "dimensions": "14.8 × 21 cm",
       "pages": 24,
       "price": { "krw": 68000, "eur": 46 },
       "image": "/media/web/notebooks/L1001423.jpg",
       "imageWebp": "/media/web/notebooks/L1001423.webp",
-      "description": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me."
+      "description_en": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me.",
+      "description_ko": "서울에서 한 권씩 주문 제작해요. 분위기나 색감을 알려 주셔도 되고, 커버는 저에게 맡기셔도 괜찮아요."
     }
   ],
   "readyMade": [
     {
       "id": "one-001",
-      "title": "No. 001 — Birds & Berries",
+      "title_en": "No. 001 — Birds & Berries",
+      "title_ko": "No. 001 — 새와 열매",
       "year": 2025,
       "size": "A6",
       "status": "sold",
@@ -44,7 +49,8 @@
     },
     {
       "id": "one-002",
-      "title": "No. 002 — Lotus",
+      "title_en": "No. 002 — Lotus",
+      "title_ko": "No. 002 — 연꽃",
       "year": 2025,
       "size": "A6",
       "status": "sold",
@@ -60,24 +66,34 @@
   ],
   "faq": [
     {
-      "q": "Can I suggest a subject, mood, or palette?",
-      "a": "Yes — tell me in the order note and I'll paint within your direction. If you'd rather I choose, I will."
+      "q_en": "Can I suggest a subject, mood, or palette?",
+      "a_en": "Yes — tell me in the order note and I'll paint within your direction. If you'd rather I choose, I will.",
+      "q_ko": "주제나 분위기, 색감을 제가 정해도 될까요?",
+      "a_ko": "물론이에요 — 주문 메모에 적어 주시면 그 방향으로 그려 드려요. 맡겨 주셔도 좋고요, 그러면 제가 골라서 작업해요."
     },
     {
-      "q": "What kind of paper is inside?",
-      "a": "24 pages of high-quality paper, chosen to take fountain pen ink without feathering or bleed-through. It holds watercolour washes too."
+      "q_en": "What kind of paper is inside?",
+      "a_en": "24 pages of high-quality paper, chosen to take fountain pen ink without feathering or bleed-through. It holds watercolour washes too.",
+      "q_ko": "속지는 어떤 종이인가요?",
+      "a_ko": "만년필 잉크에 번짐이나 뒷비침이 없도록 고른 고급지 24페이지예요. 수채 물감도 잘 받아 줘요."
     },
     {
-      "q": "How long does it take?",
-      "a": "Usually around two weeks from order to ship, depending on the queue. I'll confirm your timeline in the first reply."
+      "q_en": "How long does it take?",
+      "a_en": "Usually around two weeks from order to ship, depending on the queue. I'll confirm your timeline in the first reply.",
+      "q_ko": "제작에 얼마나 걸리나요?",
+      "a_ko": "주문부터 발송까지 보통 2주 정도 걸려요 (대기 상황에 따라 조금 달라져요). 첫 답장에서 예상 일정을 정확히 알려 드릴게요."
     },
     {
-      "q": "How do you ship?",
-      "a": "From Seoul. CJ Logistics within Korea, DHL everywhere else. Shipping quote confirmed before we finalise the order."
+      "q_en": "How do you ship?",
+      "a_en": "From Seoul. CJ Logistics within Korea, DHL everywhere else. Shipping quote confirmed before we finalise the order.",
+      "q_ko": "배송은 어떻게 하나요?",
+      "a_ko": "서울에서 발송해요. 국내는 CJ대한통운, 해외는 DHL로 보내요. 배송비는 주문 확정 전에 미리 안내해 드려요."
     },
     {
-      "q": "Are the notebooks signed?",
-      "a": "Each cover is stamped with the studio seal, and I can sign the inside cover on request."
+      "q_en": "Are the notebooks signed?",
+      "a_en": "Each cover is stamped with the studio seal, and I can sign the inside cover on request.",
+      "q_ko": "노트에 서명이 들어가나요?",
+      "a_ko": "모든 커버에 스튜디오 낙관이 찍혀 나가요. 원하시면 속표지에 직접 서명해 드릴 수도 있어요."
     }
   ]
 }
