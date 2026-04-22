@@ -33,9 +33,9 @@
       '    <div class="cmx-piece" id="cmxPiece" hidden></div>',
       '    <input type="hidden" name="piece" id="cmxPieceField">',
       '',
-      '    <fieldset class="cmx-field">',
-      '      <legend class="cmx-label">Size <span class="req">*</span></legend>',
-      '      <div class="cmx-radios">',
+      '    <div class="cmx-field">',
+      '      <span class="cmx-label" id="cmxSizeLabel">Size <span class="req">*</span></span>',
+      '      <div class="cmx-radios" role="radiogroup" aria-labelledby="cmxSizeLabel">',
       '        <label class="cmx-radio">',
       '          <input type="radio" name="size" value="A6" required>',
       '          <span class="cmx-radio-tile">',
@@ -51,7 +51,7 @@
       '          </span>',
       '        </label>',
       '      </div>',
-      '    </fieldset>',
+      '    </div>',
       '',
       '    <div class="cmx-field">',
       '      <label class="cmx-label" for="cmxDirection">Direction <span class="cmx-help" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-light)">— optional</span></label>',
@@ -78,6 +78,12 @@
       '',
       '    <button type="submit" class="cmx-submit" id="cmxSubmit">Send enquiry</button>',
       '    <div class="cmx-status" id="cmxStatus" hidden></div>',
+      '  </div>',
+      '  <div class="cmx-done" id="cmxDone" hidden>',
+      '    <div class="cmx-done-mark" aria-hidden="true">&#x2713;</div>',
+      '    <div class="cmx-done-title">Thank you.</div>',
+      '    <p class="cmx-done-body">Your enquiry is on its way. I\'ll reply personally within 24 hours with next steps.</p>',
+      '    <button type="button" class="cmx-done-close" data-close>Close</button>',
       '  </div>',
       '  <div class="cmx-foot">I reply personally, usually within 24 hours. No newsletters, no third-party sharing.</div>',
       '</form>'
@@ -126,6 +132,8 @@
       if (title) title.textContent = 'Commission a notebook';
       if (intro) intro.textContent = 'Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.';
     }
+    hideDone();
+    setStatus('', '');
     modal.hidden = false;
     requestAnimationFrame(function () { modal.classList.add('open'); });
     document.body.classList.add('locked');
@@ -138,7 +146,7 @@
   function close() {
     if (!modal) return;
     modal.classList.remove('open');
-    setTimeout(function () { modal.hidden = true; }, 300);
+    setTimeout(function () { modal.hidden = true; hideDone(); }, 300);
     document.body.classList.remove('locked');
   }
 
@@ -148,6 +156,19 @@
     el.hidden = false;
     el.textContent = text;
     el.className = 'cmx-status cmx-status--' + kind;
+  }
+
+  function showDone() {
+    var body = modal.querySelector('.cmx-body');
+    var done = modal.querySelector('#cmxDone');
+    if (body) body.hidden = true;
+    if (done) done.hidden = false;
+  }
+  function hideDone() {
+    var body = modal.querySelector('.cmx-body');
+    var done = modal.querySelector('#cmxDone');
+    if (body) body.hidden = false;
+    if (done) done.hidden = true;
   }
 
   function onSubmit(e) {
@@ -173,10 +194,10 @@
     })
       .then(function (r) {
         if (r.ok) {
-          setStatus('success', 'Sent. I\'ll reply within 24 hours.');
           form.reset();
           submit.textContent = 'Send enquiry';
           submit.disabled = false;
+          showDone();
         } else {
           return r.json().then(function (j) {
             var msg = (j && j.errors && j.errors[0] && j.errors[0].message) || 'Something went wrong. Please try again.';
