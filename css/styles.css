@@ -191,7 +191,7 @@ nav {
 .page-hero-inner { max-width: 680px; margin: 0 auto; }
 .page-hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 22px; }
 .page-hero-title { font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 24px; }
-.page-hero-sub { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.8; max-width: 520px; margin: 0 auto 36px; }
+.page-hero-sub { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.8; max-width: 520px; margin: 0 0 36px; }
 .page-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
 .page-hero--center { text-align: center; }
 .page-hero--center .page-hero-sub { margin-left: auto; margin-right: auto; }
