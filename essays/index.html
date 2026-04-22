@@ -26,7 +26,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- NAV -->
 <nav aria-label="Primary">
   <a href="/" class="nav-logo" aria-label="Studio Monjo — home">
     <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nav-mark" width="28" height="28">
@@ -40,28 +39,26 @@
     <a href="/notebooks/" class="nav-link">Notebooks</a>
     <a href="/essays/" class="nav-link" aria-current="page">Writing</a>
     <a href="/about/" class="nav-link">About</a>
-    <a href="/notebooks/#offer" class="nav-shop">Commission ↗</a>
+    <a href="/notebooks/" class="nav-shop" data-commission="nav">Shop</a>
   </div>
 </nav>
 
 <main id="main">
 
-<!-- PAGE HERO -->
 <section class="page-hero fade-in">
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow">Writing</div>
-    <h1 class="page-hero-title">Essays,<br><em>in Korean.</em></h1>
+    <h1 class="page-hero-title">Essays, in Korean.</h1>
     <p class="page-hero-sub" id="essaysIntro">Essays published on Brunch — on consciousness, control, aesthetics, and what it means to live between languages and cultures.</p>
     <div class="page-hero-actions">
-      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="essaysViewAll">Read on Brunch ↗</a>
+      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="essaysViewAll">Read on Brunch &rsaquo;</a>
     </div>
   </div>
 </section>
 
-<!-- ALL ESSAYS -->
 <section class="reveal">
   <div class="section-inner">
-    <div class="essays-list essays-list--all" id="essaysAll">
+    <div class="essays-list" id="essaysAll">
       <p class="essays-loading">Loading essays…</p>
     </div>
   </div>
@@ -69,7 +66,6 @@
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="/" class="footer-logo">
@@ -78,9 +74,9 @@
     </a>
     <div class="footer-meta">Seoul · © 2026</div>
     <div class="footer-links">
-      <a href="mailto:hello@studiomonjo.com" class="footer-link">Email</a>
+      <a href="/notebooks/" class="footer-link">Notebooks</a>
+      <a href="/essays/" class="footer-link">Writing</a>
       <a href="#" class="footer-link" id="footerNaver">Naver Shop</a>
-      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="footer-link">Brunch</a>
       <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
     </div>
   </div>
@@ -88,6 +84,7 @@
 
 <script src="/js/notebooks.js"></script>
 <script src="/js/essays.js"></script>
+<script src="/js/commission.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>
