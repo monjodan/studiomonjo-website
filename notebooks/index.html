@@ -51,7 +51,7 @@
     <a href="/notebooks/" class="nav-link" aria-current="page">Notebooks</a>
     <a href="/essays/" class="nav-link">Writing</a>
     <a href="/about/" class="nav-link">About</a>
-    <a href="/notebooks/#offer" class="nav-shop">Commission ↗</a>
+    <a href="/notebooks/#offer" class="nav-shop" data-commission="nav">Shop</a>
   </div>
 </nav>
 
@@ -61,11 +61,11 @@
 <section class="page-hero fade-in">
   <div class="page-hero-inner">
     <div class="page-hero-eyebrow">Notebooks</div>
-    <h1 class="page-hero-title">Commission<br>a notebook<br><em>painted by hand.</em></h1>
-    <p class="page-hero-sub">Two sizes. Hand-painted covers, hand-stitched with red thread. Made to order in Seoul — usually within two weeks.</p>
+    <h1 class="page-hero-title">Commission a notebook<br>painted by hand.</h1>
+    <p class="page-hero-sub">Two sizes. Each one painted and hand-bound one at a time, in Seoul. Usually two weeks from order to ship.</p>
     <div class="page-hero-actions">
-      <a href="#offer" class="btn btn-primary" data-commission="primary">Commission by email ↗</a>
-      <a href="#offer" class="btn btn-ghost" data-commission="secondary" hidden>International ↗</a>
+      <a href="#offer" class="btn btn-primary">Choose a size</a>
+      <a href="#process" class="btn-link">How it works &rsaquo;</a>
     </div>
   </div>
 </section>
@@ -75,75 +75,62 @@
   <div class="section-inner">
     <header class="section-head">
       <div class="section-label">Two sizes</div>
-      <h2 class="section-title">Pocket,<br><em>or desk.</em></h2>
-      <p class="section-lede">Choose a size. Each notebook is then painted one at a time. Tell me the mood, the palette, or the subject — or leave it to me.</p>
+      <h2 class="section-title">Pocket, or desk.</h2>
+      <p class="section-lede">Tell me a mood, a palette, or a subject — or leave the cover to me. Each notebook is painted only once, so no two are identical.</p>
     </header>
     <div class="offer-grid" id="offerGrid">
-      <p class="nb-loading">Loading…</p>
+      <p class="essays-loading">Loading…</p>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="process-band reveal">
+<section id="process" class="process-band reveal">
   <div class="section-inner">
     <header class="section-head">
       <div class="section-label">How it works</div>
-      <h2 class="section-title">Three<br><em>quiet steps.</em></h2>
+      <h2 class="section-title">Three quiet steps.</h2>
     </header>
     <div class="process-grid">
       <div class="process-step">
-        <div class="process-num">01</div>
-        <h3 class="process-title">Order</h3>
-        <p class="process-body">Pick a size and tell me anything you'd like on the cover — a mood, a palette, a subject. Or tell me nothing, and I'll choose.</p>
+        <div class="process-num">01 · Order</div>
+        <h3 class="process-title">Size and direction</h3>
+        <p class="process-body">Pick A6 or A5 and tell me anything you'd like on the cover — a mood, a palette, a subject. Or tell me nothing, and I'll choose.</p>
       </div>
       <div class="process-step">
-        <div class="process-num">02</div>
+        <div class="process-num">02 · Make</div>
         <h3 class="process-title">I paint &amp; bind</h3>
         <p class="process-body">Each cover is painted in ink and watercolour, and the notebook is hand-stitched with red thread. Usually around two weeks in the queue.</p>
       </div>
       <div class="process-step">
-        <div class="process-num">03</div>
-        <h3 class="process-title">It ships</h3>
-        <p class="process-body">Packed and sent from Seoul. Domestic via the Naver Shop; international orders by email with tracked shipping.</p>
+        <div class="process-num">03 · Ship</div>
+        <h3 class="process-title">Packed &amp; sent</h3>
+        <p class="process-body">Packed and posted from Seoul. Domestic via Naver, international via tracked shipping — quote confirmed in my first reply.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO / PAST COMMISSIONS -->
+<!-- FAQ -->
 <section class="reveal">
   <div class="section-inner">
     <header class="section-head">
-      <div class="section-label">Past commissions</div>
-      <h2 class="section-title">These have found<br><em>their homes.</em></h2>
-      <p class="section-lede">Each notebook is painted only once, so previous pieces are shown here for reference, not sale. Yours will be different.</p>
-    </header>
-    <div class="portfolio-grid" id="portfolioGrid"></div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="reveal" style="border-top: 1px solid var(--line);">
-  <div class="section-inner">
-    <header class="section-head">
       <div class="section-label">Questions</div>
-      <h2 class="section-title">Good<br><em>to know.</em></h2>
+      <h2 class="section-title">Good to know.</h2>
     </header>
     <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="shop-band reveal" aria-labelledby="finalCta">
-  <div class="shop-inner">
-    <div class="section-label shop-eyebrow">Commission</div>
-    <h2 id="finalCta" class="shop-title">Ready<br><em>to order?</em></h2>
-    <p class="shop-sub" id="shopAvailNote">Naver Shop opening soon. Email me in the meantime and I'll reply the same day.</p>
-    <div class="shop-actions">
-      <a href="#" class="btn btn-invert" data-commission="primary">Commission by email ↗</a>
-      <a href="#" class="btn btn-invert-ghost" data-commission="secondary" hidden>International ↗</a>
-    </div>
+<!-- PAST COMMISSIONS -->
+<section class="reveal" style="background: var(--paper-soft); border-top: 1px solid var(--line);">
+  <div class="section-inner">
+    <header class="section-head">
+      <div class="section-label">Past commissions</div>
+      <h2 class="section-title">Previous pieces.</h2>
+      <p class="section-lede">Each notebook is painted once, so these examples are for reference — they've already found their homes. Yours will be different.</p>
+    </header>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
   </div>
 </section>
 
@@ -158,15 +145,16 @@
     </a>
     <div class="footer-meta">Seoul · © 2026</div>
     <div class="footer-links">
-      <a href="mailto:hello@studiomonjo.com" class="footer-link">Email</a>
+      <a href="/notebooks/" class="footer-link">Notebooks</a>
+      <a href="/essays/" class="footer-link">Writing</a>
       <a href="#" class="footer-link" id="footerNaver">Naver Shop</a>
-      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="footer-link">Brunch</a>
       <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
     </div>
   </div>
 </footer>
 
 <script src="/js/notebooks.js"></script>
+<script src="/js/commission.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>

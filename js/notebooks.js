@@ -1,45 +1,61 @@
 /**
  * Renders Studio Monjo's notebook commerce surfaces from data/notebooks.json.
  * Populates whichever of these exist on the current page:
- *   - #offerGrid         → A6 / A5 commission product cards
- *   - #portfolioGrid     → past commissions (sold) gallery
- *   - #faqList           → FAQ items
- *   - #homeFeatured      → 3-image teaser on the home page
- *   - #commissionPrimary, #commissionSecondary → global CTAs
+ *   - #offerGrid        → A6 / A5 commission product cards
+ *   - #portfolioGrid    → past commissions (sold) gallery
+ *   - #faqList          → FAQ items
+ *   - [data-commission="primary"|"secondary"|"nav"] → global CTAs
  *
- * Also rewrites any link with [data-naver-url] when a Naver Shop URL is set.
+ * CTA logic:
+ *   - If naverShopUrl is set, primary CTAs point to Naver Shop (external).
+ *   - Otherwise they open the commission form modal (js/commission.js).
+ *   - "International" secondary CTA always opens the form modal.
+ *
+ * No mailto links. Email is never placed in the HTML.
  */
 (function () {
   var JSON_URL = '/data/notebooks.json';
 
-  function fmtKRW(n) { return '₩' + Number(n).toLocaleString('ko-KR'); }
-  function fmtEUR(n) { return '€' + Number(n); }
+  function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString('ko-KR'); }
+  function fmtEUR(n) { return '\u20AC' + Number(n); }
 
-  function mailto(email, subject, body) {
-    var q = [];
-    if (subject) q.push('subject=' + encodeURIComponent(subject));
-    if (body) q.push('body=' + encodeURIComponent(body));
-    return 'mailto:' + (email || '') + (q.length ? '?' + q.join('&') : '');
+  function openForm(size) {
+    if (typeof window.openCommission === 'function') window.openCommission(size);
   }
 
-  function buyHrefFor(offering, data) {
-    if (data.naverShopUrl) return data.naverShopUrl;
-    var subject = 'Commission — Studio Monjo ' + offering.name + ' notebook';
-    var body =
-      'Hi Jordan,\n\n' +
-      'I would like to commission a ' + offering.name + ' notebook (' + fmtKRW(offering.price.krw) + ' / ' + fmtEUR(offering.price.eur) + ').\n\n' +
-      'Direction (mood / palette / subject — or leave to you):\n\n' +
-      'Shipping address:\n\n' +
-      'Thank you.';
-    return mailto(data.contactEmail, subject, body);
+  function primaryBehaviorFor(size, data) {
+    if (data.naverShopUrl) {
+      return {
+        href: data.naverShopUrl,
+        label: 'Buy on Naver \u2197',
+        external: true
+      };
+    }
+    return {
+      href: null, // opens modal
+      label: 'Commission \u2197',
+      external: false,
+      size: size || null
+    };
   }
 
-  function intlMailto(data) {
-    return mailto(
-      data.contactEmail,
-      'Studio Monjo — international commission',
-      'Hi Jordan,\n\nI would like to commission a notebook and ship internationally. Size (A6 / A5):\n\nThank you.'
-    );
+  function wireLink(el, behavior) {
+    if (!el) return;
+    if (behavior.href) {
+      el.href = behavior.href;
+      el.target = behavior.external ? '_blank' : '';
+      el.rel = behavior.external ? 'noopener noreferrer' : '';
+      el.onclick = null;
+    } else {
+      el.href = '#';
+      el.removeAttribute('target');
+      el.removeAttribute('rel');
+      el.onclick = function (e) {
+        e.preventDefault();
+        openForm(behavior.size);
+      };
+    }
+    if (behavior.label) el.textContent = behavior.label;
   }
 
   function renderOfferings(data) {
@@ -50,13 +66,12 @@
       var card = document.createElement('article');
       card.className = 'offer-card';
 
-      var img = document.createElement('div');
-      img.className = 'offer-img';
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'offer-img';
       var pic = document.createElement('picture');
       if (o.imageWebp) {
         var src = document.createElement('source');
-        src.srcset = o.imageWebp;
-        src.type = 'image/webp';
+        src.srcset = o.imageWebp; src.type = 'image/webp';
         pic.appendChild(src);
       }
       var imEl = document.createElement('img');
@@ -65,28 +80,44 @@
       imEl.loading = 'lazy';
       imEl.decoding = 'async';
       pic.appendChild(imEl);
-      img.appendChild(pic);
-
-      var tag = document.createElement('span');
-      tag.className = 'offer-size-tag';
-      tag.textContent = o.tag || o.name;
-      img.appendChild(tag);
-      card.appendChild(img);
+      imgWrap.appendChild(pic);
+      card.appendChild(imgWrap);
 
       var body = document.createElement('div');
       body.className = 'offer-body';
 
       var head = document.createElement('div');
       head.className = 'offer-head';
+
+      var nameWrap = document.createElement('div');
       var name = document.createElement('h3');
       name.className = 'offer-name';
-      name.innerHTML = o.name + ' <em>notebook</em>';
-      var dim = document.createElement('span');
-      dim.className = 'offer-dim';
-      dim.textContent = o.dimensions;
-      head.appendChild(name);
-      head.appendChild(dim);
+      name.textContent = o.name;
+      nameWrap.appendChild(name);
+      var tag = document.createElement('span');
+      tag.className = 'offer-tag';
+      tag.textContent = o.tag || '';
+      nameWrap.appendChild(tag);
+      head.appendChild(nameWrap);
+
+      var priceRow = document.createElement('div');
+      priceRow.className = 'offer-price-row';
+      var price = document.createElement('div');
+      price.className = 'offer-price';
+      price.textContent = fmtKRW(o.price.krw);
+      priceRow.appendChild(price);
+      var alt = document.createElement('div');
+      alt.className = 'offer-price-alt';
+      alt.textContent = fmtEUR(o.price.eur);
+      priceRow.appendChild(alt);
+      head.appendChild(priceRow);
+
       body.appendChild(head);
+
+      var dim = document.createElement('div');
+      dim.className = 'offer-dim';
+      dim.textContent = o.dimensions + ' · ' + (o.pages || '~80') + ' pages';
+      body.appendChild(dim);
 
       if (o.description) {
         var desc = document.createElement('p');
@@ -95,34 +126,27 @@
         body.appendChild(desc);
       }
 
-      var price = document.createElement('div');
-      price.className = 'offer-price';
-      price.textContent = fmtKRW(o.price.krw);
-      var alt = document.createElement('span');
-      alt.className = 'offer-price-alt';
-      alt.textContent = fmtEUR(o.price.eur);
-      price.appendChild(alt);
-      body.appendChild(price);
+      var included = [
+        'Hand-painted cover in ink and watercolour',
+        'Hand-stitched binding, red thread',
+        'Handmade paper inside',
+        'Signed and stamped'
+      ];
+      var inc = document.createElement('div');
+      inc.className = 'offer-included';
+      included.forEach(function (t) {
+        var d = document.createElement('div');
+        d.className = 'offer-included-item';
+        d.textContent = t;
+        inc.appendChild(d);
+      });
+      body.appendChild(inc);
 
-      var ctas = document.createElement('div');
-      ctas.className = 'offer-ctas';
+      var cta = document.createElement('a');
+      cta.className = 'btn btn-primary offer-cta';
+      wireLink(cta, primaryBehaviorFor(o.name, data));
+      body.appendChild(cta);
 
-      var primary = document.createElement('a');
-      primary.className = 'btn btn-primary';
-      primary.href = buyHrefFor(o, data);
-      primary.textContent = data.naverShopUrl ? 'Commission on Naver ↗' : 'Commission by email ↗';
-      if (/^https?:/.test(primary.href)) { primary.target = '_blank'; primary.rel = 'noopener noreferrer'; }
-      ctas.appendChild(primary);
-
-      if (data.naverShopUrl) {
-        var secondary = document.createElement('a');
-        secondary.className = 'btn btn-ghost';
-        secondary.href = intlMailto(data);
-        secondary.textContent = 'International ↗';
-        ctas.appendChild(secondary);
-      }
-
-      body.appendChild(ctas);
       card.appendChild(body);
       root.appendChild(card);
     });
@@ -145,8 +169,7 @@
       var pic = document.createElement('picture');
       if (p.imageWebp) {
         var src = document.createElement('source');
-        src.srcset = p.imageWebp;
-        src.type = 'image/webp';
+        src.srcset = p.imageWebp; src.type = 'image/webp';
         pic.appendChild(src);
       }
       var img = document.createElement('img');
@@ -199,84 +222,44 @@
     });
   }
 
-  function renderHomeFeatured(data) {
-    var root = document.getElementById('homeFeatured');
-    if (!root) return;
-    var picks = [];
-    var seen = {};
-    function push(src, webp) {
-      if (!src || seen[src]) return;
-      seen[src] = 1;
-      picks.push({ image: src, imageWebp: webp });
-    }
-    (data.portfolio || []).forEach(function (p) {
-      push(p.image, p.imageWebp);
-    });
-    (data.portfolio || []).forEach(function (p) {
-      (p.gallery || []).forEach(function (g) { push(g.src, g.webp); });
-    });
-    picks = picks.slice(0, 3);
-    root.innerHTML = '';
-    picks.forEach(function (p) {
-      var cell = document.createElement('a');
-      cell.className = 'home-strip-cell';
-      cell.href = '/notebooks/';
-      cell.setAttribute('aria-label', 'See the notebooks');
-      var pic = document.createElement('picture');
-      if (p.imageWebp) {
-        var src = document.createElement('source');
-        src.srcset = p.imageWebp;
-        src.type = 'image/webp';
-        pic.appendChild(src);
-      }
-      var img = document.createElement('img');
-      img.src = p.image;
-      img.alt = '';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      pic.appendChild(img);
-      cell.appendChild(pic);
-      root.appendChild(cell);
-    });
-  }
-
   function wireGlobalCtas(data) {
     var hasNaver = !!data.naverShopUrl;
-    var primaryHref = hasNaver
-      ? data.naverShopUrl
-      : mailto(
-          data.contactEmail,
-          'Studio Monjo — notebook commission',
-          'Hi Jordan,\n\nI would like to commission a notebook. Size (A6 / A5):\n\nDirection (mood / palette / subject — or leave to you):\n\nShipping address:\n\nThank you.'
-        );
-    var primaryLabel = hasNaver ? 'Commission on Naver ↗' : 'Commission by email ↗';
+    var primaryBeh = hasNaver
+      ? { href: data.naverShopUrl, label: 'Shop on Naver \u2197', external: true }
+      : { href: null, label: 'Commission \u2197', external: false };
 
     document.querySelectorAll('[data-commission="primary"]').forEach(function (el) {
-      el.href = primaryHref;
-      el.textContent = primaryLabel;
-      if (hasNaver) {
-        el.target = '_blank';
-        el.rel = 'noopener noreferrer';
-      } else {
-        el.removeAttribute('target');
-        el.removeAttribute('rel');
-      }
+      wireLink(el, primaryBeh);
     });
     document.querySelectorAll('[data-commission="secondary"]').forEach(function (el) {
-      el.href = intlMailto(data);
-      el.hidden = !hasNaver;
-      el.textContent = 'International ↗';
+      // Secondary is always the form path (international, enquiries)
+      wireLink(el, { href: null, label: 'International \u2197', external: false });
+      el.hidden = !hasNaver; // only show as a "secondary" when there's a primary Naver path
+    });
+    document.querySelectorAll('[data-commission="nav"]').forEach(function (el) {
+      if (hasNaver) {
+        el.href = data.naverShopUrl;
+        el.target = '_blank';
+        el.rel = 'noopener noreferrer';
+        el.textContent = 'Shop \u2197';
+      } else {
+        el.href = '/notebooks/';
+        el.removeAttribute('target');
+        el.removeAttribute('rel');
+        el.textContent = 'Shop';
+      }
     });
 
+    // Footer Naver link
     var footerNaver = document.getElementById('footerNaver');
     if (footerNaver) {
       if (hasNaver) {
         footerNaver.href = data.naverShopUrl;
         footerNaver.target = '_blank';
         footerNaver.rel = 'noopener noreferrer';
+        footerNaver.textContent = 'Naver Shop';
       } else {
-        footerNaver.href = mailto(data.contactEmail, 'Studio Monjo — Naver Shop opening');
-        footerNaver.textContent = 'Naver Shop (soon)';
+        footerNaver.style.display = 'none';
       }
     }
   }
@@ -288,10 +271,9 @@
       renderOfferings(data);
       renderPortfolio(data);
       renderFaq(data);
-      renderHomeFeatured(data);
     })
     .catch(function () {
       var root = document.getElementById('offerGrid') || document.getElementById('portfolioGrid');
-      if (root) root.innerHTML = '<p class="nb-error">Could not load the notebook list. Email hello@studiomonjo.com.</p>';
+      if (root) root.innerHTML = '<p class="essays-error">Could not load the notebooks.</p>';
     });
 })();

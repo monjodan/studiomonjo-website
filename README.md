@@ -43,7 +43,7 @@ Everything commerce-related is a JSON edit.
 
 ```json
 {
-  "contactEmail": "hello@studiomonjo.com",
+  "formspreeEndpoint": "",
   "naverShopUrl": "",
   "leadTimeWeeks": 2,
   "offerings": [ ... A6, A5 with prices ... ],
@@ -52,13 +52,31 @@ Everything commerce-related is a JSON edit.
 }
 ```
 
+### The commission form (required before launch)
+
+The "Commission" buttons open a form modal. The form POSTs to **Formspree**, which emails the submission to a private address that **never appears on the site**. This is the only way to receive orders until the Naver Shop is live (and remains the path for international buyers afterwards).
+
+Set it up once:
+
+1. Go to [formspree.io](https://formspree.io) and sign up (free tier: 50 submissions/month, which is plenty for a small atelier).
+2. Create a new form. Set the notification email to your real address (not published).
+3. Copy the endpoint URL — it looks like `https://formspree.io/f/xxxxxxxx`.
+4. Paste it into `data/notebooks.json` at `formspreeEndpoint`.
+5. Submit the form once from your own machine — Formspree's first email asks you to confirm the endpoint.
+
+Until the endpoint is set, the form shows "The commission form is being set up — please try again shortly."
+
+The form collects: size (A6/A5), direction/notes, name, email, country. Plus a honeypot for bots and a hidden `_subject`.
+
 ### Opening the Naver Shop
 
-Set `naverShopUrl` at the top level. Every primary "Commission" button across the site flips from `mailto:` to the shop URL automatically, and the secondary "International ↗" button appears. For a per-size deep-link, add `"naverUrl": "https://..."` to the offering — it overrides the global URL.
+Set `naverShopUrl` at the top level. Every primary "Commission" button (hero, offering cards, nav) flips from "Commission" to "Buy on Naver" and points at the shop. The commission form stays available as a secondary "International ↗" path.
 
-### Contact email
+For a per-size deep-link, add `"naverUrl": "https://..."` to the specific offering — it overrides the global URL.
 
-Update `contactEmail` — it drives the mailto prefills used while the shop isn't live (and the international button afterwards). Each CTA builds a subject + body for the specific size ordered.
+### Contact — no email in HTML
+
+The site deliberately has no `mailto:` or email address in its source. This avoids the spam-scraping that hits any public email address on a GitHub Pages site within days. All contact funnels through the Formspree-backed commission form or the Naver Shop.
 
 ### Adding a new past commission
 
