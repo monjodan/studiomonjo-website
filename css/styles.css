@@ -39,18 +39,28 @@ button { font: inherit; color: inherit; }
 .skip-link { position: absolute; left: -9999px; top: 12px; z-index: 2000; padding: 8px 16px; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 13px; }
 .skip-link:focus { left: 12px; }
 
+/* Accessible focus ring for keyboard users */
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.btn:focus-visible { outline-offset: 3px; }
+
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--pad-x); height: var(--nav-h);
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(10px);
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 .nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
-.nav-mark { width: 26px; height: 26px; object-fit: contain; }
-.nav-word { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+.nav-mark {
+  width: 24px; height: 24px; object-fit: contain;
+  /* The 0 mark has a tittle (dot) that biases its bounding box
+     upward, so the circle's visual centre sits below the box centre.
+     Nudge up so the circle aligns with the cap-height of the wordmark. */
+  transform: translateY(-2px);
+}
+.nav-word { font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); line-height: 1; }
 
 .nav-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: none; border: 1px solid var(--line); cursor: pointer; color: var(--ink-mid); flex-shrink: 0; }
 .nav-toggle:hover { color: var(--ink); border-color: var(--ink); }
@@ -464,18 +474,22 @@ nav {
 .cmx-title { font-family: var(--sans); font-weight: 500; font-size: 15px; letter-spacing: 0.02em; color: var(--ink); }
 .cmx-close { width: 40px; height: 40px; border: 1px solid var(--line); background: none; cursor: pointer; color: var(--ink-mid); display: flex; align-items: center; justify-content: center; font-size: 14px; transition: color 0.2s, border-color 0.2s; }
 .cmx-close:hover { color: var(--ink); border-color: var(--ink); }
-.cmx-body { flex: 1; overflow-y: auto; padding: 28px; }
-.cmx-intro { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--ink-mid); margin-bottom: 24px; }
+.cmx-body {
+  flex: 1; overflow-y: auto; padding: 28px;
+  display: flex; flex-direction: column; gap: 26px;
+}
+.cmx-intro { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--ink-mid); }
 .cmx-piece {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 12px 14px; margin-bottom: 24px;
+  padding: 12px 14px;
   background: var(--paper-soft);
   border: 1px solid var(--line-strong);
 }
 .cmx-piece-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); }
 .cmx-piece-name { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); text-align: right; }
-.cmx-form { display: flex; flex-direction: column; gap: 22px; }
-.cmx-field { display: flex; flex-direction: column; gap: 8px; }
+.cmx-field { display: flex; flex-direction: column; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+fieldset.cmx-field { border: 0; padding: 0; margin: 0; min-width: 0; }
+legend.cmx-label { padding: 0; display: block; float: none; width: auto; }
 .cmx-label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mid); }
 .cmx-label .req { color: var(--accent); margin-left: 3px; }
 .cmx-input, .cmx-textarea, .cmx-select {
@@ -506,7 +520,6 @@ nav {
 .cmx-radio-tile-meta { font-size: 11px; font-weight: 400; opacity: 0.7; letter-spacing: 0.02em; }
 .cmx-help { font-size: 12px; font-weight: 300; color: var(--ink-soft); margin-top: 2px; }
 .cmx-submit {
-  margin-top: 8px;
   padding: 16px 24px;
   background: var(--ink); color: var(--paper);
   border: 1px solid var(--ink);
@@ -515,10 +528,35 @@ nav {
 }
 .cmx-submit:hover { background: var(--paper); color: var(--ink); }
 .cmx-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-.cmx-status { font-size: 13px; font-weight: 400; padding: 12px 14px; border: 1px solid var(--line-strong); margin-top: 8px; }
+.cmx-status { font-size: 13px; font-weight: 400; padding: 12px 14px; border: 1px solid var(--line-strong); }
 .cmx-status--success { background: var(--paper-soft); border-color: var(--ink); }
 .cmx-status--error { border-color: var(--accent); color: var(--accent); }
 .cmx-foot { padding: 18px 28px; border-top: 1px solid var(--line); font-size: 11px; color: var(--ink-soft); line-height: 1.6; flex-shrink: 0; }
+
+.cmx-done {
+  flex: 1; padding: clamp(32px, 6vw, 48px) 28px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 18px; text-align: center;
+}
+.cmx-done-mark {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; line-height: 1;
+}
+.cmx-done-title { font-family: var(--serif); font-weight: 300; font-size: 32px; color: var(--ink); letter-spacing: -0.01em; }
+.cmx-done-body { font-size: 14px; font-weight: 300; line-height: 1.7; color: var(--ink-mid); max-width: 340px; margin: 0; }
+.cmx-done-close {
+  margin-top: 6px;
+  padding: 12px 24px;
+  background: none; border: 1px solid var(--ink);
+  color: var(--ink);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cmx-done-close:hover { background: var(--ink); color: var(--paper); }
 
 @media (max-width: 560px) {
   .cmx-panel { width: 100vw; }
