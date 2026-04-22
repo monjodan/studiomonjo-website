@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Studio Monjo — hand-painted, hand-bound notebooks made to order in Seoul. Essays in Korean.">
+<meta name="description" content="Essays by Jordan Monnet — in Korean, on Brunch. Consciousness, control, aesthetics, and living between cultures.">
 <meta name="theme-color" content="#ffffff">
-<title>Studio Monjo — Hand-painted notebooks & essays from Seoul</title>
+<title>Writing — Studio Monjo</title>
 
-<meta property="og:title" content="Studio Monjo — Hand-painted notebooks & essays">
-<meta property="og:description" content="Hand-painted, hand-bound notebooks made to order in Seoul. A quiet practice by Jordan Monnet.">
+<meta property="og:title" content="Writing — Studio Monjo">
+<meta property="og:description" content="Essays by Jordan Monnet, published in Korean on Brunch.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://studiomonjo.com/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/IMG_4604.jpg">
+<meta property="og:url" content="https://studiomonjo.com/essays/">
+<meta property="og:image" content="https://studiomonjo.com/media/web/profile/jordan.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
@@ -26,17 +26,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-  <div class="lightbox-inner">
-    <button type="button" class="lightbox-close" id="lbClose" aria-label="Close image">✕</button>
-    <button type="button" class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous image">‹</button>
-    <img src="" alt="" id="lbImg">
-    <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next image">›</button>
-    <div class="lightbox-cap" id="lbCap"></div>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav aria-label="Primary">
   <a href="/" class="nav-logo" aria-label="Studio Monjo — home">
@@ -49,7 +38,7 @@
   <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
   <div class="nav-right" id="navMenu">
     <a href="/notebooks/" class="nav-link">Notebooks</a>
-    <a href="/essays/" class="nav-link">Writing</a>
+    <a href="/essays/" class="nav-link" aria-current="page">Writing</a>
     <a href="/about/" class="nav-link">About</a>
     <a href="/notebooks/#offer" class="nav-shop">Commission ↗</a>
   </div>
@@ -57,38 +46,24 @@
 
 <main id="main">
 
-<!-- HERO -->
-<section class="hero" aria-labelledby="heroTitle">
-  <div class="hero-inner fade-in">
-    <img src="/media/web/branding/monjo-mark.png" alt="" class="hero-mark" width="180" height="180">
-    <h1 id="heroTitle" class="hero-title">Hand-painted<br>notebooks.<br><em>Essays from Seoul.</em></h1>
-    <p class="hero-sub">Studio Monjo is the quiet practice of Jordan Monnet — one-of-a-kind notebooks painted and bound by hand, and writing on consciousness, aesthetics, and living between cultures.</p>
-    <div class="hero-actions">
-      <a href="/notebooks/" class="btn btn-primary">See the notebooks</a>
-      <a href="/essays/" class="btn btn-ghost">Read the essays</a>
+<!-- PAGE HERO -->
+<section class="page-hero fade-in">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Writing</div>
+    <h1 class="page-hero-title">Essays,<br><em>in Korean.</em></h1>
+    <p class="page-hero-sub" id="essaysIntro">Essays published on Brunch — on consciousness, control, aesthetics, and what it means to live between languages and cultures.</p>
+    <div class="page-hero-actions">
+      <a href="https://brunch.co.kr/@444d2811f4b84ad" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="essaysViewAll">Read on Brunch ↗</a>
     </div>
   </div>
 </section>
 
-<!-- FEATURED NOTEBOOK STRIP -->
-<section class="home-strip reveal" aria-label="Notebook examples">
-  <div class="home-strip-grid" id="homeFeatured"></div>
-</section>
-
-<!-- WRITING TEASER -->
-<section class="reveal" style="border-top: 1px solid var(--line);">
+<!-- ALL ESSAYS -->
+<section class="reveal">
   <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">Writing</div>
-      <h2 class="section-title">Essays,<br><em>in Korean.</em></h2>
-      <p class="section-lede" id="essaysIntro">Essays on Brunch — on consciousness, control, aesthetics, and living between languages and cultures.</p>
-    </header>
-    <div class="essays-list" id="essaysGrid">
+    <div class="essays-list essays-list--all" id="essaysAll">
       <p class="essays-loading">Loading essays…</p>
     </div>
-    <p style="text-align:center;margin-top:28px;">
-      <a href="/essays/" class="essays-all">All <span id="essaysArticleCount">essays</span> ↗</a>
-    </p>
   </div>
 </section>
 

@@ -1,92 +1,106 @@
 /**
- * Loads data/brunch-featured.json and renders the essay grid.
- * Falls back to profile link if fetch fails (e.g. offline local preview).
+ * Renders Brunch essays from data/brunch-featured.json.
+ *   - #essaysGrid      → featured essays (home page, ~4)
+ *   - #essaysAll       → all essays (essays page) — falls back to featured if not yet synced
  */
 (function () {
-  var JSON_URL = 'data/brunch-featured.json';
-  var grid = document.getElementById('essaysGrid');
-  var loading = document.getElementById('essaysLoading');
-  var sectionCta = document.getElementById('essaysSectionCta');
-  var viewAll = document.getElementById('essaysViewAll');
-  var countEl = document.getElementById('essaysArticleCount');
-  var introEl = document.getElementById('essaysIntro');
+  var JSON_URL = '/data/brunch-featured.json';
 
-  if (!grid) return;
+  var fallbackProfile = 'https://brunch.co.kr/@444d2811f4b84ad';
 
-  function clearLoading() {
-    if (loading) loading.remove();
+  function makeItem(essay) {
+    var a = document.createElement('a');
+    a.href = essay.url;
+    a.className = 'essay-item';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+
+    var text = document.createElement('div');
+    text.className = 'essay-text';
+
+    var lang = document.createElement('div');
+    lang.className = 'essay-lang';
+    lang.textContent = '한국어 · Essay';
+    text.appendChild(lang);
+
+    var title = document.createElement('div');
+    title.className = 'essay-title';
+    title.textContent = essay.title || '';
+    text.appendChild(title);
+
+    if (essay.excerpt) {
+      var ex = document.createElement('div');
+      ex.className = 'essay-excerpt';
+      ex.textContent = essay.excerpt;
+      text.appendChild(ex);
+    }
+
+    var read = document.createElement('span');
+    read.className = 'essay-read';
+    read.textContent = 'Read →';
+
+    a.appendChild(text);
+    a.appendChild(read);
+    return a;
+  }
+
+  function renderList(root, list, emptyMsg) {
+    root.innerHTML = '';
+    if (!list || !list.length) {
+      var p = document.createElement('p');
+      p.className = 'essays-error';
+      p.textContent = emptyMsg || 'No essays yet.';
+      root.appendChild(p);
+      return;
+    }
+    list.forEach(function (e) { root.appendChild(makeItem(e)); });
   }
 
   function setIntro(data) {
+    var introEl = document.getElementById('essaysIntro');
     if (!introEl || typeof data.articleCount !== 'number') return;
     var n = data.articleCount;
-    var text =
-      n +
-      ' essay' +
-      (n === 1 ? '' : 's') +
-      ' published on Brunch. Questions of consciousness, control, aesthetics, and what it means to live between languages and cultures. Written in Korean — the language that fits the thinking.';
-    introEl.textContent = text;
+    introEl.textContent =
+      n + ' essay' + (n === 1 ? '' : 's') +
+      ' on Brunch — on consciousness, control, aesthetics, and living between languages and cultures.';
   }
 
-  function renderError(msg) {
-    clearLoading();
-    grid.innerHTML = '';
-    var p = document.createElement('p');
-    p.className = 'essays-error';
-    p.textContent = msg;
-    grid.appendChild(p);
+  function wireViewAll(data) {
+    var viewAll = document.getElementById('essaysViewAll');
+    var countEl = document.getElementById('essaysArticleCount');
+    if (viewAll) viewAll.href = data.profileUrl || fallbackProfile;
+    if (countEl && typeof data.articleCount === 'number') countEl.textContent = String(data.articleCount);
   }
 
   function render(data) {
-    clearLoading();
-    if (sectionCta) sectionCta.href = data.profileUrl;
-    if (viewAll) viewAll.href = data.profileUrl;
-    if (countEl) countEl.textContent = String(data.articleCount);
     setIntro(data);
+    wireViewAll(data);
 
-    grid.innerHTML = '';
-    (data.featured || []).forEach(function (essay) {
-      var a = document.createElement('a');
-      a.href = essay.url;
-      a.className = 'essay-item';
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
+    var featuredRoot = document.getElementById('essaysGrid');
+    if (featuredRoot) renderList(featuredRoot, data.featured || [], 'No essays yet.');
 
-      var lang = document.createElement('div');
-      lang.className = 'essay-lang';
-      lang.textContent = '한국어 · Essay';
-
-      var title = document.createElement('div');
-      title.className = 'essay-title';
-      title.textContent = essay.title || '';
-
-      var ex = document.createElement('div');
-      ex.className = 'essay-excerpt';
-      ex.textContent = essay.excerpt || '';
-
-      var read = document.createElement('div');
-      read.className = 'essay-read';
-      read.textContent = 'Read on Brunch →';
-
-      a.appendChild(lang);
-      a.appendChild(title);
-      a.appendChild(ex);
-      a.appendChild(read);
-      grid.appendChild(a);
-    });
+    var allRoot = document.getElementById('essaysAll');
+    if (allRoot) {
+      var list = (data.all && data.all.length) ? data.all : (data.featured || []);
+      renderList(allRoot, list, 'Essay list unavailable — visit Brunch directly.');
+    }
   }
 
   fetch(JSON_URL, { credentials: 'same-origin' })
-    .then(function (r) {
-      if (!r.ok) throw new Error('Could not load essay list.');
-      return r.json();
-    })
+    .then(function (r) { if (!r.ok) throw new Error('load'); return r.json(); })
     .then(render)
     .catch(function () {
-      renderError(
-        'Could not load the essay list. Open the Brunch profile below, or run: node scripts/sync-brunch-feed.mjs'
-      );
-      if (sectionCta) sectionCta.href = 'https://brunch.co.kr/@444d2811f4b84ad';
-      if (viewAll) viewAll.href = 'https://brunch.co.kr/@444d2811f4b84ad';
+      ['essaysGrid', 'essaysAll'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.innerHTML = '';
+          var p = document.createElement('p');
+          p.className = 'essays-error';
+          p.textContent = 'Could not load essays. Visit Brunch directly below.';
+          el.appendChild(p);
+        }
+      });
+      var viewAll = document.getElementById('essaysViewAll');
+      if (viewAll) viewAll.href = fallbackProfile;
     });
 })();
