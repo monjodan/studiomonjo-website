@@ -95,6 +95,7 @@ async function main() {
     syncedAt: new Date().toISOString(),
     articleCount,
     featured,
+    all,
   };
 
   mkdirSync(dirname(OUT), { recursive: true });

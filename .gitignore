@@ -1,9 +1,14 @@
 # macOS
 .DS_Store
 
+# Local tooling
+.claude/
+
 # Original / full-resolution media (not served; site uses media/web/)
 media/branding/
 media/logos/
+media/notebooks/
 media/paintings/
 media/photography/
 media/posters/
+media/profile/
