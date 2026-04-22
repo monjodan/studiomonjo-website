@@ -1,15 +1,16 @@
 /**
  * Renders Studio Monjo's notebook commerce surfaces from data/notebooks.json.
  * Populates whichever of these exist on the current page:
- *   - #offerGrid        → A6 / A5 commission product cards
- *   - #portfolioGrid    → past commissions (sold) gallery
- *   - #faqList          → FAQ items
+ *   - #offerGrid         → A6 / A5 commission product cards
+ *   - #readyMadeGrid     → ready-made one-of-a-kind pieces (available or sold)
+ *   - #faqList           → FAQ items
  *   - [data-commission="primary"|"secondary"|"nav"] → global CTAs
  *
  * CTA logic:
  *   - If naverShopUrl is set, primary CTAs point to Naver Shop (external).
  *   - Otherwise they open the commission form modal (js/commission.js).
- *   - "International" secondary CTA always opens the form modal.
+ *   - Ready-made pieces with status="available" get a Reserve CTA that
+ *     opens the form with the piece pre-filled.
  *
  * No mailto links. Email is never placed in the HTML.
  */
@@ -19,24 +20,21 @@
   function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString('ko-KR'); }
   function fmtEUR(n) { return '\u20AC' + Number(n); }
 
-  function openForm(size) {
-    if (typeof window.openCommission === 'function') window.openCommission(size);
+  function openForm(opts) {
+    if (typeof window.openCommission === 'function') window.openCommission(opts);
   }
 
-  function primaryBehaviorFor(size, data) {
+  function commissionBehaviorFor(size, data) {
     if (data.naverShopUrl) {
-      return {
-        href: data.naverShopUrl,
-        label: 'Buy on Naver \u2197',
-        external: true
-      };
+      return { href: data.naverShopUrl, label: 'Buy on Naver \u2197', external: true };
     }
-    return {
-      href: null, // opens modal
-      label: 'Commission \u2197',
-      external: false,
-      size: size || null
-    };
+    return { href: null, label: 'Commission \u2197', external: false, formOpts: { size: size || null } };
+  }
+
+  function buyPieceBehaviorFor(piece, data) {
+    if (piece.naverUrl) return { href: piece.naverUrl, label: 'Buy on Naver \u2197', external: true };
+    if (data.naverShopUrl) return { href: data.naverShopUrl, label: 'Buy on Naver \u2197', external: true };
+    return { href: null, label: 'Reserve \u2197', external: false, formOpts: { size: piece.size, piece: piece.title } };
   }
 
   function wireLink(el, behavior) {
@@ -52,7 +50,7 @@
       el.removeAttribute('rel');
       el.onclick = function (e) {
         e.preventDefault();
-        openForm(behavior.size);
+        openForm(behavior.formOpts || {});
       };
     }
     if (behavior.label) el.textContent = behavior.label;
@@ -128,8 +126,8 @@
 
       var included = [
         'Hand-painted cover in ink and watercolour',
-        'Hand-stitched binding, red thread',
-        'Handmade paper inside',
+        'Hand-stitched binding',
+        (o.pages || 24) + ' pages, fountain-pen-friendly paper',
         'Signed and stamped'
       ];
       var inc = document.createElement('div');
@@ -144,7 +142,7 @@
 
       var cta = document.createElement('a');
       cta.className = 'btn btn-primary offer-cta';
-      wireLink(cta, primaryBehaviorFor(o.name, data));
+      wireLink(cta, commissionBehaviorFor(o.name, data));
       body.appendChild(cta);
 
       card.appendChild(body);
@@ -152,17 +150,28 @@
     });
   }
 
-  function renderPortfolio(data) {
-    var root = document.getElementById('portfolioGrid');
+  function statusLabel(s) {
+    if (s === 'sold') return 'Sold';
+    if (s === 'reserved') return 'Reserved';
+    if (s === 'coming-soon') return 'Coming soon';
+    return 'Available';
+  }
+
+  function renderReadyMade(data) {
+    var root = document.getElementById('readyMadeGrid');
     if (!root) return;
+    var items = data.readyMade || data.portfolio || [];
+    if (!items.length) { root.innerHTML = ''; return; }
+
     root.innerHTML = '';
-    (data.portfolio || []).forEach(function (p) {
+    items.forEach(function (p) {
+      var status = p.status || 'available';
       var card = document.createElement('article');
-      card.className = 'portfolio-card';
+      card.className = 'piece-card is-' + status;
 
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'portfolio-img';
+      btn.className = 'piece-img';
       btn.setAttribute('aria-label', p.title + ' — view gallery');
       btn.dataset.gallery = JSON.stringify(p.gallery || [{ src: p.image, caption: p.title }]);
 
@@ -180,24 +189,49 @@
       pic.appendChild(img);
       btn.appendChild(pic);
 
-      var sold = document.createElement('span');
-      sold.className = 'portfolio-sold';
-      sold.textContent = p.status === 'sold' ? 'Sold' : (p.status || '');
-      btn.appendChild(sold);
+      var pill = document.createElement('span');
+      pill.className = 'piece-status piece-status-' + status;
+      pill.textContent = statusLabel(status);
+      btn.appendChild(pill);
       card.appendChild(btn);
 
       var info = document.createElement('div');
-      info.className = 'portfolio-info';
-      var title = document.createElement('span');
-      title.className = 'portfolio-title';
-      title.textContent = p.title;
-      var meta = document.createElement('span');
-      meta.className = 'portfolio-meta';
-      meta.textContent = [p.size, p.year].filter(Boolean).join(' · ');
-      info.appendChild(title);
-      info.appendChild(meta);
-      card.appendChild(info);
+      info.className = 'piece-info';
 
+      var top = document.createElement('div');
+      top.className = 'piece-top';
+      var title = document.createElement('span');
+      title.className = 'piece-title';
+      title.textContent = p.title;
+      top.appendChild(title);
+      var meta = document.createElement('span');
+      meta.className = 'piece-meta';
+      meta.textContent = [p.size, p.year].filter(Boolean).join(' · ');
+      top.appendChild(meta);
+      info.appendChild(top);
+
+      if (p.price) {
+        var price = document.createElement('div');
+        price.className = 'piece-price';
+        price.textContent = fmtKRW(p.price.krw) + '  ·  ' + fmtEUR(p.price.eur);
+        info.appendChild(price);
+      }
+
+      if (status === 'available' || status === 'reserved') {
+        var cta = document.createElement('a');
+        cta.className = 'btn btn-primary piece-cta';
+        if (status === 'reserved') {
+          cta.textContent = 'Reserved';
+          cta.setAttribute('aria-disabled', 'true');
+          cta.href = '#';
+          cta.addEventListener('click', function (e) { e.preventDefault(); });
+        } else {
+          wireLink(cta, buyPieceBehaviorFor(p, data));
+        }
+        info.appendChild(cta);
+      }
+
+      card.appendChild(info);
       root.appendChild(card);
     });
     document.dispatchEvent(new CustomEvent('notebooks:rendered'));
@@ -269,11 +303,11 @@
     .then(function (data) {
       wireGlobalCtas(data);
       renderOfferings(data);
-      renderPortfolio(data);
+      renderReadyMade(data);
       renderFaq(data);
     })
     .catch(function () {
-      var root = document.getElementById('offerGrid') || document.getElementById('portfolioGrid');
+      var root = document.getElementById('offerGrid') || document.getElementById('readyMadeGrid');
       if (root) root.innerHTML = '<p class="essays-error">Could not load the notebooks.</p>';
     });
 })();
