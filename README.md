@@ -78,7 +78,7 @@ For a per-size deep-link, add `"naverUrl": "https://..."` to the specific offeri
 
 The site deliberately has no `mailto:` or email address in its source. This avoids the spam-scraping that hits any public email address on a GitHub Pages site within days. All contact funnels through the Formspree-backed commission form or the Naver Shop.
 
-### Adding a new past commission
+### Adding a ready-made piece (available or sold)
 
 1. Drop originals into `media/notebooks/` (gitignored).
 2. Resize to ~1600px long edge into `media/web/notebooks/` and emit a `.webp`:
@@ -89,15 +89,16 @@ The site deliberately has no `mailto:` or email address in its source. This avoi
    cwebp -q 82 media/web/notebooks/NEW.jpg -o media/web/notebooks/NEW.webp
    ```
 
-3. Append to `portfolio` in `data/notebooks.json`:
+3. Append to `readyMade` in `data/notebooks.json`:
 
    ```json
    {
-     "id": "past-003",
+     "id": "one-003",
      "title": "No. 003 — <name>",
      "year": 2026,
      "size": "A6",
-     "status": "sold",
+     "status": "available",
+     "price": { "krw": 38000, "eur": 26 },
      "image": "/media/web/notebooks/NEW.jpg",
      "imageWebp": "/media/web/notebooks/NEW.webp",
      "gallery": [
@@ -105,6 +106,8 @@ The site deliberately has no `mailto:` or email address in its source. This avoi
      ]
    }
    ```
+
+`status` values: `available` (white pill, full colour, Reserve CTA), `reserved` (disabled Reserved CTA), `sold` (black pill, grayscale), `coming-soon`. Available pieces sort first on the page, and the section lede adapts based on how many are actually available.
 
 ### Changing prices or copy
 

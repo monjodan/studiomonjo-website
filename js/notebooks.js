@@ -125,9 +125,10 @@
       }
 
       var included = [
+        'Paper made for fountain pens — no feathering, no bleed-through',
+        (o.pages || 24) + ' pages',
         'Hand-painted cover in ink and watercolour',
         'Hand-stitched binding',
-        (o.pages || 24) + ' pages, fountain-pen-friendly paper',
         'Signed and stamped'
       ];
       var inc = document.createElement('div');
@@ -160,8 +161,25 @@
   function renderReadyMade(data) {
     var root = document.getElementById('readyMadeGrid');
     if (!root) return;
-    var items = data.readyMade || data.portfolio || [];
+    var items = (data.readyMade || data.portfolio || []).slice();
     if (!items.length) { root.innerHTML = ''; return; }
+
+    // Available pieces first, then reserved, then sold
+    var order = { available: 0, reserved: 1, 'coming-soon': 2, sold: 3 };
+    items.sort(function (a, b) {
+      return (order[a.status] || 9) - (order[b.status] || 9);
+    });
+
+    // Adaptive lede based on how many are actually available
+    var available = items.filter(function (i) { return i.status === 'available'; }).length;
+    var lede = document.getElementById('readyMadeLede');
+    if (lede) {
+      if (available > 0) {
+        lede.textContent = available + ' available right now. Each piece is unique — once it\u2019s gone, it\u2019s gone. If nothing here fits, commission one above.';
+      } else {
+        lede.textContent = 'Nothing available right now — previous pieces below. For something new, commission one above.';
+      }
+    }
 
     root.innerHTML = '';
     items.forEach(function (p) {
