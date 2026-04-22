@@ -12,12 +12,19 @@
  *   - Ready-made pieces with status="available" get a Reserve CTA that
  *     opens the form with the piece pre-filled.
  *
+ * Strings come from window.SM.T (see js/i18n.js). JSON data supports
+ * locale-suffixed fields: tag_en/tag_ko, description_en/description_ko,
+ * q_en/q_ko, a_en/a_ko, title_en/title_ko.
+ *
  * No mailto links. Email is never placed in the HTML.
  */
 (function () {
   var JSON_URL = '/data/notebooks.json';
+  var T = (window.SM && window.SM.T) || function (k) { return k; };
+  var pick = (window.SM && window.SM.pickLocalized) || function (o, f) { return (o && o[f]) || ''; };
+  var numberLocale = (window.SM && window.SM.numberLocale) || function () { return 'ko-KR'; };
 
-  function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString('ko-KR'); }
+  function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString(numberLocale()); }
   function fmtEUR(n) { return '\u20AC' + Number(n); }
 
   function openForm(opts) {
@@ -26,15 +33,20 @@
 
   function commissionBehaviorFor(size, data) {
     if (data.naverShopUrl) {
-      return { href: data.naverShopUrl, label: 'Buy on Naver \u2197', external: true };
+      return { href: data.naverShopUrl, label: T('cta.buyOnNaver'), external: true };
     }
-    return { href: null, label: 'Commission \u2197', external: false, formOpts: { size: size || null } };
+    return { href: null, label: T('cta.commission'), external: false, formOpts: { size: size || null } };
   }
 
   function buyPieceBehaviorFor(piece, data) {
-    if (piece.naverUrl) return { href: piece.naverUrl, label: 'Buy on Naver \u2197', external: true };
-    if (data.naverShopUrl) return { href: data.naverShopUrl, label: 'Buy on Naver \u2197', external: true };
-    return { href: null, label: 'Reserve \u2197', external: false, formOpts: { size: piece.size, piece: piece.title } };
+    if (piece.naverUrl) return { href: piece.naverUrl, label: T('cta.buyOnNaver'), external: true };
+    if (data.naverShopUrl) return { href: data.naverShopUrl, label: T('cta.buyOnNaver'), external: true };
+    return {
+      href: null,
+      label: T('cta.reserve'),
+      external: false,
+      formOpts: { size: piece.size, piece: pick(piece, 'title') || piece.title || '' }
+    };
   }
 
   function wireLink(el, behavior) {
@@ -74,7 +86,7 @@
       }
       var imEl = document.createElement('img');
       imEl.src = o.image;
-      imEl.alt = o.name + ' hand-painted notebook — example';
+      imEl.alt = T('offer.altExample', { name: o.name });
       imEl.loading = 'lazy';
       imEl.decoding = 'async';
       pic.appendChild(imEl);
@@ -94,7 +106,7 @@
       nameWrap.appendChild(name);
       var tag = document.createElement('span');
       tag.className = 'offer-tag';
-      tag.textContent = o.tag || '';
+      tag.textContent = pick(o, 'tag') || o.tag || '';
       nameWrap.appendChild(tag);
       head.appendChild(nameWrap);
 
@@ -114,22 +126,23 @@
 
       var dim = document.createElement('div');
       dim.className = 'offer-dim';
-      dim.textContent = o.dimensions + ' · ' + (o.pages || '~80') + ' pages';
+      dim.textContent = T('offer.dimPages', { dims: o.dimensions, pages: o.pages || 24 });
       body.appendChild(dim);
 
-      if (o.description) {
+      var descText = pick(o, 'description') || o.description;
+      if (descText) {
         var desc = document.createElement('p');
         desc.className = 'offer-desc';
-        desc.textContent = o.description;
+        desc.textContent = descText;
         body.appendChild(desc);
       }
 
       var included = [
-        'Paper made for fountain pens — no feathering, no bleed-through',
-        (o.pages || 24) + ' pages',
-        'Hand-painted cover in ink and watercolour',
-        'Hand-stitched binding',
-        'Signed and stamped'
+        T('offer.included.paper'),
+        T('offer.pages', { count: o.pages || 24 }),
+        T('offer.included.cover'),
+        T('offer.included.binding'),
+        T('offer.included.signed')
       ];
       var inc = document.createElement('div');
       inc.className = 'offer-included';
@@ -152,10 +165,10 @@
   }
 
   function statusLabel(s) {
-    if (s === 'sold') return 'Sold';
-    if (s === 'reserved') return 'Reserved';
-    if (s === 'coming-soon') return 'Coming soon';
-    return 'Available';
+    if (s === 'sold') return T('status.sold');
+    if (s === 'reserved') return T('status.reserved');
+    if (s === 'coming-soon') return T('status.comingSoon');
+    return T('status.available');
   }
 
   function renderReadyMade(data) {
@@ -164,20 +177,18 @@
     var items = (data.readyMade || data.portfolio || []).slice();
     if (!items.length) { root.innerHTML = ''; return; }
 
-    // Available pieces first, then reserved, then sold
     var order = { available: 0, reserved: 1, 'coming-soon': 2, sold: 3 };
     items.sort(function (a, b) {
       return (order[a.status] || 9) - (order[b.status] || 9);
     });
 
-    // Adaptive lede based on how many are actually available
     var available = items.filter(function (i) { return i.status === 'available'; }).length;
     var lede = document.getElementById('readyMadeLede');
     if (lede) {
       if (available > 0) {
-        lede.textContent = available + ' available right now. Each piece is unique — once it\u2019s gone, it\u2019s gone. If nothing here fits, commission one above.';
+        lede.textContent = T('readyMade.ledeAvailable', { count: available });
       } else {
-        lede.textContent = 'Nothing available right now — previous pieces below. For something new, commission one above.';
+        lede.textContent = T('readyMade.ledeNone');
       }
     }
 
@@ -187,11 +198,13 @@
       var card = document.createElement('article');
       card.className = 'piece-card is-' + status;
 
+      var title = pick(p, 'title') || p.title || '';
+
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'piece-img';
-      btn.setAttribute('aria-label', p.title + ' — view gallery');
-      btn.dataset.gallery = JSON.stringify(p.gallery || [{ src: p.image, caption: p.title }]);
+      btn.setAttribute('aria-label', T('readyMade.gallery', { title: title }));
+      btn.dataset.gallery = JSON.stringify(p.gallery || [{ src: p.image, caption: title }]);
 
       var pic = document.createElement('picture');
       if (p.imageWebp) {
@@ -201,7 +214,7 @@
       }
       var img = document.createElement('img');
       img.src = p.image;
-      img.alt = p.title;
+      img.alt = title;
       img.loading = 'lazy';
       img.decoding = 'async';
       pic.appendChild(img);
@@ -218,10 +231,10 @@
 
       var top = document.createElement('div');
       top.className = 'piece-top';
-      var title = document.createElement('span');
-      title.className = 'piece-title';
-      title.textContent = p.title;
-      top.appendChild(title);
+      var titleEl = document.createElement('span');
+      titleEl.className = 'piece-title';
+      titleEl.textContent = title;
+      top.appendChild(titleEl);
       var meta = document.createElement('span');
       meta.className = 'piece-meta';
       meta.textContent = [p.size, p.year].filter(Boolean).join(' · ');
@@ -239,7 +252,7 @@
         var cta = document.createElement('a');
         cta.className = 'btn btn-primary piece-cta';
         if (status === 'reserved') {
-          cta.textContent = 'Reserved';
+          cta.textContent = T('cta.reserved');
           cta.setAttribute('aria-disabled', 'true');
           cta.href = '#';
           cta.addEventListener('click', function (e) { e.preventDefault(); });
@@ -264,10 +277,10 @@
       item.className = 'faq-item';
       var q = document.createElement('div');
       q.className = 'faq-q';
-      q.textContent = f.q;
+      q.textContent = pick(f, 'q') || f.q || '';
       var a = document.createElement('div');
       a.className = 'faq-a';
-      a.textContent = f.a;
+      a.textContent = pick(f, 'a') || f.a || '';
       item.appendChild(q);
       item.appendChild(a);
       root.appendChild(item);
@@ -277,39 +290,38 @@
   function wireGlobalCtas(data) {
     var hasNaver = !!data.naverShopUrl;
     var primaryBeh = hasNaver
-      ? { href: data.naverShopUrl, label: 'Shop on Naver \u2197', external: true }
-      : { href: null, label: 'Commission \u2197', external: false };
+      ? { href: data.naverShopUrl, label: T('cta.shopOnNaver'), external: true }
+      : { href: null, label: T('cta.commission'), external: false };
 
     document.querySelectorAll('[data-commission="primary"]').forEach(function (el) {
       wireLink(el, primaryBeh);
     });
     document.querySelectorAll('[data-commission="secondary"]').forEach(function (el) {
-      // Secondary is always the form path (international, enquiries)
-      wireLink(el, { href: null, label: 'International \u2197', external: false });
-      el.hidden = !hasNaver; // only show as a "secondary" when there's a primary Naver path
+      wireLink(el, { href: null, label: T('cta.international'), external: false });
+      el.hidden = !hasNaver;
     });
     document.querySelectorAll('[data-commission="nav"]').forEach(function (el) {
+      var base = el.dataset.localeBase || '/';
       if (hasNaver) {
         el.href = data.naverShopUrl;
         el.target = '_blank';
         el.rel = 'noopener noreferrer';
-        el.textContent = 'Shop \u2197';
+        el.textContent = T('cta.shopExt');
       } else {
-        el.href = '/notebooks/';
+        el.href = base + 'notebooks/';
         el.removeAttribute('target');
         el.removeAttribute('rel');
-        el.textContent = 'Shop';
+        el.textContent = T('cta.shop');
       }
     });
 
-    // Footer Naver link
     var footerNaver = document.getElementById('footerNaver');
     if (footerNaver) {
       if (hasNaver) {
         footerNaver.href = data.naverShopUrl;
         footerNaver.target = '_blank';
         footerNaver.rel = 'noopener noreferrer';
-        footerNaver.textContent = 'Naver Shop';
+        footerNaver.textContent = T('cta.naverShop');
       } else {
         footerNaver.style.display = 'none';
       }
@@ -326,6 +338,6 @@
     })
     .catch(function () {
       var root = document.getElementById('offerGrid') || document.getElementById('readyMadeGrid');
-      if (root) root.innerHTML = '<p class="essays-error">Could not load the notebooks.</p>';
+      if (root) root.innerHTML = '<p class="essays-error">' + T('load.notebooksError') + '</p>';
     });
 })();

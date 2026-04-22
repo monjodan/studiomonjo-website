@@ -3,168 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Hand-painted, hand-bound notebooks from Studio Monjo. Commission a new one, or take a ready-made piece. 24 fountain-pen-friendly pages. A6 ₩38,000 / €26 · A5 ₩68,000 / €46. Made in Seoul.">
-<meta name="theme-color" content="#ffffff">
-<title>Notebooks — Studio Monjo</title>
-
-<meta property="og:title" content="Hand-painted notebooks — Studio Monjo">
-<meta property="og:description" content="Commission a notebook, or take a ready-made one-of-a-kind piece. 24 fountain-pen-friendly pages. A6 ₩38,000 / €26 · A5 ₩68,000 / €46.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://studiomonjo.com/notebooks/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/IMG_4604.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css">
+<title>Studio Monjo — Notebooks</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://studiomonjo.com/en/notebooks/">
+<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/">
+<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/">
+<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/">
+<script>
+(function () {
+  try {
+    var saved = null;
+    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
+    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
+    if (locale !== 'en' && locale !== 'ko') locale = 'en';
+    location.replace('/' + locale + '/notebooks/' + (location.hash || ''));
+  } catch (e) { location.replace('/en/notebooks/'); }
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/en/notebooks/"></noscript>
 </head>
-<body>
-
-<a class="skip-link" href="#main">Skip to content</a>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
-  <div class="lightbox-inner">
-    <button type="button" class="lightbox-close" id="lbClose" aria-label="Close image">✕</button>
-    <button type="button" class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous image">‹</button>
-    <img src="" alt="" id="lbImg">
-    <button type="button" class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next image">›</button>
-    <div class="lightbox-cap" id="lbCap"></div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav aria-label="Primary">
-  <a href="/" class="nav-logo" aria-label="Studio Monjo — home">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nav-mark" width="28" height="28">
-    <span class="nav-word">Studio Monjo</span>
-  </a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-  </button>
-  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-  <div class="nav-right" id="navMenu">
-    <a href="/notebooks/" class="nav-link" aria-current="page">Notebooks</a>
-    <a href="/essays/" class="nav-link">Writing</a>
-    <a href="/about/" class="nav-link">About</a>
-    <a href="/notebooks/#offer" class="nav-shop" data-commission="nav">Shop</a>
-  </div>
-</nav>
-
-<main id="main">
-
-<!-- PAGE HERO -->
-<section class="page-hero fade-in">
-  <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">Notebooks</div>
-    <h1 class="page-hero-title">Hand-painted notebooks,<br>made in Seoul.</h1>
-    <p class="page-hero-sub">Paper chosen for fountain pens — no feathering, no bleed-through. 24 pages, hand-bound, one cover painted at a time. Commission a new one, or shop ready-made below.</p>
-    <div class="page-hero-actions">
-      <a href="#offer" class="btn btn-primary">Commission a notebook</a>
-      <a href="#ready-made" class="btn btn-ghost">Shop available notebooks</a>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES STRIP -->
-<section class="features-strip reveal" aria-label="Notebook features">
-  <div class="features-inner">
-    <div class="feature"><span class="feature-label">Paper</span><span class="feature-value">Fountain-pen ready</span></div>
-    <div class="feature"><span class="feature-label">Pages</span><span class="feature-value">24, on every size</span></div>
-    <div class="feature"><span class="feature-label">Cover</span><span class="feature-value">Painted by hand</span></div>
-    <div class="feature"><span class="feature-label">Binding</span><span class="feature-value">Hand-stitched</span></div>
-  </div>
-</section>
-
-<!-- OFFERINGS -->
-<section id="offer" class="reveal">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">Commission</div>
-      <h2 class="section-title">Two sizes. Pocket, or desk.</h2>
-      <p class="section-lede">Tell me a mood, a palette, or a subject — or leave the cover to me. Each notebook is painted only once, so no two are identical.</p>
-    </header>
-    <div class="offer-grid" id="offerGrid">
-      <p class="essays-loading">Loading…</p>
-    </div>
-  </div>
-</section>
-
-<!-- READY-MADE -->
-<section id="ready-made" class="reveal" style="background: var(--paper-soft); border-top: 1px solid var(--line);">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">Shop ready-made</div>
-      <h2 class="section-title">One-of-a-kind pieces.</h2>
-      <p class="section-lede" id="readyMadeLede">Notebooks already painted. Each one is unique — once it's gone, it's gone. If nothing here fits, commission one above.</p>
-    </header>
-    <div class="piece-grid" id="readyMadeGrid"></div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process" class="process-band reveal">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">How it works</div>
-      <h2 class="section-title">Three quiet steps.</h2>
-    </header>
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="process-num">01 · Order</div>
-        <h3 class="process-title">Size and direction</h3>
-        <p class="process-body">Pick A6 or A5 and tell me anything you'd like on the cover — a mood, a palette, a subject. Or tell me nothing, and I'll choose.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">02 · Make</div>
-        <h3 class="process-title">I paint &amp; bind</h3>
-        <p class="process-body">Each cover is painted in ink and watercolour, and the notebook is hand-stitched. 24 pages of paper chosen for fountain pens. Usually around two weeks in the queue.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">03 · Ship</div>
-        <h3 class="process-title">Packed &amp; sent</h3>
-        <p class="process-body">Packed and posted from Seoul. CJ Logistics within Korea, DHL everywhere else — quote confirmed in my first reply.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="reveal">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">Questions</div>
-      <h2 class="section-title">Good to know.</h2>
-    </header>
-    <div class="faq-list" id="faqList"></div>
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="/" class="footer-logo">
-      <img src="/media/web/branding/monjo-mark-256.png" alt="" width="20" height="20">
-      <span>Studio Monjo</span>
-    </a>
-    <div class="footer-meta">Seoul · © 2026</div>
-    <div class="footer-links">
-      <a href="/notebooks/" class="footer-link">Notebooks</a>
-      <a href="/essays/" class="footer-link">Writing</a>
-      <a href="#" class="footer-link" id="footerNaver">Naver Shop</a>
-      <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/notebooks.js"></script>
-<script src="/js/commission.js"></script>
-<script src="/js/site.js"></script>
-</body>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Redirecting… <a href="/en/notebooks/">English</a> · <a href="/ko/notebooks/">한국어</a></p></body>
 </html>
