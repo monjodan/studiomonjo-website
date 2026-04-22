@@ -29,7 +29,9 @@
       '    <button type="button" class="cmx-close" data-close aria-label="Close">✕</button>',
       '  </div>',
       '  <div class="cmx-body">',
-      '    <p class="cmx-intro">Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.</p>',
+      '    <p class="cmx-intro" id="cmxIntro">Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.</p>',
+      '    <div class="cmx-piece" id="cmxPiece" hidden></div>',
+      '    <input type="hidden" name="piece" id="cmxPieceField">',
       '',
       '    <fieldset class="cmx-field">',
       '      <legend class="cmx-label">Size <span class="req">*</span></legend>',
@@ -95,12 +97,34 @@
     modal.querySelector('#cmxForm').addEventListener('submit', onSubmit);
   }
 
-  function open(size) {
+  function open(opts) {
     if (!modal) return;
+    var o = (typeof opts === 'string') ? { size: opts } : (opts || {});
     // Preselect size if given
-    if (size) {
-      var r = modal.querySelector('input[name="size"][value="' + size + '"]');
+    if (o.size) {
+      var r = modal.querySelector('input[name="size"][value="' + o.size + '"]');
       if (r) r.checked = true;
+    }
+    // Piece prefill — shown visibly + submitted as a hidden field
+    var pieceEl = modal.querySelector('#cmxPiece');
+    var pieceField = modal.querySelector('#cmxPieceField');
+    var subjectField = modal.querySelector('input[name="_subject"]');
+    var title = modal.querySelector('#cmxTitle');
+    var intro = modal.querySelector('#cmxIntro');
+    if (o.piece) {
+      pieceEl.hidden = false;
+      pieceEl.innerHTML = '<span class="cmx-piece-label">For</span><span class="cmx-piece-name">' + o.piece + '</span>';
+      pieceField.value = o.piece;
+      if (subjectField) subjectField.value = 'Ready-made — ' + o.piece;
+      if (title) title.textContent = 'Reserve a piece';
+      if (intro) intro.textContent = 'You\'re reserving this ready-made piece. I\'ll reply within a day with payment and shipping details.';
+    } else {
+      pieceEl.hidden = true;
+      pieceEl.innerHTML = '';
+      pieceField.value = '';
+      if (subjectField) subjectField.value = 'New notebook commission — Studio Monjo';
+      if (title) title.textContent = 'Commission a notebook';
+      if (intro) intro.textContent = 'Tell me which size and any direction you have in mind. I\'ll reply within a day with a timeline, shipping quote, and payment details.';
     }
     modal.hidden = false;
     requestAnimationFrame(function () { modal.classList.add('open'); });

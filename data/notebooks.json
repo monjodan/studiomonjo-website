@@ -1,5 +1,5 @@
 {
-  "formspreeEndpoint": "",
+  "formspreeEndpoint": "https://formspree.io/f/meevrwqb",
   "naverShopUrl": "",
   "leadTimeWeeks": 2,
   "offerings": [
@@ -8,51 +8,53 @@
       "name": "A6",
       "tag": "Pocket",
       "dimensions": "10.5 × 14.8 cm",
-      "pages": 80,
+      "pages": 24,
       "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/IMG_4604.jpg",
       "imageWebp": "/media/web/notebooks/IMG_4604.webp",
-      "description": "Hand-painted cover in ink and watercolour on handmade paper. Hand-stitched binding with red thread. Roughly 80 pages. Signed."
+      "description": "Hand-painted cover in ink and watercolour. Hand-stitched binding. 24 pages of high-quality, fountain-pen-friendly paper. Signed."
     },
     {
       "id": "a5",
       "name": "A5",
       "tag": "Desk",
       "dimensions": "14.8 × 21 cm",
-      "pages": 100,
+      "pages": 24,
       "price": { "krw": 68000, "eur": 46 },
       "image": "/media/web/notebooks/L1001423.jpg",
       "imageWebp": "/media/web/notebooks/L1001423.webp",
-      "description": "Hand-painted cover in ink and watercolour on handmade paper. Hand-stitched binding with red thread. Roughly 100 pages. Signed."
+      "description": "Hand-painted cover in ink and watercolour. Hand-stitched binding. 24 pages of high-quality, fountain-pen-friendly paper. Signed."
     }
   ],
-  "portfolio": [
+  "readyMade": [
     {
-      "id": "past-001",
+      "id": "one-001",
       "title": "No. 001 — Birds & Berries",
       "year": 2025,
       "size": "A6",
       "status": "sold",
+      "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/IMG_4604.jpg",
       "imageWebp": "/media/web/notebooks/IMG_4604.webp",
       "gallery": [
         { "src": "/media/web/notebooks/IMG_4604.jpg", "webp": "/media/web/notebooks/IMG_4604.webp", "caption": "No. 001 — Cover" },
         { "src": "/media/web/notebooks/IMG_4606.jpg", "webp": "/media/web/notebooks/IMG_4606.webp", "caption": "No. 001 — Detail" },
-        { "src": "/media/web/notebooks/IMG_4605.jpg", "webp": "/media/web/notebooks/IMG_4605.webp", "caption": "Hand-bound with red thread" }
+        { "src": "/media/web/notebooks/IMG_4605.jpg", "webp": "/media/web/notebooks/IMG_4605.webp", "caption": "Hand-stitched binding" }
       ]
     },
     {
-      "id": "past-002",
+      "id": "one-002",
       "title": "No. 002 — Lotus",
       "year": 2025,
       "size": "A6",
       "status": "sold",
+      "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/L1001423.jpg",
       "imageWebp": "/media/web/notebooks/L1001423.webp",
       "gallery": [
         { "src": "/media/web/notebooks/L1001423.jpg", "webp": "/media/web/notebooks/L1001423.webp", "caption": "No. 002 — Cover" },
         { "src": "/media/web/notebooks/L1001425.jpg", "webp": "/media/web/notebooks/L1001425.webp", "caption": "No. 002 — Detail" },
-        { "src": "/media/web/notebooks/L1001424.jpg", "webp": "/media/web/notebooks/L1001424.webp", "caption": "Hand-bound with red thread" }
+        { "src": "/media/web/notebooks/L1001424.jpg", "webp": "/media/web/notebooks/L1001424.webp", "caption": "Hand-stitched binding" }
       ]
     }
   ],
@@ -62,12 +64,16 @@
       "a": "Yes — tell me in the order note and I'll paint within your direction. If you'd rather I choose, I will."
     },
     {
+      "q": "What kind of paper is inside?",
+      "a": "24 pages of high-quality paper, chosen to take fountain pen ink without feathering or bleed-through. It holds watercolour washes too."
+    },
+    {
       "q": "How long does it take?",
       "a": "Usually around two weeks from order to ship, depending on the queue. I'll confirm your timeline in the first reply."
     },
     {
-      "q": "Do you ship internationally?",
-      "a": "Yes — by email for now. The Naver Shop covers Korea; international orders go through a short email exchange while I set up the broader shop."
+      "q": "How do you ship?",
+      "a": "From Seoul. CJ Logistics within Korea, DHL everywhere else. Shipping quote confirmed before we finalise the order."
     },
     {
       "q": "Are the notebooks signed?",
