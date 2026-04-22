@@ -227,6 +227,30 @@ nav {
   max-width: 560px;
 }
 
+/* FEATURES STRIP */
+.features-strip { border-bottom: 1px solid var(--line); }
+.features-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: clamp(20px, 2.5vw, 28px) var(--pad-x);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.feature {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 6px clamp(8px, 1.5vw, 20px);
+  border-left: 1px solid var(--line);
+}
+.feature:first-child { border-left: none; padding-left: 0; }
+.feature-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); }
+.feature-value { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.005em; }
+@media (max-width: 760px) {
+  .features-inner { grid-template-columns: 1fr 1fr; row-gap: 16px; }
+  .feature { padding: 6px 12px; }
+  .feature:nth-child(odd) { border-left: none; padding-left: 0; }
+  .feature:nth-child(3) { border-left: none; padding-left: 0; }
+}
+
 /* OFFERINGS */
 .offer-grid {
   display: grid;
