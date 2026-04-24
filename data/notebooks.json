@@ -1,99 +1,81 @@
 {
-  "formspreeEndpoint": "https://formspree.io/f/meevrwqb",
-  "naverShopUrl": "",
-  "leadTimeWeeks": 2,
-  "offerings": [
+  "editionSize": 20,
+  "shopKorea": "",
+  "shopFrance": "",
+  "editions": [
     {
-      "id": "a6",
-      "name": "A6",
-      "tag_en": "Pocket",
-      "tag_ko": "포켓",
-      "dimensions": "10.5 × 14.8 cm",
-      "pages": 24,
-      "price": { "krw": 38000, "eur": 26 },
-      "image": "/media/web/notebooks/IMG_4604.jpg",
-      "imageWebp": "/media/web/notebooks/IMG_4604.webp",
-      "description_en": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me.",
-      "description_ko": "서울에서 한 권씩 주문 제작해요. 분위기나 색감을 알려 주셔도 되고, 커버는 저에게 맡기셔도 괜찮아요."
-    },
-    {
-      "id": "a5",
-      "name": "A5",
-      "tag_en": "Desk",
-      "tag_ko": "데스크",
-      "dimensions": "14.8 × 21 cm",
-      "pages": 24,
-      "price": { "krw": 68000, "eur": 46 },
-      "image": "/media/web/notebooks/L1001423.jpg",
-      "imageWebp": "/media/web/notebooks/L1001423.webp",
-      "description_en": "Made to order in Seoul. Tell me a mood or a palette, or leave the cover to me.",
-      "description_ko": "서울에서 한 권씩 주문 제작해요. 분위기나 색감을 알려 주셔도 되고, 커버는 저에게 맡기셔도 괜찮아요."
-    }
-  ],
-  "readyMade": [
-    {
-      "id": "one-001",
-      "title_en": "No. 001 — Birds & Berries",
-      "title_ko": "No. 001 — 새와 열매",
-      "year": 2025,
+      "id": "ed-001",
+      "title": "No. 001",
+      "name_en": "Birds & Berries",
+      "name_ko": "새와 열매",
       "size": "A6",
-      "status": "sold",
+      "year": 2025,
+      "soldCount": 20,
       "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/IMG_4604.jpg",
       "imageWebp": "/media/web/notebooks/IMG_4604.webp",
       "gallery": [
-        { "src": "/media/web/notebooks/IMG_4604.jpg", "webp": "/media/web/notebooks/IMG_4604.webp", "caption": "No. 001 — Cover" },
-        { "src": "/media/web/notebooks/IMG_4606.jpg", "webp": "/media/web/notebooks/IMG_4606.webp", "caption": "No. 001 — Detail" },
-        { "src": "/media/web/notebooks/IMG_4605.jpg", "webp": "/media/web/notebooks/IMG_4605.webp", "caption": "Hand-stitched binding" }
-      ]
+        { "src": "/media/web/notebooks/IMG_4604.jpg", "webp": "/media/web/notebooks/IMG_4604.webp", "caption_en": "Cover", "caption_ko": "커버" },
+        { "src": "/media/web/notebooks/IMG_4606.jpg", "webp": "/media/web/notebooks/IMG_4606.webp", "caption_en": "Detail", "caption_ko": "디테일" },
+        { "src": "/media/web/notebooks/IMG_4605.jpg", "webp": "/media/web/notebooks/IMG_4605.webp", "caption_en": "Hand-stitched binding", "caption_ko": "손바느질 제본" }
+      ],
+      "shortDescription_en": "A branch of leaves and berries, two small birds sheltering. Ink and watercolour, signed.",
+      "shortDescription_ko": "잎과 열매가 달린 가지, 그 사이에 숨어 있는 작은 새 두 마리. 잉크와 수채, 낙관 포함.",
+      "description_en": "The first edition of Studio Monjo notebooks. The cover is painted freehand — ink lines first, then soft washes of watercolour for the leaves, the berries, and the two birds that half-hide among them. No two covers in the edition of twenty are identical; the marks, the drips, the placement of the birds vary from one to the next. Closed with hand-stitched binding.",
+      "description_ko": "스튜디오 몬조 노트의 첫 번째 에디션이에요. 커버는 프리핸드로 그려요 — 잉크로 선을 먼저 잡고, 잎·열매·그 사이에 반쯤 숨은 두 마리 새를 수채 워시로 얹어요. 20권의 커버는 어느 하나도 같지 않아요. 선의 떨림, 번짐, 새가 앉은 자리가 모두 조금씩 달라요. 마무리는 손바느질 제본이에요."
     },
     {
-      "id": "one-002",
-      "title_en": "No. 002 — Lotus",
-      "title_ko": "No. 002 — 연꽃",
-      "year": 2025,
+      "id": "ed-002",
+      "title": "No. 002",
+      "name_en": "Lotus",
+      "name_ko": "연꽃",
       "size": "A6",
-      "status": "sold",
+      "year": 2025,
+      "soldCount": 20,
       "price": { "krw": 38000, "eur": 26 },
       "image": "/media/web/notebooks/L1001423.jpg",
       "imageWebp": "/media/web/notebooks/L1001423.webp",
       "gallery": [
-        { "src": "/media/web/notebooks/L1001423.jpg", "webp": "/media/web/notebooks/L1001423.webp", "caption": "No. 002 — Cover" },
-        { "src": "/media/web/notebooks/L1001425.jpg", "webp": "/media/web/notebooks/L1001425.webp", "caption": "No. 002 — Detail" },
-        { "src": "/media/web/notebooks/L1001424.jpg", "webp": "/media/web/notebooks/L1001424.webp", "caption": "Hand-stitched binding" }
-      ]
+        { "src": "/media/web/notebooks/L1001423.jpg", "webp": "/media/web/notebooks/L1001423.webp", "caption_en": "Cover", "caption_ko": "커버" },
+        { "src": "/media/web/notebooks/L1001425.jpg", "webp": "/media/web/notebooks/L1001425.webp", "caption_en": "Detail", "caption_ko": "디테일" },
+        { "src": "/media/web/notebooks/L1001424.jpg", "webp": "/media/web/notebooks/L1001424.webp", "caption_en": "Hand-stitched binding", "caption_ko": "손바느질 제본" }
+      ],
+      "shortDescription_en": "A branch of plum blossom over a red lotus. Ink, watercolour, and stamped seals.",
+      "shortDescription_ko": "붉은 연꽃 위로 뻗은 매화 가지. 잉크, 수채, 그리고 손으로 찍은 낙관.",
+      "description_en": "The second edition. A branch of plum blossom painted in ink, arcing over a red lotus blooming at the base. Each cover is finished with a small vermilion seal, stamped by hand. Like every Studio Monjo edition, the twenty are variations on a theme — the same composition, slightly different in every copy.",
+      "description_ko": "두 번째 에디션이에요. 잉크로 그린 매화 가지가 아래쪽에 피어 있는 붉은 연꽃 위로 아치를 그려요. 각 커버에는 작은 주홍색 낙관을 직접 손으로 찍어서 마무리해요. 스튜디오 몬조의 모든 에디션처럼, 스무 권은 하나의 주제를 변주해요 — 구도는 같지만, 한 권 한 권 조금씩 달라요."
     }
   ],
   "faq": [
     {
-      "q_en": "Can I suggest a subject, mood, or palette?",
-      "a_en": "Yes — tell me in the order note and I'll paint within your direction. If you'd rather I choose, I will.",
-      "q_ko": "주제나 분위기, 색감을 제가 정해도 될까요?",
-      "a_ko": "물론이에요 — 주문 메모에 적어 주시면 그 방향으로 그려 드려요. 맡겨 주셔도 좋고요, 그러면 제가 골라서 작업해요."
+      "q_en": "How do the editions work?",
+      "a_en": "Each design is painted in a limited run of twenty, hand-numbered from 1 to 20. When all twenty of a design are sold, that edition closes and the design is never produced again.",
+      "q_ko": "에디션은 어떻게 운영되나요?",
+      "a_ko": "각 디자인은 20권 한정으로 제작하고, 1번부터 20번까지 손으로 번호를 매겨요. 20권이 모두 나가면 해당 에디션은 마감되고, 같은 디자인은 다시 그리지 않아요."
     },
     {
       "q_en": "What kind of paper is inside?",
-      "a_en": "24 pages of high-quality paper, chosen to take fountain pen ink without feathering or bleed-through. It holds watercolour washes too.",
+      "a_en": "Iroful — a Japanese paper from Sakae Technical Paper (the maker of Tomoe River). It is made specifically for fountain pens: no feathering, no bleed-through, and it shows ink shading and sheen beautifully. 24 pages per notebook. See the Materials page for more.",
       "q_ko": "속지는 어떤 종이인가요?",
-      "a_ko": "만년필 잉크에 번짐이나 뒷비침이 없도록 고른 고급지 24페이지예요. 수채 물감도 잘 받아 줘요."
+      "a_ko": "이로풀(Iroful)이에요 — 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요: 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 한 권에 24페이지예요. 재료 페이지에서 더 자세히 볼 수 있어요."
     },
     {
-      "q_en": "How long does it take?",
-      "a_en": "Usually around two weeks from order to ship, depending on the queue. I'll confirm your timeline in the first reply.",
-      "q_ko": "제작에 얼마나 걸리나요?",
-      "a_ko": "주문부터 발송까지 보통 2주 정도 걸려요 (대기 상황에 따라 조금 달라져요). 첫 답장에서 예상 일정을 정확히 알려 드릴게요."
+      "q_en": "Can I use them with fountain pens?",
+      "a_en": "Yes — the paper is chosen specifically for fountain pen users. It handles wet inks, heavy sheens, and long passages without ghosting.",
+      "q_ko": "만년필로 써도 괜찮을까요?",
+      "a_ko": "네 — 만년필 사용자에 맞춰 고른 종이예요. 축축한 잉크, 강한 쉬인, 긴 글을 써도 뒷면에 비치지 않아요."
     },
     {
       "q_en": "How do you ship?",
-      "a_en": "From Seoul. CJ Logistics within Korea, DHL everywhere else. Shipping quote confirmed before we finalise the order.",
+      "a_en": "Korea through the Naver Shop (CJ Logistics). France through the French shop. Each piece ships with its edition number marked inside the cover.",
       "q_ko": "배송은 어떻게 하나요?",
-      "a_ko": "서울에서 발송해요. 국내는 CJ대한통운, 해외는 DHL로 보내요. 배송비는 주문 확정 전에 미리 안내해 드려요."
+      "a_ko": "한국은 네이버 스토어(CJ대한통운)로, 프랑스는 프랑스 스토어로 보내요. 모든 노트에는 에디션 번호가 속표지에 적혀 나가요."
     },
     {
       "q_en": "Are the notebooks signed?",
-      "a_en": "Each cover is stamped with the studio seal, and I can sign the inside cover on request.",
+      "a_en": "Yes — every cover is stamped with the studio seal, and each copy in the edition is hand-numbered inside.",
       "q_ko": "노트에 서명이 들어가나요?",
-      "a_ko": "모든 커버에 스튜디오 낙관이 찍혀 나가요. 원하시면 속표지에 직접 서명해 드릴 수도 있어요."
+      "a_ko": "네 — 모든 커버에는 스튜디오 낙관이 찍혀 있고, 에디션의 각 권에는 안쪽에 직접 손으로 번호를 적어요."
     }
   ]
 }

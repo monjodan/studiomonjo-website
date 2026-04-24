@@ -2,14 +2,16 @@
 
 Static site for [studiomonjo.com](https://studiomonjo.com), hosted on **GitHub Pages** from the repository root.
 
-Four pages:
+Bilingual (EN / KO), five pages per locale:
 
-- `/` — home (brand lobby)
-- `/notebooks/` — commerce: A6 / A5 commissions, process, past commissions, FAQ
-- `/essays/` — writing (essays on Brunch)
-- `/about/` — Jordan
+- `/` — language-detection redirect (falls through to `/en/` by default, or the user's saved locale)
+- `/en/` and `/ko/` — home (brand + hero)
+- `/en/notebooks/` and `/ko/notebooks/` — editions shop: clickable cards, each opens a product detail modal with gallery, description, materials, and two Buy buttons (Korea / France)
+- `/en/materials/` and `/ko/materials/` — the three materials behind every notebook (Canson, Iroful, Nevskaya Palitra)
+- `/en/essays/` and `/ko/essays/` — writing (essays on Brunch)
+- `/en/about/` and `/ko/about/` — about
 
-No backend. Commerce runs through the Naver Shop (link-out) with email fallback for international and pre-launch orders.
+No backend. Commerce runs through two external shops — the Naver Shop for Korea, and a French shop for everywhere else — linked from each product's detail modal. URLs are set in `data/notebooks.json`.
 
 ## Local preview
 
@@ -17,68 +19,67 @@ No backend. Commerce runs through the Naver Shop (link-out) with email fallback 
 python3 -m http.server 8080
 ```
 
-Open `http://127.0.0.1:8080/`. A local server is required so JSON files load via `fetch`.
+Open `http://127.0.0.1:8080/`. A local server is required so the JSON files load via `fetch`.
 
 ## Project layout
 
 | Path                           | Purpose                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------- |
-| `index.html`                   | Home                                                                    |
-| `notebooks/index.html`         | Commerce page (offerings, process, past commissions, FAQ, final CTA)    |
-| `essays/index.html`            | Writing page (full list)                                                |
-| `about/index.html`             | About page                                                              |
+| `index.html`                   | Root redirect to the user's locale                                      |
+| `en/…`, `ko/…`                 | Locale-specific mirrored pages (static HTML for SEO)                    |
+| `notebooks/…`, `essays/…`, `about/…` | Legacy-URL redirects to the right locale                          |
 | `css/styles.css`               | Shared styles (minimal black & white)                                   |
-| `js/notebooks.js`              | Renders offerings, portfolio, FAQ, home strip; wires commission CTAs    |
+| `js/i18n.js`                   | Locale catalog + helpers (`window.SM.T`, `window.SM.pickLocalized`)     |
+| `js/notebooks.js`              | Renders edition cards + FAQ from `data/notebooks.json`                  |
+| `js/product.js`                | Product detail modal (gallery + dual Buy buttons)                       |
 | `js/essays.js`                 | Renders essay list(s) from `data/brunch-featured.json`                  |
-| `js/site.js`                   | Lightbox, mobile nav, scroll-reveal                                     |
-| `data/notebooks.json`          | **Source of truth for commerce** — offerings, portfolio, FAQ, prices    |
+| `js/site.js`                   | Lightbox (legacy), mobile nav, scroll-reveal                            |
+| `data/notebooks.json`          | **Source of truth for the shop** — editions, FAQ, shop URLs             |
 | `data/brunch-featured.json`    | Featured + full Brunch posts (generated; safe to commit)                |
 | `scripts/sync-brunch-feed.mjs` | Refreshes the Brunch JSON from the RSS feed                             |
 | `media/`                       | Source images (gitignored); `media/web/` holds resized copies (served)  |
+| `sitemap.xml` · `robots.txt`   | SEO plumbing                                                            |
 | `CNAME`                        | Custom domain for GitHub Pages                                          |
 
-## Commerce — editing `data/notebooks.json`
+## The editions model
 
-Everything commerce-related is a JSON edit.
+Each design is produced in a **limited run of 20**. Every copy is hand-numbered. Once all twenty of a design are sold, the edition is closed and the design is never produced again. The site tracks this via `soldCount` vs the global `editionSize` (default 20):
+
+- `soldCount < editionSize` → card shows *"N of 20 remaining"*, opens the detail modal with Buy buttons.
+- `soldCount === editionSize` → card shows *"Sold out"* (black pill), opens the detail modal which shows *"Sold out — edition of 20 complete."* instead of the Buy buttons.
+- Cards sort with available editions first.
+
+## Shop wiring (the two Buy buttons)
+
+The product detail modal has two Buy buttons: **Buy in Korea** and **Buy in France**. Each button URL is resolved per-edition:
+
+1. `edition.buyKorea` / `edition.buyFrance` — optional per-design overrides.
+2. `shopKorea` / `shopFrance` — top-level fallbacks in `data/notebooks.json`.
+
+If a region has no URL, its button renders as *"[Region] shop · opening soon"* and is visibly disabled (users can tell the option exists, just not yet). Both-missing shows an equivalent fine-print note.
+
+To go live:
 
 ```json
 {
-  "formspreeEndpoint": "",
-  "naverShopUrl": "",
-  "leadTimeWeeks": 2,
-  "offerings": [ ... A6, A5 with prices ... ],
-  "portfolio": [ ... past commissions (sold) ... ],
-  "faq": [ ... questions/answers ... ]
+  "shopKorea": "https://smartstore.naver.com/your-shop",
+  "shopFrance": "https://your-french-shop.example/studio-monjo"
 }
 ```
 
-### The commission form (required before launch)
+## Editing `data/notebooks.json`
 
-The "Commission" buttons open a form modal. The form POSTs to **Formspree**, which emails the submission to a private address that **never appears on the site**. This is the only way to receive orders until the Naver Shop is live (and remains the path for international buyers afterwards).
+```json
+{
+  "editionSize": 20,
+  "shopKorea": "",
+  "shopFrance": "",
+  "editions": [ ... ],
+  "faq": [ ... ]
+}
+```
 
-Set it up once:
-
-1. Go to [formspree.io](https://formspree.io) and sign up (free tier: 50 submissions/month, which is plenty for a small atelier).
-2. Create a new form. Set the notification email to your real address (not published).
-3. Copy the endpoint URL — it looks like `https://formspree.io/f/xxxxxxxx`.
-4. Paste it into `data/notebooks.json` at `formspreeEndpoint`.
-5. Submit the form once from your own machine — Formspree's first email asks you to confirm the endpoint.
-
-Until the endpoint is set, the form shows "The commission form is being set up — please try again shortly."
-
-The form collects: size (A6/A5), direction/notes, name, email, country. Plus a honeypot for bots and a hidden `_subject`.
-
-### Opening the Naver Shop
-
-Set `naverShopUrl` at the top level. Every primary "Commission" button (hero, offering cards, nav) flips from "Commission" to "Buy on Naver" and points at the shop. The commission form stays available as a secondary "International ↗" path.
-
-For a per-size deep-link, add `"naverUrl": "https://..."` to the specific offering — it overrides the global URL.
-
-### Contact — no email in HTML
-
-The site deliberately has no `mailto:` or email address in its source. This avoids the spam-scraping that hits any public email address on a GitHub Pages site within days. All contact funnels through the Formspree-backed commission form or the Naver Shop.
-
-### Adding a ready-made piece (available or sold)
+### Adding a new edition
 
 1. Drop originals into `media/notebooks/` (gitignored).
 2. Resize to ~1600px long edge into `media/web/notebooks/` and emit a `.webp`:
@@ -89,29 +90,46 @@ The site deliberately has no `mailto:` or email address in its source. This avoi
    cwebp -q 82 media/web/notebooks/NEW.jpg -o media/web/notebooks/NEW.webp
    ```
 
-3. Append to `readyMade` in `data/notebooks.json`:
+3. Append an entry to `editions` in `data/notebooks.json`:
 
    ```json
    {
-     "id": "one-003",
-     "title": "No. 003 — <name>",
-     "year": 2026,
+     "id": "ed-003",
+     "title": "No. 003",
+     "name_en": "<English cover name>",
+     "name_ko": "<Korean cover name>",
      "size": "A6",
-     "status": "available",
+     "year": 2026,
+     "soldCount": 0,
      "price": { "krw": 38000, "eur": 26 },
-     "image": "/media/web/notebooks/NEW.jpg",
-     "imageWebp": "/media/web/notebooks/NEW.webp",
+     "image": "/media/web/notebooks/NEW_cover.jpg",
+     "imageWebp": "/media/web/notebooks/NEW_cover.webp",
      "gallery": [
-       { "src": "/media/web/notebooks/NEW.jpg", "webp": "/media/web/notebooks/NEW.webp", "caption": "No. 003 — Cover" }
-     ]
+       { "src": "/media/web/notebooks/NEW_cover.jpg", "webp": "/media/web/notebooks/NEW_cover.webp", "caption_en": "Cover", "caption_ko": "커버" },
+       { "src": "/media/web/notebooks/NEW_detail.jpg", "webp": "/media/web/notebooks/NEW_detail.webp", "caption_en": "Detail", "caption_ko": "디테일" }
+     ],
+     "shortDescription_en": "One-line teaser in English.",
+     "shortDescription_ko": "한국어 한 줄 설명.",
+     "description_en": "Longer English description shown in the product modal.",
+     "description_ko": "상품 모달에 보여지는 긴 한국어 설명."
    }
    ```
 
-`status` values: `available` (white pill, full colour, Reserve CTA), `reserved` (disabled Reserved CTA), `sold` (black pill, grayscale), `coming-soon`. Available pieces sort first on the page, and the section lede adapts based on how many are actually available.
+All user-facing copy that isn't in the data file lives in `js/i18n.js` — add new keys there (both `en` and `ko`).
 
-### Changing prices or copy
+### Updating sold counts
 
-Prices live in `offerings[].price` as `{ "krw": 38000, "eur": 26 }`. Descriptions, sizes, FAQ text are all in the same file.
+Increment `soldCount` on the edition. When it reaches `editionSize`, the card automatically flips to *Sold out* and the Buy buttons disappear in the modal.
+
+### Overriding a shop URL per edition
+
+```json
+{
+  "id": "ed-003",
+  "buyKorea": "https://smartstore.naver.com/your-shop/products/XYZ",
+  "buyFrance": "https://your-french-shop.example/products/ed-003"
+}
+```
 
 ## Essays (Brunch)
 
@@ -123,19 +141,11 @@ The browser can't call Brunch directly (no CORS on the RSS feed), so a JSON file
 node scripts/sync-brunch-feed.mjs
 ```
 
-Writes `data/brunch-featured.json` with:
-
-- `articleCount`
-- `featured` — top N (N = `FEATURED_COUNT`, default 4) for the home teaser
-- `all` — every post, used on `/essays/`
-
-Edit `FEATURED_COUNT` in the script to change the home teaser count.
-
-The RSS URL is `https://brunch.co.kr/rss/@@hqSD`.
+Writes `data/brunch-featured.json` with `articleCount`, a `featured` list, and a full `all` list.
 
 ## Media pipeline
 
-Originals under `media/` are gitignored. Web-optimized copies live under `media/web/` and are committed. Asset paths in HTML and JSON are absolute (`/media/web/...`) so they resolve correctly across all four pages.
+Originals under `media/` are gitignored. Web-optimized copies live under `media/web/` and are committed. Asset paths in HTML and JSON are absolute (`/media/web/...`) so they resolve correctly across all pages.
 
 ## GitHub Pages and custom domain (`studiomonjo.com`)
 
