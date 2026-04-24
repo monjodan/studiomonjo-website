@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Monjo — Materials</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://studiomonjo.com/en/materials/">
+<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/materials/">
+<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/materials/">
+<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/materials/">
+<script>
+(function () {
+  try {
+    var saved = null;
+    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
+    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
+    if (locale !== 'en' && locale !== 'ko') locale = 'en';
+    location.replace('/' + locale + '/materials/' + (location.hash || ''));
+  } catch (e) { location.replace('/en/materials/'); }
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/en/materials/"></noscript>
+</head>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Redirecting… <a href="/en/materials/">English</a> · <a href="/ko/materials/">한국어</a></p></body>
+</html>

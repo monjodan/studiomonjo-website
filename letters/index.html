@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Monjo — Letters</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://studiomonjo.com/en/letters/">
+<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/letters/">
+<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/letters/">
+<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/letters/">
+<script>
+(function () {
+  try {
+    var saved = null;
+    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
+    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
+    if (locale !== 'en' && locale !== 'ko') locale = 'en';
+    location.replace('/' + locale + '/letters/' + (location.hash || ''));
+  } catch (e) { location.replace('/en/letters/'); }
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/en/letters/"></noscript>
+</head>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Redirecting… <a href="/en/letters/">English</a> · <a href="/ko/letters/">한국어</a></p></body>
+</html>
