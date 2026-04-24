@@ -5,10 +5,12 @@
   "editions": [
     {
       "id": "ed-001",
+      "category": "notebook",
       "title": "No. 001",
       "name_en": "Birds & Berries",
       "name_ko": "새와 열매",
       "size": "A6",
+      "pages": 24,
       "year": 2025,
       "soldCount": 20,
       "price": { "krw": 38000, "eur": 26 },
@@ -26,10 +28,12 @@
     },
     {
       "id": "ed-002",
+      "category": "notebook",
       "title": "No. 002",
       "name_en": "Lotus",
       "name_ko": "연꽃",
       "size": "A6",
+      "pages": 24,
       "year": 2025,
       "soldCount": 20,
       "price": { "krw": 38000, "eur": 26 },
@@ -49,15 +53,15 @@
   "faq": [
     {
       "q_en": "How do the editions work?",
-      "a_en": "Each design is painted in a limited run of twenty, hand-numbered from 1 to 20. When all twenty of a design are sold, that edition closes and the design is never produced again.",
+      "a_en": "Every design — notebook or letter card — is painted in a limited run of twenty, hand-numbered from 1 to 20. When all twenty of a design are sold, that edition closes and the design is never produced again.",
       "q_ko": "에디션은 어떻게 운영되나요?",
-      "a_ko": "각 디자인은 20권 한정으로 제작하고, 1번부터 20번까지 손으로 번호를 매겨요. 20권이 모두 나가면 해당 에디션은 마감되고, 같은 디자인은 다시 그리지 않아요."
+      "a_ko": "모든 디자인은 — 노트든 편지 카드든 — 20점 한정으로 제작하고, 1번부터 20번까지 손으로 번호를 매겨요. 20점이 모두 나가면 해당 에디션은 마감되고, 같은 디자인은 다시 그리지 않아요."
     },
     {
       "q_en": "What kind of paper is inside?",
-      "a_en": "Iroful — a Japanese paper from Sakae Technical Paper (the maker of Tomoe River). It is made specifically for fountain pens: no feathering, no bleed-through, and it shows ink shading and sheen beautifully. 24 pages per notebook. See the Materials page for more.",
+      "a_en": "Iroful — a Japanese paper from Sakae Technical Paper (the makers of Tomoe River). It is made specifically for fountain pens: no feathering, no bleed-through, and it shows ink shading and sheen beautifully. Notebooks have 24 pages; letter cards have one, for the message that matters. See the Materials page for more.",
       "q_ko": "속지는 어떤 종이인가요?",
-      "a_ko": "이로풀(Iroful)이에요 — 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요: 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 한 권에 24페이지예요. 재료 페이지에서 더 자세히 볼 수 있어요."
+      "a_ko": "이로풀(Iroful)이에요 — 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요: 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 노트는 24페이지, 편지 카드는 한 장 — 정말 중요한 한 마디를 위한 한 장이에요. 재료 페이지에서 더 자세히 볼 수 있어요."
     },
     {
       "q_en": "Can I use them with fountain pens?",

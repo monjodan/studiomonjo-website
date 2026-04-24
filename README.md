@@ -2,14 +2,17 @@
 
 Static site for [studiomonjo.com](https://studiomonjo.com), hosted on **GitHub Pages** from the repository root.
 
-Bilingual (EN / KO), five pages per locale:
+Bilingual (EN / KO), six pages per locale:
 
 - `/` — language-detection redirect (falls through to `/en/` by default, or the user's saved locale)
-- `/en/` and `/ko/` — home (brand + hero)
-- `/en/notebooks/` and `/ko/notebooks/` — editions shop: clickable cards, each opens a product detail modal with gallery, description, materials, and two Buy buttons (Korea / France)
-- `/en/materials/` and `/ko/materials/` — the three materials behind every notebook (Canson, Iroful, Nevskaya Palitra)
+- `/en/` and `/ko/` — home (brand + hero, "Art that follows writing")
+- `/en/notebooks/` and `/ko/notebooks/` — notebook editions (24 pages each)
+- `/en/letters/` and `/ko/letters/` — letter card editions (one page each, for gifting / love letters)
+- `/en/materials/` and `/ko/materials/` — the four makers behind every piece (Canson, Iroful, Nevskaya Palitra, Sajou)
 - `/en/essays/` and `/ko/essays/` — writing (essays on Brunch)
 - `/en/about/` and `/ko/about/` — about
+
+Both products (notebooks + letters) share the same data model, the same editions-of-20 system, the same product detail modal, and the same Buy buttons (Korea + France). They differ only in category + page count (24 vs 1).
 
 No backend. Commerce runs through two external shops — the Naver Shop for Korea, and a French shop for everywhere else — linked from each product's detail modal. URLs are set in `data/notebooks.json`.
 
@@ -90,15 +93,17 @@ To go live:
    cwebp -q 82 media/web/notebooks/NEW.jpg -o media/web/notebooks/NEW.webp
    ```
 
-3. Append an entry to `editions` in `data/notebooks.json`:
+3. Append an entry to `editions` in `data/notebooks.json`. **Set `category`** to `"notebook"` or `"letter"` — it controls which page the edition shows up on:
 
    ```json
    {
      "id": "ed-003",
+     "category": "notebook",
      "title": "No. 003",
      "name_en": "<English cover name>",
      "name_ko": "<Korean cover name>",
      "size": "A6",
+     "pages": 24,
      "year": 2026,
      "soldCount": 0,
      "price": { "krw": 38000, "eur": 26 },
@@ -114,6 +119,8 @@ To go live:
      "description_ko": "상품 모달에 보여지는 긴 한국어 설명."
    }
    ```
+
+For a **letter card**, use `"category": "letter"` and `"pages": 1`. The features strip and the product modal adjust automatically.
 
 All user-facing copy that isn't in the data file lives in `js/i18n.js` — add new keys there (both `en` and `ko`).
 

@@ -42,7 +42,14 @@
     var root = document.getElementById('editionsGrid');
     if (!root) return;
 
+    var category = root.getAttribute('data-category') || null;
     var items = (data.editions || []).slice();
+    if (category) {
+      items = items.filter(function (ed) {
+        var c = ed.category || 'notebook';
+        return c === category;
+      });
+    }
     if (!items.length) {
       root.innerHTML = '<p class="essays-error">' + T('editions.empty') + '</p>';
       return;

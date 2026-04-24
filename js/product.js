@@ -61,9 +61,10 @@
       '      <p class="pdm-desc" id="pdmDesc"></p>',
       '      <ul class="pdm-features">',
       '        <li class="pdm-feature pdm-feature--fp"><span class="pdm-feature-label">' + T('pdm.featureLabelPaper') + '</span><span class="pdm-feature-value">' + T('pdm.featurePaper') + ' <span class="pdm-feature-note">' + T('pdm.featurePaperNote') + '</span></span></li>',
-      '        <li class="pdm-feature"><span class="pdm-feature-label">' + T('pdm.featureLabelInside') + '</span><span class="pdm-feature-value">' + T('pdm.featureInside') + '</span></li>',
+      '        <li class="pdm-feature"><span class="pdm-feature-label">' + T('pdm.featureLabelInside') + '</span><span class="pdm-feature-value" id="pdmFeatureInside"></span></li>',
       '        <li class="pdm-feature"><span class="pdm-feature-label">' + T('pdm.featureLabelCover') + '</span><span class="pdm-feature-value">' + T('pdm.featureCover') + '</span></li>',
       '        <li class="pdm-feature"><span class="pdm-feature-label">' + T('pdm.featureLabelPaint') + '</span><span class="pdm-feature-value">' + T('pdm.featurePaint') + '</span></li>',
+      '        <li class="pdm-feature"><span class="pdm-feature-label">' + T('pdm.featureLabelBinding') + '</span><span class="pdm-feature-value">' + T('pdm.featureBinding') + '</span></li>',
       '      </ul>',
       '      <a href="/' + localeFn() + '/materials/" class="pdm-materials-link">' + T('pdm.aboutMaterials') + '</a>',
       '      <div class="pdm-buy" id="pdmBuy"></div>',
@@ -219,6 +220,12 @@
     document.getElementById('pdmPrice').textContent = ed.price ? fmtKRW(ed.price.krw) + '  \u00B7  ' + fmtEUR(ed.price.eur) : '';
     var desc = pick(ed, 'description') || pick(ed, 'shortDescription') || ed.description || ed.shortDescription || '';
     document.getElementById('pdmDesc').textContent = desc;
+
+    var pageCount = (ed.pages != null) ? ed.pages : 24;
+    var insideEl = document.getElementById('pdmFeatureInside');
+    if (insideEl) {
+      insideEl.textContent = T(pageCount === 1 ? 'pdm.featureInsideOne' : 'pdm.featureInside', { count: pageCount });
+    }
 
     renderThumbs();
     showImage();
