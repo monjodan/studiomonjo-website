@@ -39,6 +39,24 @@
   </url>
 
   <url>
+    <loc>https://studiomonjo.com/en/materials/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/materials/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/materials/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/materials/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/materials/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/materials/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/materials/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/materials/"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://studiomonjo.com/en/essays/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/essays/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/essays/"/>
