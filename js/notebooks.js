@@ -1,18 +1,15 @@
 /**
- * Renders Studio Monjo's notebook editions from data/notebooks.json.
- * Populates whichever of these exist on the current page:
- *   - #editionsGrid    → edition cards (click opens product modal)
- *   - #faqList         → FAQ items
+ * Renders Studio Monjo's editions from data/notebooks.json.
  *
- * Each edition is a limited run (default: 20). Cards show either
- * "N of 20 remaining" or "Sold out — 20/20". Clicking opens the
- * product detail modal (js/product.js) with the gallery, description,
- * materials, and the two Buy buttons (Korea / France).
+ * Populates every element with [data-editions-grid] on the page. The
+ * data-category attribute filters which editions render in that grid.
+ * If absent, the grid renders all editions.
  *
- * Strings come from window.SM.T (js/i18n.js). JSON data supports
- * locale-suffixed fields: name_en/name_ko, description_en/description_ko,
- * shortDescription_en/shortDescription_ko, caption_en/caption_ko,
- * q_en/a_en, q_ko/a_ko.
+ * Three product types live in the same data file: "notebook",
+ * "bound-card", "postcard". Each has a category default for size,
+ * pages, and price. Per-edition fields override the category default.
+ *
+ * Also renders #faqList if present.
  */
 (function () {
   var JSON_URL = '/data/notebooks.json';
@@ -20,8 +17,22 @@
   var pick = (window.SM && window.SM.pickLocalized) || function (o, f) { return (o && o[f]) || ''; };
   var numberLocale = (window.SM && window.SM.numberLocale) || function () { return 'en-US'; };
 
-  function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString(numberLocale()); }
-  function fmtEUR(n) { return '\u20AC' + Number(n); }
+  function fmtKRW(n) { return '₩' + Number(n).toLocaleString(numberLocale()); }
+
+  function categoryFor(ed, data) {
+    var c = ed.category || 'notebook';
+    return (data.categories && data.categories[c]) || {};
+  }
+
+  function resolved(ed, data) {
+    var cat = categoryFor(ed, data);
+    return {
+      size: ed.size || cat.size || '',
+      pages: (ed.pages != null) ? ed.pages : (cat.pages != null ? cat.pages : 24),
+      price: ed.price || cat.price || null,
+      title: pick(ed, 'title') || ed.title || ''
+    };
+  }
 
   function editionStatus(ed, editionSize) {
     var size = ed.editionSize || editionSize || 20;
@@ -38,20 +49,16 @@
     };
   }
 
-  function renderEditions(data) {
-    var root = document.getElementById('editionsGrid');
-    if (!root) return;
-
+  function renderGrid(root, data) {
     var category = root.getAttribute('data-category') || null;
     var items = (data.editions || []).slice();
     if (category) {
-      items = items.filter(function (ed) {
-        var c = ed.category || 'notebook';
-        return c === category;
-      });
+      items = items.filter(function (ed) { return (ed.category || 'notebook') === category; });
     }
+
     if (!items.length) {
-      root.innerHTML = '<p class="essays-error">' + T('editions.empty') + '</p>';
+      var emptyKey = root.getAttribute('data-empty-key') || 'editions.empty';
+      root.innerHTML = '<p class="editions-empty">' + T(emptyKey) + '</p>';
       return;
     }
 
@@ -63,17 +70,24 @@
 
     root.innerHTML = '';
     items.forEach(function (ed) {
-      var s = editionStatus(ed, data.editionSize);
-      var name = pick(ed, 'name') || ed.name || '';
+      root.appendChild(makeCard(ed, data));
+    });
+  }
 
-      var card = document.createElement('article');
-      card.className = 'ed-card' + (s.soldOut ? ' is-sold' : ' is-available');
-      card.tabIndex = 0;
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', (ed.title || '') + (name ? ' — ' + name : ''));
+  function makeCard(ed, data) {
+    var s = editionStatus(ed, data.editionSize);
+    var r = resolved(ed, data);
+    var name = pick(ed, 'name') || ed.name || '';
 
-      var img = document.createElement('div');
-      img.className = 'ed-img';
+    var card = document.createElement('article');
+    card.className = 'ed-card' + (s.soldOut ? ' is-sold' : ' is-available');
+    card.tabIndex = 0;
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', r.title + (name ? ', ' + name : ''));
+
+    var img = document.createElement('div');
+    img.className = 'ed-img';
+    if (ed.image) {
       var pic = document.createElement('picture');
       if (ed.imageWebp) {
         var src = document.createElement('source');
@@ -82,67 +96,83 @@
       }
       var imEl = document.createElement('img');
       imEl.src = ed.image;
-      imEl.alt = (ed.title || '') + (name ? ' — ' + name : '');
+      imEl.alt = r.title + (name ? ', ' + name : '');
       imEl.loading = 'lazy';
       imEl.decoding = 'async';
       pic.appendChild(imEl);
       img.appendChild(pic);
+    } else {
+      img.classList.add('ed-img--placeholder');
+      img.setAttribute('aria-hidden', 'true');
+    }
 
-      var pill = document.createElement('span');
-      pill.className = 'ed-status ed-status-' + (s.soldOut ? 'sold' : 'available');
-      pill.textContent = s.soldOut ? T('status.sold') : T('status.available');
-      img.appendChild(pill);
-      card.appendChild(img);
+    var pill = document.createElement('span');
+    pill.className = 'ed-status ed-status-' + (s.soldOut ? 'sold' : 'available');
+    pill.textContent = s.soldOut ? T('status.sold') : T('status.available');
+    img.appendChild(pill);
 
-      var info = document.createElement('div');
-      info.className = 'ed-info';
+    var view = document.createElement('span');
+    view.className = 'ed-view';
+    view.innerHTML = '<span class="ed-view-label"></span><span class="ed-view-arrow" aria-hidden="true">→</span>';
+    view.querySelector('.ed-view-label').textContent = T('cta.view');
+    img.appendChild(view);
 
-      var top = document.createElement('div');
-      top.className = 'ed-top';
-      var title = document.createElement('div');
-      title.className = 'ed-title';
-      if (name) {
-        title.innerHTML = (ed.title || '') + ' <span class="ed-name"></span>';
-        title.querySelector('.ed-name').textContent = name;
-      } else {
-        title.textContent = ed.title || '';
-      }
-      top.appendChild(title);
+    card.appendChild(img);
+
+    card.dataset.category = ed.category || 'notebook';
+    card.dataset.sold = s.soldOut ? '1' : '0';
+
+    var info = document.createElement('div');
+    info.className = 'ed-info';
+
+    var top = document.createElement('div');
+    top.className = 'ed-top';
+    var title = document.createElement('div');
+    title.className = 'ed-title';
+    if (name) {
+      title.innerHTML = '<span class="ed-no"></span><span class="ed-name"></span>';
+      title.querySelector('.ed-no').textContent = r.title;
+      title.querySelector('.ed-name').textContent = name;
+    } else {
+      title.textContent = r.title;
+    }
+    top.appendChild(title);
+    if (r.size) {
       var meta = document.createElement('span');
       meta.className = 'ed-meta';
-      meta.textContent = ed.size;
+      meta.textContent = r.size;
       top.appendChild(meta);
-      info.appendChild(top);
+    }
+    info.appendChild(top);
 
-      var edLine = document.createElement('div');
-      edLine.className = 'ed-count';
-      edLine.textContent = s.label;
-      info.appendChild(edLine);
+    var edLine = document.createElement('div');
+    edLine.className = 'ed-count';
+    edLine.textContent = s.label;
+    info.appendChild(edLine);
 
-      if (ed.price) {
-        var price = document.createElement('div');
-        price.className = 'ed-price';
-        price.textContent = fmtKRW(ed.price.krw) + '  \u00B7  ' + fmtEUR(ed.price.eur);
-        info.appendChild(price);
+    if (r.price && r.price.krw) {
+      var price = document.createElement('div');
+      price.className = 'ed-price';
+      price.textContent = fmtKRW(r.price.krw);
+      info.appendChild(price);
+    }
+
+    card.appendChild(info);
+
+    var openDetail = function () {
+      if (typeof window.openProduct === 'function') {
+        window.openProduct({ edition: ed, data: data, status: s, resolved: r });
       }
-
-      card.appendChild(info);
-
-      var openDetail = function () {
-        if (typeof window.openProduct === 'function') {
-          window.openProduct({ edition: ed, data: data, status: s });
-        }
-      };
-      card.addEventListener('click', openDetail);
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openDetail();
-        }
-      });
-
-      root.appendChild(card);
+    };
+    card.addEventListener('click', openDetail);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openDetail();
+      }
     });
+
+    return card;
   }
 
   function renderFaq(data) {
@@ -164,15 +194,74 @@
     });
   }
 
+  function renderHomeTiles(data) {
+    var root = document.querySelector('[data-shop-tiles]');
+    if (!root) return;
+    var order = data.categoryOrder || Object.keys(data.categories || {});
+    root.innerHTML = '';
+    order.forEach(function (key) {
+      var cat = (data.categories || {})[key];
+      if (!cat) return;
+      var sample = (data.editions || []).find(function (e) { return e.category === key && e.image; });
+      var label = pick(cat, 'label') || cat.label_en || key;
+      var size = cat.size || '';
+      var price = cat.price && cat.price.krw ? fmtKRW(cat.price.krw) : '';
+
+      var tile = document.createElement('a');
+      tile.className = 'shop-tile';
+      tile.href = '/' + ((window.SM && window.SM.locale && window.SM.locale()) || 'en') + '/shop/#' + key;
+
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'shop-tile-img';
+      if (sample && sample.image) {
+        var pic = document.createElement('picture');
+        if (sample.imageWebp) {
+          var src = document.createElement('source');
+          src.srcset = sample.imageWebp; src.type = 'image/webp';
+          pic.appendChild(src);
+        }
+        var im = document.createElement('img');
+        im.src = sample.image; im.alt = '';
+        im.loading = 'lazy';
+        pic.appendChild(im);
+        imgWrap.appendChild(pic);
+      } else {
+        imgWrap.classList.add('shop-tile-img--placeholder');
+      }
+      tile.appendChild(imgWrap);
+
+      var meta = document.createElement('div');
+      meta.className = 'shop-tile-meta';
+      var lbl = document.createElement('div');
+      lbl.className = 'shop-tile-label';
+      lbl.textContent = label;
+      meta.appendChild(lbl);
+      var foot = document.createElement('div');
+      foot.className = 'shop-tile-foot';
+      foot.innerHTML = '<span class="shop-tile-size"></span><span class="shop-tile-price"></span>';
+      foot.querySelector('.shop-tile-size').textContent = size;
+      foot.querySelector('.shop-tile-price').textContent = price;
+      meta.appendChild(foot);
+      tile.appendChild(meta);
+
+      root.appendChild(tile);
+    });
+  }
+
   fetch(JSON_URL, { credentials: 'same-origin' })
     .then(function (r) { if (!r.ok) throw new Error('load'); return r.json(); })
     .then(function (data) {
       window.__monjoData = data;
-      renderEditions(data);
+      document.querySelectorAll('[data-editions-grid]').forEach(function (root) {
+        renderGrid(root, data);
+      });
       renderFaq(data);
+      renderHomeTiles(data);
+      if (typeof window.initShopFilters === 'function') window.initShopFilters(data);
     })
     .catch(function () {
-      var root = document.getElementById('editionsGrid');
-      if (root) root.innerHTML = '<p class="essays-error">' + T('editions.error') + '</p>';
+      document.querySelectorAll('[data-editions-grid]').forEach(function (root) {
+        root.innerHTML = '<p class="editions-empty">' + T('editions.error') + '</p>';
+      });
     });
 })();

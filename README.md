@@ -5,16 +5,24 @@ Static site for [studiomonjo.com](https://studiomonjo.com), hosted on **GitHub P
 Bilingual (EN / KO), six pages per locale:
 
 - `/` — language-detection redirect (falls through to `/en/` by default, or the user's saved locale)
-- `/en/` and `/ko/` — home (brand + hero, "Art that follows writing")
-- `/en/notebooks/` and `/ko/notebooks/` — notebook editions (24 pages each)
-- `/en/letters/` and `/ko/letters/` — letter card editions (one page each, for gifting / love letters)
-- `/en/materials/` and `/ko/materials/` — the four makers behind every piece (Canson, Iroful, Nevskaya Palitra, Sajou)
+- `/en/` and `/ko/` — home (compact split-hero, three product tiles, three studio bands)
+- `/en/shop/` and `/ko/shop/` — unified product grid for all three categories with sticky filter chips (category + sold/hide)
+- `/en/materials/` and `/ko/materials/` — the four makers behind every piece (Canson, Iroful, Nevskaya Palitra, Sajou). At-a-glance index card row at the top, full storytelling sections below.
+- `/en/workshops/` and `/ko/workshops/` — three-hour bind-and-paint class in Seoul, ₩150,000 per seat
 - `/en/essays/` and `/ko/essays/` — writing (essays on Brunch)
 - `/en/about/` and `/ko/about/` — about
 
-Both products (notebooks + letters) share the same data model, the same editions-of-20 system, the same product detail modal, and the same Buy buttons (Korea + France). They differ only in category + page count (24 vs 1).
+The catalog lives in `data/notebooks.json` under three product categories, each with its own default size and price. JS renders the editions into the shop page; per-category and per-edition fields override the defaults.
 
-No backend. Commerce runs through two external shops — the Naver Shop for Korea, and a French shop for everywhere else — linked from each product's detail modal. URLs are set in `data/notebooks.json`.
+| Category | Size | Default price |
+| --- | --- | --- |
+| `notebook` | A5, 24 pages | ₩65,000 |
+| `bound-card` | A6, 1 page | ₩25,000 |
+| `postcard` | 10.5 × 15.5 cm | ₩15,000 |
+
+All editions are runs of 20, hand-numbered. Old `/notebooks/` and `/letters/` URLs (root and per-locale) meta-refresh to the right `/shop/#category` anchor.
+
+No backend. Commerce runs through two external shops (the Naver Shop for Korea, a French shop for everywhere else), linked from each product's detail modal. URLs are set in `data/notebooks.json`.
 
 ## Local preview
 
@@ -29,15 +37,16 @@ Open `http://127.0.0.1:8080/`. A local server is required so the JSON files load
 | Path                           | Purpose                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------- |
 | `index.html`                   | Root redirect to the user's locale                                      |
-| `en/…`, `ko/…`                 | Locale-specific mirrored pages (static HTML for SEO)                    |
-| `notebooks/…`, `essays/…`, `about/…` | Legacy-URL redirects to the right locale                          |
+| `en/…`, `ko/…`                 | Locale-specific pages (static HTML for SEO)                             |
+| `notebooks/…`, `letters/…`, `about/…`, etc. | Legacy-URL redirects to the right locale + shop anchor      |
 | `css/styles.css`               | Shared styles (minimal black & white)                                   |
 | `js/i18n.js`                   | Locale catalog + helpers (`window.SM.T`, `window.SM.pickLocalized`)     |
-| `js/notebooks.js`              | Renders edition cards + FAQ from `data/notebooks.json`                  |
+| `js/notebooks.js`              | Renders edition cards + FAQ + home shop tiles from `data/notebooks.json`|
+| `js/shop-filters.js`           | Sticky filter row on `/shop/` (category chips + hide-sold toggle)       |
 | `js/product.js`                | Product detail modal (gallery + dual Buy buttons)                       |
 | `js/essays.js`                 | Renders essay list(s) from `data/brunch-featured.json`                  |
-| `js/site.js`                   | Lightbox (legacy), mobile nav, scroll-reveal                            |
-| `data/notebooks.json`          | **Source of truth for the shop** — editions, FAQ, shop URLs             |
+| `js/site.js`                   | Mobile nav, scroll-reveal                                                |
+| `data/notebooks.json`          | **Source of truth for the shop**: categories, editions, FAQ, shop URLs  |
 | `data/brunch-featured.json`    | Featured + full Brunch posts (generated; safe to commit)                |
 | `scripts/sync-brunch-feed.mjs` | Refreshes the Brunch JSON from the RSS feed                             |
 | `media/`                       | Source images (gitignored); `media/web/` holds resized copies (served)  |
@@ -77,10 +86,18 @@ To go live:
   "editionSize": 20,
   "shopKorea": "",
   "shopFrance": "",
+  "categoryOrder": ["notebook", "bound-card", "postcard"],
+  "categories": {
+    "notebook":   { "label_en": "Notebooks",   "label_ko": "노트",        "size": "A5",            "pages": 24, "price": { "krw": 65000 } },
+    "bound-card": { "label_en": "Bound cards", "label_ko": "바운드 카드", "size": "A6",            "pages": 1,  "price": { "krw": 25000 } },
+    "postcard":   { "label_en": "Postcards",   "label_ko": "엽서",        "size": "10.5 × 15.5 cm", "pages": 1,  "price": { "krw": 15000 } }
+  },
   "editions": [ ... ],
   "faq": [ ... ]
 }
 ```
+
+`categoryOrder` controls the order of filter chips in the shop and tiles on the home. Each `categories[key]` carries the default size, page count, price, and lede for that product type. Per-edition fields override the category defaults.
 
 ### Adding a new edition
 
@@ -93,34 +110,33 @@ To go live:
    cwebp -q 82 media/web/notebooks/NEW.jpg -o media/web/notebooks/NEW.webp
    ```
 
-3. Append an entry to `editions` in `data/notebooks.json`. **Set `category`** to `"notebook"` or `"letter"` — it controls which page the edition shows up on:
+3. Append an entry to `editions` in `data/notebooks.json`. **Set `category`** to one of `notebook`, `bound-card`, or `postcard`:
 
    ```json
    {
-     "id": "ed-003",
+     "id": "ed-n-003",
      "category": "notebook",
-     "title": "No. 003",
+     "number": 3,
+     "title_en": "Notebook 03",
+     "title_ko": "노트 03",
      "name_en": "<English cover name>",
      "name_ko": "<Korean cover name>",
-     "size": "A6",
-     "pages": 24,
      "year": 2026,
      "soldCount": 0,
-     "price": { "krw": 38000, "eur": 26 },
      "image": "/media/web/notebooks/NEW_cover.jpg",
      "imageWebp": "/media/web/notebooks/NEW_cover.webp",
      "gallery": [
        { "src": "/media/web/notebooks/NEW_cover.jpg", "webp": "/media/web/notebooks/NEW_cover.webp", "caption_en": "Cover", "caption_ko": "커버" },
        { "src": "/media/web/notebooks/NEW_detail.jpg", "webp": "/media/web/notebooks/NEW_detail.webp", "caption_en": "Detail", "caption_ko": "디테일" }
      ],
-     "shortDescription_en": "One-line teaser in English.",
+     "shortDescription_en": "One-line teaser.",
      "shortDescription_ko": "한국어 한 줄 설명.",
-     "description_en": "Longer English description shown in the product modal.",
+     "description_en": "Longer description shown in the product modal.",
      "description_ko": "상품 모달에 보여지는 긴 한국어 설명."
    }
    ```
 
-For a **letter card**, use `"category": "letter"` and `"pages": 1`. The features strip and the product modal adjust automatically.
+For a **bound card** use `"category": "bound-card"`; for a **postcard** use `"category": "postcard"`. Size, page count, and price are inherited from the category default unless you set per-edition `size`, `pages`, or `price`.
 
 All user-facing copy that isn't in the data file lives in `js/i18n.js` — add new keys there (both `en` and `ko`).
 

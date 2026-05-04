@@ -24,7 +24,20 @@
   var localeFn = (window.SM && window.SM.locale) || function () { return 'en'; };
 
   function fmtKRW(n) { return '\u20A9' + Number(n).toLocaleString(numberLocale()); }
-  function fmtEUR(n) { return '\u20AC' + Number(n); }
+
+  function categoryFor(ed, data) {
+    var c = ed.category || 'notebook';
+    return (data && data.categories && data.categories[c]) || {};
+  }
+  function resolved(ed, data) {
+    var cat = categoryFor(ed, data);
+    return {
+      size: ed.size || cat.size || '',
+      pages: (ed.pages != null) ? ed.pages : (cat.pages != null ? cat.pages : 24),
+      price: ed.price || cat.price || null,
+      title: pick(ed, 'title') || ed.title || ''
+    };
+  }
 
   var modal = null;
   var state = { gallery: [], index: 0, edition: null };
@@ -205,23 +218,24 @@
     var ed = opts.edition;
     var data = opts.data || {};
     var status = opts.status || computeStatus(ed, data);
+    var r = opts.resolved || resolved(ed, data);
     state.edition = ed;
-    state.gallery = ed.gallery && ed.gallery.length ? ed.gallery.slice() : [{ src: ed.image, webp: ed.imageWebp, caption: ed.title }];
+    state.gallery = ed.gallery && ed.gallery.length ? ed.gallery.slice() : (ed.image ? [{ src: ed.image, webp: ed.imageWebp, caption: r.title }] : []);
     state.index = 0;
 
-    var name = pick(ed, 'name') || ed.name || ed.title || '';
+    var name = pick(ed, 'name') || ed.name || r.title || '';
 
-    document.getElementById('pdmEditionNo').textContent = ed.title || '';
-    document.getElementById('pdmSize').textContent = ed.size + (ed.year ? ' · ' + ed.year : '');
+    document.getElementById('pdmEditionNo').textContent = r.title;
+    document.getElementById('pdmSize').textContent = r.size + (ed.year ? ' · ' + ed.year : '');
     document.getElementById('pdmTitle').textContent = name;
     var statusEl = document.getElementById('pdmStatus');
     statusEl.textContent = status.label;
     statusEl.className = 'pdm-status pdm-status-' + (status.soldOut ? 'sold' : 'available');
-    document.getElementById('pdmPrice').textContent = ed.price ? fmtKRW(ed.price.krw) + '  \u00B7  ' + fmtEUR(ed.price.eur) : '';
+    document.getElementById('pdmPrice').textContent = r.price && r.price.krw ? fmtKRW(r.price.krw) : '';
     var desc = pick(ed, 'description') || pick(ed, 'shortDescription') || ed.description || ed.shortDescription || '';
     document.getElementById('pdmDesc').textContent = desc;
 
-    var pageCount = (ed.pages != null) ? ed.pages : 24;
+    var pageCount = r.pages;
     var insideEl = document.getElementById('pdmFeatureInside');
     if (insideEl) {
       insideEl.textContent = T(pageCount === 1 ? 'pdm.featureInsideOne' : 'pdm.featureInside', { count: pageCount });
