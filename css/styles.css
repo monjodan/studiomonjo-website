@@ -1449,3 +1449,61 @@ html[lang="ko"] .custom-price { font-family: var(--sans); font-weight: 500; }
   font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 8px;
 }
 .custom-card-note a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink-faint); text-underline-offset: 3px; }
+
+/* Sets band on the home — 2 sets summary + image */
+.sets-band {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.sets-band-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 112px) var(--pad-x);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+@media (max-width: 800px) { .sets-band-inner { grid-template-columns: 1fr; gap: 32px; } }
+.sets-band-text .section-label { margin-bottom: 16px; }
+.sets-band-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.15; color: var(--ink);
+  margin-bottom: 18px;
+}
+html[lang="ko"] .sets-band-title { font-family: var(--sans); font-weight: 400; }
+.sets-band-body {
+  font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--ink-mid);
+  margin-bottom: 24px;
+  max-width: 460px;
+}
+.sets-band-rows {
+  display: flex; flex-direction: column; gap: 0;
+  margin-bottom: 24px;
+  border-top: 1px solid var(--line);
+}
+.sets-band-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  align-items: baseline;
+}
+.sets-band-row-name { font-weight: 500; color: var(--ink); }
+.sets-band-row-detail { color: var(--ink-soft); font-size: 12px; }
+.sets-band-row-price {
+  font-family: var(--serif); font-weight: 400; font-size: 18px; color: var(--ink); white-space: nowrap;
+}
+html[lang="ko"] .sets-band-row-price { font-family: var(--sans); font-weight: 500; font-size: 16px; }
+.sets-band-figure {
+  aspect-ratio: 4 / 3;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+}
+.sets-band-figure picture, .sets-band-figure img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}

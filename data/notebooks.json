@@ -2,18 +2,19 @@
   "editionSize": 20,
   "shopKorea": "",
   "shopFrance": "",
-  "categoryOrder": ["notebook", "bound-card", "postcard"],
+  "categoryOrder": ["notebook", "bound-card", "carnet", "set"],
   "categories": {
     "notebook": {
       "label_en": "Notebooks",
       "labelSingular_en": "Notebook",
       "label_ko": "노트",
       "labelSingular_ko": "노트",
-      "size": "A5",
-      "pages": 24,
+      "size": "A6 / A5",
+      "pages": 40,
       "price": { "krw": 65000 },
-      "lede_en": "A5, twenty-four pages, hand-painted cover, hand-stitched binding. Made for fountain pens.",
-      "lede_ko": "A5, 24페이지, 손으로 그린 커버, 손바느질 제본. 만년필을 위해 만든 종이."
+      "priceFrom": true,
+      "lede_en": "Hand-painted, hand-stitched, forty pages of fountain-pen paper. Available in A6 (₩65,000) and A5 (₩95,000).",
+      "lede_ko": "손그림 커버, 손바느질 제본, 만년필 종이 40페이지. A6(₩65,000)와 A5(₩95,000) 두 가지 사이즈로 만들어요."
     },
     "bound-card": {
       "label_en": "Bound cards",
@@ -23,19 +24,29 @@
       "size": "A6",
       "pages": 1,
       "price": { "krw": 25000 },
-      "lede_en": "A6, one page, hand-painted cover, hand-stitched. For the message that matters.",
-      "lede_ko": "A6, 한 장, 손으로 그린 커버, 손바느질. 정말 중요한 한 마디를 위해."
+      "lede_en": "A6, one page, hand-painted cover, hand-stitched. For the message that matters."
     },
-    "postcard": {
-      "label_en": "Postcards",
-      "labelSingular_en": "Postcard",
-      "label_ko": "엽서",
-      "labelSingular_ko": "엽서",
-      "size": "10.5 × 15.5 cm",
-      "pages": 1,
-      "price": { "krw": 15000 },
-      "lede_en": "Painted on the same paper as the covers. To send, to keep, to frame.",
-      "lede_ko": "노트 커버와 같은 종이에 그려요. 보내고, 간직하고, 액자에 넣을 수도 있어요."
+    "carnet": {
+      "label_en": "Le Carnet",
+      "labelSingular_en": "Le Carnet",
+      "label_ko": "르 카르네",
+      "labelSingular_ko": "르 카르네",
+      "size": "Petit",
+      "pages": 40,
+      "price": { "krw": 55000 },
+      "lede_en": "A small notebook designed to be attached to a bag or worn as a statement piece. Hand-painted, hand-stitched, forty pages.",
+      "lede_ko": "가방에 매달거나 몸에 지니는 작은 노트. 손그림 커버, 손바느질 제본, 40페이지."
+    },
+    "set": {
+      "label_en": "Sets",
+      "labelSingular_en": "Set",
+      "label_ko": "세트",
+      "labelSingular_ko": "세트",
+      "size": "Boxed",
+      "price": { "krw": 85000 },
+      "priceFrom": true,
+      "lede_en": "Curated boxed sets. Seasonal sets of four bound cards (₩85,000), and the all-formats set with one of each piece (₩180,000).",
+      "lede_ko": "정성껏 묶은 박스 세트. 계절별 바운드 카드 네 장 세트(₩85,000), 그리고 모든 포맷을 한 점씩 담은 올포맷 세트(₩180,000)."
     }
   },
   "editions": [
@@ -47,6 +58,9 @@
       "title_ko": "노트 01",
       "name_en": "Birds & Berries",
       "name_ko": "새와 열매",
+      "size": "A6",
+      "pages": 40,
+      "price": { "krw": 65000 },
       "year": 2025,
       "soldCount": 20,
       "image": "/media/web/notebooks/IMG_4604.jpg",
@@ -58,8 +72,8 @@
       ],
       "shortDescription_en": "A branch of leaves and berries, two small birds sheltering. Ink and watercolour, signed.",
       "shortDescription_ko": "잎과 열매가 달린 가지, 그 사이에 숨어 있는 작은 새 두 마리. 잉크와 수채, 낙관 포함.",
-      "description_en": "The first notebook edition. The cover is painted freehand. Ink lines first, then soft washes of watercolour for the leaves, the berries, and the two birds that half-hide among them. No two covers in the edition of twenty are identical. The marks, the drips, the placement of the birds vary from one to the next. Closed with hand-stitched binding.",
-      "description_ko": "첫 번째 노트 에디션이에요. 커버는 프리핸드로 그려요. 잉크로 선을 먼저 잡고, 잎·열매·그 사이에 반쯤 숨은 두 마리 새를 수채 워시로 얹어요. 20권의 커버는 어느 하나도 같지 않아요. 선의 떨림, 번짐, 새가 앉은 자리가 모두 조금씩 달라요. 마무리는 손바느질 제본이에요."
+      "description_en": "The first notebook edition. The cover is painted freehand. Ink lines first, then soft washes of watercolour for the leaves, the berries, and the two birds that half-hide among them. No two covers in the edition of twenty are identical. The marks, the drips, the placement of the birds vary from one to the next. Forty pages of Iroful inside, closed with hand-stitched binding.",
+      "description_ko": "첫 번째 노트 에디션이에요. 커버는 프리핸드로 그려요. 잉크로 선을 먼저 잡고, 잎·열매·그 사이에 반쯤 숨은 두 마리 새를 수채 워시로 얹어요. 20권의 커버는 어느 하나도 같지 않아요. 선의 떨림, 번짐, 새가 앉은 자리가 모두 조금씩 달라요. 안쪽은 이로풀 40페이지, 마무리는 손바느질 제본이에요."
     },
     {
       "id": "ed-n-002",
@@ -69,6 +83,9 @@
       "title_ko": "노트 02",
       "name_en": "Lotus",
       "name_ko": "연꽃",
+      "size": "A6",
+      "pages": 40,
+      "price": { "krw": 65000 },
       "year": 2025,
       "soldCount": 20,
       "image": "/media/web/notebooks/L1001423.jpg",
@@ -80,8 +97,8 @@
       ],
       "shortDescription_en": "A branch of plum blossom over a red lotus. Ink, watercolour, and stamped seals.",
       "shortDescription_ko": "붉은 연꽃 위로 뻗은 매화 가지. 잉크, 수채, 그리고 손으로 찍은 낙관.",
-      "description_en": "The second notebook edition. A branch of plum blossom painted in ink, arcing over a red lotus blooming at the base. Each cover is finished with a small vermilion seal, stamped by hand. Like every Studio Monjo edition, the twenty are variations on a theme. Same composition, slightly different in every copy.",
-      "description_ko": "두 번째 노트 에디션이에요. 잉크로 그린 매화 가지가 아래쪽에 피어 있는 붉은 연꽃 위로 아치를 그려요. 각 커버에는 작은 주홍색 낙관을 직접 손으로 찍어요. 스튜디오 몬조의 모든 에디션처럼, 스무 권은 하나의 주제를 변주해요. 구도는 같지만, 한 권 한 권 조금씩 달라요."
+      "description_en": "The second notebook edition. A branch of plum blossom painted in ink, arcing over a red lotus blooming at the base. Each cover is finished with a small vermilion seal, stamped by hand. Like every Studio Monjo edition, the twenty are variations on a theme. Same composition, slightly different in every copy. Forty pages of Iroful inside.",
+      "description_ko": "두 번째 노트 에디션이에요. 잉크로 그린 매화 가지가 아래쪽에 피어 있는 붉은 연꽃 위로 아치를 그려요. 각 커버에는 작은 주홍색 낙관을 직접 손으로 찍어요. 스튜디오 몬조의 모든 에디션처럼, 스무 권은 하나의 주제를 변주해요. 구도는 같지만, 한 권 한 권 조금씩 달라요. 안쪽은 이로풀 40페이지예요."
     }
   ],
   "faq": [
@@ -93,15 +110,27 @@
     },
     {
       "q_en": "What kind of paper is inside the notebooks?",
-      "a_en": "Iroful, a Japanese paper from Sakae Technical Paper (the makers of Tomoe River). It is made specifically for fountain pens. No feathering, no bleed-through, and it shows ink shading and sheen beautifully. See the Materials page for more.",
+      "a_en": "Iroful, a Japanese paper from Sakae Technical Paper (the makers of Tomoe River). It is made specifically for fountain pens. No feathering, no bleed-through, and it shows ink shading and sheen beautifully. Forty pages inside every notebook and Le Carnet. See the Materials page for more.",
       "q_ko": "노트 속지는 어떤 종이인가요?",
-      "a_ko": "이로풀(Iroful)이에요. 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요. 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 재료 페이지에서 더 자세히 볼 수 있어요."
+      "a_ko": "이로풀(Iroful)이에요. 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요. 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 노트와 르 카르네 모두 40페이지예요. 재료 페이지에서 더 자세히 볼 수 있어요."
     },
     {
-      "q_en": "Can I write on the bound cards and postcards with a fountain pen?",
+      "q_en": "Can I write on the bound cards with a fountain pen?",
       "a_en": "Yes. Cards use the same Canson cover paper that takes ink and watercolour cleanly, with no feathering for everyday inks.",
-      "q_ko": "바운드 카드와 엽서도 만년필로 쓸 수 있나요?",
-      "a_ko": "네, 카드는 노트 커버와 같은 캉송 종이로 만들어요. 잉크와 수채를 깔끔하게 받고, 일반적인 만년필 잉크는 번지지 않아요."
+      "q_ko": "바운드 카드도 만년필로 쓸 수 있나요?",
+      "a_ko": "네. 카드는 노트 커버와 같은 캉송 종이로 만들어요. 잉크와 수채를 깔끔하게 받고, 일반적인 만년필 잉크는 번지지 않아요."
+    },
+    {
+      "q_en": "What is Le Carnet?",
+      "a_en": "A small notebook designed to be attached to a bag or worn. Same paper, same binding, smaller format. Forty pages of Iroful inside, hand-painted cover, hand-stitched.",
+      "q_ko": "르 카르네는 무엇인가요?",
+      "a_ko": "가방에 매달거나 몸에 지닐 수 있도록 디자인된 작은 노트예요. 같은 종이, 같은 제본 방식, 더 작은 판형. 안쪽은 이로풀 40페이지, 커버는 손그림, 마무리는 손바느질이에요."
+    },
+    {
+      "q_en": "What's in the seasonal boxed set and the all-formats set?",
+      "a_en": "The seasonal boxed set is four bound cards in a single box, themed for the season (₩85,000). The all-formats set has one of each format: an A6 notebook, an A5 notebook, a bound card, and a Le Carnet (₩180,000).",
+      "q_ko": "계절 박스 세트와 올포맷 세트에는 무엇이 들어 있나요?",
+      "a_ko": "계절 박스 세트는 그 계절의 분위기로 그린 바운드 카드 네 장이에요(₩85,000). 올포맷 세트는 모든 포맷 한 점씩, A6 노트, A5 노트, 바운드 카드, 르 카르네가 들어 있어요(₩180,000)."
     },
     {
       "q_en": "How do you ship?",
