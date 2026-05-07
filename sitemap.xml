@@ -39,6 +39,24 @@
   </url>
 
   <url>
+    <loc>https://studiomonjo.com/en/custom/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/custom/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/custom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/custom/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/custom/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/custom/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/custom/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/custom/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://studiomonjo.com/en/materials/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/materials/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/materials/"/>

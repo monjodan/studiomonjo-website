@@ -1027,6 +1027,14 @@ html[lang="ko"] .material-cta-title { font-family: var(--sans); font-weight: 500
 .material-cta .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 .material-cta .btn:hover { background: transparent; color: var(--paper); border-color: var(--paper); }
 
+/* "For writers" positioning band — sits between hero and product tiles on home */
+.for-writers { background: var(--paper-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.for-writers-inner { padding-top: clamp(40px, 5vw, 64px); padding-bottom: clamp(40px, 5vw, 64px); max-width: 760px; margin: 0 auto; }
+.for-writers-text .section-label { margin-bottom: 14px; }
+.for-writers-title { font-family: var(--serif); font-weight: 300; font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.25; letter-spacing: -0.005em; color: var(--ink); margin-bottom: 16px; }
+html[lang="ko"] .for-writers-title { font-family: var(--sans); font-weight: 400; }
+.for-writers-body { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--ink-mid); margin-bottom: 16px; max-width: 620px; }
+
 /* === HOME (compact split-hero + tiles + bands) === */
 .split-hero--compact { min-height: 64vh; }
 @media (max-width: 900px) {
@@ -1213,3 +1221,231 @@ html[lang="ko"] .workshop-price { font-family: var(--sans); font-weight: 500; }
 .workshop-card-note a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink-faint); text-underline-offset: 3px; }
 .workshop-card-note a:hover { text-decoration-color: var(--ink); }
 
+
+/* ================================================================
+   PHASE 2 — Brand-led home + Custom Orders
+   ================================================================ */
+
+/* Full-bleed photo hero on the home page (replaces split-hero) */
+.brand-hero {
+  position: relative;
+  min-height: 80vh;
+  display: grid;
+  align-items: end;
+  background: var(--ink);
+  overflow: hidden;
+  margin-top: calc(var(--nav-h) * -1); /* let the photo go behind the fixed nav */
+  padding-top: var(--nav-h);
+}
+.brand-hero-img { position: absolute; inset: 0; }
+.brand-hero-img picture, .brand-hero-img img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.brand-hero-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.18) 35%, transparent 60%);
+}
+.brand-hero-text {
+  position: relative; z-index: 1;
+  padding: clamp(40px, 6vw, 80px) var(--pad-x) clamp(36px, 5vw, 64px);
+  max-width: 720px;
+  color: var(--paper);
+}
+.brand-hero-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.85); margin-bottom: 14px;
+}
+.brand-hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.2; letter-spacing: -0.005em;
+  color: var(--paper);
+  margin-bottom: 28px;
+  max-width: 600px;
+}
+html[lang="ko"] .brand-hero-title { font-family: var(--sans); font-weight: 400; }
+.brand-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.brand-hero-actions .btn-primary {
+  background: var(--paper); color: var(--ink); border-color: var(--paper);
+}
+.brand-hero-actions .btn-primary:hover, .brand-hero-actions .btn-primary:focus-visible {
+  background: transparent; color: var(--paper); border-color: var(--paper);
+}
+.brand-hero-actions .btn-ghost {
+  background: transparent; color: var(--paper); border-color: rgba(255,255,255,0.6);
+}
+.brand-hero-actions .btn-ghost:hover, .brand-hero-actions .btn-ghost:focus-visible {
+  background: var(--paper); color: var(--ink); border-color: var(--paper);
+}
+
+/* Manifesto block — generous editorial layout */
+.manifesto {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.manifesto-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(72px, 9vw, 128px) var(--pad-x);
+}
+.manifesto-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 32px;
+  text-align: left;
+}
+.manifesto p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 1.4em;
+  letter-spacing: 0.005em;
+}
+html[lang="ko"] .manifesto p { font-family: var(--sans); font-weight: 300; line-height: 1.85; }
+.manifesto p:last-child { margin-bottom: 0; }
+.manifesto p em { font-style: italic; color: var(--ink); }
+.manifesto-mark {
+  display: block;
+  margin-top: 56px;
+  width: 24px; height: 24px;
+  opacity: 0.55;
+}
+
+/* Larger, calmer product cards on the home (replaces .shop-tiles) */
+.home-pieces { background: var(--paper); border-bottom: 1px solid var(--line); }
+.home-pieces-inner {
+  padding: clamp(64px, 8vw, 112px) var(--pad-x);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.home-pieces-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+.home-pieces-head .section-label { margin-bottom: 0; }
+.home-pieces-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+html[lang="ko"] .home-pieces-title { font-family: var(--sans); font-weight: 400; }
+.home-pieces-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+@media (max-width: 800px) { .home-pieces-grid { grid-template-columns: 1fr; gap: 28px; } }
+.piece-card {
+  display: flex; flex-direction: column; gap: 18px;
+  text-decoration: none; color: var(--ink);
+  transition: transform 0.3s ease;
+}
+.piece-card:hover { transform: translateY(-3px); }
+.piece-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.piece-card-figure {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.piece-card:hover .piece-card-figure { border-color: var(--ink); }
+.piece-card-figure picture, .piece-card-figure img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.piece-card:hover .piece-card-figure img { transform: scale(1.02); }
+.piece-card-meta { display: flex; flex-direction: column; gap: 6px; }
+.piece-card-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-light);
+}
+.piece-card-name {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 18px; line-height: 1.2; color: var(--ink);
+}
+html[lang="ko"] .piece-card-name { font-family: var(--sans); font-weight: 500; }
+
+/* Materials teaser on the home — large image + short copy */
+.materials-teaser {
+  background: var(--paper-soft);
+  border-bottom: 1px solid var(--line);
+}
+.materials-teaser-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 112px) var(--pad-x);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+@media (max-width: 800px) { .materials-teaser-inner { grid-template-columns: 1fr; gap: 32px; } }
+.materials-teaser-figure {
+  aspect-ratio: 4 / 5;
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.materials-teaser-figure picture, .materials-teaser-figure img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.materials-teaser-text .section-label { margin-bottom: 16px; }
+.materials-teaser-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.15; color: var(--ink);
+  margin-bottom: 18px;
+}
+html[lang="ko"] .materials-teaser-title { font-family: var(--sans); font-weight: 400; }
+.materials-teaser-body {
+  font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--ink-mid);
+  margin-bottom: 22px;
+  max-width: 460px;
+}
+
+/* Custom Orders page — its own page at /custom/ */
+.custom-detail { border-top: 1px solid var(--line); background: var(--paper-soft); }
+.custom-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+@media (max-width: 900px) { .custom-grid { grid-template-columns: 1fr; } }
+.custom-flow { /* same vibe as workshop-flow */ }
+.custom-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: clamp(28px, 3vw, 40px);
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  display: flex; flex-direction: column; gap: 14px;
+}
+@media (max-width: 900px) { .custom-card { position: static; } }
+.custom-card-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-light); margin-bottom: 4px;
+}
+.custom-card-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--ink-mid);
+}
+.custom-card-row > span:first-child {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light);
+}
+.custom-card-row--price { padding: 14px 0 6px; border-bottom: none; align-items: baseline; }
+.custom-price {
+  font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--ink); letter-spacing: 0;
+}
+html[lang="ko"] .custom-price { font-family: var(--sans); font-weight: 500; }
+.custom-card .btn { width: 100%; text-align: center; justify-content: center; }
+.custom-card-note {
+  font-size: 12px; color: var(--ink-soft); line-height: 1.6; margin-top: 8px;
+}
+.custom-card-note a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--ink-faint); text-underline-offset: 3px; }
