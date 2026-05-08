@@ -1338,7 +1338,8 @@ html[lang="ko"] .home-pieces-title { font-family: var(--sans); font-weight: 400;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(24px, 3vw, 40px);
 }
-@media (max-width: 800px) { .home-pieces-grid { grid-template-columns: 1fr; gap: 28px; } }
+.home-pieces-grid--two { grid-template-columns: repeat(2, 1fr); gap: clamp(32px, 4vw, 56px); max-width: 880px; margin: 0 auto; }
+@media (max-width: 800px) { .home-pieces-grid, .home-pieces-grid--two { grid-template-columns: 1fr; gap: 28px; max-width: none; } }
 .piece-card {
   display: flex; flex-direction: column; gap: 18px;
   text-decoration: none; color: var(--ink);

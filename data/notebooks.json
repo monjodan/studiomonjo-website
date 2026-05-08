@@ -2,7 +2,7 @@
   "editionSize": 20,
   "shopKorea": "",
   "shopFrance": "",
-  "categoryOrder": ["notebook", "bound-card", "carnet", "set"],
+  "categoryOrder": ["notebook", "bound-card"],
   "categories": {
     "notebook": {
       "label_en": "Notebooks",
@@ -24,29 +24,9 @@
       "size": "A6",
       "pages": 1,
       "price": { "krw": 25000 },
-      "lede_en": "A6, one page, hand-painted cover, hand-stitched. For the message that matters."
-    },
-    "carnet": {
-      "label_en": "Le Carnet",
-      "labelSingular_en": "Le Carnet",
-      "label_ko": "르 카르네",
-      "labelSingular_ko": "르 카르네",
-      "size": "Petit",
-      "pages": 40,
-      "price": { "krw": 55000 },
-      "lede_en": "A small notebook designed to be attached to a bag or worn as a statement piece. Hand-painted, hand-stitched, forty pages.",
-      "lede_ko": "가방에 매달거나 몸에 지니는 작은 노트. 손그림 커버, 손바느질 제본, 40페이지."
-    },
-    "set": {
-      "label_en": "Sets",
-      "labelSingular_en": "Set",
-      "label_ko": "세트",
-      "labelSingular_ko": "세트",
-      "size": "Boxed",
-      "price": { "krw": 85000 },
       "priceFrom": true,
-      "lede_en": "Curated boxed sets. Seasonal sets of four bound cards (₩85,000), and the all-formats set with one of each piece (₩180,000).",
-      "lede_ko": "정성껏 묶은 박스 세트. 계절별 바운드 카드 네 장 세트(₩85,000), 그리고 모든 포맷을 한 점씩 담은 올포맷 세트(₩180,000)."
+      "lede_en": "A6, one page, hand-painted cover, hand-stitched. Single cards (₩25,000) and seasonal boxed sets of four (₩85,000).",
+      "lede_ko": "A6, 한 장, 손으로 그린 커버, 손바느질. 단일 카드(₩25,000)와 네 장이 들어 있는 계절 박스 세트(₩85,000)."
     }
   },
   "editions": [
@@ -110,9 +90,9 @@
     },
     {
       "q_en": "What kind of paper is inside the notebooks?",
-      "a_en": "Iroful, a Japanese paper from Sakae Technical Paper (the makers of Tomoe River). It is made specifically for fountain pens. No feathering, no bleed-through, and it shows ink shading and sheen beautifully. Forty pages inside every notebook and Le Carnet. See the Materials page for more.",
+      "a_en": "Iroful, a Japanese paper from Sakae Technical Paper (the makers of Tomoe River). It is made specifically for fountain pens. No feathering, no bleed-through, and it shows ink shading and sheen beautifully. Forty pages inside every notebook. See the Materials page for more.",
       "q_ko": "노트 속지는 어떤 종이인가요?",
-      "a_ko": "이로풀(Iroful)이에요. 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요. 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 노트와 르 카르네 모두 40페이지예요. 재료 페이지에서 더 자세히 볼 수 있어요."
+      "a_ko": "이로풀(Iroful)이에요. 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 종이예요. 만년필을 위해 만들어졌어요. 번짐도, 뒷면 비침도 없고, 잉크의 음영과 쉬인이 아름답게 드러나요. 노트마다 40페이지예요. 재료 페이지에서 더 자세히 볼 수 있어요."
     },
     {
       "q_en": "Can I write on the bound cards with a fountain pen?",
@@ -121,16 +101,10 @@
       "a_ko": "네. 카드는 노트 커버와 같은 캉송 종이로 만들어요. 잉크와 수채를 깔끔하게 받고, 일반적인 만년필 잉크는 번지지 않아요."
     },
     {
-      "q_en": "What is Le Carnet?",
-      "a_en": "A small notebook designed to be attached to a bag or worn. Same paper, same binding, smaller format. Forty pages of Iroful inside, hand-painted cover, hand-stitched.",
-      "q_ko": "르 카르네는 무엇인가요?",
-      "a_ko": "가방에 매달거나 몸에 지닐 수 있도록 디자인된 작은 노트예요. 같은 종이, 같은 제본 방식, 더 작은 판형. 안쪽은 이로풀 40페이지, 커버는 손그림, 마무리는 손바느질이에요."
-    },
-    {
-      "q_en": "What's in the seasonal boxed set and the all-formats set?",
-      "a_en": "The seasonal boxed set is four bound cards in a single box, themed for the season (₩85,000). The all-formats set has one of each format: an A6 notebook, an A5 notebook, a bound card, and a Le Carnet (₩180,000).",
-      "q_ko": "계절 박스 세트와 올포맷 세트에는 무엇이 들어 있나요?",
-      "a_ko": "계절 박스 세트는 그 계절의 분위기로 그린 바운드 카드 네 장이에요(₩85,000). 올포맷 세트는 모든 포맷 한 점씩, A6 노트, A5 노트, 바운드 카드, 르 카르네가 들어 있어요(₩180,000)."
+      "q_en": "What's in the seasonal boxed set?",
+      "a_en": "Four bound cards in a single box, themed for the season (₩85,000). Same paper, same binding, same hand-painted covers as the single cards. Designed as a set, given as a set.",
+      "q_ko": "계절 박스 세트에는 무엇이 들어 있나요?",
+      "a_ko": "그 계절의 분위기로 그린 바운드 카드 네 장을 한 박스에 담았어요(₩85,000). 단일 카드와 같은 종이, 같은 제본, 같은 손그림 커버예요. 세트로 디자인하고, 세트로 선물해요."
     },
     {
       "q_en": "How do you ship?",
