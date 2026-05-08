@@ -111,6 +111,13 @@
   </url>
 
   <url>
+    <loc>https://studiomonjo.com/courrier/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/courrier/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://studiomonjo.com/en/about/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
