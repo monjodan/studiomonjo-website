@@ -3,23 +3,30 @@
   Courrier de Séoul — French-only subscription page.
 
   STRIPE INTEGRATION:
-    Each pricing tier links to its own Stripe Payment Link. Replace the
-    href values below (search for STRIPE_LINK_) with the corresponding
-    Stripe Payment Link URLs from the Stripe dashboard:
+    Two recurring subscription products. Replace the href values below
+    (search for STRIPE_LINK_) with the corresponding Stripe Payment Link
+    URLs from the Stripe dashboard:
 
-      data-tier="monthly" → recurring 15 €/mois subscription
-      data-tier="3mo"     → one-off 45 € (3-month gift)
-      data-tier="6mo"     → one-off 85 € (6-month gift)
-      data-tier="12mo"    → one-off 160 € (12-month gift)
+      data-tier="monthly" → recurring 15 €/mois
+      data-tier="yearly"  → recurring 165 €/an (11 × 15 €, 1 mois offert)
 
     On Stripe Checkout, configure custom fields to capture:
-      - Recipient name and postal address (collect billing address by default)
-      - "Pour qui ?" field (for self / for someone else)
+      - Recipient name and postal address (collect shipping address)
+      - "Pour qui ?" field (pour soi / pour quelqu'un d'autre)
       - "Mot pour la première enveloppe" — optional textarea
+
+    Cancellation, address updates, and payment-method changes go through
+    the Stripe Customer Portal (configure under Settings → Billing →
+    Customer portal). The portal link is auto-included in Stripe receipts.
+
+  DISPATCH RULE (referenced in copy and FAQ):
+    All envelopes ship in the second week of each month. Subscribers who
+    join BEFORE that week receive the same month's envelope; after, the
+    next month's.
 
   FRENCH COPY:
     French copy is a working draft by a non-native speaker. Native pass
-    required before any paid promotion. Watch for translated rhythm.
+    required before any paid promotion.
 -->
 <html lang="fr">
 <head>
@@ -346,6 +353,13 @@
   }
   @media (max-width: 800px) { .pricing-tiers { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 460px) { .pricing-tiers { grid-template-columns: 1fr; } }
+  /* Two-tier variant — wider cards, centered */
+  .pricing-tiers--two {
+    grid-template-columns: repeat(2, minmax(0, 280px));
+    justify-content: center;
+    gap: 24px;
+  }
+  @media (max-width: 600px) { .pricing-tiers--two { grid-template-columns: minmax(0, 320px); } }
   .pricing-tier {
     background: var(--paper-warm);
     border: 1px solid var(--rule-strong);
@@ -365,7 +379,7 @@
     border-color: var(--ink-warm);
   }
   .pricing-tier--featured::before {
-    content: 'Le plus offert';
+    content: 'Un mois offert';
     position: absolute;
     top: -10px; left: 22px;
     background: var(--ink-warm);
@@ -389,10 +403,17 @@
     font-family: var(--serif);
     font-style: italic;
     font-weight: 400;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     line-height: 1;
     color: var(--ink-warm);
     margin-bottom: 6px;
+  }
+  .pricing-tier-suffix {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--ink-warm-soft);
   }
   .pricing-tier-detail {
     font-family: var(--serif);
@@ -512,8 +533,8 @@
         <div class="envelope-piece">
           <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
           <div class="envelope-piece-label">La lettre</div>
-          <p class="envelope-piece-title">Une page, manuscrite, signée et datée.</p>
-          <p class="envelope-piece-body">Écrite à la main une fois par mois, à l'encre, sur papier qui tient l'encre. Tirée fidèlement pour chaque destinataire. Vous recevez l'écriture, la signature, le grain de la page.</p>
+          <p class="envelope-piece-title">Une page, manuscrite, signée à la main.</p>
+          <p class="envelope-piece-body">Écrite à la main une fois par mois, à l'encre, sur papier qui tient l'encre. Tirée fidèlement pour chaque destinataire, puis signée à la main, à l'encre, sur le tirage. Vous recevez l'écriture, la signature, le grain de la page.</p>
         </div>
         <div class="envelope-piece">
           <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
@@ -533,7 +554,7 @@
         <div class="section-eyebrow">L'écriture</div>
         <h2 class="section-title">Manuscrite, scannée, tirée fidèlement.</h2>
         <p>La lettre est écrite à la main, une fois par mois, à l'encre, sur la même table où je peins les couvertures de Studio Monjo. Pour qu'elle arrive en même temps à plusieurs personnes, je la scanne, et je la fais tirer.</p>
-        <p>Le tirage reproduit le manuscrit dans son détail : l'écriture, la pression, la signature, parfois la rature. Comme une estampe est l'impression d'un original, votre lettre est l'impression de la mienne, du mois où je l'ai écrite. Elle n'est pas tapée. C'est ma main, dans la main où je l'ai laissée.</p>
+        <p>Le tirage reproduit le manuscrit dans son détail : l'écriture, la pression, parfois la rature. Comme une estampe est l'impression d'un original, votre lettre est l'impression de la mienne, du mois où je l'ai écrite. Chaque exemplaire est ensuite signé à la main, à l'encre, sur le tirage.</p>
         <p>C'est cette honnêteté-là qui rend l'abonnement tenable : une vraie lettre, par voie postale, à plusieurs personnes, sans que la voix change.</p>
       </div>
     </div>
@@ -556,19 +577,19 @@
       <ol class="process-steps">
         <li>
           <div class="process-num"><em>i.</em></div>
-          <p class="process-text">Vous choisissez une durée et payez par carte. Vous indiquez l'adresse postale du destinataire et, si vous le souhaitez, un mot pour la première enveloppe.</p>
+          <p class="process-text">Vous choisissez la durée et payez par carte. Vous indiquez l'adresse postale du destinataire et, si vous le souhaitez, un mot pour la première enveloppe.</p>
         </li>
         <li>
           <div class="process-num"><em>ii.</em></div>
-          <p class="process-text">Je reçois la commande et vous confirme par courriel sous 48 heures.</p>
+          <p class="process-text">Je reçois la commande et vous confirme par retour, sous 48 heures.</p>
         </li>
         <li>
           <div class="process-num"><em>iii.</em></div>
-          <p class="process-text">La première enveloppe part dans la quinzaine. Chaque mois ensuite, à la même semaine.</p>
+          <p class="process-text">Les enveloppes partent toutes la deuxième semaine du mois. Selon la date d'inscription, vous recevez celle du mois en cours ou celle du mois suivant.</p>
         </li>
         <li>
           <div class="process-num"><em>iv.</em></div>
-          <p class="process-text">L'abonnement mensuel se renouvelle automatiquement ; vous l'arrêtez quand vous voulez, en m'écrivant un mot.</p>
+          <p class="process-text">L'abonnement se renouvelle automatiquement. Vous l'arrêtez à tout moment depuis votre espace client Stripe, dont le lien arrive avec la confirmation de paiement.</p>
         </li>
       </ol>
     </div>
@@ -581,39 +602,25 @@
       <h2 class="section-title">Choisissez la durée. Réglez par carte.</h2>
       <p style="max-width: 520px; margin: 0 auto 8px;">L'adresse, le mot d'introduction et la mention « pour qui ? » sont demandés à l'étape suivante.</p>
 
-      <div class="pricing-tiers">
-        <!-- STRIPE_LINK_MONTHLY — recurring 15 €/mois -->
+      <div class="pricing-tiers pricing-tiers--two">
+        <!-- STRIPE_LINK_MONTHLY — recurring 15 €/mois subscription -->
         <a href="https://buy.stripe.com/REPLACE_MONTHLY" class="pricing-tier" data-tier="monthly" rel="noopener">
           <div class="pricing-tier-label">Au mois</div>
-          <div class="pricing-tier-price">15 €</div>
-          <div class="pricing-tier-detail">Renouvelé chaque mois<br>Sans engagement</div>
+          <div class="pricing-tier-price">15 €<span class="pricing-tier-suffix"> / mois</span></div>
+          <div class="pricing-tier-detail">Abonnement mensuel<br>Annulable à tout moment</div>
           <div class="pricing-tier-cta">Choisir</div>
         </a>
-        <!-- STRIPE_LINK_3MO — one-off 45 € for 3 months -->
-        <a href="https://buy.stripe.com/REPLACE_3MO" class="pricing-tier" data-tier="3mo" rel="noopener">
-          <div class="pricing-tier-label">3 mois</div>
-          <div class="pricing-tier-price">45 €</div>
-          <div class="pricing-tier-detail">Trois enveloppes<br>Paiement unique</div>
-          <div class="pricing-tier-cta">Choisir</div>
-        </a>
-        <!-- STRIPE_LINK_6MO — one-off 85 € for 6 months -->
-        <a href="https://buy.stripe.com/REPLACE_6MO" class="pricing-tier pricing-tier--featured" data-tier="6mo" rel="noopener">
-          <div class="pricing-tier-label">6 mois</div>
-          <div class="pricing-tier-price">85 €</div>
-          <div class="pricing-tier-detail">Six enveloppes<br>5 € offerts</div>
-          <div class="pricing-tier-cta">Choisir</div>
-        </a>
-        <!-- STRIPE_LINK_12MO — one-off 160 € for 12 months -->
-        <a href="https://buy.stripe.com/REPLACE_12MO" class="pricing-tier" data-tier="12mo" rel="noopener">
-          <div class="pricing-tier-label">12 mois</div>
-          <div class="pricing-tier-price">160 €</div>
-          <div class="pricing-tier-detail">Une année<br>20 € offerts</div>
+        <!-- STRIPE_LINK_YEARLY — recurring 165 €/an subscription (11 × 15 €, 1 mois offert) -->
+        <a href="https://buy.stripe.com/REPLACE_YEARLY" class="pricing-tier pricing-tier--featured" data-tier="yearly" rel="noopener">
+          <div class="pricing-tier-label">À l'année</div>
+          <div class="pricing-tier-price">165 €<span class="pricing-tier-suffix"> / an</span></div>
+          <div class="pricing-tier-detail">Douze enveloppes<br>Un mois offert</div>
           <div class="pricing-tier-cta">Choisir</div>
         </a>
       </div>
 
-      <p class="pricing-trust">Paiement sécurisé par <strong>Stripe</strong>. Carte bancaire et Apple Pay. Expédition vers la France métropolitaine ; pour d'autres pays, écrire d'abord à <a href="mailto:hello@studiomonjo.com">hello@studiomonjo.com</a>.</p>
-      <p class="pricing-trust">Si la personne n'aime pas, je rembourse les mois qui n'ont pas été envoyés. Sans question.</p>
+      <p class="pricing-trust">Paiement sécurisé par <strong>Stripe</strong>. Carte bancaire et Apple Pay. L'abonnement se gère depuis l'espace client Stripe, dont le lien arrive avec la confirmation de paiement.</p>
+      <p class="pricing-trust">Expédition en France métropolitaine. Si la personne n'aime pas, l'abonnement s'annule à tout moment et les enveloppes non envoyées sont remboursées.</p>
     </div>
   </section>
 
@@ -623,22 +630,22 @@
     <h2 class="section-title">Ce qu'on me demande souvent.</h2>
     <dl class="courrier-faq">
       <dt>L'écriture est-elle vraiment manuscrite ?</dt>
-      <dd>Oui. Je l'écris à la main une fois par mois, à l'encre. Pour pouvoir l'envoyer à plusieurs personnes le même mois, je la scanne et je la fais tirer. Le tirage reproduit le manuscrit fidèlement : l'écriture, la signature, parfois la rature.</dd>
+      <dd>Oui. Je l'écris à la main une fois par mois, à l'encre. Pour pouvoir l'envoyer à plusieurs personnes le même mois, je la scanne et je la fais tirer. Chaque exemplaire est ensuite signé à la main, à l'encre, sur le tirage. Vous recevez l'écriture, la signature à l'encre, le grain de la page.</dd>
 
       <dt>Pourquoi pas une lettre tapée à l'ordinateur ?</dt>
-      <dd>Parce que ce n'est pas la même chose. Une page écrite à la main parle d'une présence ; une page tapée parle d'une information. Le tirage permet de garder la première sans renoncer à l'idée d'un abonnement.</dd>
+      <dd>Parce que ce n'est pas la même chose. Une page écrite à la main parle d'une présence ; une page tapée parle d'une information. Le tirage, suivi d'une signature manuscrite, permet de garder la première sans renoncer à l'idée d'un abonnement.</dd>
+
+      <dt>Quand part la première enveloppe ?</dt>
+      <dd>Toutes les enveloppes partent la deuxième semaine du mois. Si vous vous abonnez avant cette deuxième semaine, vous recevez l'enveloppe du mois en cours. Sinon, vous recevez celle du mois suivant.</dd>
 
       <dt>La photographie est-elle protégée dans l'enveloppe ?</dt>
       <dd>Elle voyage telle quelle, sans cadre. Tirée sur papier photo solide, format carte postale. Les enveloppes sont rigides : elle arrive bien.</dd>
 
-      <dt>Si la personne déménage ?</dt>
-      <dd>Vous m'écrivez, on change l'adresse pour l'envoi suivant.</dd>
+      <dt>Comment annuler ou modifier l'adresse ?</dt>
+      <dd>Depuis votre espace client Stripe. Le lien arrive avec votre confirmation de paiement et figure aussi sur chaque reçu. L'annulation y est immédiate ; la modification d'adresse prend effet dès l'envoi suivant.</dd>
 
       <dt>Et si la personne n'aime pas ?</dt>
-      <dd>Vous m'écrivez, je rembourse les mois qui n'ont pas été envoyés. Sans question.</dd>
-
-      <dt>Quand part la première enveloppe ?</dt>
-      <dd>Dans la quinzaine qui suit l'inscription. Pour les commandes faites entre le 1ᵉʳ et le 14 du mois, l'enveloppe part la deuxième quinzaine du même mois ; entre le 15 et la fin, elle part la première quinzaine du mois suivant.</dd>
+      <dd>L'abonnement s'annule à tout moment depuis votre espace client. Les enveloppes non envoyées sont remboursées. Sans question.</dd>
 
       <dt>Qui écrit, qui photographie ?</dt>
       <dd>Jordan Monnet. Français, installé à Séoul. La même personne tient l'atelier <a href="https://studiomonjo.com/">Studio Monjo</a>, dont Courrier de Séoul est une branche par voie postale.</dd>
