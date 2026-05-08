@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courrier de Séoul. Une lettre par mois, depuis la Corée.</title>
+<meta name="description" content="Un abonnement par voie postale. Chaque mois, une lettre et une photographie tirée, écrites et choisies à Séoul, expédiées en France. À offrir à quelqu'un pour qui le courrier compte encore.">
+<meta name="theme-color" content="#faf6ed">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://studiomonjo.com/courrier/">
+<link rel="alternate" hreflang="fr" href="https://studiomonjo.com/courrier/">
+
+<meta property="og:site_name" content="Courrier de Séoul">
+<meta property="og:title" content="Courrier de Séoul. Une lettre par mois, depuis la Corée.">
+<meta property="og:description" content="Un abonnement par voie postale. Chaque mois, une lettre et une photographie, écrites et choisies à Séoul, expédiées en France. 15 € par mois.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://studiomonjo.com/courrier/">
+<meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001463-2.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Courrier de Séoul",
+  "description": "Abonnement mensuel par voie postale. Chaque mois, une lettre et une photographie tirée, écrites et choisies à Séoul.",
+  "brand": { "@type": "Organization", "name": "Studio Monjo" },
+  "image": "https://studiomonjo.com/media/web/photography/L1001463-2.jpg",
+  "offers": {
+    "@type": "Offer",
+    "price": "15.00",
+    "priceCurrency": "EUR",
+    "url": "https://studiomonjo.com/courrier/",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+
+<style>
+  /* Courrier de Séoul — sub-brand styling, scoped to body.courrier */
+  :root {
+    --paper-warm: #faf6ed;
+    --paper-warm-soft: #f4ecda;
+    --ink-warm: #1a1816;
+    --ink-warm-mid: #4a4640;
+    --ink-warm-soft: #7a746a;
+    --ink-warm-light: #b3aca0;
+    --rule: #e6dfd0;
+    --seal: #b8231d;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --pad-x: clamp(24px, 6vw, 80px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body.courrier {
+    font-family: var(--serif);
+    font-weight: 300;
+    background: var(--paper-warm);
+    color: var(--ink-warm-mid);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body.courrier img { max-width: 100%; height: auto; display: block; }
+  body.courrier a { color: inherit; }
+  body.courrier :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
+
+  /* Discreet attribution top-bar — not a real nav, just a back-link */
+  .courrier-back {
+    padding: 18px var(--pad-x);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-warm-light);
+  }
+  .courrier-back a {
+    text-decoration: none;
+    color: var(--ink-warm-soft);
+    transition: color 0.2s;
+  }
+  .courrier-back a:hover { color: var(--ink-warm); }
+
+  /* Hero */
+  .courrier-hero {
+    padding: clamp(64px, 10vw, 144px) var(--pad-x) clamp(48px, 7vw, 96px);
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .courrier-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+  .courrier-eyebrow .seal {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--seal);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+  .courrier-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    color: var(--ink-warm);
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+  .courrier-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    line-height: 1.4;
+    color: var(--ink-warm-soft);
+    max-width: 620px;
+  }
+
+  /* Body sections */
+  .courrier-section {
+    padding: clamp(48px, 7vw, 96px) var(--pad-x);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .courrier-section--wide { max-width: 920px; }
+  .courrier-section + .courrier-section { padding-top: 0; }
+
+  .courrier-rule {
+    display: block;
+    width: clamp(40px, 8vw, 72px);
+    height: 1px;
+    background: var(--ink-warm-light);
+    margin: clamp(24px, 4vw, 40px) 0;
+    border: 0;
+  }
+
+  .courrier-h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink-warm);
+    margin-bottom: 24px;
+  }
+  .courrier-section p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.2em;
+  }
+  .courrier-section p:last-child { margin-bottom: 0; }
+  .courrier-section em { font-style: italic; color: var(--ink-warm); }
+
+  /* Two-column "what you receive" detail */
+  .courrier-pieces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 56px);
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 640px) { .courrier-pieces { grid-template-columns: 1fr; gap: 28px; } }
+  .courrier-piece-label {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 10px;
+  }
+  .courrier-piece-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--ink-warm);
+    margin-bottom: 8px;
+  }
+  .courrier-piece-body {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--ink-warm-mid);
+  }
+
+  /* Subscribe block */
+  .courrier-subscribe {
+    background: var(--paper-warm-soft);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+    text-align: center;
+  }
+  .courrier-subscribe-inner { max-width: 560px; margin: 0 auto; }
+  .courrier-price {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    color: var(--ink-warm);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .courrier-price-period {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 28px;
+  }
+  .courrier-cta {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper-warm);
+    background: var(--ink-warm);
+    border: 1px solid var(--ink-warm);
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .courrier-cta:hover, .courrier-cta:focus-visible {
+    background: transparent;
+    color: var(--ink-warm);
+    outline: none;
+  }
+  .courrier-fine {
+    margin-top: 22px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-warm-soft);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .courrier-footer {
+    padding: clamp(40px, 5vw, 64px) var(--pad-x);
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-warm-light);
+  }
+  .courrier-footer a {
+    color: var(--ink-warm-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .courrier-footer a:hover { color: var(--ink-warm); }
+  .courrier-footer-mark {
+    display: block;
+    width: 18px; height: 18px;
+    margin: 0 auto 12px;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body class="courrier">
+
+<header class="courrier-back">
+  <a href="https://studiomonjo.com/">&larr; Studio Monjo</a>
+</header>
+
+<main>
+
+  <section class="courrier-hero">
+    <div class="courrier-eyebrow"><span class="seal" aria-hidden="true"></span>Abonnement par voie postale</div>
+    <h1 class="courrier-title">Courrier de Séoul.</h1>
+    <p class="courrier-sub">Une lettre par mois, depuis la Corée. Pour quelqu'un pour qui le courrier compte encore.</p>
+  </section>
+
+  <section class="courrier-section">
+    <p>Il y a une boîte aux lettres que personne n'ouvre plus avec attention. Les factures, les prospectus, les rappels. Le courrier qui compte, lui, a presque disparu de la vie quotidienne. Pour ceux qui en avaient l'habitude, et qui ne l'ont plus, son absence est une chose qu'on remarque le matin.</p>
+
+    <p>Courrier de Séoul est un abonnement par voie postale. Chaque mois, une enveloppe arrive de Corée. À l'intérieur, une lettre écrite par une personne réelle qui vit à Séoul, et une photographie tirée sur papier, prise dans la ville le mois précédent. La lettre est en français. Elle parle de quelque chose qu'on a observé, lu, ressenti dans le mois qui vient de passer. La photographie n'illustre pas la lettre. Elle est de la même main, du même mois, du même endroit.</p>
+
+    <hr class="courrier-rule">
+
+    <h2 class="courrier-h2">Ce qui arrive chaque mois.</h2>
+    <p>Une lettre et une photographie. Ni plus, ni moins. Le format est constant, parce qu'on a confiance dans ce qu'il propose, et parce que l'attente d'une enveloppe régulière fait partie du plaisir.</p>
+
+    <div class="courrier-pieces">
+      <div class="courrier-piece">
+        <div class="courrier-piece-label">La lettre</div>
+        <p class="courrier-piece-title">Une page, signée et datée.</p>
+        <p class="courrier-piece-body">Imprimée sur papier. Le ton est celui d'une lettre, pas d'une newsletter. Le texte est court — une page suffit pour ce qui mérite d'être dit. Sujets variables : une observation, une lecture, une saison à Séoul, un détail qui n'aurait pas tenu dans une conversation rapide.</p>
+      </div>
+      <div class="courrier-piece">
+        <div class="courrier-piece-label">La photographie</div>
+        <p class="courrier-piece-title">Un tirage, format carte postale.</p>
+        <p class="courrier-piece-body">Prise dans le mois, à Séoul, par la même personne qui écrit la lettre. Tirée sur papier photo, glissée dans l'enveloppe. À garder, à encadrer, à punaiser, à oublier dans un livre.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="courrier-section">
+    <h2 class="courrier-h2">Pour qui.</h2>
+    <p>Le plus souvent, on l'offre à quelqu'un qu'on aime et qu'on ne voit pas assez. Un parent qui vieillit à l'autre bout du pays. Une grand-mère qui aimait correspondre. Un grand-père qui ouvre encore le journal en papier le matin. Quelqu'un pour qui une enveloppe dans la boîte aux lettres reste un événement de la journée, et qui en reçoit de moins en moins.</p>
+    <p>On peut aussi, plus rarement, l'offrir à soi-même, parce qu'on a envie de retrouver une raison d'attendre le facteur. Dans ce cas, l'abonnement est le même. La différence est l'adresse.</p>
+  </section>
+
+  <section class="courrier-subscribe">
+    <div class="courrier-subscribe-inner">
+      <div class="courrier-price">15 €</div>
+      <div class="courrier-price-period">par mois &middot; sans engagement</div>
+      <a href="mailto:hello@studiomonjo.com?subject=Courrier%20de%20S%C3%A9oul%20%E2%80%93%20inscription" class="courrier-cta">S'abonner par courriel</a>
+      <p class="courrier-fine">Pour offrir, on indique l'adresse postale du destinataire et l'on peut joindre quelques mots pour le premier envoi. Premier départ dans la quinzaine qui suit l'inscription. Expédié de Séoul vers la France métropolitaine ; pour d'autres adresses, écrire d'abord.</p>
+    </div>
+  </section>
+
+  <section class="courrier-section">
+    <h2 class="courrier-h2">Quelques détails.</h2>
+    <p><em>La lettre est-elle écrite à la main ?</em> Non. Elle est imprimée. À l'échelle d'un abonnement, l'écriture à la main n'est pas tenable, et l'on préfère l'honnêteté d'une page imprimée, signée, à la prétention d'une calligraphie. La voix, en revanche, est celle d'une lettre.</p>
+    <p><em>Et la photographie ?</em> Elle est tirée sur papier photo, format carte postale, sans cadre ni protection particulière. Une page, une image. Suffisamment robuste pour la poste, suffisamment soigné pour rester dans un livre ou sur un mur.</p>
+    <p><em>Combien de temps dure l'abonnement ?</em> Un mois, et ainsi de suite. On peut arrêter quand on veut, en écrivant un mot. On peut aussi offrir un abonnement de trois mois, six mois, douze mois ; il suffit de l'indiquer à l'inscription.</p>
+    <p><em>Qui écrit, qui photographie ?</em> Jordan Monnet, Français installé à Séoul. La même personne tient l'atelier <a href="https://studiomonjo.com/" rel="noopener">Studio Monjo</a>, dont Courrier de Séoul est une branche.</p>
+  </section>
+
+  <footer class="courrier-footer">
+    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="courrier-footer-mark" width="18" height="18">
+    Une création de <a href="https://studiomonjo.com/">Studio Monjo</a> &middot; Séoul
+  </footer>
+
+</main>
+
+</body>
+</html>
