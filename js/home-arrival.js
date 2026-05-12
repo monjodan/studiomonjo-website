@@ -64,22 +64,21 @@
       else location.href = href;
       return;
     }
-    // Inject paper veil overlay if not already present
-    var veil = document.querySelector('.home-arrival-veil');
-    if (!veil) {
-      veil = document.createElement('div');
-      veil.className = 'home-arrival-veil';
-      body.appendChild(veil);
-    }
+    // Drop any lingering hover-state class so :hover/.is-hovered rules don't
+    // fight the opening transform.
+    deactivateDoors();
     door.classList.add('is-opened');
     body.classList.add('is-opening');
-    var DURATION = 620;
+    // Force a reflow so the opening transition has a clean starting state
+    // separate from the just-mutated classList.
+    /* eslint-disable-next-line no-unused-expressions */
+    void door.offsetWidth;
+    var DURATION = 540;
     if (opensInNewTab) {
       window.open(href, '_blank', 'noopener');
       setTimeout(function () {
         door.classList.remove('is-opened');
         body.classList.remove('is-opening');
-        if (veil && veil.parentNode) veil.parentNode.removeChild(veil);
       }, DURATION);
     } else {
       setTimeout(function () { location.href = href; }, DURATION);
@@ -98,41 +97,43 @@
     });
   });
 
-  // --- 3. MOBILE AUTO-CYCLE -----------------------------------------------
-  if (isMobile && !prefersReducedMotion) {
-    var current = 0;
-    var cycleTimer = null;
-    function tickCycle() {
-      body.classList.remove('is-cycling-1', 'is-cycling-2', 'is-cycling-3');
-      bgs.forEach(function (bg) { bg.classList.remove('is-active'); });
-      current = (current % 3) + 1;
-      body.classList.add('is-cycling-' + current);
-      var bg = document.querySelector('.home-arrival-bg-' + current);
-      if (bg) bg.classList.add('is-active');
-    }
-    function startCycle() { tickCycle(); cycleTimer = setInterval(tickCycle, 4000); }
-    function stopCycle() {
-      if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
-      body.classList.remove('is-cycling-1', 'is-cycling-2', 'is-cycling-3');
-      bgs.forEach(function (bg) { bg.classList.remove('is-active'); });
-    }
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) stopCycle();
-      else if (!cycleTimer) startCycle();
+  // --- 3. MOBILE — entire door is the tap target ---------------------------
+  // Tapping anywhere on the door (outside the explicit buttons) navigates
+  // to the primary destination = first .home-arrival-door-actions a.
+  // No auto-cycle; nothing moves until you choose a door.
+  if (isMobile) {
+    doors.forEach(function (door) {
+      var primary = door.querySelector('.home-arrival-door-actions a');
+      if (!primary) return;
+      door.addEventListener('click', function (e) {
+        // Let real button taps go through; only synthesize a tap when the
+        // user clicked the door surface itself.
+        if (e.target.closest('.home-arrival-door-actions')) return;
+        if (e.target.closest('a, button')) return;
+        var href = primary.getAttribute('href');
+        if (!href) return;
+        e.preventDefault();
+        if (isExternal(primary)) {
+          window.open(href, '_blank', 'noopener');
+        } else {
+          openDoor(door, href, false);
+        }
+      });
+      door.style.cursor = 'pointer';
     });
-    setTimeout(startCycle, 200);
   }
 
   // --- 4. LANGUAGE TOGGLE PILL --------------------------------------------
   var langBox = document.getElementById('arrivalLang');
   var langBtn = document.getElementById('arrivalLangBtn');
-  var langAlt = langBox ? langBox.querySelector('.home-arrival-lang-alt') : null;
+  var langAlts = langBox ? langBox.querySelector('.home-arrival-lang-alts') : null;
+  var langAltLinks = langBox ? langBox.querySelectorAll('.home-arrival-lang-alt') : [];
   if (langBtn && langBox) {
     langBtn.addEventListener('click', function (e) {
       e.preventDefault();
       var open = langBox.classList.toggle('is-open');
       langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open && langAlt) langAlt.removeAttribute('hidden');
+      if (open && langAlts) langAlts.removeAttribute('hidden');
     });
     document.addEventListener('click', function (e) {
       if (langBox.classList.contains('is-open') && !langBox.contains(e.target)) {
@@ -147,11 +148,11 @@
         langBtn.focus();
       }
     });
-    if (langAlt) {
-      langAlt.addEventListener('click', function () {
-        try { localStorage.setItem('sm-lang', langAlt.getAttribute('lang') || 'en'); } catch (e) {}
+    Array.prototype.forEach.call(langAltLinks, function (link) {
+      link.addEventListener('click', function () {
+        try { localStorage.setItem('sm-lang', link.getAttribute('lang') || 'en'); } catch (e) {}
       });
-    }
+    });
   }
 
 })();

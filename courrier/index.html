@@ -110,22 +110,34 @@
   body.courrier :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
   body.courrier strong { font-weight: 500; color: var(--ink-warm); }
 
-  /* Top bar — discreet back to Studio Monjo */
-  .courrier-top {
-    padding: 22px var(--pad-x);
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-warm-light);
-  }
-  .courrier-top a {
+  /* Back-pill for the Courrier page — same shape as elsewhere on the site */
+  .courrier-back { position: fixed; top: 18px; left: 18px; z-index: 60; display: inline-block; }
+  .courrier-back a {
+    display: inline-block;
     text-decoration: none;
-    color: var(--ink-warm-soft);
-    transition: color 0.2s;
+    color: var(--ink-warm-mid);
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    background: rgba(250,246,237,0.82);
+    border: 0.5px solid rgba(26,24,22,0.10);
+    border-radius: 999px;
+    padding: 10px 16px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 2px rgba(26,24,22,0.05);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
-  .courrier-top a:hover { color: var(--ink-warm); }
+  .courrier-back a:hover, .courrier-back a:focus-visible {
+    color: var(--ink-warm);
+    background: rgba(250,246,237,0.98);
+    border-color: rgba(26,24,22,0.20);
+    outline: none;
+  }
+  @media (max-width: 700px) {
+    .courrier-back { top: calc(14px + env(safe-area-inset-top)); left: 14px; }
+    .courrier-back a { padding: 9px 13px; font-size: 10px; }
+  }
 
   /* Hero — typographic, no image */
   .courrier-hero {
@@ -498,7 +510,7 @@
 </head>
 <body class="courrier">
 
-<header class="courrier-top">
+<header class="courrier-back">
   <a href="https://studiomonjo.com/">&larr; Studio Monjo</a>
 </header>
 
