@@ -58,7 +58,10 @@
   <button type="button" class="home-arrival-lang-current" id="arrivalLangBtn" aria-haspopup="true" aria-expanded="false" aria-label="Switch language">
     <span>EN</span><span class="home-arrival-lang-caret" aria-hidden="true">&#9662;</span>
   </button>
-  <a href="/ko/" class="home-arrival-lang-alt" lang="ko" hidden>한국어</a>
+  <span class="home-arrival-lang-alts" hidden>
+    <a href="/ko/" class="home-arrival-lang-alt" lang="ko">한국어</a>
+    <a href="/courrier/" class="home-arrival-lang-alt" lang="fr">Français</a>
+  </span>
 </div>
 
 <!-- HOVER IMAGE LAYERS — full-bleed photo backgrounds, fade in on door hover/focus.
@@ -125,16 +128,18 @@
   <!-- DOOR 03 — Workshops -->
   <section class="home-arrival-door home-arrival-door-3" data-door="3" aria-labelledby="door3-title">
     <div class="home-arrival-door-inner">
+      <!-- Japanese stab-binding motif: folded sheaf with four stitches along the spine -->
       <svg class="home-arrival-door-mark" viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
-        <circle cx="17" cy="17" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/>
-        <circle cx="6.5" cy="17" r="1.4" fill="currentColor"/>
-        <circle cx="27.5" cy="17" r="1.4" fill="currentColor"/>
-        <circle cx="13" cy="17" r="1.4" fill="currentColor"/>
-        <circle cx="21" cy="17" r="1.4" fill="currentColor"/>
+        <rect x="9" y="5" width="16" height="24" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="12" y1="5" x2="12" y2="29" stroke="currentColor" stroke-width="0.6" opacity="0.5"/>
+        <line x1="9.5" y1="9.5" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="9.5" y1="14.5" x2="14.5" y2="14.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="9.5" y1="19.5" x2="14.5" y2="19.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="9.5" y1="24.5" x2="14.5" y2="24.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
       <div class="home-arrival-door-num">03</div>
       <h2 class="home-arrival-door-title" id="door3-title">Workshops</h2>
-      <p class="home-arrival-door-desc">Small gatherings to paint, fold, and write together &mdash; in Seoul, by invitation.</p>
+      <p class="home-arrival-door-desc">Small gatherings to paint, fold, and write together. In Seoul, by invitation.</p>
       <div class="home-arrival-door-actions">
         <a href="/en/workshops/" class="btn btn-ghost home-arrival-btn" aria-label="Learn more about the workshops">Learn more</a>
         <a href="/en/workshops/#register" class="btn btn-primary home-arrival-btn" aria-label="Sign up for the next workshop">Sign up</a>
