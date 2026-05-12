@@ -6,11 +6,10 @@
  *      works regardless of :has() support and regardless of DOM order.
  *   2. Mobile: tapping anywhere on a door (outside the explicit buttons)
  *      navigates to the door's primary destination.
- *   3. Language toggle pill (top-right).
  *
- * No door-open animation: links navigate natively, browser handles the
- * paint. Earlier attempts (scale + slide, cream veil) made the page feel
- * slow without paying off.
+ * Language pill behaviour is shared with the rest of the site and lives
+ * in /js/lang-pill.js. No door-open animation: links navigate natively,
+ * browser handles the paint.
  */
 (function () {
   var body = document.body;
@@ -77,36 +76,7 @@
     });
   }
 
-  // --- 3. LANGUAGE TOGGLE PILL --------------------------------------------
-  var langBox = document.getElementById('arrivalLang');
-  var langBtn = document.getElementById('arrivalLangBtn');
-  var langAlts = langBox ? langBox.querySelector('.home-arrival-lang-alts') : null;
-  var langAltLinks = langBox ? langBox.querySelectorAll('.home-arrival-lang-alt') : [];
-  if (langBtn && langBox) {
-    langBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      var open = langBox.classList.toggle('is-open');
-      langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open && langAlts) langAlts.removeAttribute('hidden');
-    });
-    document.addEventListener('click', function (e) {
-      if (langBox.classList.contains('is-open') && !langBox.contains(e.target)) {
-        langBox.classList.remove('is-open');
-        langBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && langBox.classList.contains('is-open')) {
-        langBox.classList.remove('is-open');
-        langBtn.setAttribute('aria-expanded', 'false');
-        langBtn.focus();
-      }
-    });
-    Array.prototype.forEach.call(langAltLinks, function (link) {
-      link.addEventListener('click', function () {
-        try { localStorage.setItem('sm-lang', link.getAttribute('lang') || 'en'); } catch (e) {}
-      });
-    });
-  }
+  // Language pill behaviour lives in /js/lang-pill.js (shared across the
+  // homepage and every inner page).
 
 })();

@@ -1540,58 +1540,8 @@ body.home-arrival {
 }
 .home-arrival-logo-word { color: var(--ink); }
 
-.home-arrival-lang {
-  position: fixed; top: 14px; right: 18px; z-index: 60;
-  font-family: var(--sans);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  display: inline-flex; align-items: center; gap: 4px;
-  background: rgba(255,255,255,0.7);
-  border: 0.5px solid rgba(10,10,10,0.12);
-  border-radius: 999px;
-  padding: 8px 14px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-.home-arrival-lang-current {
-  background: none; border: none; cursor: pointer;
-  color: var(--ink); font: inherit; letter-spacing: inherit; text-transform: inherit;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 0;
-}
-.home-arrival-lang-caret { color: var(--ink-light); font-size: 9px; transition: transform 0.2s; }
-.home-arrival-lang.is-open .home-arrival-lang-caret { transform: rotate(180deg); }
-.home-arrival-lang-alts {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  border-left: 0.5px solid rgba(10,10,10,0.12);
-  padding-left: 10px;
-  margin-left: 6px;
-}
-.home-arrival-lang-alts[hidden] { display: none; }
-.home-arrival-lang.is-open .home-arrival-lang-alts { display: inline-flex; }
-.home-arrival-lang-alt {
-  text-decoration: none;
-  color: var(--ink);
-  padding: 2px 8px;
-  border-radius: 999px;
-  transition: background 0.15s, color 0.15s;
-}
-.home-arrival-lang-alt + .home-arrival-lang-alt {
-  border-left: 0.5px solid rgba(10,10,10,0.12);
-  margin-left: 4px;
-  padding-left: 10px;
-  border-radius: 0 999px 999px 0;
-}
-.home-arrival-lang-alt:hover, .home-arrival-lang-alt:focus-visible {
-  background: rgba(10,10,10,0.04);
-  color: var(--ink);
-  outline: none;
-}
-/* Corner container that holds the social pill + lang pill side by side.
-   When .home-arrival-lang is inside .home-arrival-corner, drop its fixed
-   positioning so the corner handles layout. */
+/* Homepage corner container — small overrides on top of .page-corner for
+   the doors landing (different z-index and slightly higher position). */
 .home-arrival-corner {
   position: fixed;
   top: 14px; right: 18px;
@@ -1600,75 +1550,9 @@ body.home-arrival {
   align-items: center;
   gap: 8px;
 }
-.home-arrival-corner .home-arrival-lang {
-  position: static; top: auto; right: auto;
-}
-
-.home-arrival-social {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(255,255,255,0.7);
-  border: 0.5px solid rgba(10,10,10,0.12);
-  border-radius: 999px;
-  padding: 4px 6px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-.home-arrival-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px; height: 26px;
-  border-radius: 999px;
-  color: var(--ink-mid);
-  text-decoration: none;
-  transition: color 0.15s, background 0.15s;
-}
-.home-arrival-social a + a { margin-left: 2px; }
-.home-arrival-social a:hover, .home-arrival-social a:focus-visible {
-  color: var(--ink);
-  background: rgba(10,10,10,0.05);
-  outline: none;
-}
-.home-arrival-social svg { display: block; }
-
 @media (max-width: 900px) {
   .home-arrival-logo { top: calc(18px + env(safe-area-inset-top)); }
-  .home-arrival-lang { top: calc(14px + env(safe-area-inset-top)); }
-  .home-arrival-corner { top: calc(14px + env(safe-area-inset-top)); }
-  /* Mobile: dropdown opens DOWNWARD as a vertical stack so the open pill
-     never has to fight the logo for horizontal real estate. */
-  .home-arrival-lang.is-open {
-    flex-direction: column;
-    align-items: stretch;
-    border-radius: 18px;
-    padding: 8px 10px 6px;
-  }
-  .home-arrival-lang.is-open .home-arrival-lang-alts {
-    flex-direction: column;
-    align-items: stretch;
-    border-left: none;
-    border-top: 0.5px solid rgba(10,10,10,0.12);
-    margin: 6px 0 0;
-    padding: 6px 0 0;
-    gap: 0;
-  }
-  .home-arrival-lang.is-open .home-arrival-lang-alt {
-    padding: 6px 4px;
-    text-align: center;
-    border-radius: 6px;
-  }
-  .home-arrival-lang.is-open .home-arrival-lang-alt + .home-arrival-lang-alt {
-    border-left: none;
-    margin-left: 0;
-    padding-left: 4px;
-    border-radius: 6px;
-    border-top: 0.5px solid rgba(10,10,10,0.06);
-    margin-top: 2px;
-  }
-  /* Inside the corner container on mobile, align social + lang to top so
-     the lang pill can grow downward without nudging the social icons. */
-  .home-arrival-corner { align-items: flex-start; }
+  .home-arrival-corner { top: calc(14px + env(safe-area-inset-top)); align-items: flex-start; }
 }
 
 /* BACKGROUND IMAGE STACK — full-bleed photos, fade in on door hover/focus */
@@ -1884,28 +1768,16 @@ body.page-min {
   padding-top: 0; /* override default body { padding-top: var(--nav-h); } */
 }
 
-/* Floating pills.
-   .page-back: the pill IS the <a> (single link, full-surface clickability).
-   .page-lang: the pill is the wrapping <div>, with multiple <a> inside
-   separated by a faint dot. Each <a> is its own hit target but they live
-   inside one visual pill. */
-.page-back, .page-lang {
-  position: fixed; top: 18px;
+/* CHROME PILLS — back arrow, social buttons, language dropdown.
+   Each chrome control is its own pill so the row reads as discrete
+   buttons. .page-corner is the flex wrapper that holds them on the
+   right; .page-back stands alone on the left. */
+
+/* Back-arrow pill (left). Pill IS the link for full-surface clickability. */
+.page-back {
+  position: fixed; top: 18px; left: 18px;
   z-index: 70;
-}
-.page-back { left: 18px; display: inline-block; }
-.page-lang {
-  right: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  background: rgba(255,255,255,0.78);
-  border: 0.5px solid rgba(10,10,10,0.10);
-  border-radius: 999px;
-  padding: 4px 6px;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 1px 2px rgba(10,10,10,0.04);
+  display: inline-block;
 }
 .page-back a {
   display: inline-block;
@@ -1923,98 +1795,146 @@ body.page-min {
   box-shadow: 0 1px 2px rgba(10,10,10,0.04);
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.page-lang a {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--ink-mid);
-  font-family: var(--sans);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  padding: 6px 10px;
-  border-radius: 999px;
-  transition: background 0.2s, color 0.2s;
-}
-.page-lang span {
-  color: var(--ink-light);
-  font-family: var(--sans);
-  font-size: 10px;
-  user-select: none;
-}
 .page-back a:hover, .page-back a:focus-visible {
   color: var(--ink);
   background: rgba(255,255,255,0.95);
   border-color: rgba(10,10,10,0.18);
   outline: none;
 }
-.page-lang a:hover, .page-lang a:focus-visible {
-  color: var(--ink);
-  background: rgba(10,10,10,0.04);
-  outline: none;
-}
 
-@media (max-width: 700px) {
-  .page-back, .page-lang { top: calc(14px + env(safe-area-inset-top)); }
-  .page-back { left: 14px; } .page-lang { right: 14px; padding: 3px 5px; }
-  .page-back a { padding: 9px 13px; font-size: 10px; }
-  .page-lang a { padding: 5px 8px; font-size: 10px; }
-}
-
-/* SOCIAL PILL — small icon-only pill that lives next to .page-lang.
-   When .page-lang is wrapped in .page-corner alongside .page-social,
-   we drop their individual fixed positioning so the corner container
-   handles layout. .page-social can also stand alone (e.g. on Courrier
-   which has no language switcher). */
+/* Right-corner container — flex wrapper for [social-btn] [social-btn] [lang]. */
 .page-corner {
   position: fixed;
   top: 18px; right: 18px;
   z-index: 70;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-.page-corner .page-lang,
-.page-corner .page-social {
-  position: static;
-  top: auto; right: auto;
+  gap: 6px;
 }
 
-.page-social {
-  position: fixed; top: 18px; right: 18px;
-  z-index: 70;
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-  background: rgba(255,255,255,0.78);
-  border: 0.5px solid rgba(10,10,10,0.10);
-  border-radius: 999px;
-  padding: 4px 6px;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 1px 2px rgba(10,10,10,0.04);
-}
-.page-social a {
+/* Standalone round social buttons. One pill each. Chrome matches the
+   back-arrow pill so the whole row reads as a single button language. */
+.page-social-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px; height: 26px;
+  width: 36px; height: 36px;
   border-radius: 999px;
+  background: rgba(255,255,255,0.78);
+  border: 0.5px solid rgba(10,10,10,0.10);
   color: var(--ink-mid);
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(10,10,10,0.04);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.page-social a + a { margin-left: 2px; }
-.page-social a:hover, .page-social a:focus-visible {
+.page-social-btn:hover, .page-social-btn:focus-visible {
   color: var(--ink);
-  background: rgba(10,10,10,0.05);
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(10,10,10,0.18);
   outline: none;
 }
-.page-social svg { display: block; }
+.page-social-btn svg { display: block; }
+
+/* Language dropdown pill — collapses to "EN ▾" / "한국어 ▾", expands to
+   reveal alternates inside the same pill (or as a vertical stack on
+   mobile). One markup + one set of styles, used everywhere. */
+.page-lang {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,0.78);
+  border: 0.5px solid rgba(10,10,10,0.10);
+  border-radius: 999px;
+  padding: 8px 14px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(10,10,10,0.04);
+  transition: background 0.2s, border-color 0.2s;
+}
+.page-lang:hover {
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(10,10,10,0.18);
+}
+.page-lang-current {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink); font: inherit; letter-spacing: inherit; text-transform: inherit;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0;
+}
+.page-lang-caret {
+  color: var(--ink-light); font-size: 9px;
+  transition: transform 0.2s;
+}
+.page-lang.is-open .page-lang-caret { transform: rotate(180deg); }
+.page-lang-alts {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-left: 0.5px solid rgba(10,10,10,0.12);
+  padding-left: 10px;
+  margin-left: 6px;
+}
+.page-lang-alts[hidden] { display: none; }
+.page-lang.is-open .page-lang-alts { display: inline-flex; }
+.page-lang-alt {
+  text-decoration: none;
+  color: var(--ink);
+  padding: 2px 8px;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
+}
+.page-lang-alt + .page-lang-alt {
+  border-left: 0.5px solid rgba(10,10,10,0.12);
+  margin-left: 4px;
+  padding-left: 10px;
+  border-radius: 0 999px 999px 0;
+}
+.page-lang-alt:hover, .page-lang-alt:focus-visible {
+  background: rgba(10,10,10,0.04);
+  color: var(--ink);
+  outline: none;
+}
 
 @media (max-width: 700px) {
-  .page-corner { top: calc(14px + env(safe-area-inset-top)); right: 14px; gap: 6px; }
-  .page-social { top: calc(14px + env(safe-area-inset-top)); right: 14px; padding: 3px 4px; }
-  .page-social a { width: 24px; height: 24px; }
-  .page-social svg { width: 13px; height: 13px; }
+  .page-back { top: calc(14px + env(safe-area-inset-top)); left: 14px; }
+  .page-back a { padding: 9px 13px; font-size: 10px; }
+  .page-corner { top: calc(14px + env(safe-area-inset-top)); right: 14px; gap: 5px; align-items: flex-start; }
+  .page-social-btn { width: 32px; height: 32px; }
+  .page-social-btn svg { width: 13px; height: 13px; }
+  .page-lang { padding: 7px 12px; font-size: 10px; }
+  /* Mobile: dropdown opens DOWNWARD as a vertical stack so the open pill
+     never has to fight the social buttons for horizontal real estate. */
+  .page-lang.is-open {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 18px;
+    padding: 8px 10px 6px;
+  }
+  .page-lang.is-open .page-lang-alts {
+    flex-direction: column;
+    align-items: stretch;
+    border-left: none;
+    border-top: 0.5px solid rgba(10,10,10,0.12);
+    margin: 6px 0 0;
+    padding: 6px 0 0;
+    gap: 0;
+  }
+  .page-lang.is-open .page-lang-alt {
+    padding: 6px 4px;
+    text-align: center;
+    border-radius: 6px;
+  }
+  .page-lang.is-open .page-lang-alt + .page-lang-alt {
+    border-left: none;
+    margin-left: 0;
+    padding-left: 4px;
+    border-radius: 6px;
+    border-top: 0.5px solid rgba(10,10,10,0.06);
+    margin-top: 2px;
+  }
 }
 
 /* Minimal footer — Studio Monjo mark + city + year, centered */
