@@ -58,22 +58,35 @@
     var h = a.getAttribute('href') || '';
     return /^https?:\/\//.test(h) && h.indexOf(location.hostname) === -1;
   }
+  // Inject the cream-paper veil once, lazily. Lives at the top of <body> so
+  // it sits above everything (its own z-index also covers it).
+  function ensureVeil() {
+    var v = document.querySelector('.home-arrival-veil');
+    if (v) return v;
+    v = document.createElement('div');
+    v.className = 'home-arrival-veil';
+    v.setAttribute('aria-hidden', 'true');
+    body.appendChild(v);
+    return v;
+  }
+
   function openDoor(door, href, opensInNewTab) {
     if (prefersReducedMotion) {
       if (opensInNewTab) window.open(href, '_blank', 'noopener');
       else location.href = href;
       return;
     }
-    // Drop any lingering hover-state class so :hover/.is-hovered rules don't
-    // fight the opening transform.
+    // Drop any lingering hover-state class so :hover/.is-hovered rules
+    // don't fight the opening transition.
     deactivateDoors();
+    ensureVeil();
     door.classList.add('is-opened');
     body.classList.add('is-opening');
     // Force a reflow so the opening transition has a clean starting state
     // separate from the just-mutated classList.
     /* eslint-disable-next-line no-unused-expressions */
     void door.offsetWidth;
-    var DURATION = 540;
+    var DURATION = 460;
     if (opensInNewTab) {
       window.open(href, '_blank', 'noopener');
       setTimeout(function () {
