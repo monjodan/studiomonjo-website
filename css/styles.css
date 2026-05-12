@@ -1817,86 +1817,54 @@ body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) .home-arrival-
   .home-arrival-door, .home-arrival-page { transition: none !important; }
 }
 
-/* DOOR-OPEN ANIMATION
-   The chosen door swells toward you and bleeds into a cream sheet that fills
-   the viewport (matching the destination pages). The other two doors slide
-   off-screen and fade. ~520ms total, then navigate.
-
-   Hover-state rules use !important; we beat them by also using !important
-   here AND by raising specificity (body.home-arrival.is-opening .door...).
-   `pointer-events: none` plus removing the hover-state class keeps the
-   browser from re-applying :hover transforms mid-animation. */
+/* DOOR-OPEN ANIMATION — calm and paper-like.
+   Everything fades. The chosen door's content fades out, the page fills
+   with a cream wash (matching the destination), then we navigate. No
+   scaling, no sliding — those felt clanky because the SVGs and text
+   transformed along with the door. Pure opacity = silk-smooth.
+   ~480ms total. */
 body.home-arrival.is-opening { overflow: hidden; }
 
+body.home-arrival .home-arrival-veil {
+  position: fixed; inset: 0;
+  background: #faf6ed;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
+  transition: opacity 380ms cubic-bezier(0.4, 0, 0.2, 1) 60ms;
+}
+body.home-arrival.is-opening .home-arrival-veil {
+  opacity: 1;
+}
+
+/* Doors: fade their inner content out so the photograph + cream wash take
+   over. Door surfaces themselves stay put — no transform jank. */
 body.home-arrival.is-opening .home-arrival-door {
-  transition: opacity 280ms ease,
-              transform 520ms cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 360ms ease;
   pointer-events: none !important;
-  will-change: opacity, transform;
-  transform-origin: center center;
+  transition: background-color 280ms ease;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
-
-/* Non-chosen doors: slide out of frame and fade. Override hover bg. */
-body.home-arrival.is-opening .home-arrival-door:not(.is-opened) {
-  background: rgba(255,255,255,0) !important;
+body.home-arrival.is-opening .home-arrival-door .home-arrival-door-inner {
   opacity: 0 !important;
-}
-body.home-arrival.is-opening .home-arrival-door-1:not(.is-opened) {
-  transform: translateX(-100%) scale(0.85) !important;
-}
-body.home-arrival.is-opening .home-arrival-door-3:not(.is-opened) {
-  transform: translateX(100%) scale(0.85) !important;
-}
-body.home-arrival.is-opening .home-arrival-door-2:not(.is-opened) {
-  transform: scale(0.65) !important;
+  transform: translateY(-6px) !important;
+  transition: opacity 220ms ease, transform 320ms ease;
 }
 
-/* Chosen door: turn cream paper (matching the destination page background),
-   scale up dramatically, raise above others. Origin set per-door so the
-   side doors expand from their outer edge inward (reads as the door
-   swinging toward you); middle scales from center. */
-body.home-arrival.is-opening .home-arrival-door.is-opened {
-  background: #faf6ed !important;
-  opacity: 1 !important;
-  z-index: 50;
-  box-shadow: 0 18px 80px rgba(10,10,10,0.18);
-  transform: scale(2) !important;
-}
-body.home-arrival.is-opening .home-arrival-door-1.is-opened {
-  transform-origin: 0% 50%;
-}
-body.home-arrival.is-opening .home-arrival-door-3.is-opened {
-  transform-origin: 100% 50%;
-}
-body.home-arrival.is-opening .home-arrival-door-2.is-opened {
-  transform-origin: 50% 50%;
-}
-
-/* Inner content: fade out as the door becomes the next page */
-body.home-arrival.is-opening .home-arrival-door.is-opened .home-arrival-door-inner {
-  opacity: 0 !important;
-  transform: scale(0.6) !important;
-  transition: opacity 320ms ease 60ms, transform 480ms ease 40ms;
-}
-
-/* Hide floating chrome and bg stack during the transition */
+/* Hide floating chrome (logo + lang pill) during the transition */
 body.home-arrival.is-opening .home-arrival-logo,
-body.home-arrival.is-opening .home-arrival-lang,
-body.home-arrival.is-opening .home-arrival-bg-stack {
+body.home-arrival.is-opening .home-arrival-lang {
   opacity: 0 !important;
   transition: opacity 200ms ease;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body.home-arrival .home-arrival-veil,
   body.home-arrival.is-opening .home-arrival-door,
   body.home-arrival.is-opening .home-arrival-door-inner,
   body.home-arrival.is-opening .home-arrival-logo,
-  body.home-arrival.is-opening .home-arrival-lang,
-  body.home-arrival.is-opening .home-arrival-bg-stack { transition: none !important; transform: none !important; }
+  body.home-arrival.is-opening .home-arrival-lang { transition: none !important; transform: none !important; }
 }
 
 /* ================================================================
