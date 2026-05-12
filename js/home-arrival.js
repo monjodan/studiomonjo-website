@@ -73,7 +73,7 @@
     }
     door.classList.add('is-opened');
     body.classList.add('is-opening');
-    var DURATION = 480;
+    var DURATION = 620;
     if (opensInNewTab) {
       window.open(href, '_blank', 'noopener');
       setTimeout(function () {
@@ -82,7 +82,7 @@
         if (veil && veil.parentNode) veil.parentNode.removeChild(veil);
       }, DURATION);
     } else {
-      setTimeout(function () { location.href = href; }, DURATION - 80);
+      setTimeout(function () { location.href = href; }, DURATION);
     }
   }
   doors.forEach(function (door) {

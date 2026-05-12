@@ -1683,25 +1683,35 @@ body.home-arrival:has(.home-arrival-door-2:focus-within) .home-arrival-bg-2 { op
 body.home-arrival:has(.home-arrival-door-3:hover) .home-arrival-bg-3,
 body.home-arrival:has(.home-arrival-door-3:focus-within) .home-arrival-bg-3 { opacity: 1; }
 
-/* When ANY door is hovered/focused: non-hovered doors get more opaque + blur,
-   hovered door becomes translucent so the bg shows through clearly. */
+/* When ANY door is hovered/focused: the hovered door stays readable
+   (mostly opaque white over its bg image), and the OTHER two fade so
+   the focused door is the clear subject. */
 body.home-arrival:has(.home-arrival-door:hover) .home-arrival-door:not(:hover),
 body.home-arrival:has(.home-arrival-door:focus-within) .home-arrival-door:not(:focus-within),
 body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) {
-  background: rgba(255,255,255,0.82);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  background: rgba(255,255,255,0.32);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+}
+body.home-arrival:has(.home-arrival-door:hover) .home-arrival-door:not(:hover) .home-arrival-door-inner,
+body.home-arrival:has(.home-arrival-door:focus-within) .home-arrival-door:not(:focus-within) .home-arrival-door-inner,
+body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) .home-arrival-door-inner {
+  opacity: 0.4;
+  transition: opacity 360ms ease;
 }
 .home-arrival-door:hover,
 .home-arrival-door:focus-within,
 .home-arrival-door.is-hovered {
-  background: rgba(255,255,255,0.20) !important;
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  background: rgba(255,255,255,0.92) !important;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 .home-arrival-door:hover .home-arrival-door-inner,
 .home-arrival-door:focus-within .home-arrival-door-inner,
-.home-arrival-door.is-hovered .home-arrival-door-inner { transform: translateY(-4px); }
+.home-arrival-door.is-hovered .home-arrival-door-inner {
+  transform: translateY(-4px);
+  opacity: 1;
+}
 
 /* MOBILE — stack vertically, auto-cycle backgrounds */
 @media (max-width: 900px) {
@@ -1743,45 +1753,71 @@ body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) {
   .home-arrival-door, .home-arrival-page { transition: none !important; }
 }
 
-/* DOOR-OPEN ANIMATION — smooth, no layout jumps. The chosen door scales
-   up slightly and fades; the other two fade and shrink in place; then a
-   paper veil rises from the floor. Total ~480ms before navigation. */
+/* DOOR-OPEN ANIMATION — clearly visible: the chosen door grows toward
+   the viewer (1.0 → 1.18) and brightens to white; the other two fade
+   and slide outward (left/right or shrink); a paper veil rises behind
+   everything. Total ~620ms before navigation. */
 body.home-arrival.is-opening .home-arrival-door {
-  transition: opacity 380ms ease, transform 380ms cubic-bezier(0.6, 0, 0.4, 1);
+  transition: opacity 480ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 560ms cubic-bezier(0.4, 0, 0.2, 1),
+              background 380ms ease;
   pointer-events: none;
+  will-change: opacity, transform;
+  transform-origin: center center;
 }
-body.home-arrival.is-opening .home-arrival-door:not(.is-opened) {
+/* Door 1 (left) slides out left; Door 3 (right) slides out right;
+   Door 2 (middle) just shrinks in place. */
+body.home-arrival.is-opening .home-arrival-door-1:not(.is-opened) {
   opacity: 0;
-  transform: scale(0.94);
+  transform: translateX(-40%) scale(0.85);
 }
+body.home-arrival.is-opening .home-arrival-door-3:not(.is-opened) {
+  opacity: 0;
+  transform: translateX(40%) scale(0.85);
+}
+body.home-arrival.is-opening .home-arrival-door-2:not(.is-opened) {
+  opacity: 0;
+  transform: scale(0.78);
+}
+/* The chosen door grows visibly toward the viewer */
 body.home-arrival.is-opening .home-arrival-door.is-opened {
-  opacity: 0.92;
-  transform: scale(1.04);
+  background: rgba(255,255,255,0.96) !important;
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  transform: scale(1.18);
+  opacity: 1;
+  z-index: 30;
 }
-/* Hide the floating chrome and the bg stack during the transition */
+body.home-arrival.is-opening .home-arrival-door.is-opened .home-arrival-door-inner {
+  transform: translateY(-12px);
+  transition: transform 560ms cubic-bezier(0.4, 0, 0.2, 1), opacity 320ms ease 200ms;
+  opacity: 0.6;
+}
+/* Hide floating chrome and the bg stack during the transition */
 body.home-arrival.is-opening .home-arrival-logo,
 body.home-arrival.is-opening .home-arrival-lang,
 body.home-arrival.is-opening .home-arrival-bg-stack {
   opacity: 0;
-  transition: opacity 280ms ease;
+  transition: opacity 320ms ease;
   pointer-events: none;
 }
-/* Paper veil — overlay added by JS, fades in over the whole page */
+/* Paper veil — full-bleed overlay, fades in late so the door movement reads first */
 .home-arrival-veil {
-  position: fixed; inset: 0; z-index: 40;
+  position: fixed; inset: 0; z-index: 50;
   background: var(--paper);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 380ms ease;
+  transition: opacity 320ms ease 240ms;
 }
 body.home-arrival.is-opening .home-arrival-veil { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   body.home-arrival.is-opening .home-arrival-door,
+  body.home-arrival.is-opening .home-arrival-door-inner,
   body.home-arrival.is-opening .home-arrival-logo,
   body.home-arrival.is-opening .home-arrival-lang,
   body.home-arrival.is-opening .home-arrival-bg-stack,
-  .home-arrival-veil { transition: none !important; }
+  .home-arrival-veil { transition: none !important; transform: none !important; }
 }
 
 /* ================================================================
@@ -1798,37 +1834,42 @@ body.page-min {
   padding-top: 0; /* override default body { padding-top: var(--nav-h); } */
 }
 
-/* Floating pills — both visible at all times, surfaced as UI elements */
+/* Floating pills — pill IS the link, so the entire surface is clickable */
 .page-back, .page-lang {
   position: fixed; top: 18px;
   z-index: 70;
+  display: inline-block;
+}
+.page-back { left: 18px; }
+.page-lang { right: 18px; }
+.page-back a, .page-lang a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--ink-mid);
   font-family: var(--sans);
   font-size: 11px; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
   background: rgba(255,255,255,0.78);
   border: 0.5px solid rgba(10,10,10,0.10);
   border-radius: 999px;
-  padding: 9px 16px;
+  padding: 10px 16px;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   box-shadow: 0 1px 2px rgba(10,10,10,0.04);
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-}
-.page-back { left: 18px; }
-.page-lang { right: 18px; }
-.page-back a, .page-lang a {
-  text-decoration: none;
-  color: var(--ink-mid);
-  display: inline-flex; align-items: center;
-  transition: color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .page-back a:hover, .page-lang a:hover,
-.page-back a:focus-visible, .page-lang a:focus-visible { color: var(--ink); outline: none; }
-.page-back:hover, .page-lang:hover { background: rgba(255,255,255,0.95); border-color: rgba(10,10,10,0.18); }
+.page-back a:focus-visible, .page-lang a:focus-visible {
+  color: var(--ink);
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(10,10,10,0.18);
+  outline: none;
+}
 
 @media (max-width: 700px) {
-  .page-back, .page-lang { top: calc(14px + env(safe-area-inset-top)); padding: 8px 13px; font-size: 10px; }
+  .page-back, .page-lang { top: calc(14px + env(safe-area-inset-top)); }
   .page-back { left: 14px; } .page-lang { right: 14px; }
+  .page-back a, .page-lang a { padding: 9px 13px; font-size: 10px; }
 }
 
 /* Minimal footer — Studio Monjo mark + city + year, centered */
