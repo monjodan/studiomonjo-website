@@ -48,14 +48,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- LOADING LAYER (first visit only; gated by localStorage 'sm-arrival-seen') -->
-<div class="home-arrival-loading" id="arrivalLoading" aria-hidden="true">
-  <div class="home-arrival-loading-inner">
-    <div class="home-arrival-loading-mark" aria-hidden="true"></div>
-    <p class="home-arrival-loading-line"><em>welcome to my world,</em></p>
-  </div>
-</div>
-
 <!-- FLOATING CHROME -->
 <a href="/" class="home-arrival-logo" aria-label="Studio Monjo home">
   <span class="home-arrival-logo-mark" aria-hidden="true"></span>
@@ -69,25 +61,26 @@
   <a href="/ko/" class="home-arrival-lang-alt" lang="ko" hidden>한국어</a>
 </div>
 
-<!-- HOVER VIDEO LAYERS — full-bleed, fade in when corresponding door is hovered/focused -->
+<!-- HOVER IMAGE LAYERS — full-bleed photo backgrounds, fade in on door hover/focus.
+     Uses existing studio photography until proper hover videos are shot. -->
 <div class="home-arrival-bg-stack" aria-hidden="true">
   <div class="home-arrival-bg home-arrival-bg-1" data-bg="1">
-    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
-      data-src-mp4="/media/web/home-arrival/door-01-courrier.mp4"
-      data-src-webm="/media/web/home-arrival/door-01-courrier.webm"
-      poster="/media/web/home-arrival/door-01-courrier.jpg"></video>
+    <picture>
+      <source srcset="/media/web/photography/L1001446-2.webp" type="image/webp">
+      <img src="/media/web/photography/L1001446-2.jpg" alt="" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="home-arrival-bg home-arrival-bg-2" data-bg="2">
-    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
-      data-src-mp4="/media/web/home-arrival/door-02-notebooks.mp4"
-      data-src-webm="/media/web/home-arrival/door-02-notebooks.webm"
-      poster="/media/web/home-arrival/door-02-notebooks.jpg"></video>
+    <picture>
+      <source srcset="/media/web/photography/L1001438.webp" type="image/webp">
+      <img src="/media/web/photography/L1001438.jpg" alt="" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="home-arrival-bg home-arrival-bg-3" data-bg="3">
-    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
-      data-src-mp4="/media/web/home-arrival/door-03-workshops.mp4"
-      data-src-webm="/media/web/home-arrival/door-03-workshops.webm"
-      poster="/media/web/home-arrival/door-03-workshops.jpg"></video>
+    <picture>
+      <source srcset="/media/web/photography/L1001456.webp" type="image/webp">
+      <img src="/media/web/photography/L1001456.jpg" alt="" loading="lazy" decoding="async">
+    </picture>
   </div>
 </div>
 

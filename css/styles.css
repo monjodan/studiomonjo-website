@@ -1523,38 +1523,6 @@ body.home-arrival {
   height: 100vh;
 }
 
-/* LOADING LAYER */
-.home-arrival-loading {
-  position: fixed; inset: 0; z-index: 1000;
-  background: #fdfcf7;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 1;
-  transition: opacity 800ms ease;
-}
-.home-arrival-loading.is-fading { opacity: 0; pointer-events: none; }
-.home-arrival-loading.is-skipped { display: none; }
-.home-arrival-loading-inner { text-align: center; }
-.home-arrival-loading-mark {
-  width: 18px; height: 18px;
-  border: 1.4px solid var(--ink);
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  opacity: 0;
-  animation: home-arrival-mark-in 600ms ease 200ms forwards;
-}
-.home-arrival-loading-line {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 17px;
-  color: var(--ink-mid);
-  opacity: 0;
-  animation: home-arrival-line-in 700ms ease 500ms forwards;
-}
-.home-arrival-loading-line em { font-style: italic; }
-@keyframes home-arrival-mark-in { to { opacity: 1; } }
-@keyframes home-arrival-line-in { to { opacity: 1; } }
-
 /* FLOATING CHROME — logo + lang */
 .home-arrival-logo {
   position: fixed; top: 18px; left: 22px; z-index: 60;
@@ -1609,7 +1577,7 @@ body.home-arrival {
   .home-arrival-lang { top: calc(14px + env(safe-area-inset-top)); }
 }
 
-/* BACKGROUND VIDEO STACK — full-bleed, fades in on door hover/focus */
+/* BACKGROUND IMAGE STACK — full-bleed photos, fade in on door hover/focus */
 .home-arrival-bg-stack {
   position: fixed; inset: 0; z-index: 1;
   pointer-events: none;
@@ -1617,16 +1585,20 @@ body.home-arrival {
 .home-arrival-bg {
   position: absolute; inset: 0;
   opacity: 0;
-  transition: opacity 550ms ease;
+  transition: opacity 700ms ease;
+  overflow: hidden;
 }
 .home-arrival-bg-1 { background: #fbf3e3; }
 .home-arrival-bg-2 { background: #fefcf6; }
 .home-arrival-bg-3 { background: #ece7d6; }
-.home-arrival-bg-video {
+.home-arrival-bg picture, .home-arrival-bg img, .home-arrival-bg video {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1.04);
+  transition: transform 4s ease-out;
 }
+.home-arrival-bg.is-active img, .home-arrival-bg.is-active video { transform: scale(1); }
 
 /* DOORS — three equal vertical columns */
 .home-arrival-page {
@@ -1767,10 +1739,132 @@ body.home-arrival.is-hovering-3 .home-arrival-bg-3 { opacity: 1; }
   }
 }
 
-/* REDUCED MOTION — no loading animation, no door nudge, no video */
+/* REDUCED MOTION — no door nudge, no zoom, no door-open animation */
 @media (prefers-reduced-motion: reduce) {
-  .home-arrival-loading { display: none; }
-  .home-arrival-bg-video { display: none; }
   .home-arrival-door-inner { transform: none !important; transition: none !important; }
-  .home-arrival-bg { transition: none !important; }
+  .home-arrival-bg, .home-arrival-bg img, .home-arrival-bg video { transition: none !important; transform: none !important; }
+  .home-arrival-door, .home-arrival-page { transition: none !important; }
+}
+
+/* DOOR-OPEN ANIMATION — when a door is "opened" by clicking a CTA, it
+   expands to fill the viewport while the other two slide away. Then we
+   navigate. ~620ms total. */
+.home-arrival-page.is-opening .home-arrival-door:not(.is-opened) {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 380ms ease, transform 480ms ease;
+  pointer-events: none;
+}
+.home-arrival-page.is-opening .home-arrival-door-1:not(.is-opened) { transform: translateX(-30%); }
+.home-arrival-page.is-opening .home-arrival-door-3:not(.is-opened) { transform: translateX(30%); }
+.home-arrival-page.is-opening .home-arrival-door-2:not(.is-opened) { transform: scale(0.85); }
+
+.home-arrival-door.is-opened {
+  position: fixed; inset: 0;
+  z-index: 30;
+  background: var(--paper) !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: all 540ms cubic-bezier(0.6, 0, 0.2, 1);
+  padding: 0;
+  border: none;
+}
+.home-arrival-door.is-opened .home-arrival-door-inner {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100vh;
+  transform: none !important;
+}
+/* Hide the floating chrome and the bg stack while a door is opening, for a clean transition */
+body.home-arrival.is-opening .home-arrival-logo,
+body.home-arrival.is-opening .home-arrival-lang,
+body.home-arrival.is-opening .home-arrival-bg-stack { opacity: 0; transition: opacity 280ms ease; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .home-arrival-page.is-opening .home-arrival-door:not(.is-opened),
+  .home-arrival-door.is-opened,
+  body.home-arrival.is-opening .home-arrival-logo,
+  body.home-arrival.is-opening .home-arrival-lang,
+  body.home-arrival.is-opening .home-arrival-bg-stack { transition: none !important; }
+}
+
+/* ================================================================
+   PAGE CHROME — Courrier-style minimal frame for inner pages.
+   - Floating "← Studio Monjo" top-left, no header band.
+   - Small lang link top-right, no pill, no menu.
+   - Minimal centered footer.
+   Use on any inner page that wants the doors-style focused destination
+   feel: <body class="page-min">, then <header class="page-back"> and
+   <footer class="page-min-footer">.
+   ================================================================ */
+
+body.page-min {
+  padding-top: 0; /* override default body { padding-top: var(--nav-h); } */
+}
+
+.page-back {
+  position: fixed; top: 0; left: 0;
+  z-index: 70;
+  padding: 22px var(--pad-x);
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.page-back a {
+  text-decoration: none;
+  color: var(--ink-mid);
+  transition: color 0.2s;
+}
+.page-back a:hover, .page-back a:focus-visible { color: var(--ink); outline: none; }
+
+.page-lang {
+  position: fixed; top: 0; right: 0;
+  z-index: 70;
+  padding: 22px var(--pad-x);
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.page-lang a {
+  text-decoration: none;
+  color: var(--ink-mid);
+  transition: color 0.2s;
+}
+.page-lang a:hover, .page-lang a:focus-visible { color: var(--ink); outline: none; }
+
+@media (max-width: 700px) {
+  .page-back, .page-lang { padding-left: 16px; padding-right: 16px; padding-top: calc(20px + env(safe-area-inset-top)); }
+}
+
+/* Minimal footer — Studio Monjo mark + city + year, centered */
+.page-min-footer {
+  padding: clamp(40px, 5vw, 64px) var(--pad-x);
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-light);
+  border-top: 1px solid var(--line);
+  margin-top: clamp(48px, 6vw, 96px);
+}
+.page-min-footer-mark {
+  display: block; width: 18px; height: 18px;
+  margin: 0 auto 12px;
+  opacity: 0.55;
+}
+.page-min-footer a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.page-min-footer a:hover { color: var(--ink); }
+
+/* Pages using page-min need to push their first-section padding down to
+   clear the floating chrome (about 64px tall area). */
+body.page-min main > section:first-of-type,
+body.page-min main > .page-hero:first-of-type {
+  padding-top: clamp(96px, 10vw, 160px);
 }

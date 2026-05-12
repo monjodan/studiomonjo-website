@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notebooks &amp; cards. Hand-painted in Seoul, sold on Naver. | Studio Monjo</title>
-<meta name="description" content="Hand-painted notebooks (A6, A5) and bound cards, made in small editions in Seoul. Forty pages of fountain-pen paper inside. Sold on the Naver Smart Store.">
-<meta name="theme-color" content="#ffffff">
+<title>Notebooks &amp; cards. Hand-painted in Seoul. | Studio Monjo</title>
+<meta name="description" content="Hand-painted notebooks (A6, A5) and bound cards, made in small editions in Seoul. Watch a card being painted, then visit the Naver Smart Store.">
+<meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://studiomonjo.com/en/notebooks/">
@@ -28,7 +28,323 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+  /* Notebooks page — cream-paper identity, matches Courrier sub-brand */
+  :root {
+    --paper-warm: #faf6ed;
+    --paper-warm-soft: #f4ecda;
+    --paper-warm-darker: #ebe2cd;
+    --ink-warm: #1a1816;
+    --ink-warm-mid: #4a4640;
+    --ink-warm-soft: #7a746a;
+    --ink-warm-light: #b3aca0;
+    --rule: #e6dfd0;
+    --rule-strong: #d6cdb6;
+    --seal: #b8231d;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --pad-x: clamp(24px, 6vw, 80px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body.notebooks {
+    font-family: var(--serif);
+    font-weight: 300;
+    background: var(--paper-warm);
+    color: var(--ink-warm-mid);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding-top: 0;
+  }
+  body.notebooks img { max-width: 100%; height: auto; display: block; }
+  body.notebooks a { color: inherit; }
+  body.notebooks :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
+  body.notebooks strong { font-weight: 500; color: var(--ink-warm); }
+  body.notebooks em { font-style: italic; color: var(--ink-warm); }
+
+  /* Floating chrome — back link top-left, lang top-right */
+  .nb-back, .nb-lang {
+    position: fixed; top: 0; z-index: 60;
+    padding: 22px var(--pad-x);
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .nb-back { left: 0; }
+  .nb-lang { right: 0; }
+  .nb-back a, .nb-lang a {
+    text-decoration: none;
+    color: var(--ink-warm-soft);
+    transition: color 0.2s;
+  }
+  .nb-back a:hover, .nb-lang a:hover { color: var(--ink-warm); }
+
+  /* Hero */
+  .nb-hero {
+    padding: clamp(96px, 10vw, 160px) var(--pad-x) clamp(40px, 6vw, 72px);
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .nb-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 20px;
+  }
+  .nb-eyebrow .seal {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--seal);
+    border-radius: 50%;
+    margin-right: 12px;
+    vertical-align: 2px;
+  }
+  .nb-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    color: var(--ink-warm);
+    margin-bottom: 28px;
+  }
+  .nb-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--ink-warm-soft);
+    max-width: 620px;
+  }
+
+  /* Video block — vertical YouTube embed, the centerpiece */
+  .nb-video-section {
+    background: var(--paper-warm-soft);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+  }
+  .nb-video-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .nb-video-inner { grid-template-columns: 1fr; gap: 40px; max-width: 480px; }
+  }
+  .nb-video-text .nb-eyebrow { margin-bottom: 16px; }
+  .nb-video-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.18;
+    color: var(--ink-warm);
+    margin-bottom: 18px;
+  }
+  .nb-video-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1em;
+  }
+  .nb-video-frame {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    background: var(--ink-warm);
+    border: 1px solid var(--rule-strong);
+    overflow: hidden;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .nb-video-frame iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  /* Standard prose section */
+  .nb-section {
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .nb-section h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.18;
+    color: var(--ink-warm);
+    margin-bottom: 24px;
+  }
+  .nb-section p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.75;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.2em;
+  }
+  .nb-section p:last-child { margin-bottom: 0; }
+
+  /* Specs strip */
+  .nb-specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: clamp(40px, 5vw, 64px) 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 700px) { .nb-specs { grid-template-columns: repeat(2, 1fr); } }
+  .nb-spec {
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (min-width: 701px) { .nb-spec + .nb-spec { border-left: 1px solid var(--rule); padding-left: 24px; } }
+  .nb-spec-label {
+    font-family: var(--sans);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.20em; text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 8px;
+  }
+  .nb-spec-value {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--ink-warm);
+  }
+
+  /* Recent work — small archive */
+  .nb-archive-section {
+    background: var(--paper-warm-soft);
+    border-top: 1px solid var(--rule);
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+  }
+  .nb-archive-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+  .nb-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+  @media (max-width: 600px) { .nb-archive-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; } }
+  .nb-archive-card { display: block; text-align: left; }
+  .nb-archive-figure {
+    aspect-ratio: 4 / 5;
+    background: var(--paper-warm-darker);
+    border: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .nb-archive-figure picture, .nb-archive-figure img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.2) brightness(0.97);
+  }
+  .nb-archive-meta {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 6px;
+  }
+  .nb-archive-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--ink-warm);
+    margin-bottom: 4px;
+  }
+  .nb-archive-state {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink-warm-light);
+    text-transform: uppercase;
+  }
+
+  /* Final CTA — dark band */
+  .nb-cta {
+    padding: clamp(72px, 9vw, 144px) var(--pad-x);
+    background: var(--ink-warm);
+    color: var(--paper-warm);
+    text-align: center;
+  }
+  .nb-cta-inner { max-width: 560px; margin: 0 auto; }
+  .nb-cta-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(250,246,237,0.7);
+    margin-bottom: 16px;
+  }
+  .nb-cta-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    color: var(--paper-warm);
+    margin-bottom: 18px;
+  }
+  .nb-cta-body {
+    font-size: 14px; font-weight: 300; line-height: 1.75;
+    color: rgba(250,246,237,0.78);
+    margin-bottom: 32px;
+  }
+  .nb-cta a {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 16px 30px;
+    text-decoration: none;
+    background: var(--paper-warm);
+    color: var(--ink-warm);
+    border: 1px solid var(--paper-warm);
+    transition: background 0.2s, color 0.2s;
+  }
+  .nb-cta a:hover, .nb-cta a:focus-visible {
+    background: transparent; color: var(--paper-warm); outline: none;
+  }
+  .nb-cta-ext { color: var(--ink-warm-soft); margin-left: 4px; font-size: 13px; }
+  .nb-cta a:hover .nb-cta-ext { color: rgba(250,246,237,0.7); }
+
+  /* Footer */
+  .nb-footer {
+    padding: clamp(40px, 5vw, 64px) var(--pad-x);
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-warm-light);
+  }
+  .nb-footer-mark {
+    display: block; width: 18px; height: 18px;
+    margin: 0 auto 12px;
+    opacity: 0.55;
+  }
+  .nb-footer a { color: var(--ink-warm-soft); text-decoration: none; transition: color 0.2s; }
+  .nb-footer a:hover { color: var(--ink-warm); }
+
+  @media (max-width: 700px) {
+    .nb-back, .nb-lang { padding-top: calc(20px + env(safe-area-inset-top)); padding-left: 16px; padding-right: 16px; }
+  }
+</style>
 
 <script type="application/ld+json">
 {
@@ -41,147 +357,114 @@
 }
 </script>
 </head>
-<body>
+<body class="notebooks">
 
-<a class="skip-link" href="#main">Skip to content</a>
+<header class="nb-back"><a href="/en/">&larr; Studio Monjo</a></header>
+<div class="nb-lang"><a href="/ko/notebooks/" lang="ko">한국어</a></div>
 
-<nav aria-label="Primary">
-  <a href="/en/" class="nav-logo" aria-label="Studio Monjo home">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nav-mark" width="28" height="28">
-    <span class="nav-word">Studio Monjo</span>
-  </a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-  </button>
-  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-  <div class="nav-right" id="navMenu">
-    <a href="/en/notebooks/" class="nav-link" aria-current="page">Notebooks</a>
-    <a href="/en/materials/" class="nav-link">Materials</a>
-    <a href="/en/workshops/" class="nav-link">Workshops</a>
-    <a href="/en/essays/" class="nav-link">Writing</a>
-    <a href="/en/about/" class="nav-link">About</a>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <a href="/en/notebooks/" class="lang-opt is-current" lang="en" aria-current="page">EN</a>
-      <span class="lang-sep" aria-hidden="true">·</span>
-      <a href="/ko/notebooks/" class="lang-opt" lang="ko">한국어</a>
-    </div>
-  </div>
-</nav>
+<main>
 
-<main id="main">
+  <section class="nb-hero">
+    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>Notebooks &amp; cards</div>
+    <h1 class="nb-title">Hand-painted notebooks, made one at a time in Seoul.</h1>
+    <p class="nb-sub">Notebooks (A6, A5), bound cards, and seasonal boxed sets. Forty pages of fountain-pen paper inside every notebook. Each design is an edition of twenty.</p>
+  </section>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">Notebooks &amp; cards</div>
-    <h1 class="page-hero-title">Hand-painted, hand-stitched, made in Seoul.</h1>
-    <p class="page-hero-sub">Notebooks in two sizes (A6 ₩65,000, A5 ₩95,000), bound cards (₩25,000), and seasonal boxed sets of four (₩85,000). Forty pages of fountain-pen paper inside every notebook. Each design is an edition of twenty. Available on the Naver Smart Store.</p>
-  </div>
-</section>
-
-<section class="reveal">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">How they're made</div>
-      <h2 class="section-title">Painted, stitched, signed.</h2>
-    </header>
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="process-num">01 · Painted</div>
-        <h3 class="process-title">Twenty at a time</h3>
-        <p class="process-body">Each cover is painted individually in ink and watercolour. Same subject across the edition, never the same twice. Branches, leaves, small birds, plum, lotus.</p>
+  <!-- VIDEO BLOCK — the process, vertical YouTube embed -->
+  <section class="nb-video-section">
+    <div class="nb-video-inner">
+      <div class="nb-video-text">
+        <div class="nb-eyebrow">The process</div>
+        <h2 class="nb-video-title">A card, painted from start to seal.</h2>
+        <p class="nb-video-body">Each cover begins as a blank sheet of Canson. Ink line first, then watercolour, then a small vermillion seal. There's no sketch underneath. The line lands or it doesn't.</p>
+        <p class="nb-video-body">Once the cover is dry, the notebook is folded, sewn closed by hand with French waxed linen, numbered inside, signed.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">02 · Stitched</div>
-        <h3 class="process-title">Hand-bound</h3>
-        <p class="process-body">Sewn closed by hand with French waxed linen thread. Forty sheets of Iroful paper inside, the kind that takes ink without feathering or bleed.</p>
-      </div>
-      <div class="process-step">
-        <div class="process-num">03 · Signed</div>
-        <h3 class="process-title">Numbered, signed</h3>
-        <p class="process-body">Hand-numbered inside, signed under the studio's vermillion seal. When the twenty are gone, the design ends.</p>
+      <div class="nb-video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/JA6xexkCOco?modestbranding=1&amp;rel=0&amp;playsinline=1"
+          title="Studio Monjo — a card being painted"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
     </div>
-    <p class="process-foot"><a href="/en/materials/" class="btn-link">See the materials &rsaquo;</a></p>
-  </div>
-</section>
+  </section>
 
-<section class="reveal" style="background: var(--paper-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-  <div class="section-inner">
-    <header class="section-head">
-      <div class="section-label">From the studio</div>
-      <h2 class="section-title">Recent work.</h2>
-    </header>
-    <div class="ed-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(24px, 3vw, 36px);">
-      <article class="ed-card is-sold">
-        <div class="ed-img">
-          <picture>
-            <source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp">
-            <img src="/media/web/notebooks/IMG_4604.jpg" alt="Notebook 01, Birds & Berries — a branch of leaves with two birds" loading="lazy" decoding="async">
-          </picture>
-          <span class="ed-status ed-status-sold">Sold</span>
-        </div>
-        <div class="ed-info">
-          <div class="ed-top">
-            <div class="ed-title"><span class="ed-no">Notebook 01</span><span class="ed-name">Birds &amp; Berries</span></div>
-            <span class="ed-meta">A6</span>
-          </div>
-          <div class="ed-count">Edition of 20 complete</div>
-        </div>
-      </article>
-      <article class="ed-card is-sold">
-        <div class="ed-img">
-          <picture>
-            <source srcset="/media/web/notebooks/L1001423.webp" type="image/webp">
-            <img src="/media/web/notebooks/L1001423.jpg" alt="Notebook 02, Lotus — plum branch over a red lotus" loading="lazy" decoding="async">
-          </picture>
-          <span class="ed-status ed-status-sold">Sold</span>
-        </div>
-        <div class="ed-info">
-          <div class="ed-top">
-            <div class="ed-title"><span class="ed-no">Notebook 02</span><span class="ed-name">Lotus</span></div>
-            <span class="ed-meta">A6</span>
-          </div>
-          <div class="ed-count">Edition of 20 complete</div>
-        </div>
-      </article>
+  <!-- SPECS -->
+  <section class="nb-section">
+    <div class="nb-eyebrow">Made of</div>
+    <h2>Four makers, one studio.</h2>
+    <p>Iroful paper inside, from the Sakae mill that also makes Tomoe River. Heavy Canson on the covers. Russian White Nights watercolours. French waxed linen on the spine. <a href="/en/materials/">See the materials &rsaquo;</a></p>
+    <div class="nb-specs">
+      <div class="nb-spec">
+        <div class="nb-spec-label">Paper inside</div>
+        <div class="nb-spec-value">Iroful · 75 gsm · 40 pages</div>
+      </div>
+      <div class="nb-spec">
+        <div class="nb-spec-label">Cover</div>
+        <div class="nb-spec-value">Canson, ink &amp; watercolour</div>
+      </div>
+      <div class="nb-spec">
+        <div class="nb-spec-label">Binding</div>
+        <div class="nb-spec-value">Hand-stitched, Sajou linen</div>
+      </div>
+      <div class="nb-spec">
+        <div class="nb-spec-label">Edition</div>
+        <div class="nb-spec-value">20 per design</div>
+      </div>
     </div>
-    <p style="font-size: 13px; color: var(--ink-soft); text-align: center; max-width: 540px; margin: clamp(28px, 4vw, 40px) auto 0;">A small archive. New editions arrive on the Naver Smart Store as they're finished, usually one per season.</p>
-  </div>
-</section>
+  </section>
 
-<section class="reveal" style="text-align: center; padding: clamp(72px, 9vw, 128px) var(--pad-x); background: var(--ink); color: var(--paper);">
-  <div style="max-width: 560px; margin: 0 auto;">
-    <div class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">To buy</div>
-    <h2 style="font-family: var(--serif); font-weight: 300; font-size: clamp(2rem, 4.5vw, 2.75rem); line-height: 1.1; color: var(--paper); margin-bottom: 18px; letter-spacing: -0.01em;">Available on the Naver Smart Store.</h2>
-    <p style="font-size: 14px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.78); margin-bottom: 32px;">Notebooks, bound cards, and seasonal boxed sets are sold through the Studio Monjo Naver Smart Store. International orders can be arranged through the same store.</p>
-    <!-- REPLACE_NAVER_SHOP_URL — final Naver Smart Store URL goes here -->
-    <a href="https://smartstore.naver.com/REPLACE_NAVER_SHOP" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: var(--paper); color: var(--ink); border-color: var(--paper);">Open the Naver Shop &#8599;</a>
-  </div>
-</section>
+  <!-- ARCHIVE -->
+  <section class="nb-archive-section">
+    <div class="nb-archive-inner">
+      <div class="nb-eyebrow">From the studio</div>
+      <h2 class="nb-video-title">Recent editions.</h2>
+      <p style="margin-top: 14px; color: var(--ink-warm-mid);">A small archive of past editions. New work goes on the Naver Smart Store as it's finished, usually one piece per season.</p>
+      <div class="nb-archive-grid">
+        <article class="nb-archive-card">
+          <figure class="nb-archive-figure">
+            <picture>
+              <source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp">
+              <img src="/media/web/notebooks/IMG_4604.jpg" alt="Notebook 01, Birds & Berries — a branch with two small birds" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <div class="nb-archive-meta">Notebook 01 · A6</div>
+          <div class="nb-archive-name">Birds &amp; Berries</div>
+          <div class="nb-archive-state">Edition of 20 complete</div>
+        </article>
+        <article class="nb-archive-card">
+          <figure class="nb-archive-figure">
+            <picture>
+              <source srcset="/media/web/notebooks/L1001423.webp" type="image/webp">
+              <img src="/media/web/notebooks/L1001423.jpg" alt="Notebook 02, Lotus — plum branch over a red lotus" loading="lazy" decoding="async">
+            </picture>
+          </figure>
+          <div class="nb-archive-meta">Notebook 02 · A6</div>
+          <div class="nb-archive-name">Lotus</div>
+          <div class="nb-archive-state">Edition of 20 complete</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="nb-cta">
+    <div class="nb-cta-inner">
+      <div class="nb-cta-eyebrow">To buy</div>
+      <h2 class="nb-cta-title">On the Naver Smart Store.</h2>
+      <p class="nb-cta-body">All current editions, bound cards, and seasonal boxed sets are sold through the Studio Monjo Naver Smart Store. International orders can be arranged through the same store.</p>
+      <!-- REPLACE_NAVER_SHOP_URL -->
+      <a href="https://smartstore.naver.com/REPLACE_NAVER_SHOP" target="_blank" rel="noopener noreferrer">Open the Naver Shop <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </section>
+
+  <footer class="nb-footer">
+    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nb-footer-mark" width="18" height="18">
+    <a href="https://studiomonjo.com/">Studio Monjo</a> &middot; Seoul &middot; © 2026
+  </footer>
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <a href="/en/" class="footer-logo">
-      <img src="/media/web/branding/monjo-mark-256.png" alt="" width="20" height="20">
-      <span>Studio Monjo</span>
-    </a>
-    <div class="footer-meta">Seoul · © 2026</div>
-    <div class="footer-links">
-      <a href="/en/notebooks/" class="footer-link">Notebooks</a>
-      <a href="/en/materials/" class="footer-link">Materials</a>
-      <a href="/en/workshops/" class="footer-link">Workshops</a>
-      <a href="/en/essays/" class="footer-link">Writing</a>
-      <a href="/en/about/" class="footer-link">About</a>
-      <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
-      <a href="/ko/notebooks/" class="footer-link" lang="ko">한국어</a>
-    </div>
-  </div>
-</footer>
-
-<script>window.SM_LOCALE = 'en';</script>
-<script src="/js/i18n.js"></script>
-<script src="/js/site.js"></script>
 </body>
 </html>
