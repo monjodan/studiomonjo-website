@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<!--
+  /notebooks/ (root) — single-hop redirect to the locale-appropriate
+  Notebooks page. Previously chained through /en/shop/ which itself
+  redirected to /en/notebooks/ (two hops). Collapsed to one.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Monjo. Notebooks moved to the Shop.</title>
+<title>Notebooks. Studio Monjo.</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://studiomonjo.com/en/shop/">
+<link rel="canonical" href="https://studiomonjo.com/en/notebooks/">
 <script>
 (function () {
   try {
@@ -14,11 +19,11 @@
     var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
     var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
     if (locale !== 'en' && locale !== 'ko') locale = 'en';
-    location.replace('/' + locale + '/shop/#notebook');
-  } catch (e) { location.replace('/en/shop/#notebook'); }
+    location.replace('/' + locale + '/notebooks/');
+  } catch (e) { location.replace('/en/notebooks/'); }
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="0; url=/en/shop/#notebook"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=/en/notebooks/"></noscript>
 </head>
-<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Notebooks moved to the Shop. <a href="/en/shop/#notebook">English</a> · <a href="/ko/shop/#notebook">한국어</a></p></body>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Notebooks &amp; cards. <a href="/en/notebooks/">English</a> · <a href="/ko/notebooks/">한국어</a></p></body>
 </html>
