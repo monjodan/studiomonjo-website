@@ -1817,55 +1817,9 @@ body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) .home-arrival-
   .home-arrival-door, .home-arrival-page { transition: none !important; }
 }
 
-/* DOOR-OPEN ANIMATION — calm and paper-like.
-   Everything fades. The chosen door's content fades out, the page fills
-   with a cream wash (matching the destination), then we navigate. No
-   scaling, no sliding — those felt clanky because the SVGs and text
-   transformed along with the door. Pure opacity = silk-smooth.
-   ~480ms total. */
-body.home-arrival.is-opening { overflow: hidden; }
-
-body.home-arrival .home-arrival-veil {
-  position: fixed; inset: 0;
-  background: #faf6ed;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 200;
-  transition: opacity 380ms cubic-bezier(0.4, 0, 0.2, 1) 60ms;
-}
-body.home-arrival.is-opening .home-arrival-veil {
-  opacity: 1;
-}
-
-/* Doors: fade their inner content out so the photograph + cream wash take
-   over. Door surfaces themselves stay put — no transform jank. */
-body.home-arrival.is-opening .home-arrival-door {
-  pointer-events: none !important;
-  transition: background-color 280ms ease;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-}
-body.home-arrival.is-opening .home-arrival-door .home-arrival-door-inner {
-  opacity: 0 !important;
-  transform: translateY(-6px) !important;
-  transition: opacity 220ms ease, transform 320ms ease;
-}
-
-/* Hide floating chrome (logo + lang pill) during the transition */
-body.home-arrival.is-opening .home-arrival-logo,
-body.home-arrival.is-opening .home-arrival-lang {
-  opacity: 0 !important;
-  transition: opacity 200ms ease;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.home-arrival .home-arrival-veil,
-  body.home-arrival.is-opening .home-arrival-door,
-  body.home-arrival.is-opening .home-arrival-door-inner,
-  body.home-arrival.is-opening .home-arrival-logo,
-  body.home-arrival.is-opening .home-arrival-lang { transition: none !important; transform: none !important; }
-}
+/* No door-open animation — clicking a CTA navigates immediately. The
+   browser's native page load IS the transition. Earlier attempts (scale,
+   slide, cream veil) made the site feel slow without paying off. */
 
 /* ================================================================
    PAGE CHROME — Courrier-style minimal frame for inner pages.
