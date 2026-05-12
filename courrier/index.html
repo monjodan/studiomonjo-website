@@ -50,14 +50,19 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/courrier/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="1200">
+<meta property="og:image:secure_url" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1198">
 <meta property="og:image:alt" content="Une enveloppe peinte à la main, prête à partir de Séoul.">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Courrier de Séoul. Une lettre par mois, à offrir.">
+<meta name="twitter:description" content="Un abonnement par voie postale. Chaque mois, une lettre manuscrite et une photographie depuis Séoul. À offrir.">
 <meta name="twitter:image" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
+<meta name="twitter:image:alt" content="Une enveloppe peinte à la main, prête à partir de Séoul.">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
@@ -148,6 +153,41 @@
   @media (max-width: 700px) {
     .courrier-back { top: calc(14px + env(safe-area-inset-top)); left: 14px; }
     .courrier-back a { padding: 9px 13px; font-size: 10px; }
+  }
+
+  /* Social pill — top-right, same shape as the back-pill but warm-toned */
+  .courrier-social {
+    position: fixed; top: 18px; right: 18px; z-index: 60;
+    display: inline-flex; align-items: center;
+    background: rgba(250,246,237,0.82);
+    border: 0.5px solid rgba(26,24,22,0.10);
+    border-radius: 999px;
+    padding: 4px 6px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 2px rgba(26,24,22,0.05);
+  }
+  .courrier-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: 999px;
+    color: var(--ink-warm-mid);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+  .courrier-social a + a { margin-left: 2px; }
+  .courrier-social a:hover, .courrier-social a:focus-visible {
+    color: var(--ink-warm);
+    background: rgba(26,24,22,0.05);
+    outline: none;
+  }
+  .courrier-social svg { display: block; }
+  @media (max-width: 700px) {
+    .courrier-social { top: calc(14px + env(safe-area-inset-top)); right: 14px; padding: 3px 4px; }
+    .courrier-social a { width: 24px; height: 24px; }
+    .courrier-social svg { width: 13px; height: 13px; }
   }
 
   /* Hero — typographic, no image */
@@ -524,6 +564,15 @@
 <header class="courrier-back">
   <a href="https://studiomonjo.com/">&larr; Studio Monjo</a>
 </header>
+
+<nav class="courrier-social" aria-label="Réseaux sociaux">
+  <a href="https://www.instagram.com/studio.monjo" target="_blank" rel="noopener noreferrer" aria-label="Studio Monjo sur Instagram">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a href="https://www.youtube.com/@StudioMonjo" target="_blank" rel="noopener noreferrer" aria-label="Studio Monjo sur YouTube">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M10 9.5 L15 12 L10 14.5 Z" fill="currentColor" stroke="none"/></svg>
+  </a>
+</nav>
 
 <main>
 

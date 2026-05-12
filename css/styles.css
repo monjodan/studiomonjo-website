@@ -1589,9 +1589,53 @@ body.home-arrival {
   color: var(--ink);
   outline: none;
 }
+/* Corner container that holds the social pill + lang pill side by side.
+   When .home-arrival-lang is inside .home-arrival-corner, drop its fixed
+   positioning so the corner handles layout. */
+.home-arrival-corner {
+  position: fixed;
+  top: 14px; right: 18px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-arrival-corner .home-arrival-lang {
+  position: static; top: auto; right: auto;
+}
+
+.home-arrival-social {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,0.7);
+  border: 0.5px solid rgba(10,10,10,0.12);
+  border-radius: 999px;
+  padding: 4px 6px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.home-arrival-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.home-arrival-social a + a { margin-left: 2px; }
+.home-arrival-social a:hover, .home-arrival-social a:focus-visible {
+  color: var(--ink);
+  background: rgba(10,10,10,0.05);
+  outline: none;
+}
+.home-arrival-social svg { display: block; }
+
 @media (max-width: 900px) {
   .home-arrival-logo { top: calc(18px + env(safe-area-inset-top)); }
   .home-arrival-lang { top: calc(14px + env(safe-area-inset-top)); }
+  .home-arrival-corner { top: calc(14px + env(safe-area-inset-top)); }
   /* Mobile: dropdown opens DOWNWARD as a vertical stack so the open pill
      never has to fight the logo for horizontal real estate. */
   .home-arrival-lang.is-open {
@@ -1622,6 +1666,9 @@ body.home-arrival {
     border-top: 0.5px solid rgba(10,10,10,0.06);
     margin-top: 2px;
   }
+  /* Inside the corner container on mobile, align social + lang to top so
+     the lang pill can grow downward without nudging the social icons. */
+  .home-arrival-corner { align-items: flex-start; }
 }
 
 /* BACKGROUND IMAGE STACK — full-bleed photos, fade in on door hover/focus */
@@ -1910,6 +1957,64 @@ body.page-min {
   .page-back { left: 14px; } .page-lang { right: 14px; padding: 3px 5px; }
   .page-back a { padding: 9px 13px; font-size: 10px; }
   .page-lang a { padding: 5px 8px; font-size: 10px; }
+}
+
+/* SOCIAL PILL — small icon-only pill that lives next to .page-lang.
+   When .page-lang is wrapped in .page-corner alongside .page-social,
+   we drop their individual fixed positioning so the corner container
+   handles layout. .page-social can also stand alone (e.g. on Courrier
+   which has no language switcher). */
+.page-corner {
+  position: fixed;
+  top: 18px; right: 18px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-corner .page-lang,
+.page-corner .page-social {
+  position: static;
+  top: auto; right: auto;
+}
+
+.page-social {
+  position: fixed; top: 18px; right: 18px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255,255,255,0.78);
+  border: 0.5px solid rgba(10,10,10,0.10);
+  border-radius: 999px;
+  padding: 4px 6px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 2px rgba(10,10,10,0.04);
+}
+.page-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 999px;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+.page-social a + a { margin-left: 2px; }
+.page-social a:hover, .page-social a:focus-visible {
+  color: var(--ink);
+  background: rgba(10,10,10,0.05);
+  outline: none;
+}
+.page-social svg { display: block; }
+
+@media (max-width: 700px) {
+  .page-corner { top: calc(14px + env(safe-area-inset-top)); right: 14px; gap: 6px; }
+  .page-social { top: calc(14px + env(safe-area-inset-top)); right: 14px; padding: 3px 4px; }
+  .page-social a { width: 24px; height: 24px; }
+  .page-social svg { width: 13px; height: 13px; }
 }
 
 /* Minimal footer — Studio Monjo mark + city + year, centered */
