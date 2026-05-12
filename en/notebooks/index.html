@@ -69,22 +69,25 @@
   body.notebooks strong { font-weight: 500; color: var(--ink-warm); }
   body.notebooks em { font-style: italic; color: var(--ink-warm); }
 
-  /* Floating chrome — back link top-left, lang top-right */
+  /* Floating chrome — pill-shaped, always visible */
   .nb-back, .nb-lang {
-    position: fixed; top: 0; z-index: 60;
-    padding: 22px var(--pad-x);
+    position: fixed; top: 18px; z-index: 60;
     font-family: var(--sans);
     font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    background: rgba(250,246,237,0.82);
+    border: 0.5px solid rgba(26,24,22,0.10);
+    border-radius: 999px;
+    padding: 9px 16px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 2px rgba(26,24,22,0.05);
+    transition: background 0.2s, border-color 0.2s;
   }
-  .nb-back { left: 0; }
-  .nb-lang { right: 0; }
-  .nb-back a, .nb-lang a {
-    text-decoration: none;
-    color: var(--ink-warm-soft);
-    transition: color 0.2s;
-  }
+  .nb-back { left: 18px; } .nb-lang { right: 18px; }
+  .nb-back a, .nb-lang a { text-decoration: none; color: var(--ink-warm-mid); transition: color 0.2s; }
   .nb-back a:hover, .nb-lang a:hover { color: var(--ink-warm); }
+  .nb-back:hover, .nb-lang:hover { background: rgba(250,246,237,0.96); border-color: rgba(26,24,22,0.18); }
 
   /* Hero */
   .nb-hero {
@@ -342,8 +345,76 @@
   .nb-footer a:hover { color: var(--ink-warm); }
 
   @media (max-width: 700px) {
-    .nb-back, .nb-lang { padding-top: calc(20px + env(safe-area-inset-top)); padding-left: 16px; padding-right: 16px; }
+    .nb-back, .nb-lang { top: calc(14px + env(safe-area-inset-top)); padding: 8px 13px; font-size: 10px; }
+    .nb-back { left: 14px; } .nb-lang { right: 14px; }
   }
+
+  /* Materials modal (popup over the page) */
+  .nb-modal { position: fixed; inset: 0; z-index: 100; display: none; }
+  .nb-modal.is-open { display: block; }
+  .nb-modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(26,24,22,0.55);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .nb-modal.is-open .nb-modal-backdrop { opacity: 1; }
+  .nb-modal-panel {
+    position: relative;
+    width: min(720px, calc(100vw - 32px));
+    max-height: calc(100vh - 64px);
+    margin: 32px auto;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule-strong);
+    box-shadow: 0 12px 48px rgba(26,24,22,0.18);
+    overflow-y: auto;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform 320ms ease, opacity 280ms ease;
+  }
+  .nb-modal.is-open .nb-modal-panel { transform: none; opacity: 1; }
+  .nb-modal-close {
+    position: absolute; top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    background: none; border: none; cursor: pointer;
+    color: var(--ink-warm-soft);
+    font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nb-modal-close:hover, .nb-modal-close:focus-visible { color: var(--ink-warm); background: rgba(26,24,22,0.06); outline: none; }
+  .nb-modal-inner { padding: clamp(28px, 5vw, 48px); }
+  .nb-modal-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-warm-soft); margin-bottom: 14px; }
+  .nb-modal-title { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.18; color: var(--ink-warm); margin-bottom: 24px; }
+  .nb-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 3vw, 32px);
+    margin-bottom: 32px;
+  }
+  @media (max-width: 480px) { .nb-modal-grid { grid-template-columns: 1fr; } }
+  .nb-modal-card {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .nb-modal-card-figure {
+    aspect-ratio: 1 / 1;
+    background: var(--paper-warm-darker);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    position: relative;
+  }
+  .nb-modal-card-figure picture, .nb-modal-card-figure img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  }
+  .nb-modal-card-name { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.1rem; color: var(--ink-warm); }
+  .nb-modal-card-role { font-family: var(--sans); font-size: 12px; color: var(--ink-warm-mid); line-height: 1.55; }
+  .nb-modal-card-origin { font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-warm-light); }
+  .nb-modal-link { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm); text-decoration: none; border-bottom: 1px solid var(--ink-warm-light); padding-bottom: 2px; transition: border-color 0.2s; }
+  .nb-modal-link:hover, .nb-modal-link:focus-visible { border-color: var(--ink-warm); outline: none; }
+  body.is-modal-open { overflow: hidden; }
 </style>
 
 <script type="application/ld+json">
@@ -394,7 +465,7 @@
   <section class="nb-section">
     <div class="nb-eyebrow">Made of</div>
     <h2>Four makers, one studio.</h2>
-    <p>Iroful paper inside, from the Sakae mill that also makes Tomoe River. Heavy Canson on the covers. Russian White Nights watercolours. French waxed linen on the spine. <a href="/en/materials/">See the materials &rsaquo;</a></p>
+    <p>Iroful paper inside, from the Sakae mill that also makes Tomoe River. Heavy Canson on the covers. Russian White Nights watercolours. French waxed linen on the spine. <a href="/en/materials/" data-open-materials>See the materials &rsaquo;</a></p>
     <div class="nb-specs">
       <div class="nb-spec">
         <div class="nb-spec-label">Paper inside</div>
@@ -465,6 +536,72 @@
   </footer>
 
 </main>
+
+<!-- MATERIALS MODAL — opened by clicks on [data-open-materials] -->
+<div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
+  <div class="nb-modal-backdrop" data-close-modal></div>
+  <div class="nb-modal-panel" role="document">
+    <button type="button" class="nb-modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="nb-modal-inner">
+      <div class="nb-modal-eyebrow">Materials</div>
+      <h2 class="nb-modal-title" id="materialsModalTitle">Four makers, one studio.</h2>
+      <div class="nb-modal-grid">
+        <div class="nb-modal-card">
+          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="" loading="lazy"></picture></figure>
+          <div class="nb-modal-card-name">Canson</div>
+          <div class="nb-modal-card-role">Cover papers — Montgolfier for notebooks, Montval for cards.</div>
+          <div class="nb-modal-card-origin">France · since 1557</div>
+        </div>
+        <div class="nb-modal-card">
+          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4605.jpg" alt="" loading="lazy"></picture></figure>
+          <div class="nb-modal-card-name">Iroful</div>
+          <div class="nb-modal-card-role">Fountain-pen paper inside — 75 gsm, no feathering, no bleed.</div>
+          <div class="nb-modal-card-origin">Japan · Sakae Technical Paper</div>
+        </div>
+        <div class="nb-modal-card">
+          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4604.jpg" alt="" loading="lazy"></picture></figure>
+          <div class="nb-modal-card-name">Nevskaya Palitra</div>
+          <div class="nb-modal-card-role">White Nights watercolours — high pigment load, deep on the page.</div>
+          <div class="nb-modal-card-origin">Russia · since 1934</div>
+        </div>
+        <div class="nb-modal-card">
+          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/L1001424.webp" type="image/webp"><img src="/media/web/notebooks/L1001424.jpg" alt="" loading="lazy"></picture></figure>
+          <div class="nb-modal-card-name">Sajou Lin Câblé</div>
+          <div class="nb-modal-card-role">Hand-stitched binding — cabled waxed linen, slightly rigid, holds for decades.</div>
+          <div class="nb-modal-card-origin">France · Fil Au Chinois</div>
+        </div>
+      </div>
+      <a href="/en/materials/" class="nb-modal-link">Read the full materials page &rsaquo;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('materialsModal');
+  if (!modal) return;
+  var triggers = document.querySelectorAll('[data-open-materials]');
+  var closers = modal.querySelectorAll('[data-close-modal]');
+  function open(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-modal-open');
+    var closeBtn = modal.querySelector('.nb-modal-close');
+    if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 100);
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('is-modal-open');
+  }
+  triggers.forEach(function (t) { t.addEventListener('click', open); });
+  closers.forEach(function (c) { c.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+})();
+</script>
 
 </body>
 </html>

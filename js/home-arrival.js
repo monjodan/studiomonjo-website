@@ -1,53 +1,49 @@
 /**
  * Studio Monjo — home arrival page (the doors landing).
  *
- * Responsibilities:
- *   1. Toggle the per-door background image on hover/focus.
- *      Uses CSS :has() where supported, class fallback otherwise.
- *   2. Door-open click animation on every door CTA: the chosen door
- *      expands to fill the viewport while the other two slide away,
- *      then navigation proceeds. ~620ms.
+ *   1. Hover/focus a door → fade in its background photograph + make
+ *      the other doors translucent. Driven by JS class toggles so it
+ *      works regardless of :has() support and regardless of DOM order.
+ *   2. Click any CTA on a door → smooth scale + paper veil + navigate.
+ *      No layout jumps; total ~480ms.
  *   3. Mobile auto-cycle through the three backgrounds (4s, paused
- *      when tab is hidden).
+ *      when tab hidden).
  *   4. Language toggle pill (top-right).
  *
- * Honors prefers-reduced-motion: reduce throughout.
+ * Honors prefers-reduced-motion: reduce.
  */
 (function () {
   var body = document.body;
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
-  var supportsHas = (function () {
-    try { return CSS && CSS.supports && CSS.supports('selector(:has(*))'); } catch (e) { return false; }
-  })();
 
   var doors = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-door'));
-  var page = document.querySelector('.home-arrival-page');
-  var bgs = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-bg'));
+  var bgs   = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-bg'));
 
   // --- 1. HOVER / FOCUS — activate the matching background ----------------
   function activateDoor(n) {
-    bgs.forEach(function (bg) { bg.classList.toggle('is-active', bg.dataset.bg === String(n)); });
-    if (!supportsHas && page) {
-      page.classList.add('is-hovering', 'is-hovering-' + n);
-      doors.forEach(function (d) {
-        d.classList.toggle('is-hovered', d.dataset.door === String(n));
-      });
-    }
+    body.classList.add('is-hovering');
+    bgs.forEach(function (bg) {
+      bg.classList.toggle('is-active', bg.dataset.bg === String(n));
+    });
+    doors.forEach(function (d) {
+      d.classList.toggle('is-hovered', d.dataset.door === String(n));
+    });
   }
   function deactivateDoors() {
+    body.classList.remove('is-hovering');
     bgs.forEach(function (bg) { bg.classList.remove('is-active'); });
-    if (!supportsHas && page) {
-      page.classList.remove('is-hovering', 'is-hovering-1', 'is-hovering-2', 'is-hovering-3');
-      doors.forEach(function (d) { d.classList.remove('is-hovered'); });
-    }
+    doors.forEach(function (d) { d.classList.remove('is-hovered'); });
   }
   doors.forEach(function (door) {
     var n = door.dataset.door;
     door.addEventListener('mouseenter', function () { activateDoor(n); });
-    door.addEventListener('focusin', function () { activateDoor(n); });
+    door.addEventListener('focusin',    function () { activateDoor(n); });
     door.addEventListener('mouseleave', function () {
-      if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
+      // Defer so a quick move to a sibling door doesn't flicker
+      setTimeout(function () {
+        if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
+      }, 0);
     });
     door.addEventListener('focusout', function () {
       setTimeout(function () {
@@ -57,33 +53,33 @@
   });
 
   // --- 2. DOOR-OPEN CLICK ANIMATION ---------------------------------------
-  // Every CTA on a door (Learn more + primary) triggers the open animation.
-  // External Naver link still opens in a new tab; we animate then navigate.
   function isExternal(a) {
-    var t = a.getAttribute('target');
-    if (t && t === '_blank') return true;
+    if (a.getAttribute('target') === '_blank') return true;
     var h = a.getAttribute('href') || '';
     return /^https?:\/\//.test(h) && h.indexOf(location.hostname) === -1;
   }
   function openDoor(door, href, opensInNewTab) {
     if (prefersReducedMotion) {
-      // No animation — just navigate
-      if (opensInNewTab) { window.open(href, '_blank', 'noopener'); }
-      else { location.href = href; }
+      if (opensInNewTab) window.open(href, '_blank', 'noopener');
+      else location.href = href;
       return;
     }
+    // Inject paper veil overlay if not already present
+    var veil = document.querySelector('.home-arrival-veil');
+    if (!veil) {
+      veil = document.createElement('div');
+      veil.className = 'home-arrival-veil';
+      body.appendChild(veil);
+    }
     door.classList.add('is-opened');
-    if (page) page.classList.add('is-opening');
     body.classList.add('is-opening');
-    var DURATION = 620;
+    var DURATION = 480;
     if (opensInNewTab) {
-      // Open in new tab immediately so the click event isn't lost,
-      // then re-render the doors after a short pause.
       window.open(href, '_blank', 'noopener');
       setTimeout(function () {
         door.classList.remove('is-opened');
-        if (page) page.classList.remove('is-opening');
         body.classList.remove('is-opening');
+        if (veil && veil.parentNode) veil.parentNode.removeChild(veil);
       }, DURATION);
     } else {
       setTimeout(function () { location.href = href; }, DURATION - 80);
@@ -93,7 +89,6 @@
     var ctas = door.querySelectorAll('.home-arrival-door-actions a');
     ctas.forEach(function (a) {
       a.addEventListener('click', function (e) {
-        // Allow modifier-clicks (cmd, ctrl, middle) to bypass animation
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
         var href = a.getAttribute('href');
         if (!href) return;
@@ -115,10 +110,7 @@
       var bg = document.querySelector('.home-arrival-bg-' + current);
       if (bg) bg.classList.add('is-active');
     }
-    function startCycle() {
-      tickCycle();
-      cycleTimer = setInterval(tickCycle, 4000);
-    }
+    function startCycle() { tickCycle(); cycleTimer = setInterval(tickCycle, 4000); }
     function stopCycle() {
       if (cycleTimer) { clearInterval(cycleTimer); cycleTimer = null; }
       body.classList.remove('is-cycling-1', 'is-cycling-2', 'is-cycling-3');
