@@ -401,6 +401,59 @@
   ]
 }
 </script>
+<!-- ItemList of the active SKUs. Offers point to /en/notebooks/ (the
+     landing page) rather than directly into Naver, since Naver URLs
+     change per stock cycle. KRW prices are the authoritative source. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Product",
+      "position": 1,
+      "name": "Hand-painted notebook (A5)",
+      "description": "A5 notebook, 40 pages of fountain-pen paper, hand-painted cover, sewn closed by hand. Edition of twenty.",
+      "brand": { "@type": "Organization", "name": "Studio Monjo" },
+      "offers": {
+        "@type": "Offer",
+        "price": "65000",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://studiomonjo.com/en/notebooks/"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 2,
+      "name": "Bound card (A6)",
+      "description": "A6 sewn card with hand-painted cover. Smaller than the notebook, the same paper inside.",
+      "brand": { "@type": "Organization", "name": "Studio Monjo" },
+      "offers": {
+        "@type": "Offer",
+        "price": "25000",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://studiomonjo.com/en/notebooks/"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 3,
+      "name": "Postcard",
+      "description": "Single hand-painted postcard from the studio in Seoul.",
+      "brand": { "@type": "Organization", "name": "Studio Monjo" },
+      "offers": {
+        "@type": "Offer",
+        "price": "15000",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://studiomonjo.com/en/notebooks/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="notebooks">
 

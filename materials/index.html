@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+<!--
+  /materials/ is retired. Materials live inside the Notebooks page modal.
+  Single-hop redirect to the locale-appropriate Notebooks page. No hreflang
+  alternates because the destinations vary per visitor and the targets
+  themselves are language alternates of one another.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Monjo — Materials</title>
+<title>Materials moved. Studio Monjo.</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://studiomonjo.com/en/materials/">
-<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/materials/">
-<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/materials/">
-<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/materials/">
+<link rel="canonical" href="https://studiomonjo.com/en/notebooks/">
 <script>
 (function () {
   try {
@@ -17,11 +20,11 @@
     var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
     var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
     if (locale !== 'en' && locale !== 'ko') locale = 'en';
-    location.replace('/' + locale + '/materials/' + (location.hash || ''));
-  } catch (e) { location.replace('/en/materials/'); }
+    location.replace('/' + locale + '/notebooks/');
+  } catch (e) { location.replace('/en/notebooks/'); }
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="0; url=/en/materials/"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=/en/notebooks/"></noscript>
 </head>
-<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Redirecting… <a href="/en/materials/">English</a> · <a href="/ko/materials/">한국어</a></p></body>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Materials are now part of the Notebooks page. <a href="/en/notebooks/">Continue &rsaquo;</a></p></body>
 </html>

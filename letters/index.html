@@ -1,24 +1,19 @@
 <!DOCTYPE html>
+<!--
+  /letters/ (root) — single-hop redirect to Courrier de Séoul, the
+  monthly letter subscription. Earlier this routed to /shop/#bound-card,
+  but Courrier is now the dedicated home for "letters from Seoul".
+  /en/letters/ and /ko/letters/ already redirect to /courrier/.
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Monjo. Letters moved to the Shop.</title>
+<title>Courrier de Séoul. Studio Monjo.</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://studiomonjo.com/en/shop/">
-<script>
-(function () {
-  try {
-    var saved = null;
-    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
-    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
-    if (locale !== 'en' && locale !== 'ko') locale = 'en';
-    location.replace('/' + locale + '/shop/#bound-card');
-  } catch (e) { location.replace('/en/shop/#bound-card'); }
-})();
-</script>
-<noscript><meta http-equiv="refresh" content="0; url=/en/shop/#bound-card"></noscript>
+<link rel="canonical" href="https://studiomonjo.com/courrier/">
+<meta http-equiv="refresh" content="0; url=/courrier/">
+<script>location.replace('/courrier/');</script>
 </head>
-<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Letters moved to the Shop. <a href="/en/shop/#bound-card">English</a> · <a href="/ko/shop/#bound-card">한국어</a></p></body>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Moved to Courrier de Séoul. <a href="/courrier/">Continue &rsaquo;</a></p></body>
 </html>
