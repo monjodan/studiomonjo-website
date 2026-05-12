@@ -71,24 +71,30 @@
   body.notebooks :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
   body.notebooks strong { font-weight: 500; color: var(--ink-warm); }
 
-  .nb-back, .nb-lang {
-    position: fixed; top: 18px; z-index: 60;
+  .nb-back, .nb-lang { position: fixed; top: 18px; z-index: 60; display: inline-block; }
+  .nb-back { left: 18px; } .nb-lang { right: 18px; }
+  .nb-back a, .nb-lang a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--ink-warm-mid);
     font-family: var(--sans);
     font-size: 11px; font-weight: 500;
     letter-spacing: 0.16em; text-transform: uppercase;
     background: rgba(250,246,237,0.82);
     border: 0.5px solid rgba(26,24,22,0.10);
     border-radius: 999px;
-    padding: 9px 16px;
+    padding: 10px 16px;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     box-shadow: 0 1px 2px rgba(26,24,22,0.05);
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
-  .nb-back { left: 18px; } .nb-lang { right: 18px; }
-  .nb-back a, .nb-lang a { text-decoration: none; color: var(--ink-warm-mid); transition: color 0.2s; }
-  .nb-back a:hover, .nb-lang a:hover { color: var(--ink-warm); }
-  .nb-back:hover, .nb-lang:hover { background: rgba(250,246,237,0.96); border-color: rgba(26,24,22,0.18); }
+  .nb-back a:hover, .nb-lang a:hover, .nb-back a:focus-visible, .nb-lang a:focus-visible {
+    color: var(--ink-warm);
+    background: rgba(250,246,237,0.98);
+    border-color: rgba(26,24,22,0.20);
+    outline: none;
+  }
 
   .nb-hero {
     padding: clamp(96px, 10vw, 160px) var(--pad-x) clamp(40px, 6vw, 72px);
@@ -297,7 +303,7 @@
     color: rgba(250,246,237,0.78);
     margin-bottom: 32px;
   }
-  .nb-cta a {
+  body.notebooks .nb-cta a {
     display: inline-block;
     font-family: var(--sans);
     font-size: 12px; font-weight: 500;
@@ -309,11 +315,11 @@
     border: 1px solid var(--paper-warm);
     transition: background 0.2s, color 0.2s;
   }
-  .nb-cta a:hover, .nb-cta a:focus-visible {
+  body.notebooks .nb-cta a:hover, body.notebooks .nb-cta a:focus-visible {
     background: transparent; color: var(--paper-warm); outline: none;
   }
   .nb-cta-ext { color: var(--ink-warm-soft); margin-left: 4px; font-size: 13px; }
-  .nb-cta a:hover .nb-cta-ext { color: rgba(250,246,237,0.7); }
+  body.notebooks .nb-cta a:hover .nb-cta-ext { color: rgba(250,246,237,0.7); }
 
   .nb-footer {
     padding: clamp(40px, 5vw, 64px) var(--pad-x);
@@ -332,32 +338,34 @@
   .nb-footer a:hover { color: var(--ink-warm); }
 
   @media (max-width: 700px) {
-    .nb-back, .nb-lang { top: calc(14px + env(safe-area-inset-top)); padding: 8px 13px; font-size: 10px; }
+    .nb-back, .nb-lang { top: calc(14px + env(safe-area-inset-top)); }
     .nb-back { left: 14px; } .nb-lang { right: 14px; }
+    .nb-back a, .nb-lang a { padding: 9px 13px; font-size: 10px; }
   }
 
-  /* Materials modal */
+  /* Materials modal — full materials reference */
   .nb-modal { position: fixed; inset: 0; z-index: 100; display: none; }
   .nb-modal.is-open { display: block; }
   .nb-modal-backdrop { position: absolute; inset: 0; background: rgba(26,24,22,0.55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity 280ms ease; }
   .nb-modal.is-open .nb-modal-backdrop { opacity: 1; }
-  .nb-modal-panel { position: relative; width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 64px); margin: 32px auto; background: var(--paper-warm); border: 1px solid var(--rule-strong); box-shadow: 0 12px 48px rgba(26,24,22,0.18); overflow-y: auto; transform: translateY(8px); opacity: 0; transition: transform 320ms ease, opacity 280ms ease; }
+  .nb-modal-panel { position: relative; width: min(840px, calc(100vw - 32px)); max-height: calc(100vh - 48px); margin: 24px auto; background: var(--paper-warm); border: 1px solid var(--rule-strong); box-shadow: 0 12px 48px rgba(26,24,22,0.18); overflow-y: auto; transform: translateY(8px); opacity: 0; transition: transform 320ms ease, opacity 280ms ease; }
   .nb-modal.is-open .nb-modal-panel { transform: none; opacity: 1; }
-  .nb-modal-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; background: none; border: none; cursor: pointer; color: var(--ink-warm-soft); font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: color 0.2s, background 0.2s; }
-  .nb-modal-close:hover, .nb-modal-close:focus-visible { color: var(--ink-warm); background: rgba(26,24,22,0.06); outline: none; }
-  .nb-modal-inner { padding: clamp(28px, 5vw, 48px); }
+  .nb-modal-close { position: sticky; top: 14px; left: calc(100% - 46px); width: 32px; height: 32px; background: rgba(250,246,237,0.92); border: 1px solid rgba(26,24,22,0.10); border-radius: 50%; cursor: pointer; color: var(--ink-warm-soft); font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s, border-color 0.2s; z-index: 2; margin-bottom: -32px; }
+  .nb-modal-close:hover, .nb-modal-close:focus-visible { color: var(--ink-warm); background: var(--paper-warm); border-color: rgba(26,24,22,0.25); outline: none; }
+  .nb-modal-inner { padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 56px) clamp(28px, 4vw, 48px); }
   .nb-modal-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-warm-soft); margin-bottom: 14px; }
-  .nb-modal-title { font-family: var(--sans); font-weight: 500; font-size: clamp(1.4rem, 2.8vw, 1.85rem); line-height: 1.2; color: var(--ink-warm); margin-bottom: 24px; }
-  .nb-modal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 32px); margin-bottom: 32px; }
-  @media (max-width: 480px) { .nb-modal-grid { grid-template-columns: 1fr; } }
-  .nb-modal-card { display: flex; flex-direction: column; gap: 10px; }
-  .nb-modal-card-figure { aspect-ratio: 1 / 1; background: var(--paper-warm-darker); border: 1px solid var(--rule); overflow: hidden; position: relative; }
-  .nb-modal-card-figure picture, .nb-modal-card-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .nb-modal-card-name { font-family: var(--sans); font-weight: 500; font-size: 1rem; color: var(--ink-warm); }
-  .nb-modal-card-role { font-family: var(--sans); font-size: 12px; color: var(--ink-warm-mid); line-height: 1.6; }
-  .nb-modal-card-origin { font-family: var(--sans); font-size: 10px; letter-spacing: 0.06em; color: var(--ink-warm-light); }
-  .nb-modal-link { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm); text-decoration: none; border-bottom: 1px solid var(--ink-warm-light); padding-bottom: 2px; transition: border-color 0.2s; }
-  .nb-modal-link:hover, .nb-modal-link:focus-visible { border-color: var(--ink-warm); outline: none; }
+  .nb-modal-eyebrow .seal { display: inline-block; width: 6px; height: 6px; background: var(--seal); border-radius: 50%; margin-right: 10px; vertical-align: 2px; }
+  .nb-modal-title { font-family: var(--sans); font-weight: 500; font-size: clamp(1.5rem, 2.8vw, 2rem); line-height: 1.2; color: var(--ink-warm); margin-bottom: 12px; }
+  .nb-modal-lede { font-family: var(--sans); font-weight: 300; font-size: clamp(1rem, 1.4vw, 1.1rem); line-height: 1.75; color: var(--ink-warm-mid); margin-bottom: clamp(28px, 4vw, 40px); }
+  .nb-modal-maker { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(20px, 3vw, 36px); padding: clamp(28px, 4vw, 40px) 0; border-top: 1px solid var(--rule); align-items: start; }
+  @media (max-width: 580px) { .nb-modal-maker { grid-template-columns: 1fr; gap: 18px; } }
+  .nb-modal-maker-figure { aspect-ratio: 4 / 5; background: var(--paper-warm-darker); border: 1px solid var(--rule); overflow: hidden; position: relative; }
+  .nb-modal-maker-figure picture, .nb-modal-maker-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .nb-modal-maker-origin { font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em; color: var(--ink-warm-light); margin-bottom: 8px; }
+  .nb-modal-maker-name { font-family: var(--sans); font-weight: 500; font-size: 1.2rem; line-height: 1.2; color: var(--ink-warm); margin-bottom: 4px; }
+  .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-warm-mid); margin-bottom: 14px; }
+  .nb-modal-maker-body { font-family: var(--sans); font-weight: 300; font-size: 0.95rem; line-height: 1.8; color: var(--ink-warm-mid); margin: 0; }
+  .nb-modal-maker-body em { font-style: italic; color: var(--ink-warm); }
   body.is-modal-open { overflow: hidden; }
 </style>
 
@@ -407,7 +415,7 @@
   <section class="nb-section">
     <div class="nb-eyebrow">재료</div>
     <h2>네 명의 장인, 하나의 작업실.</h2>
-    <p>속지는 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 이로풀. 커버는 두꺼운 캉송. 러시아의 화이트 나이츠 수채 물감. 프랑스산 왁스 린넨 실. <a href="/ko/materials/" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
+    <p>속지는 토모에리버를 만드는 일본 사카에 테크니컬 페이퍼의 이로풀. 커버는 두꺼운 캉송. 러시아의 화이트 나이츠 수채 물감. 프랑스산 왁스 린넨 실. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
     <div class="nb-specs">
       <div class="nb-spec">
         <div class="nb-spec-label">속지</div>
@@ -477,41 +485,55 @@
 
 </main>
 
-<!-- MATERIALS MODAL -->
+<!-- MATERIALS MODAL — full materials reference -->
 <div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
   <div class="nb-modal-backdrop" data-close-modal></div>
   <div class="nb-modal-panel" role="document">
     <button type="button" class="nb-modal-close" data-close-modal aria-label="닫기">&times;</button>
     <div class="nb-modal-inner">
-      <div class="nb-modal-eyebrow">재료</div>
+      <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>재료</div>
       <h2 class="nb-modal-title" id="materialsModalTitle">네 명의 장인, 하나의 작업실.</h2>
-      <div class="nb-modal-grid">
-        <div class="nb-modal-card">
-          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="" loading="lazy"></picture></figure>
-          <div class="nb-modal-card-name">캉송</div>
-          <div class="nb-modal-card-role">커버 종이 — 노트는 몽골피에, 카드는 몽발.</div>
-          <div class="nb-modal-card-origin">프랑스 · 1557년부터</div>
-        </div>
-        <div class="nb-modal-card">
-          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4605.jpg" alt="" loading="lazy"></picture></figure>
-          <div class="nb-modal-card-name">이로풀</div>
-          <div class="nb-modal-card-role">속지에 쓰는 만년필 전용 종이 — 75 gsm, 번짐과 뒷면 비침 없음.</div>
-          <div class="nb-modal-card-origin">일본 · 사카에 테크니컬 페이퍼</div>
-        </div>
-        <div class="nb-modal-card">
-          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4604.jpg" alt="" loading="lazy"></picture></figure>
-          <div class="nb-modal-card-name">네브스카야 팔리트라</div>
-          <div class="nb-modal-card-role">화이트 나이츠 수채 — 안료 농도가 높아 페이지 위에서 깊이가 살아 있어요.</div>
-          <div class="nb-modal-card-origin">러시아 · 1934년부터</div>
-        </div>
-        <div class="nb-modal-card">
-          <figure class="nb-modal-card-figure"><picture><source srcset="/media/web/notebooks/L1001424.webp" type="image/webp"><img src="/media/web/notebooks/L1001424.jpg" alt="" loading="lazy"></picture></figure>
-          <div class="nb-modal-card-name">사주 린 카블레</div>
-          <div class="nb-modal-card-role">손바느질 제본 실 — 케이블 왁스 린넨, 약간 뻣뻣하고 수십 년을 견뎌요.</div>
-          <div class="nb-modal-card-origin">프랑스 · 필 오 쉬누아</div>
+      <p class="nb-modal-lede">스튜디오 몬조의 모든 작품은 정성껏 고른 몇 가지 재료로 만들어요. 각각 수십 년, 수백 년의 내공이 담겨 있어요.</p>
+
+      <div class="nb-modal-maker">
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="캉송 종이에 손으로 그린 노트 커버" loading="lazy"></picture></figure>
+        <div>
+          <div class="nb-modal-maker-origin">프랑스 · 1557년부터</div>
+          <div class="nb-modal-maker-name">캉송</div>
+          <div class="nb-modal-maker-role">커버 종이</div>
+          <p class="nb-modal-maker-body">유럽에서 가장 오래된 제지 공장 중 하나로, 1557년 프랑스 안노네에서 몽골피에 가문이 세웠어요(네, 1782년에 세계 최초로 열기구를 띄운 바로 그 가문이에요). 노트 커버는 <em>몽골피에(Montgolfier)</em>로, 잉크와 수채 워시에도 우글거리지 않는 두꺼운 아티스트용 종이예요. 카드 커버와 엽서는 <em>몽발(Montval)</em>을 써요. 결이 더 촘촘하고 한 단계 더 두꺼운 수채 전용 종이라, 작은 판형에서도 진한 워시를 잘 받아요.</p>
         </div>
       </div>
-      <a href="/ko/materials/" class="nb-modal-link">재료 페이지 자세히 보기 &rsaquo;</a>
+
+      <div class="nb-modal-maker">
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4605.jpg" alt="이로풀 속지" loading="lazy"></picture></figure>
+        <div>
+          <div class="nb-modal-maker-origin">일본 · 사카에 테크니컬 페이퍼</div>
+          <div class="nb-modal-maker-name">이로풀</div>
+          <div class="nb-modal-maker-role">속지</div>
+          <p class="nb-modal-maker-body">일본 사카에 테크니컬 페이퍼에서 만드는 만년필 전용 종이예요. 토모에리버를 만드는 바로 그 공장이에요. 75gsm인데도 얇지 않고, 매끄럽되 미끈하지 않아요. 만년필 잉크가 차분히 앉고, 번짐도 뒷면 비침도 없어요. 쉬인이 뚜렷한 잉크도, 필압이 센 손도 이 종이가 잘 받아 줘요. 노트마다 40장이에요.</p>
+        </div>
+      </div>
+
+      <div class="nb-modal-maker">
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4604.jpg" alt="네브스카야 팔리트라 수채로 그린 커버" loading="lazy"></picture></figure>
+        <div>
+          <div class="nb-modal-maker-origin">러시아 · 상트페테르부르크 · 1934년부터</div>
+          <div class="nb-modal-maker-name">네브스카야 팔리트라</div>
+          <div class="nb-modal-maker-role">물감</div>
+          <p class="nb-modal-maker-body">수채 물감은 <em>화이트 나이츠(White Nights)</em>예요. 상트페테르부르크의 네브스카야 팔리트라에서 만들어요. 이름(<em>Белые Ночи</em>)은 여름 몇 주간 해가 네바 강 너머로 완전히 지지 않는 백야에서 따왔어요. 안료 농도가 유난히 높아서, 물에 많이 희석해도 색이 쉽게 바래지 않아요. 종이 위에서 깊이가 살아 있고, 흐릿한 얼룩으로 주저앉지 않아요.</p>
+        </div>
+      </div>
+
+      <div class="nb-modal-maker">
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001424.webp" type="image/webp"><img src="/media/web/notebooks/L1001424.jpg" alt="사주 왁스 린넨 실로 꿰맨 손바느질 제본" loading="lazy"></picture></figure>
+        <div>
+          <div class="nb-modal-maker-origin">프랑스 · 필 오 쉬누아 · 150년 이상</div>
+          <div class="nb-modal-maker-name">사주 린 카블레</div>
+          <div class="nb-modal-maker-role">제본 실</div>
+          <p class="nb-modal-maker-body">모든 노트와 카드는 <em>린 카블레(Lin Câblé)</em>로 꿰매요. 프랑스 필 오 쉬누아(Fil Au Chinois)에서 만들고 사주(Sajou) 이름으로 유통되는 케이블 왁스 린넨 실이에요. 이미 꼰 두 가닥을 다시 꼬아 만든 뒤, 녹말과 밀랍을 녹인 물에 담갔다 빼요. 살짝 딱딱하면서도 매끈하고, 놀랄 만큼 튼튼해요. 수십 년이 지나도 늘어나거나 해지지 않아요.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
