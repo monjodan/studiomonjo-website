@@ -1508,3 +1508,269 @@ html[lang="ko"] .sets-band-row-price { font-family: var(--sans); font-weight: 50
 .sets-band-figure picture, .sets-band-figure img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
 }
+
+/* ================================================================
+   HOME ARRIVAL — single-viewport doors landing page
+   Namespaced .home-arrival-* so it can be removed cleanly later.
+   ================================================================ */
+
+body.home-arrival {
+  margin: 0;
+  padding-top: 0; /* override default body padding-top: var(--nav-h) */
+  background: #fbf8f1;
+  overflow: hidden; /* one-viewport landing on desktop */
+  color: var(--ink);
+  height: 100vh;
+}
+
+/* LOADING LAYER */
+.home-arrival-loading {
+  position: fixed; inset: 0; z-index: 1000;
+  background: #fdfcf7;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  transition: opacity 800ms ease;
+}
+.home-arrival-loading.is-fading { opacity: 0; pointer-events: none; }
+.home-arrival-loading.is-skipped { display: none; }
+.home-arrival-loading-inner { text-align: center; }
+.home-arrival-loading-mark {
+  width: 18px; height: 18px;
+  border: 1.4px solid var(--ink);
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  opacity: 0;
+  animation: home-arrival-mark-in 600ms ease 200ms forwards;
+}
+.home-arrival-loading-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 17px;
+  color: var(--ink-mid);
+  opacity: 0;
+  animation: home-arrival-line-in 700ms ease 500ms forwards;
+}
+.home-arrival-loading-line em { font-style: italic; }
+@keyframes home-arrival-mark-in { to { opacity: 1; } }
+@keyframes home-arrival-line-in { to { opacity: 1; } }
+
+/* FLOATING CHROME — logo + lang */
+.home-arrival-logo {
+  position: fixed; top: 18px; left: 22px; z-index: 60;
+  display: inline-flex; align-items: center; gap: 9px;
+  text-decoration: none; color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  line-height: 1;
+}
+.home-arrival-logo-mark {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 1.2px solid var(--ink);
+  border-radius: 50%;
+}
+.home-arrival-logo:hover .home-arrival-logo-mark { background: var(--ink); }
+.home-arrival-logo-word { color: var(--ink); }
+
+.home-arrival-lang {
+  position: fixed; top: 14px; right: 18px; z-index: 60;
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,0.7);
+  border: 0.5px solid rgba(10,10,10,0.12);
+  border-radius: 999px;
+  padding: 8px 14px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.home-arrival-lang-current {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink); font: inherit; letter-spacing: inherit; text-transform: inherit;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0;
+}
+.home-arrival-lang-caret { color: var(--ink-light); font-size: 9px; transition: transform 0.2s; }
+.home-arrival-lang.is-open .home-arrival-lang-caret { transform: rotate(180deg); }
+.home-arrival-lang-alt {
+  text-decoration: none;
+  color: var(--ink);
+  border-left: 0.5px solid rgba(10,10,10,0.12);
+  padding-left: 10px;
+  margin-left: 6px;
+}
+.home-arrival-lang-alt[hidden] { display: none; }
+.home-arrival-lang.is-open .home-arrival-lang-alt { display: inline-block; }
+@media (max-width: 900px) {
+  .home-arrival-logo { top: calc(18px + env(safe-area-inset-top)); }
+  .home-arrival-lang { top: calc(14px + env(safe-area-inset-top)); }
+}
+
+/* BACKGROUND VIDEO STACK — full-bleed, fades in on door hover/focus */
+.home-arrival-bg-stack {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+}
+.home-arrival-bg {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 550ms ease;
+}
+.home-arrival-bg-1 { background: #fbf3e3; }
+.home-arrival-bg-2 { background: #fefcf6; }
+.home-arrival-bg-3 { background: #ece7d6; }
+.home-arrival-bg-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* DOORS — three equal vertical columns */
+.home-arrival-page {
+  position: relative; z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+  border: 0;
+  margin: 0; padding: 0;
+}
+.home-arrival-door {
+  position: relative;
+  display: flex; align-items: stretch;
+  padding: 64px 24px 32px;
+  border-right: 0.5px solid rgba(10,10,10,0.06);
+  transition: background 550ms ease, transform 350ms ease;
+  background: #fbf8f1;
+}
+.home-arrival-door:last-child { border-right: none; }
+.home-arrival-door-1 { background: #fbf8f1; }
+.home-arrival-door-2 { background: #ffffff; }
+.home-arrival-door-3 { background: #f5f3ec; }
+.home-arrival-door-inner {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  width: 100%; max-width: 280px;
+  margin: 0 auto;
+  text-align: left;
+  transition: transform 350ms ease;
+}
+.home-arrival-door-mark {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.home-arrival-door-1 .home-arrival-door-mark { color: var(--accent); }
+.home-arrival-door-num {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 14px;
+}
+.home-arrival-door-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: -0.005em;
+}
+html[lang="ko"] .home-arrival-door-title { font-family: var(--sans); font-weight: 400; }
+.home-arrival-door-desc {
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 300;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  max-width: 230px;
+  margin: 0 0 24px;
+}
+.home-arrival-door-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.home-arrival-door-actions .home-arrival-btn {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  padding: 12px 18px;
+}
+.home-arrival-ext { color: var(--ink-light); margin-left: 4px; font-size: 12px; }
+
+/* HOVER STATE — uses :has() on the page, JS adds .is-hovering-N as fallback */
+.home-arrival-page:has(.home-arrival-door-1:hover) ~ .home-arrival-bg-stack .home-arrival-bg-1,
+.home-arrival-page:has(.home-arrival-door-1:focus-within) ~ .home-arrival-bg-stack .home-arrival-bg-1,
+.home-arrival-page.is-hovering-1 ~ .home-arrival-bg-stack .home-arrival-bg-1,
+body.home-arrival.is-hovering-1 .home-arrival-bg-1 { opacity: 1; }
+
+.home-arrival-page:has(.home-arrival-door-2:hover) ~ .home-arrival-bg-stack .home-arrival-bg-2,
+.home-arrival-page:has(.home-arrival-door-2:focus-within) ~ .home-arrival-bg-stack .home-arrival-bg-2,
+.home-arrival-page.is-hovering-2 ~ .home-arrival-bg-stack .home-arrival-bg-2,
+body.home-arrival.is-hovering-2 .home-arrival-bg-2 { opacity: 1; }
+
+.home-arrival-page:has(.home-arrival-door-3:hover) ~ .home-arrival-bg-stack .home-arrival-bg-3,
+.home-arrival-page:has(.home-arrival-door-3:focus-within) ~ .home-arrival-bg-stack .home-arrival-bg-3,
+.home-arrival-page.is-hovering-3 ~ .home-arrival-bg-stack .home-arrival-bg-3,
+body.home-arrival.is-hovering-3 .home-arrival-bg-3 { opacity: 1; }
+
+/* When ANY door is hovered/focused: doors become translucent and the hovered one nudges up */
+.home-arrival-page:has(.home-arrival-door:hover) .home-arrival-door:not(:hover),
+.home-arrival-page:has(.home-arrival-door:focus-within) .home-arrival-door:not(:focus-within),
+.home-arrival-page.is-hovering .home-arrival-door:not(.is-hovered) {
+  background: rgba(255,255,255,0.82);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.home-arrival-door:hover,
+.home-arrival-door:focus-within,
+.home-arrival-door.is-hovered {
+  background: rgba(255,255,255,0.18) !important;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+.home-arrival-door:hover .home-arrival-door-inner,
+.home-arrival-door:focus-within .home-arrival-door-inner,
+.home-arrival-door.is-hovered .home-arrival-door-inner { transform: translateY(-4px); }
+
+/* MOBILE — stack vertically, auto-cycle backgrounds */
+@media (max-width: 900px) {
+  body.home-arrival { overflow-y: auto; }
+  .home-arrival-page {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+  .home-arrival-door {
+    min-height: 33vh;
+    padding: 80px 28px 36px;
+    border-right: none;
+    border-bottom: 0.5px solid rgba(10,10,10,0.06);
+  }
+  .home-arrival-door:last-child { border-bottom: none; }
+  .home-arrival-door-inner { max-width: 360px; }
+  /* On mobile, JS toggles .is-cycling-N on body to drive the background cycle */
+  body.home-arrival.is-cycling-1 .home-arrival-bg-1,
+  body.home-arrival.is-cycling-2 .home-arrival-bg-2,
+  body.home-arrival.is-cycling-3 .home-arrival-bg-3 { opacity: 0.45; }
+  /* keep doors readable over the cycling video */
+  body.home-arrival.is-cycling-1 .home-arrival-door:not(.home-arrival-door-1),
+  body.home-arrival.is-cycling-2 .home-arrival-door:not(.home-arrival-door-2),
+  body.home-arrival.is-cycling-3 .home-arrival-door:not(.home-arrival-door-3) {
+    background: rgba(255,255,255,0.82);
+  }
+  body.home-arrival.is-cycling-1 .home-arrival-door-1,
+  body.home-arrival.is-cycling-2 .home-arrival-door-2,
+  body.home-arrival.is-cycling-3 .home-arrival-door-3 {
+    background: rgba(255,255,255,0.18);
+  }
+}
+
+/* REDUCED MOTION — no loading animation, no door nudge, no video */
+@media (prefers-reduced-motion: reduce) {
+  .home-arrival-loading { display: none; }
+  .home-arrival-bg-video { display: none; }
+  .home-arrival-door-inner { transform: none !important; transition: none !important; }
+  .home-arrival-bg { transition: none !important; }
+}

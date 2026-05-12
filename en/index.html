@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Monjo. Hand-painted notebooks for fountain pens, made in Seoul.</title>
-<meta name="description" content="Studio Monjo makes hand-painted notebooks and cards for people who write with fountain pens, care how a page takes ink, and engage with their words. Twenty of each design, made in Seoul.">
-<meta name="theme-color" content="#ffffff">
+<title>Studio Monjo. An atelier in Seoul.</title>
+<meta name="description" content="Studio Monjo is the slow half of Jordan Monnet's practice in Seoul. Three doors: Courrier, a monthly letter from Seoul. Notebooks and cards, hand-painted in small editions. Workshops, by invitation.">
+<meta name="theme-color" content="#fbf8f1">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://studiomonjo.com/en/">
@@ -14,11 +14,10 @@
 <link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/">
 
 <meta property="og:site_name" content="Studio Monjo">
-<meta property="og:title" content="Studio Monjo. Hand-painted notebooks for fountain pens, made in Seoul.">
-<meta property="og:description" content="Notebooks and cards for people who write with fountain pens. Hand-painted in a small Seoul studio. Twenty of each design.">
+<meta property="og:title" content="Studio Monjo. An atelier in Seoul.">
+<meta property="og:description" content="Three doors: a monthly letter from Seoul, hand-painted notebooks and cards, and workshops by invitation. Made by Jordan Monnet.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/en/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001456.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,176 +37,122 @@
   "name": "Studio Monjo",
   "url": "https://studiomonjo.com/",
   "logo": "https://studiomonjo.com/media/web/branding/monjo-mark-256.png",
-  "description": "Hand-painted notebooks and cards for fountain-pen users, made in editions of twenty in Seoul.",
+  "description": "An atelier in Seoul: hand-painted notebooks and cards, monthly correspondence (Courrier de Séoul), and workshops by invitation.",
   "founder": { "@type": "Person", "name": "Jordan Monnet" },
   "address": { "@type": "PostalAddress", "addressLocality": "Seoul", "addressCountry": "KR" },
   "sameAs": ["https://brunch.co.kr/@444d2811f4b84ad", "https://jordanmonnet.com"]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Studio Monjo",
-  "url": "https://studiomonjo.com/en/",
-  "inLanguage": "en"
-}
-</script>
 </head>
-<body class="home">
+<body class="home-arrival">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<nav aria-label="Primary">
-  <a href="/en/" class="nav-logo" aria-label="Studio Monjo home">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nav-mark" width="28" height="28">
-    <span class="nav-word">Studio Monjo</span>
-  </a>
-  <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-    <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+<!-- LOADING LAYER (first visit only; gated by localStorage 'sm-arrival-seen') -->
+<div class="home-arrival-loading" id="arrivalLoading" aria-hidden="true">
+  <div class="home-arrival-loading-inner">
+    <div class="home-arrival-loading-mark" aria-hidden="true"></div>
+    <p class="home-arrival-loading-line"><em>welcome to my world,</em></p>
+  </div>
+</div>
+
+<!-- FLOATING CHROME -->
+<a href="/" class="home-arrival-logo" aria-label="Studio Monjo home">
+  <span class="home-arrival-logo-mark" aria-hidden="true"></span>
+  <span class="home-arrival-logo-word">Studio Monjo</span>
+</a>
+
+<div class="home-arrival-lang" id="arrivalLang">
+  <button type="button" class="home-arrival-lang-current" id="arrivalLangBtn" aria-haspopup="true" aria-expanded="false" aria-label="Switch language">
+    <span>EN</span><span class="home-arrival-lang-caret" aria-hidden="true">&#9662;</span>
   </button>
-  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
-  <div class="nav-right" id="navMenu">
-    <a href="/en/shop/" class="nav-link">Shop</a>
-    <a href="/en/materials/" class="nav-link">Materials</a>
-    <a href="/en/workshops/" class="nav-link">Workshops</a>
-    <a href="/en/essays/" class="nav-link">Writing</a>
-    <a href="/en/about/" class="nav-link">About</a>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <a href="/en/" class="lang-opt is-current" lang="en" aria-current="page">EN</a>
-      <span class="lang-sep" aria-hidden="true">·</span>
-      <a href="/ko/" class="lang-opt" lang="ko">한국어</a>
+  <a href="/ko/" class="home-arrival-lang-alt" lang="ko" hidden>한국어</a>
+</div>
+
+<!-- HOVER VIDEO LAYERS — full-bleed, fade in when corresponding door is hovered/focused -->
+<div class="home-arrival-bg-stack" aria-hidden="true">
+  <div class="home-arrival-bg home-arrival-bg-1" data-bg="1">
+    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
+      data-src-mp4="/media/web/home-arrival/door-01-courrier.mp4"
+      data-src-webm="/media/web/home-arrival/door-01-courrier.webm"
+      poster="/media/web/home-arrival/door-01-courrier.jpg"></video>
+  </div>
+  <div class="home-arrival-bg home-arrival-bg-2" data-bg="2">
+    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
+      data-src-mp4="/media/web/home-arrival/door-02-notebooks.mp4"
+      data-src-webm="/media/web/home-arrival/door-02-notebooks.webm"
+      poster="/media/web/home-arrival/door-02-notebooks.jpg"></video>
+  </div>
+  <div class="home-arrival-bg home-arrival-bg-3" data-bg="3">
+    <video class="home-arrival-bg-video" preload="none" muted loop playsinline
+      data-src-mp4="/media/web/home-arrival/door-03-workshops.mp4"
+      data-src-webm="/media/web/home-arrival/door-03-workshops.webm"
+      poster="/media/web/home-arrival/door-03-workshops.jpg"></video>
+  </div>
+</div>
+
+<main id="main" class="home-arrival-page">
+
+  <!-- DOOR 01 — Courrier -->
+  <section class="home-arrival-door home-arrival-door-1" data-door="1" aria-labelledby="door1-title">
+    <div class="home-arrival-door-inner">
+      <svg class="home-arrival-door-mark" viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
+        <rect x="3" y="8" width="28" height="18" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M3 8 L17 19 L31 8" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <div class="home-arrival-door-num">01</div>
+      <h2 class="home-arrival-door-title" id="door1-title">Courrier</h2>
+      <p class="home-arrival-door-desc">A monthly letter from Seoul, on hand-painted paper. An ongoing correspondence.</p>
+      <div class="home-arrival-door-actions">
+        <a href="/courrier/" class="btn btn-ghost home-arrival-btn" aria-label="Learn more about Courrier de Séoul">Learn more</a>
+        <a href="/courrier/#offrir" class="btn btn-primary home-arrival-btn" aria-label="Subscribe to Courrier de Séoul">S'abonner</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </section>
 
-<main id="main">
-
-<section class="brand-hero">
-  <div class="brand-hero-img" aria-hidden="true">
-    <picture>
-      <source srcset="/media/web/photography/L1001456.webp" type="image/webp">
-      <img src="/media/web/photography/L1001456.jpg" alt="" fetchpriority="high" decoding="async" width="1800" height="1200">
-    </picture>
-  </div>
-  <div class="brand-hero-text">
-    <div class="brand-hero-eyebrow">Studio Monjo · Seoul</div>
-    <h1 class="brand-hero-title">Hand-painted notebooks and cards for people who write with fountain pens.</h1>
-    <div class="brand-hero-actions">
-      <a href="/en/shop/" class="btn btn-primary">See the editions</a>
-      <a href="/en/custom/" class="btn btn-ghost">Commission a piece</a>
+  <!-- DOOR 02 — Notebooks & cards -->
+  <section class="home-arrival-door home-arrival-door-2" data-door="2" aria-labelledby="door2-title">
+    <div class="home-arrival-door-inner">
+      <svg class="home-arrival-door-mark" viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
+        <rect x="6" y="9" width="18" height="22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="11" y="4" width="18" height="22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="20" cy="15" r="1.6" fill="var(--accent)"/>
+      </svg>
+      <div class="home-arrival-door-num">02</div>
+      <h2 class="home-arrival-door-title" id="door2-title">Notebooks &amp; cards</h2>
+      <p class="home-arrival-door-desc">Hand-painted notebooks and letter cards, made in small editions in Seoul.</p>
+      <div class="home-arrival-door-actions">
+        <a href="/en/notebooks/" class="btn btn-ghost home-arrival-btn" aria-label="Learn more about the notebooks and cards">Learn more</a>
+        <!-- REPLACE_NAVER_SHOP_URL — final Naver Smart Store URL goes here -->
+        <a href="https://smartstore.naver.com/REPLACE_NAVER_SHOP" target="_blank" rel="noopener noreferrer" class="btn btn-primary home-arrival-btn" aria-label="Open the Naver Shop in a new tab">Naver Shop <span class="home-arrival-ext" aria-hidden="true">&#8599;</span></a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="manifesto">
-  <div class="manifesto-inner">
-    <div class="manifesto-eyebrow">The practice</div>
-    <p>Writing by hand changes what you say. You can't go fast. You think in the time it takes the pen to catch up with you, and the thought has to be worth the second it costs to write. The same is true of reading what you wrote later. A handwritten page slows down the reading. The reader gives it the time the writer gave it.</p>
-    <p>A fountain pen on good paper extends this. The pen tells you about the paper the moment it touches it. The way the nib lifts. The way the ink lays down. The page is quiet, or it isn't. The line will hold, or it will feather. Most paper doesn't notice. A few are listening.</p>
-    <p>The notebooks I make take a long time. Each cover is painted, each binding sewn by hand. They are slower to make than to use. This is on purpose. A notebook that took attention to make asks for attention to use. The maker and the writer meet in the object, across whatever time has passed between them.</p>
-    <p>Studio Monjo makes notebooks and cards for that meeting. I paint each cover by hand, in ink and watercolour, in a small studio in Seoul. The paper inside is Iroful, from the Sakae mill that also makes Tomoe River. The binding is hand-stitched with French waxed linen. Twenty of each design, hand-numbered. When the twenty are gone, the design ends.</p>
-    <p>I make these slowly. They are meant for letters worth keeping, and for the kind of writing you return to.</p>
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="manifesto-mark" width="24" height="24">
-  </div>
-</section>
-
-<section class="home-pieces">
-  <div class="home-pieces-inner">
-    <header class="home-pieces-head">
-      <div class="section-label">The work</div>
-      <h2 class="home-pieces-title">Notebooks and bound cards.</h2>
-    </header>
-    <div class="home-pieces-grid home-pieces-grid--two">
-      <a href="/en/shop/#cat=notebook" class="piece-card">
-        <figure class="piece-card-figure">
-          <picture>
-            <source srcset="/media/web/photography/L1001438.webp" type="image/webp">
-            <img src="/media/web/photography/L1001438.jpg" alt="A hand-painted notebook with a tree and two birds, on a wooden desk with brushes" loading="lazy" decoding="async">
-          </picture>
-        </figure>
-        <div class="piece-card-meta">
-          <div class="piece-card-eyebrow">Notebooks · A6 ₩65,000 · A5 ₩95,000</div>
-          <div class="piece-card-name">Hand-painted notebooks for the everyday page. Forty pages of fountain-pen paper inside.</div>
-        </div>
-      </a>
-      <a href="/en/shop/#cat=bound-card" class="piece-card">
-        <figure class="piece-card-figure">
-          <picture>
-            <source srcset="/media/web/photography/L1001446-2.webp" type="image/webp">
-            <img src="/media/web/photography/L1001446-2.jpg" alt="A hand opening a hand-painted card to reveal a branch with red leaves" loading="lazy" decoding="async">
-          </picture>
-        </figure>
-        <div class="piece-card-meta">
-          <div class="piece-card-eyebrow">Bound cards · ₩25,000 · Boxed set ₩85,000</div>
-          <div class="piece-card-name">Hand-painted cards for letters worth writing. Single, or four in a seasonal box.</div>
-        </div>
-      </a>
+  <!-- DOOR 03 — Workshops -->
+  <section class="home-arrival-door home-arrival-door-3" data-door="3" aria-labelledby="door3-title">
+    <div class="home-arrival-door-inner">
+      <svg class="home-arrival-door-mark" viewBox="0 0 34 34" width="34" height="34" aria-hidden="true">
+        <circle cx="17" cy="17" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="6.5" cy="17" r="1.4" fill="currentColor"/>
+        <circle cx="27.5" cy="17" r="1.4" fill="currentColor"/>
+        <circle cx="13" cy="17" r="1.4" fill="currentColor"/>
+        <circle cx="21" cy="17" r="1.4" fill="currentColor"/>
+      </svg>
+      <div class="home-arrival-door-num">03</div>
+      <h2 class="home-arrival-door-title" id="door3-title">Workshops</h2>
+      <p class="home-arrival-door-desc">Small gatherings to paint, fold, and write together &mdash; in Seoul, by invitation.</p>
+      <div class="home-arrival-door-actions">
+        <a href="/en/workshops/" class="btn btn-ghost home-arrival-btn" aria-label="Learn more about the workshops">Learn more</a>
+        <a href="/en/workshops/#register" class="btn btn-primary home-arrival-btn" aria-label="Sign up for the next workshop">Sign up</a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="materials-teaser">
-  <div class="materials-teaser-inner">
-    <figure class="materials-teaser-figure">
-      <picture>
-        <source srcset="/media/web/photography/L1001463-2.webp" type="image/webp">
-        <img src="/media/web/photography/L1001463-2.jpg" alt="A watercolour palette, brushes, and fountain pens laid out on a desk" loading="lazy" decoding="async">
-      </picture>
-    </figure>
-    <div class="materials-teaser-text">
-      <div class="section-label">The materials</div>
-      <h2 class="materials-teaser-title">Four makers, one studio.</h2>
-      <p class="materials-teaser-body">Iroful paper inside, from the Sakae mill that also makes Tomoe River. Heavy Canson on the covers. Russian White Nights watercolours. French waxed linen on the spine. Each maker has decades or centuries of craft behind them.</p>
-      <a href="/en/materials/" class="btn-link">See the materials &rsaquo;</a>
-    </div>
-  </div>
-</section>
-
-<section class="home-bands">
-  <div class="section-inner home-bands-grid">
-    <a href="/en/custom/" class="home-band">
-      <div class="home-band-label">Custom orders</div>
-      <div class="home-band-title">Commission a piece in your own design.</div>
-      <div class="home-band-meta">Sewn cards ₩65,000 · Notebooks ₩125,000 · Reply within 48 hours</div>
-    </a>
-    <a href="/en/workshops/" class="home-band">
-      <div class="home-band-label">Workshops</div>
-      <div class="home-band-title">Three hours, one notebook of your own.</div>
-      <div class="home-band-meta">Seoul · ₩150,000 per seat</div>
-    </a>
-    <a href="/en/essays/" class="home-band">
-      <div class="home-band-label">Writing</div>
-      <div class="home-band-title">Essays, in Korean.</div>
-      <div class="home-band-meta">On consciousness, control, aesthetics</div>
-    </a>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <a href="/en/" class="footer-logo">
-      <img src="/media/web/branding/monjo-mark-256.png" alt="" width="20" height="20">
-      <span>Studio Monjo</span>
-    </a>
-    <div class="footer-meta">Seoul · © 2026</div>
-    <div class="footer-links">
-      <a href="/en/shop/" class="footer-link">Shop</a>
-      <a href="/en/custom/" class="footer-link">Custom orders</a>
-      <a href="/en/materials/" class="footer-link">Materials</a>
-      <a href="/en/workshops/" class="footer-link">Workshops</a>
-      <a href="/en/essays/" class="footer-link">Writing</a>
-      <a href="/en/about/" class="footer-link">About</a>
-      <a href="https://jordanmonnet.com" target="_blank" rel="noopener noreferrer" class="footer-link">jordanmonnet.com</a>
-      <a href="/ko/" class="footer-link" lang="ko">한국어</a>
-    </div>
-  </div>
-</footer>
-
 <script>window.SM_LOCALE = 'en';</script>
 <script src="/js/i18n.js"></script>
-<script src="/js/site.js"></script>
+<script src="/js/home-arrival.js"></script>
 </body>
 </html>
