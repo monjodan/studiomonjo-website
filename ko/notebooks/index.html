@@ -443,8 +443,10 @@
         <p class="nb-video-body">커버가 마르면 노트를 접어, 프랑스산 왁스 린넨 실로 손바느질해요. 안쪽에 번호와 서명을 적어요.</p>
       </div>
       <div class="nb-video-frame">
+        <!-- autoplay + mute + loop. mute=1 is required by browsers for
+             autoplay; loop=1 needs playlist=<id> to actually loop. -->
         <iframe
-          src="https://www.youtube.com/embed/JA6xexkCOco?modestbranding=1&amp;rel=0&amp;playsinline=1"
+          src="https://www.youtube.com/embed/JA6xexkCOco?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=JA6xexkCOco&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
           title="스튜디오 몬조 — 카드 그리는 과정"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
