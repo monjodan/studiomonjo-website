@@ -220,6 +220,96 @@
     color: var(--ink-warm);
   }
 
+  /* TWO-COLUMN FEATURE — visual + text side-by-side. Used by 'How it writes'
+     and 'By hand' so prose-heavy sections become a magazine spread instead
+     of a wall of text. Add .nb-feature--reverse to flip image to the right. */
+  .nb-feature {
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nb-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  .nb-feature-figure { margin: 0; }
+  .nb-feature-text > .nb-eyebrow { margin-bottom: 18px; }
+  .nb-feature-text h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.18;
+    color: var(--ink-warm);
+    margin-bottom: 24px;
+  }
+  .nb-feature-text p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.75;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.2em;
+  }
+  .nb-feature-text p:last-child { margin-bottom: 0; }
+  .nb-feature-text .nb-specs {
+    margin-top: 32px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .nb-feature--reverse .nb-feature-figure { order: 2; }
+  @media (max-width: 800px) {
+    .nb-feature-grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; margin: 0 auto; }
+    .nb-feature--reverse .nb-feature-figure { order: 0; }
+  }
+
+  /* PLACEHOLDERS — visible cream blocks with a vermillion dashed border
+     and a label inside. Impossible to miss while scrolling so Jordan can
+     swap in real photography or video without missing a slot. */
+  .nb-placeholder {
+    background: var(--paper-warm-darker);
+    border: 1.5px dashed var(--seal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 3vw, 36px);
+    text-align: center;
+    width: 100%;
+  }
+  .nb-placeholder--cinema { aspect-ratio: 16 / 9; }
+  .nb-placeholder--portrait { aspect-ratio: 4 / 5; }
+  .nb-placeholder--landscape { aspect-ratio: 4 / 3; }
+  .nb-placeholder--square { aspect-ratio: 1 / 1; }
+  .nb-placeholder-inner { max-width: 360px; }
+  .nb-placeholder-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--seal);
+    margin-bottom: 14px;
+  }
+  .nb-placeholder-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-warm-mid);
+    margin: 0;
+  }
+
+  /* Hero atmosphere — full-bleed visual that sits above the typographic hero */
+  .nb-hero-atmosphere {
+    width: 100%;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-hero-atmosphere .nb-placeholder {
+    border-left: none;
+    border-right: none;
+  }
+
   /* Recent work — small archive */
   .nb-archive-section {
     background: var(--paper-warm-soft);
@@ -478,6 +568,16 @@
 
 <main>
 
+  <!-- HERO ATMOSPHERE — full-bleed cinematic image or short looping video. -->
+  <div class="nb-hero-atmosphere">
+    <div class="nb-placeholder nb-placeholder--cinema">
+      <div class="nb-placeholder-inner">
+        <div class="nb-placeholder-label">Placeholder · Hero atmosphere</div>
+        <p class="nb-placeholder-text">A wide cinematic photograph or short looping video. The Seoul studio: desk, light, paint, pens. ~16:9, the kind of frame that earns its silence.</p>
+      </div>
+    </div>
+  </div>
+
   <section class="nb-hero">
     <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>Notebooks &amp; cards</div>
     <h1 class="nb-title">Notebooks and cards, painted one at a time, in a Seoul studio.</h1>
@@ -506,38 +606,62 @@
     </div>
   </section>
 
-  <!-- HOW IT WRITES -->
-  <section class="nb-section">
-    <div class="nb-eyebrow">How it writes</div>
-    <h2>Made for the page being written on.</h2>
-    <p>The paper inside is chosen for one thing: the way a fountain-pen line lands on it. Most editions use Iroful or Tomoe River, both kind to wet ink and to slow strokes. Watercolour holds. Pencil reads. The page doesn't bleed.</p>
-    <p>What changes between editions: the paper weight, the cover, the size, the colour of the thread. What doesn't: the act of painting one at a time, the hand-binding, the small studio in Seoul where it's made. <a href="#" data-open-materials>See the materials &rsaquo;</a></p>
-    <div class="nb-specs">
-      <div class="nb-spec">
-        <div class="nb-spec-label">The paper</div>
-        <div class="nb-spec-value">Fountain-pen paper, chosen by edition</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">The cover</div>
-        <div class="nb-spec-value">Painted in ink and watercolour</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">The binding</div>
-        <div class="nb-spec-value">Hand-stitched, French waxed linen</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">The edition</div>
-        <div class="nb-spec-value">Small, finished when finished</div>
+  <!-- HOW IT WRITES — two-column: image on the left, text + spec grid on the right -->
+  <section class="nb-feature">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <div class="nb-placeholder nb-placeholder--portrait">
+          <div class="nb-placeholder-inner">
+            <div class="nb-placeholder-label">Placeholder · How it writes</div>
+            <p class="nb-placeholder-text">Close-up of a fountain pen mid-stroke on the inside paper. Show the wet line, the grain, the way the ink doesn't bleed.</p>
+          </div>
+        </div>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">How it writes</div>
+        <h2>Made for the page being written on.</h2>
+        <p>The paper inside is chosen for one thing: the way a fountain-pen line lands on it. Most editions use Iroful or Tomoe River, both kind to wet ink and to slow strokes. Watercolour holds. Pencil reads. The page doesn't bleed.</p>
+        <p>What changes between editions: the paper weight, the cover, the size, the colour of the thread. What doesn't: the act of painting one at a time, the hand-binding, the small studio in Seoul where it's made. <a href="#" data-open-materials>See the materials &rsaquo;</a></p>
+        <div class="nb-specs">
+          <div class="nb-spec">
+            <div class="nb-spec-label">The paper</div>
+            <div class="nb-spec-value">Fountain-pen paper, chosen by edition</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">The cover</div>
+            <div class="nb-spec-value">Painted in ink and watercolour</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">The binding</div>
+            <div class="nb-spec-value">Hand-stitched, French waxed linen</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">The edition</div>
+            <div class="nb-spec-value">Small, finished when finished</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- BY HAND — quiet, anti-AI without naming AI -->
-  <section class="nb-section">
-    <div class="nb-eyebrow">By hand</div>
-    <h2>A person makes this. That used to go without saying.</h2>
-    <p>Each cover is the trace of a decision: which way the brush goes, where the line stops, what a hand chose to keep. There's no template, no preview, no second take. The line lands or it doesn't.</p>
-    <p>What changes from one cover to the next is what changes when a person paints something. What doesn't change is the care. Some things, still, ask to be made slowly, by hand, by someone, for someone.</p>
+  <!-- BY HAND — two-column reversed: text on the left, image on the right -->
+  <section class="nb-feature nb-feature--reverse">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <div class="nb-placeholder nb-placeholder--portrait">
+          <div class="nb-placeholder-inner">
+            <div class="nb-placeholder-label">Placeholder · By hand</div>
+            <p class="nb-placeholder-text">A hand painting a cover, brush mid-stroke. Or a short looping video of a brush moving through a line. The closer the better — the human is the point.</p>
+          </div>
+        </div>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">By hand</div>
+        <h2>A person makes this. That used to go without saying.</h2>
+        <p>Each cover is the trace of a decision: which way the brush goes, where the line stops, what a hand chose to keep. There's no template, no preview, no second take. The line lands or it doesn't.</p>
+        <p>What changes from one cover to the next is what changes when a person paints something. What doesn't change is the care. Some things, still, ask to be made slowly, by hand, by someone, for someone.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ARCHIVE -->

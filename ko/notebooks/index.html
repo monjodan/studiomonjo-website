@@ -211,6 +211,91 @@
     color: var(--ink-warm);
   }
 
+  /* 2단 구성 — 텍스트 + 시각 자료 (How it writes / By hand) */
+  .nb-feature {
+    padding: clamp(56px, 8vw, 112px) var(--pad-x);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nb-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+  }
+  .nb-feature-figure { margin: 0; }
+  .nb-feature-text > .nb-eyebrow { margin-bottom: 18px; }
+  .nb-feature-text h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.18;
+    color: var(--ink-warm);
+    margin-bottom: 24px;
+  }
+  .nb-feature-text p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.75;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.2em;
+  }
+  .nb-feature-text p:last-child { margin-bottom: 0; }
+  .nb-feature-text .nb-specs {
+    margin-top: 32px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .nb-feature--reverse .nb-feature-figure { order: 2; }
+  @media (max-width: 800px) {
+    .nb-feature-grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; margin: 0 auto; }
+    .nb-feature--reverse .nb-feature-figure { order: 0; }
+  }
+
+  /* 시각 자료 자리 표시 — 빨간 점선 테두리로 식별. */
+  .nb-placeholder {
+    background: var(--paper-warm-darker);
+    border: 1.5px dashed var(--seal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 3vw, 36px);
+    text-align: center;
+    width: 100%;
+  }
+  .nb-placeholder--cinema { aspect-ratio: 16 / 9; }
+  .nb-placeholder--portrait { aspect-ratio: 4 / 5; }
+  .nb-placeholder--landscape { aspect-ratio: 4 / 3; }
+  .nb-placeholder--square { aspect-ratio: 1 / 1; }
+  .nb-placeholder-inner { max-width: 360px; }
+  .nb-placeholder-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--seal);
+    margin-bottom: 14px;
+  }
+  .nb-placeholder-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-warm-mid);
+    margin: 0;
+  }
+
+  .nb-hero-atmosphere {
+    width: 100%;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-hero-atmosphere .nb-placeholder {
+    border-left: none;
+    border-right: none;
+  }
+
   .nb-archive-section {
     background: var(--paper-warm-soft);
     border-top: 1px solid var(--rule);
@@ -428,6 +513,16 @@
 
 <main>
 
+  <!-- 히어로 분위기 — 풀 블리드 시네마틱 사진 또는 짧은 루프 영상. -->
+  <div class="nb-hero-atmosphere">
+    <div class="nb-placeholder nb-placeholder--cinema">
+      <div class="nb-placeholder-inner">
+        <div class="nb-placeholder-label">자리 표시 · 히어로 분위기</div>
+        <p class="nb-placeholder-text">서울 작업실의 와이드 시네마틱 사진 또는 짧은 루프 영상. 책상, 빛, 잉크, 펜. 16:9 비율.</p>
+      </div>
+    </div>
+  </div>
+
   <section class="nb-hero">
     <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>노트와 카드</div>
     <h1 class="nb-title">서울의 작은 작업실에서, 한 점씩 손으로 그리고 만든 노트와 카드.</h1>
@@ -455,37 +550,62 @@
     </div>
   </section>
 
-  <section class="nb-section">
-    <div class="nb-eyebrow">어떻게 쓰이는가</div>
-    <h2>글을 쓰기 위한 페이지로 만든 노트.</h2>
-    <p>안의 종이는 한 가지 기준으로 고릅니다. 만년필 잉크가 어떻게 얹히는지. 대부분의 에디션은 이로풀이나 토모에리버를 사용합니다. 둘 다 잉크와 느린 필기에 너그럽고, 수채를 받아내며, 페이지가 번지지 않습니다.</p>
-    <p>에디션마다 달라지는 것은 종이의 무게, 커버, 크기, 실의 색입니다. 달라지지 않는 것은 한 권씩 손으로 그리는 그림, 손바느질 제본, 그리고 만들어지는 서울의 작은 작업실입니다. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
-    <div class="nb-specs">
-      <div class="nb-spec">
-        <div class="nb-spec-label">속지</div>
-        <div class="nb-spec-value">만년필용 종이, 에디션별로 선정</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">커버</div>
-        <div class="nb-spec-value">잉크와 수채로 손수 그림</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">제본</div>
-        <div class="nb-spec-value">손바느질, 프랑스산 왁스 린넨</div>
-      </div>
-      <div class="nb-spec">
-        <div class="nb-spec-label">에디션</div>
-        <div class="nb-spec-value">소량, 완성되는 만큼</div>
+  <!-- 어떻게 쓰이는가 — 2단: 왼쪽 이미지, 오른쪽 텍스트 + 사양 -->
+  <section class="nb-feature">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <div class="nb-placeholder nb-placeholder--portrait">
+          <div class="nb-placeholder-inner">
+            <div class="nb-placeholder-label">자리 표시 · 어떻게 쓰이는가</div>
+            <p class="nb-placeholder-text">속지에 만년필 선이 얹히는 순간의 클로즈업. 젖은 잉크, 종이의 결, 번지지 않는 선이 보이도록.</p>
+          </div>
+        </div>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">어떻게 쓰이는가</div>
+        <h2>글을 쓰기 위한 페이지로 만든 노트.</h2>
+        <p>안의 종이는 한 가지 기준으로 고릅니다. 만년필 잉크가 어떻게 얹히는지. 대부분의 에디션은 이로풀이나 토모에리버를 사용합니다. 둘 다 잉크와 느린 필기에 너그럽고, 수채를 받아내며, 페이지가 번지지 않습니다.</p>
+        <p>에디션마다 달라지는 것은 종이의 무게, 커버, 크기, 실의 색입니다. 달라지지 않는 것은 한 권씩 손으로 그리는 그림, 손바느질 제본, 그리고 만들어지는 서울의 작은 작업실입니다. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
+        <div class="nb-specs">
+          <div class="nb-spec">
+            <div class="nb-spec-label">속지</div>
+            <div class="nb-spec-value">만년필용 종이, 에디션별로 선정</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">커버</div>
+            <div class="nb-spec-value">잉크와 수채로 손수 그림</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">제본</div>
+            <div class="nb-spec-value">손바느질, 프랑스산 왁스 린넨</div>
+          </div>
+          <div class="nb-spec">
+            <div class="nb-spec-label">에디션</div>
+            <div class="nb-spec-value">소량, 완성되는 만큼</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 사람이 만든다 — 조용한 결, AI를 직접 언급하지 않고 -->
-  <section class="nb-section">
-    <div class="nb-eyebrow">사람의 손으로</div>
-    <h2>사람이 만든 물건. 예전엔 굳이 말할 필요가 없던 일.</h2>
-    <p>한 권 한 권의 커버는 결정의 흔적입니다. 붓이 어느 방향으로 갈지, 선이 어디에서 멈출지, 손이 무엇을 남기기로 할지. 템플릿도, 미리보기도, 다시 시도할 기회도 없습니다. 선이 들어가거나, 들어가지 않거나.</p>
-    <p>한 권에서 다음 한 권으로 달라지는 것은, 사람이 그린다는 사실이 가져오는 변화입니다. 달라지지 않는 것은 그 정성입니다. 어떤 것은, 여전히, 천천히, 손으로, 누군가가 누군가를 위해 만들어야 하는 것입니다.</p>
+  <!-- 사람의 손으로 — 2단 반전: 왼쪽 텍스트, 오른쪽 이미지 -->
+  <section class="nb-feature nb-feature--reverse">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <div class="nb-placeholder nb-placeholder--portrait">
+          <div class="nb-placeholder-inner">
+            <div class="nb-placeholder-label">자리 표시 · 사람의 손으로</div>
+            <p class="nb-placeholder-text">커버를 그리는 손, 붓이 움직이는 순간의 클로즈업. 또는 붓이 한 줄을 그어 가는 짧은 루프 영상. 가까울수록 좋음 — 사람의 손이 핵심.</p>
+          </div>
+        </div>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">사람의 손으로</div>
+        <h2>사람이 만든 물건. 예전엔 굳이 말할 필요가 없던 일.</h2>
+        <p>한 권 한 권의 커버는 결정의 흔적입니다. 붓이 어느 방향으로 갈지, 선이 어디에서 멈출지, 손이 무엇을 남기기로 할지. 템플릿도, 미리보기도, 다시 시도할 기회도 없습니다. 선이 들어가거나, 들어가지 않거나.</p>
+        <p>한 권에서 다음 한 권으로 달라지는 것은, 사람이 그린다는 사실이 가져오는 변화입니다. 달라지지 않는 것은 그 정성입니다. 어떤 것은, 여전히, 천천히, 손으로, 누군가가 누군가를 위해 만들어야 하는 것입니다.</p>
+      </div>
+    </div>
   </section>
 
   <section class="nb-archive-section">
