@@ -33,7 +33,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Courrier de Séoul. Une lettre par mois.</title>
-<meta name="description" content="Une lettre manuscrite et une photographie tirée, expédiées de Séoul une fois par mois. À recevoir pour soi, ou à offrir. 15 € par mois, sans engagement.">
+<meta name="description" content="Une lettre manuscrite, une photographie tirée, et un mot coréen expliqué en français. Une fois par mois, depuis Séoul. À recevoir pour soi, ou à offrir. 15 € par mois, sans engagement.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -46,7 +46,7 @@
 
 <meta property="og:site_name" content="Courrier de Séoul">
 <meta property="og:title" content="Courrier de Séoul. Une lettre par mois.">
-<meta property="og:description" content="Une lettre manuscrite et une photographie tirée, expédiées de Séoul une fois par mois. À recevoir pour soi, ou à offrir.">
+<meta property="og:description" content="Une lettre manuscrite, une photographie tirée, et un mot coréen expliqué en français. Une fois par mois, depuis Séoul. À recevoir, ou à offrir.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/courrier/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
@@ -60,7 +60,7 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Courrier de Séoul. Une lettre par mois.">
-<meta name="twitter:description" content="Une lettre manuscrite et une photographie tirée, expédiées de Séoul une fois par mois. Pour soi, ou à offrir.">
+<meta name="twitter:description" content="Une lettre manuscrite, une photographie tirée, et un mot coréen. Une fois par mois, depuis Séoul. Pour soi, ou à offrir.">
 <meta name="twitter:image" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
 <meta name="twitter:image:alt" content="Une enveloppe peinte à la main, prête à partir de Séoul.">
 
@@ -76,7 +76,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Courrier de Séoul",
-  "description": "Abonnement mensuel par voie postale. Chaque mois, une lettre manuscrite et une photographie tirée, depuis Séoul.",
+  "description": "Abonnement mensuel par voie postale. Chaque mois, une lettre manuscrite, une photographie tirée, et un mot coréen expliqué en français — depuis Séoul.",
   "brand": { "@type": "Organization", "name": "Studio Monjo" },
   "offers": {
     "@type": "Offer",
@@ -326,15 +326,16 @@
   }
   .photo-placeholder--landscape { aspect-ratio: 4 / 3; }
 
-  /* Two-column "ce qui arrive" */
+  /* Three-column "ce qui arrive" — la lettre, la photographie, le mot. */
   .envelope-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(28px, 4vw, 56px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 3.5vw, 48px);
     align-items: start;
     margin-top: 36px;
   }
-  @media (max-width: 720px) { .envelope-grid { grid-template-columns: 1fr; gap: 36px; } }
+  @media (max-width: 960px) { .envelope-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .envelope-grid { grid-template-columns: 1fr; gap: 36px; } }
   .envelope-piece-figure {
     margin-bottom: 22px;
   }
@@ -580,7 +581,7 @@
   <section class="courrier-hero">
     <div class="courrier-eyebrow"><span class="seal" aria-hidden="true"></span>Abonnement mensuel · depuis Séoul</div>
     <h1 class="courrier-title">Une enveloppe par mois.<br>À recevoir, ou à offrir.</h1>
-    <p class="courrier-sub">Une lettre manuscrite et une photographie tirée, écrites à la main une fois par mois, expédiées de Séoul. Pour soi, ou pour quelqu'un d'autre. Quinze euros par mois. Sans engagement.</p>
+    <p class="courrier-sub">Une lettre manuscrite, une photographie tirée, et un mot coréen qu'on ne traduit pas. Une fois par mois, expédiés de Séoul. Pour soi, ou pour quelqu'un d'autre. Quinze euros par mois. Sans engagement.</p>
     <div class="courrier-hero-actions">
       <a href="#offrir" class="btn-courrier btn-primary-dark">S'abonner pour soi</a>
       <a href="#offrir" class="btn-courrier btn-primary-dark">Offrir un abonnement</a>
@@ -598,8 +599,8 @@
   <section class="courrier-section courrier-section--alt courrier-section--wide">
     <div style="max-width: 760px; margin: 0 auto;">
       <div class="section-eyebrow">Dans chaque enveloppe</div>
-      <h2 class="section-title">Une lettre. Une photographie. Rien d'autre.</h2>
-      <p>Le format est constant. On ne vise pas la nouveauté, on vise la régularité. C'est la fréquence qui fait l'objet : ce moment, le 12 du mois ou aux alentours, où la boîte aux lettres redevient un endroit qu'on ouvre avec attention.</p>
+      <h2 class="section-title">Une lettre. Une photographie. Un mot.</h2>
+      <p>Trois pièces, toujours les mêmes. Le format est constant : on ne vise pas la nouveauté, on vise la régularité. C'est la fréquence qui fait l'objet : ce moment, le 12 du mois ou aux alentours, où la boîte aux lettres redevient un endroit qu'on ouvre avec attention.</p>
 
       <div class="envelope-grid">
         <div class="envelope-piece">
@@ -613,6 +614,12 @@
           <div class="envelope-piece-label">La photographie</div>
           <p class="envelope-piece-title">Un tirage, format carte postale.</p>
           <p class="envelope-piece-body">Prise à Séoul dans le mois. Sur papier photo. Glissée dans l'enveloppe sans cadre ni protection. À garder, à punaiser, à oublier dans un livre.</p>
+        </div>
+        <div class="envelope-piece">
+          <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
+          <div class="envelope-piece-label">Le mot</div>
+          <p class="envelope-piece-title">Un concept coréen, expliqué en français.</p>
+          <p class="envelope-piece-body">Une petite carte chaque mois. Un mot qu'on ne traduit pas — <em>nunchi</em> (눈치), <em>jeong</em> (정), <em>han</em> (한) — et son explication, en français, en quelques lignes. De quoi élargir le vocabulaire intérieur, mois après mois.</p>
         </div>
       </div>
     </div>
@@ -712,6 +719,9 @@
 
       <dt>La photographie est-elle protégée dans l'enveloppe ?</dt>
       <dd>Elle voyage telle quelle, sans cadre. Tirée sur papier photo solide, format carte postale. Les enveloppes sont rigides : elle arrive bien.</dd>
+
+      <dt>Qu'est-ce que le mot du mois ?</dt>
+      <dd>Une petite carte, dans chaque enveloppe, qui présente un concept coréen — comme <em>nunchi</em> (눈치, la lecture silencieuse d'une situation), <em>jeong</em> (정, l'attachement qui se construit avec le temps), <em>han</em> (한, une mélancolie collective) — et son explication en français, en quelques lignes. Pas de leçon, pas de vocabulaire à retenir : juste un mot par mois pour élargir un peu le vocabulaire intérieur. On peut le glisser dans un agenda, le punaiser, ou l'oublier.</dd>
 
       <dt>Comment annuler ou modifier l'adresse ?</dt>
       <dd>Depuis votre espace client Stripe. Le lien arrive avec votre confirmation de paiement et figure aussi sur chaque reçu. L'annulation y est immédiate ; la modification d'adresse prend effet dès l'envoi suivant.</dd>
