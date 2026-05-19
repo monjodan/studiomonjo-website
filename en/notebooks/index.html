@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notebooks and cards. Painted by hand. | Studio Monjo</title>
-<meta name="description" content="Notebooks and cards painted one at a time in a Seoul studio. Made for the page being written on: paper chosen for fountain-pen ink, hand-painted covers, sewn closed by hand.">
+<title>Hand-painted notebooks, in editions of fifty. | Studio Monjo</title>
+<meta name="description" content="Hand-painted notebooks, made in Seoul. Each painting becomes a numbered edition of fifty notebooks, in two sizes. Fountain-pen paper inside, ink and watercolour on the cover, red waxed thread on the spine.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -14,14 +14,18 @@
 <link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/">
 
 <meta property="og:site_name" content="Studio Monjo">
-<meta property="og:title" content="Notebooks and cards. Painted by hand.">
-<meta property="og:description" content="Notebooks and cards painted one at a time in a Seoul studio. Paper chosen for fountain-pen ink, hand-painted covers, sewn closed by hand.">
+<meta property="og:title" content="Hand-painted notebooks, in editions of fifty.">
+<meta property="og:description" content="One painting becomes fifty numbered notebooks. Two sizes. Made by hand in Seoul.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/en/notebooks/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001438.jpg">
+<meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
+<meta property="og:image:width" content="1066">
+<meta property="og:image:height" content="1600">
+<meta property="og:image:alt" content="A hand-painted Studio Monjo notebook standing on a desk in the studio.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
@@ -304,10 +308,42 @@
   .nb-hero-atmosphere {
     width: 100%;
     border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+    max-height: 70vh;
+  }
+  .nb-hero-atmosphere picture, .nb-hero-atmosphere img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
   }
   .nb-hero-atmosphere .nb-placeholder {
     border-left: none;
     border-right: none;
+  }
+
+  /* Feature-section figures: real photos fill the slot at 4:5 portrait */
+  .nb-feature-figure picture, .nb-feature-figure img {
+    display: block; width: 100%; height: 100%; object-fit: cover;
+    aspect-ratio: 4 / 5;
+  }
+
+  /* Inside-the-notebook detail band — two portrait photos side-by-side */
+  .nb-details-band {
+    padding: clamp(40px, 5vw, 72px) var(--pad-x);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nb-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 36px);
+  }
+  .nb-details-grid figure { margin: 0; overflow: hidden; aspect-ratio: 4 / 5; }
+  .nb-details-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 600px) {
+    .nb-details-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; margin: 0 auto; }
   }
 
   /* Recent work — small archive */
@@ -487,13 +523,14 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://studiomonjo.com/en/" },
-    { "@type": "ListItem", "position": 2, "name": "Notebooks & cards", "item": "https://studiomonjo.com/en/notebooks/" }
+    { "@type": "ListItem", "position": 2, "name": "Notebooks", "item": "https://studiomonjo.com/en/notebooks/" }
   ]
 }
 </script>
-<!-- ItemList of the active SKUs. Offers point to /en/notebooks/ (the
-     landing page) rather than directly into Naver, since Naver URLs
-     change per stock cycle. KRW prices are the authoritative source. -->
+<!-- ItemList: one product, two sizes. Each painting becomes a numbered
+     edition of fifty. Authoritative prices live on the Naver Smart
+     Store (URLs change per stock cycle); update KRW values here if the
+     base price changes meaningfully. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -502,43 +539,29 @@
     {
       "@type": "Product",
       "position": 1,
-      "name": "Hand-painted notebook (A5)",
-      "description": "A5 notebook, 40 pages of fountain-pen paper, hand-painted cover, sewn closed by hand. Edition of twenty.",
+      "name": "Hand-painted notebook — small",
+      "description": "Hand-painted notebook, smaller size, made by hand in Seoul. Fountain-pen paper inside, ink and watercolour cover, stab-bound with red waxed thread. Part of a numbered edition of fifty.",
+      "brand": { "@type": "Organization", "name": "Studio Monjo" },
+      "offers": {
+        "@type": "Offer",
+        "price": "45000",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://smartstore.naver.com/studiomonjo"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 2,
+      "name": "Hand-painted notebook — large",
+      "description": "Hand-painted notebook, larger size, made by hand in Seoul. Fountain-pen paper inside, ink and watercolour cover, stab-bound with red waxed thread. Part of a numbered edition of fifty.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
         "price": "65000",
         "priceCurrency": "KRW",
         "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/en/notebooks/"
-      }
-    },
-    {
-      "@type": "Product",
-      "position": 2,
-      "name": "Bound card (A6)",
-      "description": "A6 sewn card with hand-painted cover. Smaller than the notebook, the same paper inside.",
-      "brand": { "@type": "Organization", "name": "Studio Monjo" },
-      "offers": {
-        "@type": "Offer",
-        "price": "25000",
-        "priceCurrency": "KRW",
-        "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/en/notebooks/"
-      }
-    },
-    {
-      "@type": "Product",
-      "position": 3,
-      "name": "Postcard",
-      "description": "Single hand-painted postcard from the studio in Seoul.",
-      "brand": { "@type": "Organization", "name": "Studio Monjo" },
-      "offers": {
-        "@type": "Offer",
-        "price": "15000",
-        "priceCurrency": "KRW",
-        "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/en/notebooks/"
+        "url": "https://smartstore.naver.com/studiomonjo"
       }
     }
   ]
@@ -568,20 +591,18 @@
 
 <main>
 
-  <!-- HERO ATMOSPHERE — full-bleed cinematic image or short looping video. -->
+  <!-- HERO ATMOSPHERE — open notebook with fountain pen and tea, overhead. -->
   <div class="nb-hero-atmosphere">
-    <div class="nb-placeholder nb-placeholder--cinema">
-      <div class="nb-placeholder-inner">
-        <div class="nb-placeholder-label">Placeholder · Hero atmosphere</div>
-        <p class="nb-placeholder-text">A wide cinematic photograph or short looping video. The Seoul studio: desk, light, paint, pens. ~16:9, the kind of frame that earns its silence.</p>
-      </div>
-    </div>
+    <picture>
+      <source srcset="/media/web/notebooks/DSCF1076.webp" type="image/webp">
+      <img src="/media/web/notebooks/DSCF1076.jpg" alt="An open Studio Monjo notebook on a desk, with a black Sailor fountain pen resting on the right page and a small pink tea cup beside it. The painted blue creature on a branch is visible on the page." fetchpriority="high" decoding="async" width="1600" height="1066">
+    </picture>
   </div>
 
   <section class="nb-hero">
-    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>Notebooks &amp; cards</div>
-    <h1 class="nb-title">Notebooks and cards, painted one at a time, in a Seoul studio.</h1>
-    <p class="nb-sub">Made for the page being written on. The paper inside is chosen for the way a fountain-pen line lands on it, and chosen again every edition. The cover is painted in ink and watercolour. The binding is sewn by hand.</p>
+    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>Notebooks</div>
+    <h1 class="nb-title">Hand-painted notebooks, in editions of fifty.</h1>
+    <p class="nb-sub">Each painting becomes a numbered edition of fifty notebooks. Made by hand in Seoul, in two sizes. Fountain-pen paper inside, ink and watercolour on the cover, red waxed thread holding the spine.</p>
   </section>
 
   <!-- VIDEO BLOCK — the process, vertical YouTube embed -->
@@ -589,9 +610,9 @@
     <div class="nb-video-inner">
       <div class="nb-video-text">
         <div class="nb-eyebrow">The process</div>
-        <h2 class="nb-video-title">A card, painted from start to seal.</h2>
+        <h2 class="nb-video-title">A cover, painted from start to seal.</h2>
         <p class="nb-video-body">Each cover begins as a blank sheet of heavy artist paper. Ink line first, then watercolour, then a small vermillion seal. There's no sketch underneath. The line lands or it doesn't.</p>
-        <p class="nb-video-body">Once the cover is dry, the notebook is folded, sewn closed by hand with French waxed linen, numbered inside, signed.</p>
+        <p class="nb-video-body">The painting becomes the cover of an edition of fifty. Each notebook is folded, stab-bound by hand with red waxed thread, then numbered inside — 1 of 50 to 50 of 50.</p>
       </div>
       <div class="nb-video-frame">
         <!-- autoplay + mute + loop. mute=1 is required by browsers for
@@ -606,22 +627,20 @@
     </div>
   </section>
 
-  <!-- HOW IT WRITES — two-column: image on the left, text + spec grid on the right -->
+  <!-- HOW IT WRITES — two-column: image left, text + spec grid right -->
   <section class="nb-feature">
     <div class="nb-feature-grid">
       <figure class="nb-feature-figure">
-        <div class="nb-placeholder nb-placeholder--portrait">
-          <div class="nb-placeholder-inner">
-            <div class="nb-placeholder-label">Placeholder · How it writes</div>
-            <p class="nb-placeholder-text">Close-up of a fountain pen mid-stroke on the inside paper. Show the wet line, the grain, the way the ink doesn't bleed.</p>
-          </div>
-        </div>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1070.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1070.jpg" alt="A hand-painted Studio Monjo notebook standing on a desk in the Seoul studio. White textured cover with a painted branch, red berries, and a small blue creature hanging from one of the branches. Vermillion seal in the corner, red-thread stab binding visible on the spine." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
       </figure>
       <div class="nb-feature-text">
         <div class="nb-eyebrow">How it writes</div>
         <h2>Made for the page being written on.</h2>
         <p>The paper inside is chosen for one thing: the way a fountain-pen line lands on it. Each edition uses a Japanese fountain-pen paper — kind to wet ink, kind to slow strokes. Watercolour holds. Pencil reads. The page doesn't bleed.</p>
-        <p>What changes between editions: the paper weight, the cover, the size, the colour of the thread. What doesn't: the act of painting one at a time, the hand-binding, the small studio in Seoul where it's made. <a href="#" data-open-materials>See the materials &rsaquo;</a></p>
+        <p>Two sizes — a small one for the pocket, a larger one for the desk. What changes between editions: the painting on the cover, sometimes the paper weight, sometimes the colour of the thread. What doesn't: it's made for writing in. <a href="#" data-open-materials>See the materials &rsaquo;</a></p>
         <div class="nb-specs">
           <div class="nb-spec">
             <div class="nb-spec-label">The paper</div>
@@ -633,27 +652,43 @@
           </div>
           <div class="nb-spec">
             <div class="nb-spec-label">The binding</div>
-            <div class="nb-spec-value">Hand-stitched, French waxed linen</div>
+            <div class="nb-spec-value">Stab-bound, red waxed thread</div>
           </div>
           <div class="nb-spec">
             <div class="nb-spec-label">The edition</div>
-            <div class="nb-spec-value">Small, finished when finished</div>
+            <div class="nb-spec-value">50 numbered, two sizes</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BY HAND — two-column reversed: text on the left, image on the right -->
+  <!-- THE EDITION — the 1 painting → 50 notebooks story -->
   <section class="nb-feature nb-feature--reverse">
     <div class="nb-feature-grid">
       <figure class="nb-feature-figure">
-        <div class="nb-placeholder nb-placeholder--portrait">
-          <div class="nb-placeholder-inner">
-            <div class="nb-placeholder-label">Placeholder · By hand</div>
-            <p class="nb-placeholder-text">A hand painting a cover, brush mid-stroke. Or a short looping video of a brush moving through a line. The closer the better — the human is the point.</p>
-          </div>
-        </div>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1072.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1072.jpg" alt="Detail of the inside back cover of a notebook, showing the printed inscription 'Édition N° 001 — Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.' alongside the visible red stab-binding thread." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">The edition</div>
+        <h2>One painting. Fifty notebooks.</h2>
+        <p>Each cover begins as one original painting, made by hand in the studio. That painting becomes the cover of an edition of fifty notebooks — and only fifty. Every one is numbered inside, from 1 to 50, with the date and the studio mark.</p>
+        <p>When the edition is finished, that's it. The original painting stays in the studio. A new one begins. The point is to keep the work close to its origin: one hand, one painting, a small run, no reprints, no replacements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BY HAND — two-column: image left, text right -->
+  <section class="nb-feature">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1074.jpg" alt="Macro close-up of a single knot of red waxed thread on the cream interior paper of a notebook." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
       </figure>
       <div class="nb-feature-text">
         <div class="nb-eyebrow">By hand</div>
@@ -664,34 +699,52 @@
     </div>
   </section>
 
+  <!-- INSIDE THE NOTEBOOK — two printed-inscription details, side by side -->
+  <section class="nb-details-band" aria-label="Inscriptions printed inside every notebook">
+    <div class="nb-details-grid">
+      <figure>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1071.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1071.jpg" alt="The opening page inside the notebook: 'Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.' printed in small dark blue serif type on the textured cream paper." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+      <figure>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1073.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1073.jpg" alt="The closing page inside the notebook: 'Merci d'avoir donné vie à ce carnet. www.studiomonjo.com' printed in small italic serif type." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
   <!-- ARCHIVE -->
   <section class="nb-archive-section">
     <div class="nb-archive-inner">
       <div class="nb-eyebrow">From the studio</div>
       <h2 class="nb-video-title">Recent editions.</h2>
-      <p style="margin-top: 14px; color: var(--ink-warm-mid);">A small archive of past editions. New work goes on the Naver Smart Store as it's finished. The pace is slow on purpose. One piece becomes the next when it's ready.</p>
+      <p style="margin-top: 14px; color: var(--ink-warm-mid);">A small archive of past editions. New work goes on the Naver Smart Store as it's finished. The pace is slow on purpose. One painting becomes the next when it's ready.</p>
       <div class="nb-archive-grid">
         <article class="nb-archive-card">
           <figure class="nb-archive-figure">
             <picture>
               <source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp">
-              <img src="/media/web/notebooks/IMG_4604.jpg" alt="Notebook 01, Birds & Berries — a branch with two small birds" loading="lazy" decoding="async">
+              <img src="/media/web/notebooks/IMG_4604.jpg" alt="Edition N° 001 — Birds &amp; Berries. A branch with two small birds, painted in ink and watercolour." loading="lazy" decoding="async">
             </picture>
           </figure>
-          <div class="nb-archive-meta">Notebook 01 · A6</div>
+          <div class="nb-archive-meta">Edition N° 001</div>
           <div class="nb-archive-name">Birds &amp; Berries</div>
-          <div class="nb-archive-state">Edition of 20 complete</div>
+          <div class="nb-archive-state">Edition of 50 complete</div>
         </article>
         <article class="nb-archive-card">
           <figure class="nb-archive-figure">
             <picture>
               <source srcset="/media/web/notebooks/L1001423.webp" type="image/webp">
-              <img src="/media/web/notebooks/L1001423.jpg" alt="Notebook 02, Lotus — plum branch over a red lotus" loading="lazy" decoding="async">
+              <img src="/media/web/notebooks/L1001423.jpg" alt="Edition N° 002 — Lotus. A plum branch over a red lotus." loading="lazy" decoding="async">
             </picture>
           </figure>
-          <div class="nb-archive-meta">Notebook 02 · A6</div>
+          <div class="nb-archive-meta">Edition N° 002</div>
           <div class="nb-archive-name">Lotus</div>
-          <div class="nb-archive-state">Edition of 20 complete</div>
+          <div class="nb-archive-state">Edition of 50 complete</div>
         </article>
       </div>
     </div>
@@ -722,7 +775,7 @@
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>Materials</div>
       <h2 class="nb-modal-title" id="materialsModalTitle">What it's made of.</h2>
-      <p class="nb-modal-lede">Each piece is built from four materials. They change between editions but stay within a small palette: heavy paper for the cover, fountain-pen paper inside, professional artist watercolours, and waxed linen thread. Each one is chosen for the way it serves the page, the line, or the binding.</p>
+      <p class="nb-modal-lede">Each notebook is built from four materials. They may change between editions but stay within a small palette: heavy paper for the cover, fountain-pen paper inside, professional artist watercolours, and red waxed thread. Each one is chosen for the way it serves the page, the line, or the binding.</p>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="A hand-painted notebook cover on heavy artist paper" loading="lazy"></picture></figure>
@@ -730,7 +783,7 @@
           <div class="nb-modal-maker-origin">Heavy artist paper · France</div>
           <div class="nb-modal-maker-name">The cover</div>
           <div class="nb-modal-maker-role">Painted in ink and watercolour</div>
-          <p class="nb-modal-maker-body">A heavy artist sheet from one of the oldest paper traditions in Europe, the kind French watercolourists have been painting on for centuries. Notebook covers use a thick weight that takes ink and wash without buckling. Card covers use a tighter-grain watercolour paper that holds saturated washes better at small format. Both are made to be painted on, not written on.</p>
+          <p class="nb-modal-maker-body">A heavy artist sheet from one of the oldest paper traditions in Europe, the kind French watercolourists have been painting on for centuries. Each cover is cut from a thick weight that takes ink and watercolour wash without buckling. Made to be painted on, not written on.</p>
         </div>
       </div>
 
@@ -755,12 +808,12 @@
       </div>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001424.webp" type="image/webp"><img src="/media/web/notebooks/L1001424.jpg" alt="Hand-stitched binding with waxed linen thread" loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="/media/web/notebooks/DSCF1074.jpg" alt="Macro detail of a single knot of red waxed thread on the cream interior paper of a notebook." loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Waxed linen thread · France</div>
+          <div class="nb-modal-maker-origin">Red waxed thread · France</div>
           <div class="nb-modal-maker-name">The binding</div>
-          <div class="nb-modal-maker-role">Hand-stitched, edge to edge</div>
-          <p class="nb-modal-maker-body">Cabled waxed linen, made by a French house that has been turning thread for more than a century and a half. Two already-twisted threads are wound together, then passed through a bath of starch and beeswax. The result is slightly rigid, smooth, and extraordinarily strong — it holds the binding for decades without stretching or fraying.</p>
+          <div class="nb-modal-maker-role">Stab-bound by hand, visible on the spine</div>
+          <p class="nb-modal-maker-body">Cabled waxed linen thread in vermillion red, made by a French house that has been turning thread for more than a century and a half. Two already-twisted strands are wound together, then passed through a bath of starch and beeswax. The result is slightly rigid, smooth, and extraordinarily strong — it holds the stab-binding for decades without stretching or fraying. The red is intentional: it echoes the seal on every cover and reads as a small mark on the closed spine.</p>
         </div>
       </div>
     </div>
