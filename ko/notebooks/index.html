@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>손그림 노트와 카드. | 스튜디오 몬조</title>
-<meta name="description" content="서울의 작은 작업실에서 한 점씩 손으로 그리고 만든 노트와 카드. 만년필을 위한 종이, 손으로 그린 커버, 손바느질 제본.">
+<title>손그림 노트, 50권 한정 에디션. | 스튜디오 몬조</title>
+<meta name="description" content="한 점의 원화가 번호 매겨진 50권의 노트로 태어납니다. 서울에서 손으로 만든, 두 가지 사이즈. 만년필용 종이, 잉크와 수채로 그린 커버, 붉은 왁스 실 제본.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -17,14 +17,18 @@
 <link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/">
 
 <meta property="og:site_name" content="스튜디오 몬조">
-<meta property="og:title" content="노트와 카드. 서울에서 손으로 만들어요.">
-<meta property="og:description" content="서울에서 한 점씩 손으로 그리고 만든 노트와 바운드 카드. 만년필을 위한 종이, 손으로 그린 커버, 손바느질 제본.">
+<meta property="og:title" content="손그림 노트, 50권 한정 에디션.">
+<meta property="og:description" content="한 점의 원화가 번호 매겨진 50권의 노트로. 두 가지 사이즈. 서울에서 손으로.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/ko/notebooks/">
-<meta property="og:image" content="https://studiomonjo.com/media/web/photography/L1001438.jpg">
+<meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
+<meta property="og:image:width" content="1066">
+<meta property="og:image:height" content="1600">
+<meta property="og:image:alt" content="서울 작업실 책상 위에 세워진 손그림 스튜디오 몬조 노트.">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
@@ -290,10 +294,37 @@
   .nb-hero-atmosphere {
     width: 100%;
     border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+    max-height: 70vh;
+  }
+  .nb-hero-atmosphere picture, .nb-hero-atmosphere img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; aspect-ratio: 3 / 2;
   }
   .nb-hero-atmosphere .nb-placeholder {
     border-left: none;
     border-right: none;
+  }
+
+  .nb-feature-figure picture, .nb-feature-figure img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; aspect-ratio: 4 / 5;
+  }
+
+  .nb-details-band {
+    padding: clamp(40px, 5vw, 72px) var(--pad-x);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nb-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 36px);
+  }
+  .nb-details-grid figure { margin: 0; overflow: hidden; aspect-ratio: 4 / 5; }
+  .nb-details-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 600px) {
+    .nb-details-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; margin: 0 auto; }
   }
 
   .nb-archive-section {
@@ -435,7 +466,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://studiomonjo.com/ko/" },
-    { "@type": "ListItem", "position": 2, "name": "노트와 카드", "item": "https://studiomonjo.com/ko/notebooks/" }
+    { "@type": "ListItem", "position": 2, "name": "노트", "item": "https://studiomonjo.com/ko/notebooks/" }
   ]
 }
 </script>
@@ -447,43 +478,29 @@
     {
       "@type": "Product",
       "position": 1,
-      "name": "손그림 노트 (A5)",
-      "description": "A5 노트, 만년필용 종이 40페이지, 손그림 커버, 직접 봉합. 20부 한정 에디션.",
+      "name": "손그림 노트 — 스몰",
+      "description": "서울에서 손으로 만든 작은 사이즈의 손그림 노트. 만년필용 종이, 잉크와 수채로 그린 커버, 붉은 왁스 실로 스탭 바인딩. 50권 한정 에디션의 한 권.",
+      "brand": { "@type": "Organization", "name": "Studio Monjo" },
+      "offers": {
+        "@type": "Offer",
+        "price": "45000",
+        "priceCurrency": "KRW",
+        "availability": "https://schema.org/InStock",
+        "url": "https://smartstore.naver.com/studiomonjo"
+      }
+    },
+    {
+      "@type": "Product",
+      "position": 2,
+      "name": "손그림 노트 — 라지",
+      "description": "서울에서 손으로 만든 큰 사이즈의 손그림 노트. 만년필용 종이, 잉크와 수채로 그린 커버, 붉은 왁스 실로 스탭 바인딩. 50권 한정 에디션의 한 권.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
         "price": "65000",
         "priceCurrency": "KRW",
         "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/ko/notebooks/"
-      }
-    },
-    {
-      "@type": "Product",
-      "position": 2,
-      "name": "바운드 카드 (A6)",
-      "description": "A6 봉합 카드, 손그림 커버. 노트보다 작고, 같은 종이를 사용해요.",
-      "brand": { "@type": "Organization", "name": "Studio Monjo" },
-      "offers": {
-        "@type": "Offer",
-        "price": "25000",
-        "priceCurrency": "KRW",
-        "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/ko/notebooks/"
-      }
-    },
-    {
-      "@type": "Product",
-      "position": 3,
-      "name": "엽서",
-      "description": "서울 작업실에서 손으로 그린 엽서 한 장.",
-      "brand": { "@type": "Organization", "name": "Studio Monjo" },
-      "offers": {
-        "@type": "Offer",
-        "price": "15000",
-        "priceCurrency": "KRW",
-        "availability": "https://schema.org/InStock",
-        "url": "https://studiomonjo.com/ko/notebooks/"
+        "url": "https://smartstore.naver.com/studiomonjo"
       }
     }
   ]
@@ -513,29 +530,27 @@
 
 <main>
 
-  <!-- 히어로 분위기 — 풀 블리드 시네마틱 사진 또는 짧은 루프 영상. -->
+  <!-- 히어로 분위기 — 펜과 차가 놓인 펼쳐진 노트, 위에서. -->
   <div class="nb-hero-atmosphere">
-    <div class="nb-placeholder nb-placeholder--cinema">
-      <div class="nb-placeholder-inner">
-        <div class="nb-placeholder-label">자리 표시 · 히어로 분위기</div>
-        <p class="nb-placeholder-text">서울 작업실의 와이드 시네마틱 사진 또는 짧은 루프 영상. 책상, 빛, 잉크, 펜. 16:9 비율.</p>
-      </div>
-    </div>
+    <picture>
+      <source srcset="/media/web/notebooks/DSCF1076.webp" type="image/webp">
+      <img src="/media/web/notebooks/DSCF1076.jpg" alt="책상 위에 펼쳐진 스튜디오 몬조 노트와 그 옆의 검정색 세일러 만년필, 작은 분홍색 찻잔." fetchpriority="high" decoding="async" width="1600" height="1066">
+    </picture>
   </div>
 
   <section class="nb-hero">
-    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>노트와 카드</div>
-    <h1 class="nb-title">서울의 작은 작업실에서, 한 점씩 손으로 그리고 만든 노트와 카드.</h1>
-    <p class="nb-sub">글을 쓰기 위한 노트. 안의 종이는 만년필 잉크가 어떻게 얹히는지를 기준으로 고르고, 에디션마다 다시 고릅니다. 커버는 잉크와 수채로 손수 그리고, 제본은 손으로 꿰맵니다.</p>
+    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>노트</div>
+    <h1 class="nb-title">손그림 노트, 50권 한정 에디션.</h1>
+    <p class="nb-sub">한 점의 원화가 번호 매겨진 50권의 노트로 태어납니다. 서울에서 손으로 만든, 두 가지 사이즈. 만년필용 종이가 안에, 잉크와 수채로 그린 그림이 커버에, 붉은 왁스 실이 스파인에.</p>
   </section>
 
   <section class="nb-video-section">
     <div class="nb-video-inner">
       <div class="nb-video-text">
         <div class="nb-eyebrow">제작 과정</div>
-        <h2 class="nb-video-title">한 장의 카드, 처음부터 낙관까지.</h2>
+        <h2 class="nb-video-title">한 장의 커버, 처음부터 낙관까지.</h2>
         <p class="nb-video-body">한 장의 두꺼운 아티스트용 종이에서 시작합니다. 잉크로 선을 먼저 잡고, 그 위에 수채를 얹고, 마지막에 작은 주홍색 낙관을 찍습니다. 밑그림은 없습니다. 선이 들어가거나, 들어가지 않거나.</p>
-        <p class="nb-video-body">커버가 마르면 노트를 접어, 프랑스산 왁스 린넨 실로 손바느질해요. 안쪽에 번호와 서명을 적어요.</p>
+        <p class="nb-video-body">한 점의 원화는 50권의 한정 에디션이 됩니다. 각 노트는 접어서 붉은 왁스 실로 손수 스탭 바인딩하고, 안쪽에 1/50부터 50/50까지 번호를 적습니다.</p>
       </div>
       <div class="nb-video-frame">
         <!-- autoplay + mute + loop. mute=1 is required by browsers for
@@ -554,18 +569,16 @@
   <section class="nb-feature">
     <div class="nb-feature-grid">
       <figure class="nb-feature-figure">
-        <div class="nb-placeholder nb-placeholder--portrait">
-          <div class="nb-placeholder-inner">
-            <div class="nb-placeholder-label">자리 표시 · 어떻게 쓰이는가</div>
-            <p class="nb-placeholder-text">속지에 만년필 선이 얹히는 순간의 클로즈업. 젖은 잉크, 종이의 결, 번지지 않는 선이 보이도록.</p>
-          </div>
-        </div>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1070.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1070.jpg" alt="서울 작업실 책상 위에 세워진 손그림 스튜디오 몬조 노트. 흰색 결이 있는 커버에 그려진 나뭇가지, 빨간 열매, 가지 끝에 매달린 작고 파란 물방울 캐릭터. 한쪽 모서리에 주홍색 낙관, 스파인에 보이는 빨간 실 스탭 바인딩." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
       </figure>
       <div class="nb-feature-text">
         <div class="nb-eyebrow">어떻게 쓰이는가</div>
         <h2>글을 쓰기 위한 페이지로 만든 노트.</h2>
         <p>안의 종이는 한 가지 기준으로 고릅니다. 만년필 잉크가 어떻게 얹히는지. 에디션마다 일본산 만년필 전용 종이를 사용합니다. 잉크와 느린 필기에 너그럽고, 수채를 받아내며, 페이지가 번지지 않습니다.</p>
-        <p>에디션마다 달라지는 것은 종이의 무게, 커버, 크기, 실의 색입니다. 달라지지 않는 것은 한 권씩 손으로 그리는 그림, 손바느질 제본, 그리고 만들어지는 서울의 작은 작업실입니다. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
+        <p>두 가지 사이즈 — 주머니에 넣을 수 있는 작은 것, 책상에 어울리는 큰 것. 에디션마다 달라지는 것은 커버의 그림, 때로는 종이의 무게, 때로는 실의 색입니다. 달라지지 않는 것은 글을 쓰기 위해 만들어졌다는 사실입니다. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
         <div class="nb-specs">
           <div class="nb-spec">
             <div class="nb-spec-label">속지</div>
@@ -577,27 +590,43 @@
           </div>
           <div class="nb-spec">
             <div class="nb-spec-label">제본</div>
-            <div class="nb-spec-value">손바느질, 프랑스산 왁스 린넨</div>
+            <div class="nb-spec-value">스탭 바인딩, 붉은 왁스 실</div>
           </div>
           <div class="nb-spec">
             <div class="nb-spec-label">에디션</div>
-            <div class="nb-spec-value">소량, 완성되는 만큼</div>
+            <div class="nb-spec-value">50권 한정, 두 가지 사이즈</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 사람의 손으로 — 2단 반전: 왼쪽 텍스트, 오른쪽 이미지 -->
+  <!-- 에디션 — 한 점의 원화 → 50권의 노트 -->
   <section class="nb-feature nb-feature--reverse">
     <div class="nb-feature-grid">
       <figure class="nb-feature-figure">
-        <div class="nb-placeholder nb-placeholder--portrait">
-          <div class="nb-placeholder-inner">
-            <div class="nb-placeholder-label">자리 표시 · 사람의 손으로</div>
-            <p class="nb-placeholder-text">커버를 그리는 손, 붓이 움직이는 순간의 클로즈업. 또는 붓이 한 줄을 그어 가는 짧은 루프 영상. 가까울수록 좋음 — 사람의 손이 핵심.</p>
-          </div>
-        </div>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1072.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1072.jpg" alt="노트 안쪽 뒷표지의 디테일. 'Édition N° 001 — Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.' 인쇄와 함께 보이는 붉은 스탭 바인딩 실." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+      <div class="nb-feature-text">
+        <div class="nb-eyebrow">에디션</div>
+        <h2>한 점의 원화. 50권의 노트.</h2>
+        <p>각 커버는 한 점의 원화로 시작됩니다. 작업실에서 손으로 그린 한 점의 그림이 50권의 노트의 커버가 됩니다 — 딱 50권만. 모든 권에는 안쪽에 1부터 50까지의 번호와 날짜, 스튜디오 마크가 인쇄됩니다.</p>
+        <p>에디션이 끝나면, 거기까지입니다. 원화는 작업실에 남고, 새로운 그림이 시작됩니다. 핵심은 작업을 원점 가까이에 두는 것입니다. 한 손, 한 점의 그림, 작은 수량, 재인쇄 없음, 대체품 없음.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사람의 손으로 — 2단: 왼쪽 이미지, 오른쪽 텍스트 -->
+  <section class="nb-feature">
+    <div class="nb-feature-grid">
+      <figure class="nb-feature-figure">
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1074.jpg" alt="노트의 크림색 속지 위, 한 매듭의 붉은 왁스 실을 매크로로 촬영한 클로즈업." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
       </figure>
       <div class="nb-feature-text">
         <div class="nb-eyebrow">사람의 손으로</div>
@@ -608,33 +637,51 @@
     </div>
   </section>
 
+  <!-- 노트 안쪽 디테일 두 장 -->
+  <section class="nb-details-band" aria-label="모든 노트 안쪽에 인쇄된 문구">
+    <div class="nb-details-grid">
+      <figure>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1071.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1071.jpg" alt="노트를 펼치면 처음 보이는 페이지. 작은 짙은 청색 세리프 활자로 'Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.' 가 인쇄되어 있습니다." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+      <figure>
+        <picture>
+          <source srcset="/media/web/notebooks/DSCF1073.webp" type="image/webp">
+          <img src="/media/web/notebooks/DSCF1073.jpg" alt="노트 마지막 페이지. 작은 이탤릭 세리프 활자로 'Merci d'avoir donné vie à ce carnet. www.studiomonjo.com' 가 인쇄되어 있습니다." loading="lazy" decoding="async" width="1066" height="1600">
+        </picture>
+      </figure>
+    </div>
+  </section>
+
   <section class="nb-archive-section">
     <div class="nb-archive-inner">
       <div class="nb-eyebrow">작업실에서</div>
       <h2 class="nb-video-title">최근 에디션.</h2>
-      <p style="margin-top: 14px; color: var(--ink-warm-mid);">지난 작업의 작은 아카이브. 새 작품은 작업이 마무리되는 대로 네이버 스마트 스토어에 올라갑니다. 일부러 느린 속도로. 한 점이 끝나야 다음이 시작됩니다.</p>
+      <p style="margin-top: 14px; color: var(--ink-warm-mid);">지난 작업의 작은 아카이브. 새 작품은 작업이 마무리되는 대로 네이버 스마트 스토어에 올라갑니다. 일부러 느린 속도로. 한 점의 그림이 끝나야 다음이 시작됩니다.</p>
       <div class="nb-archive-grid">
         <article class="nb-archive-card">
           <figure class="nb-archive-figure">
             <picture>
               <source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp">
-              <img src="/media/web/notebooks/IMG_4604.jpg" alt="노트 01, 새와 열매 — 새 두 마리가 그려진 가지" loading="lazy" decoding="async">
+              <img src="/media/web/notebooks/IMG_4604.jpg" alt="에디션 N° 001 — 새와 열매. 잉크와 수채로 그린 새 두 마리가 있는 가지." loading="lazy" decoding="async">
             </picture>
           </figure>
-          <div class="nb-archive-meta">노트 01 · A6</div>
+          <div class="nb-archive-meta">에디션 N° 001</div>
           <div class="nb-archive-name">새와 열매</div>
-          <div class="nb-archive-state">20점 에디션 완료</div>
+          <div class="nb-archive-state">50권 에디션 완료</div>
         </article>
         <article class="nb-archive-card">
           <figure class="nb-archive-figure">
             <picture>
               <source srcset="/media/web/notebooks/L1001423.webp" type="image/webp">
-              <img src="/media/web/notebooks/L1001423.jpg" alt="노트 02, 연꽃 — 붉은 연꽃 위로 뻗은 매화 가지" loading="lazy" decoding="async">
+              <img src="/media/web/notebooks/L1001423.jpg" alt="에디션 N° 002 — 연꽃. 붉은 연꽃 위로 뻗은 매화 가지." loading="lazy" decoding="async">
             </picture>
           </figure>
-          <div class="nb-archive-meta">노트 02 · A6</div>
+          <div class="nb-archive-meta">에디션 N° 002</div>
           <div class="nb-archive-name">연꽃</div>
-          <div class="nb-archive-state">20점 에디션 완료</div>
+          <div class="nb-archive-state">50권 에디션 완료</div>
         </article>
       </div>
     </div>
@@ -664,7 +711,7 @@
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>재료</div>
       <h2 class="nb-modal-title" id="materialsModalTitle">무엇으로 만들어집니다.</h2>
-      <p class="nb-modal-lede">한 점은 네 가지 재료로 만들어집니다. 에디션마다 조금씩 달라지지만 같은 작은 팔레트 안에 머뭅니다. 두꺼운 커버용 종이, 만년필을 위한 속지, 전문가용 수채 물감, 왁스를 먹인 린넨 실. 각각은 페이지를 받기 위해, 선을 받기 위해, 또는 제본을 견디기 위해 선택됩니다.</p>
+      <p class="nb-modal-lede">한 권의 노트는 네 가지 재료로 만들어집니다. 에디션마다 조금씩 달라질 수 있지만 같은 작은 팔레트 안에 머뭅니다. 두꺼운 커버용 종이, 만년필을 위한 속지, 전문가용 수채 물감, 붉은 왁스 실. 각각은 페이지를 받기 위해, 선을 받기 위해, 또는 제본을 견디기 위해 선택됩니다.</p>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="두꺼운 아티스트용 종이에 손으로 그린 노트 커버" loading="lazy"></picture></figure>
@@ -672,7 +719,7 @@
           <div class="nb-modal-maker-origin">두꺼운 아티스트용 종이 · 프랑스</div>
           <div class="nb-modal-maker-name">커버</div>
           <div class="nb-modal-maker-role">잉크와 수채로 그림</div>
-          <p class="nb-modal-maker-body">유럽에서 가장 오래된 제지 전통 중 하나에서 나온 두꺼운 아티스트용 종이입니다. 프랑스 수채화가들이 수 세기 동안 그려 온 결의 종이입니다. 노트 커버는 잉크와 수채 워시에도 우글거리지 않는 두꺼운 무게를 사용합니다. 카드 커버는 결이 더 촘촘한 수채 전용 종이로, 작은 판형에서도 진한 워시를 잘 받아냅니다. 둘 다 글을 쓰기 위한 종이가 아니라, 그림을 받기 위한 종이입니다.</p>
+          <p class="nb-modal-maker-body">유럽에서 가장 오래된 제지 전통 중 하나에서 나온 두꺼운 아티스트용 종이입니다. 프랑스 수채화가들이 수 세기 동안 그려 온 결의 종이입니다. 모든 커버는 잉크와 수채 워시에도 우글거리지 않는 두꺼운 무게에서 잘립니다. 글을 쓰기 위한 종이가 아니라, 그림을 받기 위한 종이입니다.</p>
         </div>
       </div>
 
@@ -697,12 +744,12 @@
       </div>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001424.webp" type="image/webp"><img src="/media/web/notebooks/L1001424.jpg" alt="왁스를 먹인 린넨 실로 꿰맨 손바느질 제본" loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="/media/web/notebooks/DSCF1074.jpg" alt="노트의 크림색 속지 위, 한 매듭의 붉은 왁스 실을 매크로로 촬영한 클로즈업." loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">왁스 린넨 실 · 프랑스</div>
+          <div class="nb-modal-maker-origin">붉은 왁스 실 · 프랑스</div>
           <div class="nb-modal-maker-name">제본</div>
-          <div class="nb-modal-maker-role">손으로, 끝에서 끝까지</div>
-          <p class="nb-modal-maker-body">백오십 년이 넘도록 실을 만들어 온 프랑스의 한 공방에서 나온 케이블 왁스 린넨입니다. 이미 꼰 두 가닥을 다시 꼬아 만든 뒤, 녹말과 밀랍을 녹인 물에 담갔다 빼냅니다. 살짝 딱딱하면서도 매끈하고, 놀라울 만큼 튼튼합니다. 수십 년이 지나도 늘어나거나 해지지 않습니다.</p>
+          <div class="nb-modal-maker-role">손으로 스탭 바인딩, 스파인에 보이는 실</div>
+          <p class="nb-modal-maker-body">백오십 년이 넘도록 실을 만들어 온 프랑스의 한 공방에서 나온 케이블 왁스 린넨, 주홍빛 붉은 실입니다. 이미 꼰 두 가닥을 다시 꼬아 만든 뒤, 녹말과 밀랍을 녹인 물에 담갔다 빼냅니다. 살짝 딱딱하면서도 매끈하고, 놀라울 만큼 튼튼합니다. 수십 년이 지나도 늘어나거나 해지지 않습니다. 붉은 색은 의도된 것 — 모든 커버의 낙관과 호응하고, 닫힌 스파인 위에 작은 표식이 됩니다.</p>
         </div>
       </div>
     </div>
