@@ -1,47 +1,47 @@
 <!DOCTYPE html>
-<!--
-  Notebooks page (Korean). Copy is a non-native draft. Jordan to refine.
--->
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>손그림 노트, 50권 한정 에디션. | 스튜디오 몬조</title>
-<meta name="description" content="서울에서 손으로 그린 한 점의 수채 원화를, 스캔해 50권의 노트에 다시 인쇄합니다. 한 권 한 권은 주문 시 당신의 선택으로 마무리됩니다 — 실 색과 속지 스타일. 두 가지 사이즈.">
+<title>스튜디오 몬조 노트. 한 점의 그림, 오십 권의 노트.</title>
+<meta name="description" content="스튜디오 몬조는 서울에서 A5와 A6 노트를 만듭니다. 각 에디션은 한 점의 수채 원화에서 시작해, 50권의 인쇄 노트가 되고, 배송 전 붉은 낙관을 찍습니다.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://studiomonjo.com/ko/notebooks/">
 <link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/">
 <link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/">
+<link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/">
 <link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/">
 
 <meta property="og:site_name" content="스튜디오 몬조">
-<meta property="og:title" content="손그림 노트, 50권 한정 에디션.">
-<meta property="og:description" content="한 점의 수채 원화를 스캔해 50권의 노트에 인쇄. 주문 시 당신의 선택으로 마무리. 서울에서 손으로.">
+<meta property="og:title" content="스튜디오 몬조 노트. 한 점의 그림, 오십 권의 노트.">
+<meta property="og:description" content="각 에디션은 한 점의 수채 원화에서 시작해, 50권의 인쇄 노트가 되고, 배송 전 붉은 낙관을 찍습니다.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/ko/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
 <meta property="og:image:width" content="1066">
 <meta property="og:image:height" content="1600">
-<meta property="og:image:alt" content="서울 작업실 책상 위에 세워진 손그림 스튜디오 몬조 노트.">
+<meta property="og:image:alt" content="작업실 책상 위에 놓인 스튜디오 몬조 노트.">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../media/web/branding/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../media/web/branding/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+KR:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Global stylesheet for the .page-back / .page-lang chrome pills -->
-<link rel="stylesheet" href="/css/styles.css">
+<!-- Global stylesheet — gives us .page-back and .page-lang chrome pills.
+     Loaded BEFORE the inline notebooks styles below so the cream-paper
+     identity rules in <style> can override anything that conflicts. -->
+<link rel="stylesheet" href="../../css/styles.css?v=brand-20260521-doors">
 
 <style>
-  /* Notebooks page — same cream paper identity as the EN version */
+  /* Notebooks page — cream-paper identity, matches Courrier sub-brand */
   :root {
     --paper-warm: #faf6ed;
     --paper-warm-soft: #f4ecda;
@@ -54,7 +54,7 @@
     --rule-strong: #d6cdb6;
     --seal: #b8231d;
     --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
+    --sans: 'Noto Sans KR', 'DM Sans', system-ui, sans-serif;
     --pad-x: clamp(24px, 6vw, 80px);
   }
 
@@ -63,12 +63,12 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   body.notebooks {
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-weight: 300;
     background: var(--paper-warm);
     color: var(--ink-warm-mid);
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 17px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     padding-top: 0;
@@ -77,240 +77,42 @@
   body.notebooks a { color: inherit; }
   body.notebooks :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
   body.notebooks strong { font-weight: 500; color: var(--ink-warm); }
-
-  /* Chrome pills are .page-back / .page-lang in styles.css */
-
-  .nb-hero {
-    padding: clamp(96px, 10vw, 160px) var(--pad-x) clamp(40px, 6vw, 72px);
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .nb-eyebrow {
+  body.notebooks em { font-style: italic; color: var(--ink-warm); }
+  html[lang="ko"] body.notebooks {
     font-family: var(--sans);
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--ink-warm-soft);
-    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.75;
+    word-break: keep-all;
   }
-  .nb-eyebrow .seal {
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--seal);
-    border-radius: 50%;
-    margin-right: 12px;
-    vertical-align: 2px;
-  }
-  .nb-title {
+  html[lang="ko"] .nb-maison-title,
+  html[lang="ko"] .nb-belief-title,
+  html[lang="ko"] .nb-maison-heading,
+  html[lang="ko"] .nb-shop-title,
+  html[lang="ko"] .nb-ledger-value,
+  html[lang="ko"] .nb-choice-value,
+  html[lang="ko"] .nb-ritual-title,
+  html[lang="ko"] .nb-modal-title,
+  html[lang="ko"] .nb-modal-maker-name {
     font-family: var(--sans);
+    font-style: normal;
     font-weight: 400;
-    font-size: clamp(2rem, 5vw, 3.4rem);
-    line-height: 1.15;
-    letter-spacing: -0.005em;
-    color: var(--ink-warm);
-    margin-bottom: 28px;
+    letter-spacing: 0;
   }
-  .nb-sub {
-    font-family: var(--sans);
-    font-weight: 300;
-    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    line-height: 1.7;
-    color: var(--ink-warm-soft);
+  html[lang="ko"] .nb-maison-title {
+    font-size: clamp(2.6rem, 5.2vw, 4.8rem);
+    line-height: 1.14;
     max-width: 620px;
   }
-
-  .nb-video-section {
-    background: var(--paper-warm-soft);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: clamp(56px, 8vw, 112px) var(--pad-x);
-  }
-  .nb-video-inner {
-    max-width: 1080px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
-    align-items: center;
-  }
-  @media (max-width: 800px) {
-    .nb-video-inner { grid-template-columns: 1fr; gap: 40px; max-width: 480px; }
-  }
-  .nb-video-text .nb-eyebrow { margin-bottom: 16px; }
-  .nb-video-title {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-    line-height: 1.25;
-    color: var(--ink-warm);
-    margin-bottom: 18px;
-  }
-  .nb-video-body {
-    font-size: 0.97rem;
-    line-height: 1.8;
-    margin-bottom: 1em;
-  }
-  .nb-video-frame {
-    position: relative;
-    aspect-ratio: 9 / 16;
-    background: var(--ink-warm);
-    border: 1px solid var(--rule-strong);
-    overflow: hidden;
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-  }
-  .nb-video-frame iframe {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    border: 0;
+  html[lang="ko"] .nb-maison-title span {
+    display: block;
   }
 
-  .nb-section {
-    padding: clamp(56px, 8vw, 112px) var(--pad-x);
-    max-width: 760px;
-    margin: 0 auto;
-  }
-  .nb-section h2 {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-    line-height: 1.25;
-    color: var(--ink-warm);
-    margin-bottom: 24px;
-  }
-  .nb-section p {
-    font-family: var(--sans);
-    font-weight: 300;
-    font-size: clamp(1rem, 1.4vw, 1.1rem);
-    line-height: 1.8;
-    color: var(--ink-warm-mid);
-    margin-bottom: 1.2em;
-  }
-  .nb-section p:last-child { margin-bottom: 0; }
-  .nb-section a { color: var(--ink-warm); text-decoration: underline; text-decoration-color: var(--ink-warm-light); text-underline-offset: 3px; }
+  /* Chrome pill styles live in styles.css (.page-back / .page-lang)
+     and apply identically across every page. Only the lang dropdown
+     (.page-lang-dropdown) is modal-specific behaviour. */
 
-  .nb-specs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin: clamp(40px, 5vw, 64px) 0 0;
-    border-top: 1px solid var(--rule);
-  }
-  @media (max-width: 700px) { .nb-specs { grid-template-columns: repeat(2, 1fr); } }
-  .nb-spec {
-    padding: 22px 4px;
-    border-bottom: 1px solid var(--rule);
-  }
-  @media (min-width: 701px) { .nb-spec + .nb-spec { border-left: 1px solid var(--rule); padding-left: 24px; } }
-  .nb-spec-label {
-    font-family: var(--sans);
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 0.20em; text-transform: uppercase;
-    color: var(--ink-warm-soft);
-    margin-bottom: 8px;
-  }
-  .nb-spec-value {
-    font-family: var(--sans);
-    font-weight: 400;
-    font-size: 1.05rem;
-    color: var(--ink-warm);
-  }
 
-  /* 2단 구성 — 텍스트 + 시각 자료 (How it writes / By hand) */
-  .nb-feature {
-    padding: clamp(56px, 8vw, 112px) var(--pad-x);
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .nb-feature-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
-    align-items: center;
-  }
-  .nb-feature-figure { margin: 0; }
-  .nb-feature-text > .nb-eyebrow { margin-bottom: 18px; }
-  .nb-feature-text h2 {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    line-height: 1.18;
-    color: var(--ink-warm);
-    margin-bottom: 24px;
-  }
-  .nb-feature-text p {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
-    line-height: 1.75;
-    color: var(--ink-warm-mid);
-    margin-bottom: 1.2em;
-  }
-  .nb-feature-text p:last-child { margin-bottom: 0; }
-  .nb-feature-text .nb-specs {
-    margin-top: 32px;
-    grid-template-columns: 1fr 1fr;
-  }
-  .nb-feature--reverse .nb-feature-figure { order: 2; }
-  @media (max-width: 800px) {
-    .nb-feature-grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; margin: 0 auto; }
-    .nb-feature--reverse .nb-feature-figure { order: 0; }
-  }
-
-  /* 시각 자료 자리 표시 — 빨간 점선 테두리로 식별. */
-  .nb-placeholder {
-    background: var(--paper-warm-darker);
-    border: 1.5px dashed var(--seal);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(20px, 3vw, 36px);
-    text-align: center;
-    width: 100%;
-  }
-  .nb-placeholder--cinema { aspect-ratio: 16 / 9; }
-  .nb-placeholder--portrait { aspect-ratio: 4 / 5; }
-  .nb-placeholder--landscape { aspect-ratio: 4 / 3; }
-  .nb-placeholder--square { aspect-ratio: 1 / 1; }
-  .nb-placeholder-inner { max-width: 360px; }
-  .nb-placeholder-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--seal);
-    margin-bottom: 14px;
-  }
-  .nb-placeholder-text {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--ink-warm-mid);
-    margin: 0;
-  }
-
-  .nb-hero-atmosphere {
-    width: 100%;
-    border-bottom: 1px solid var(--rule);
-    overflow: hidden;
-    max-height: 70vh;
-  }
-  .nb-hero-atmosphere picture, .nb-hero-atmosphere img {
-    display: block; width: 100%; height: 100%;
-    object-fit: cover; aspect-ratio: 3 / 2;
-  }
-  .nb-hero-atmosphere .nb-placeholder {
-    border-left: none;
-    border-right: none;
-  }
-
-  .nb-feature-figure picture, .nb-feature-figure img {
-    display: block; width: 100%; height: 100%;
-    object-fit: cover; aspect-ratio: 4 / 5;
-  }
-
+  /* Inside-the-notebook detail band */
   .nb-details-band {
     padding: clamp(40px, 5vw, 72px) var(--pad-x);
     max-width: 1080px;
@@ -327,135 +129,548 @@
     .nb-details-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; margin: 0 auto; }
   }
 
-  .nb-archive-section {
-    background: var(--paper-warm-soft);
-    border-top: 1px solid var(--rule);
-    padding: clamp(56px, 8vw, 112px) var(--pad-x);
-  }
-  .nb-archive-inner { max-width: 880px; margin: 0 auto; text-align: center; }
-  .nb-archive-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(24px, 4vw, 48px);
-    margin-top: clamp(40px, 5vw, 64px);
-  }
-  @media (max-width: 600px) { .nb-archive-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; } }
-  .nb-archive-card { display: block; text-align: left; }
-  .nb-archive-figure {
-    aspect-ratio: 4 / 5;
-    background: var(--paper-warm-darker);
-    border: 1px solid var(--rule);
-    position: relative; overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .nb-archive-figure picture, .nb-archive-figure img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(0.2) brightness(0.97);
-  }
-  .nb-archive-meta {
-    font-family: var(--sans);
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-warm-soft);
-    margin-bottom: 6px;
-  }
-  .nb-archive-name {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: 1.15rem;
-    color: var(--ink-warm);
-    margin-bottom: 4px;
-  }
-  .nb-archive-state {
-    font-family: var(--sans);
-    font-size: 11px; font-weight: 400;
-    color: var(--ink-warm-light);
-  }
-
-  .nb-cta {
-    padding: clamp(72px, 9vw, 144px) var(--pad-x);
-    background: var(--ink-warm);
-    color: var(--paper-warm);
-    text-align: center;
-  }
-  .nb-cta-inner { max-width: 560px; margin: 0 auto; }
-  .nb-cta-eyebrow {
-    font-family: var(--sans);
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: rgba(250,246,237,0.7);
-    margin-bottom: 16px;
-  }
-  .nb-cta-title {
-    font-family: var(--sans);
-    font-weight: 500;
-    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
-    line-height: 1.2;
-    color: var(--paper-warm);
-    margin-bottom: 18px;
-  }
-  .nb-cta-body {
-    font-size: 14px; font-weight: 300; line-height: 1.75;
-    color: rgba(250,246,237,0.78);
-    margin-bottom: 32px;
-  }
-  body.notebooks .nb-cta a {
-    display: inline-block;
-    font-family: var(--sans);
-    font-size: 12px; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 16px 30px;
-    text-decoration: none;
-    background: var(--paper-warm);
-    color: var(--ink-warm);
-    border: 1px solid var(--paper-warm);
-    transition: background 0.2s, color 0.2s;
-  }
-  body.notebooks .nb-cta a:hover, body.notebooks .nb-cta a:focus-visible {
-    background: transparent; color: var(--paper-warm); outline: none;
-  }
-  .nb-cta-ext { color: var(--ink-warm-soft); margin-left: 4px; font-size: 13px; }
-  body.notebooks .nb-cta a:hover .nb-cta-ext { color: rgba(250,246,237,0.7); }
-
+  /* Footer */
   .nb-footer {
     padding: clamp(40px, 5vw, 64px) var(--pad-x);
     text-align: center;
     font-family: var(--sans);
-    font-size: 11px; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--ink-warm-light);
   }
   .nb-footer-mark {
-    display: block; width: 18px; height: 18px;
+    display: block;
+    width: 18px;
+    height: 18px;
     margin: 0 auto 12px;
     opacity: 0.55;
   }
   .nb-footer a { color: var(--ink-warm-soft); text-decoration: none; transition: color 0.2s; }
   .nb-footer a:hover { color: var(--ink-warm); }
 
+  /* Maison redesign */
+  .nb-maison-page {
+    background: var(--paper-warm);
+  }
+  .nb-maison-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-maison-visual {
+    position: relative;
+    min-height: 620px;
+    background: var(--paper-warm-soft);
+    overflow: hidden;
+  }
+  .nb-maison-visual picture,
+  .nb-maison-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .nb-maison-visual img {
+    object-fit: cover;
+    object-position: center;
+  }
+  .nb-maison-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(250,246,237,0) 66%, rgba(250,246,237,0.18));
+    pointer-events: none;
+  }
+  .nb-maison-copy {
+    padding: clamp(92px, 9vw, 144px) var(--pad-x) clamp(48px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+  .nb-house-kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 30px;
+  }
+  .nb-house-kicker .seal {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--seal);
+    border-radius: 50%;
+    margin-right: 12px;
+    vertical-align: 1px;
+  }
+  .nb-hero-code {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--seal);
+    margin-bottom: 16px;
+  }
+  .nb-maison-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(3rem, 7vw, 6.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.012em;
+    color: var(--ink-warm);
+    max-width: 720px;
+    margin-bottom: 28px;
+  }
+  .nb-maison-sub {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 1.55vw, 1.35rem);
+    line-height: 1.62;
+    color: var(--ink-warm-mid);
+    max-width: 620px;
+    margin-bottom: 38px;
+  }
+  .nb-maison-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 42px;
+  }
+  .nb-maison-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rule-strong);
+    color: var(--ink-warm);
+    background: rgba(250,246,237,0.72);
+    padding: 14px 22px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nb-maison-actions a:first-child {
+    background: rgba(250,246,237,0.92);
+    color: var(--ink-warm);
+  }
+  .nb-maison-actions a:last-child {
+    background: #efe3d2;
+    border-color: #cdbba5;
+    color: var(--ink-warm);
+  }
+  .nb-maison-actions a:hover,
+  .nb-maison-actions a:focus-visible {
+    background: var(--ink-warm);
+    border-color: var(--ink-warm);
+    color: var(--paper-warm);
+  }
+  .nb-hero-ledger {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    max-width: 780px;
+  }
+  .nb-ledger-cell {
+    padding: 18px clamp(12px, 1.5vw, 22px);
+    border-left: 1px solid var(--rule);
+  }
+  .nb-ledger-cell:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .nb-ledger-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-warm-light);
+    margin-bottom: 7px;
+  }
+  .nb-ledger-value {
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    line-height: 1.32;
+    color: var(--ink-warm);
+  }
+  .nb-belief {
+    padding: clamp(72px, 10vw, 140px) var(--pad-x);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-belief-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(40px, 7vw, 104px);
+    align-items: start;
+  }
+  .nb-belief-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+    line-height: 1.02;
+    color: var(--ink-warm);
+  }
+  .nb-belief-copy p {
+    font-size: clamp(1.05rem, 1.45vw, 1.2rem);
+    line-height: 1.78;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.15em;
+  }
+  .nb-section-maison {
+    padding: clamp(64px, 9vw, 128px) var(--pad-x);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-section-maison--warm {
+    background: var(--paper-warm-soft);
+  }
+  .nb-section-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(44px, 7vw, 96px);
+    align-items: center;
+  }
+  .nb-section-grid--reverse .nb-section-figure {
+    order: 2;
+  }
+  .nb-section-figure {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm-darker);
+    aspect-ratio: 4 / 5;
+  }
+  .nb-section-figure picture,
+  .nb-section-figure img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .nb-section-figure img {
+    object-fit: cover;
+  }
+  .nb-maison-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-warm-soft);
+    margin-bottom: 18px;
+  }
+  .nb-maison-label .seal {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--seal);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: 1px;
+  }
+  .nb-maison-heading {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1.05;
+    color: var(--ink-warm);
+    margin-bottom: 24px;
+  }
+  .nb-maison-copyblock p {
+    font-size: clamp(1.03rem, 1.35vw, 1.14rem);
+    line-height: 1.78;
+    color: var(--ink-warm-mid);
+    margin-bottom: 1.12em;
+  }
+  .nb-ritual-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--rule);
+    margin-top: 34px;
+  }
+  .nb-ritual-item {
+    padding: 20px 20px 18px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-ritual-item:nth-child(even) {
+    padding-left: 24px;
+    border-left: 1px solid var(--rule);
+  }
+  .nb-ritual-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--seal);
+    margin-bottom: 8px;
+  }
+  .nb-ritual-title {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    line-height: 1.25;
+    color: var(--ink-warm);
+    margin-bottom: 7px;
+  }
+  .nb-ritual-body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-warm-soft);
+  }
+  .nb-choice-panel {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .nb-choice-head {
+    max-width: 720px;
+    margin-bottom: clamp(38px, 5vw, 64px);
+  }
+  .nb-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-choice-card {
+    padding: clamp(22px, 3vw, 34px);
+    border-left: 1px solid var(--rule);
+  }
+  .nb-choice-card:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .nb-choice-name {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-warm-light);
+    margin-bottom: 13px;
+  }
+  .nb-choice-value {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.25;
+    color: var(--ink-warm);
+    margin-bottom: 12px;
+  }
+  .nb-choice-card p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-warm-soft);
+  }
+  .nb-paper-styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .nb-paper-styles span {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+    border: 1px solid var(--rule-strong);
+    padding: 7px 9px;
+  }
+  .nb-seal-proof {
+    background: var(--ink-warm);
+    color: var(--paper-warm);
+    border-bottom: 0;
+  }
+  .nb-seal-proof .nb-maison-label,
+  .nb-seal-proof .nb-maison-copyblock p {
+    color: rgba(250,246,237,0.72);
+  }
+  .nb-seal-proof .nb-maison-heading {
+    color: var(--paper-warm);
+  }
+  .nb-seal-proof .nb-section-figure {
+    border-color: rgba(250,246,237,0.18);
+    background: #080706;
+  }
+  .nb-shop-maison {
+    padding: clamp(72px, 10vw, 144px) var(--pad-x);
+    background: var(--paper-warm);
+    text-align: center;
+  }
+  .nb-shop-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .nb-shop-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    line-height: 1.1;
+    color: var(--ink-warm);
+    margin-bottom: 18px;
+  }
+  .nb-shop-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-warm-mid);
+    margin-bottom: 32px;
+  }
+  body.notebooks .nb-shop-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #efe3d2;
+    color: var(--ink-warm);
+    border: 1px solid #cdbba5;
+    padding: 16px 28px;
+    box-shadow: inset 0 0 0 1px rgba(250,246,237,0.42);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  body.notebooks .nb-shop-link:hover,
+  body.notebooks .nb-shop-link:focus-visible {
+    background: var(--ink-warm);
+    border-color: var(--ink-warm);
+    color: var(--paper-warm);
+  }
+  body.notebooks .nb-shop-link .nb-cta-ext {
+    color: currentColor;
+    font-size: 13px;
+    margin-left: 4px;
+    opacity: 0.82;
+  }
+  @media (max-width: 980px) {
+    .nb-maison-hero,
+    .nb-belief-inner,
+    .nb-section-grid {
+      grid-template-columns: 1fr;
+    }
+    .nb-maison-visual {
+      min-height: min(68vh, 620px);
+    }
+    .nb-maison-visual::after {
+      background: linear-gradient(to top, rgba(250,246,237,0.08), rgba(250,246,237,0));
+    }
+    .nb-section-grid--reverse .nb-section-figure {
+      order: 0;
+    }
+    .nb-choice-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .nb-choice-card:nth-child(odd) {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .nb-choice-card:nth-child(n + 3) {
+      border-top: 1px solid var(--rule);
+    }
+  }
+  @media (max-width: 620px) {
+    .nb-maison-visual {
+      min-height: 54vh;
+    }
+    .nb-maison-copy {
+      padding-top: 54px;
+    }
+    .nb-maison-title {
+      font-size: clamp(2.7rem, 15vw, 4.2rem);
+    }
+    .nb-hero-ledger,
+    .nb-ritual-list,
+    .nb-choice-grid {
+      grid-template-columns: 1fr;
+    }
+    .nb-ledger-cell,
+    .nb-ritual-item,
+    .nb-ritual-item:nth-child(even),
+    .nb-choice-card {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .nb-ledger-cell + .nb-ledger-cell,
+    .nb-ritual-item + .nb-ritual-item,
+    .nb-choice-card + .nb-choice-card {
+      border-top: 1px solid var(--rule);
+    }
+  }
 
-  /* Materials modal — full materials reference */
+
+  /* Materials modal — the complete materials reference, opened in a popup */
   .nb-modal { position: fixed; inset: 0; z-index: 100; display: none; }
   .nb-modal.is-open { display: block; }
   .nb-modal-backdrop { position: absolute; inset: 0; background: rgba(26,24,22,0.55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity 280ms ease; }
   .nb-modal.is-open .nb-modal-backdrop { opacity: 1; }
-  .nb-modal-panel { position: relative; width: min(840px, calc(100vw - 32px)); max-height: calc(100vh - 48px); margin: 24px auto; background: var(--paper-warm); border: 1px solid var(--rule-strong); box-shadow: 0 12px 48px rgba(26,24,22,0.18); overflow-y: auto; transform: translateY(8px); opacity: 0; transition: transform 320ms ease, opacity 280ms ease; }
+  .nb-modal-panel {
+    position: relative;
+    width: min(840px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    margin: 24px auto;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule-strong);
+    box-shadow: 0 12px 48px rgba(26,24,22,0.18);
+    overflow-y: auto;
+    transform: translateY(8px); opacity: 0;
+    transition: transform 320ms ease, opacity 280ms ease;
+  }
   .nb-modal.is-open .nb-modal-panel { transform: none; opacity: 1; }
-  .nb-modal-close { position: sticky; top: 14px; left: calc(100% - 46px); width: 32px; height: 32px; background: rgba(250,246,237,0.92); border: 1px solid rgba(26,24,22,0.10); border-radius: 50%; cursor: pointer; color: var(--ink-warm-soft); font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s, border-color 0.2s; z-index: 2; margin-bottom: -32px; }
+  .nb-modal-close {
+    position: sticky; top: 14px; left: calc(100% - 46px);
+    width: 32px; height: 32px;
+    background: rgba(250,246,237,0.92);
+    border: 1px solid rgba(26,24,22,0.10);
+    border-radius: 50%;
+    cursor: pointer; color: var(--ink-warm-soft);
+    font-size: 18px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+    z-index: 2;
+    margin-bottom: -32px;
+  }
   .nb-modal-close:hover, .nb-modal-close:focus-visible { color: var(--ink-warm); background: var(--paper-warm); border-color: rgba(26,24,22,0.25); outline: none; }
   .nb-modal-inner { padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 56px) clamp(28px, 4vw, 48px); }
   .nb-modal-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-warm-soft); margin-bottom: 14px; }
   .nb-modal-eyebrow .seal { display: inline-block; width: 6px; height: 6px; background: var(--seal); border-radius: 50%; margin-right: 10px; vertical-align: 2px; }
-  .nb-modal-title { font-family: var(--sans); font-weight: 500; font-size: clamp(1.5rem, 2.8vw, 2rem); line-height: 1.2; color: var(--ink-warm); margin-bottom: 12px; }
-  .nb-modal-lede { font-family: var(--sans); font-weight: 300; font-size: clamp(1rem, 1.4vw, 1.1rem); line-height: 1.75; color: var(--ink-warm-mid); margin-bottom: clamp(28px, 4vw, 40px); }
-  .nb-modal-maker { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(20px, 3vw, 36px); padding: clamp(28px, 4vw, 40px) 0; border-top: 1px solid var(--rule); align-items: start; }
+  .nb-modal-title { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.15; color: var(--ink-warm); margin-bottom: 12px; }
+  .nb-modal-lede { font-family: var(--serif); font-weight: 300; font-size: clamp(1rem, 1.4vw, 1.1rem); line-height: 1.7; color: var(--ink-warm-mid); margin-bottom: clamp(28px, 4vw, 40px); }
+  /* Each maker block: image left, copy right, stacks on small screens */
+  .nb-modal-maker {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: clamp(20px, 3vw, 36px);
+    padding: clamp(28px, 4vw, 40px) 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
   @media (max-width: 580px) { .nb-modal-maker { grid-template-columns: 1fr; gap: 18px; } }
   .nb-modal-maker-figure { aspect-ratio: 4 / 5; background: var(--paper-warm-darker); border: 1px solid var(--rule); overflow: hidden; position: relative; }
   .nb-modal-maker-figure picture, .nb-modal-maker-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .nb-modal-maker-origin { font-family: var(--sans); font-size: 10px; letter-spacing: 0.08em; color: var(--ink-warm-light); margin-bottom: 8px; }
-  .nb-modal-maker-name { font-family: var(--sans); font-weight: 500; font-size: 1.2rem; line-height: 1.2; color: var(--ink-warm); margin-bottom: 4px; }
-  .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink-warm-mid); margin-bottom: 14px; }
-  .nb-modal-maker-body { font-family: var(--sans); font-weight: 300; font-size: 0.95rem; line-height: 1.8; color: var(--ink-warm-mid); margin: 0; }
+  .nb-modal-maker-origin { font-family: var(--sans); font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--ink-warm-light); margin-bottom: 8px; }
+  .nb-modal-maker-name { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.4rem; line-height: 1.15; color: var(--ink-warm); margin-bottom: 4px; }
+  .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm-mid); margin-bottom: 14px; }
+  .nb-modal-maker-body { font-family: var(--serif); font-weight: 300; font-size: 0.98rem; line-height: 1.7; color: var(--ink-warm-mid); margin: 0; }
   .nb-modal-maker-body em { font-style: italic; color: var(--ink-warm); }
   body.is-modal-open { overflow: hidden; }
 </style>
@@ -470,6 +685,8 @@
   ]
 }
 </script>
+<!-- ItemList: Studio Monjo edition notebooks, two sizes. Authoritative prices
+     live on the Naver Smart Store. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -478,12 +695,12 @@
     {
       "@type": "Product",
       "position": 1,
-      "name": "손그림 노트 — 스몰",
-      "description": "작은 사이즈. 서울에서 손으로 그린 수채 원화를 고해상도로 스캔해 인쇄한 50권 중 한 권. 손으로 스탭 바인딩. 주문 시 실 색과 속지 스타일을 직접 고를 수 있습니다.",
+      "name": "스튜디오 몬조 에디션 노트, A6",
+      "description": "스튜디오 몬조 한정 에디션의 A6 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 각 노트는 배송 전 붉은 낙관을 찍고, 주문 시 실 색과 속지 스타일을 선택할 수 있습니다.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
-        "price": "45000",
+        "price": "65000",
         "priceCurrency": "KRW",
         "availability": "https://schema.org/InStock",
         "url": "https://smartstore.naver.com/studiomonjo"
@@ -492,12 +709,12 @@
     {
       "@type": "Product",
       "position": 2,
-      "name": "손그림 노트 — 라지",
-      "description": "큰 사이즈. 서울에서 손으로 그린 수채 원화를 고해상도로 스캔해 인쇄한 50권 중 한 권. 손으로 스탭 바인딩. 주문 시 실 색과 속지 스타일을 직접 고를 수 있습니다.",
+      "name": "스튜디오 몬조 에디션 노트, A5",
+      "description": "스튜디오 몬조 한정 에디션의 A5 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 각 노트는 배송 전 붉은 낙관을 찍고, 주문 시 실 색과 속지 스타일을 선택할 수 있습니다.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
-        "price": "65000",
+        "price": "95000",
         "priceCurrency": "KRW",
         "availability": "https://schema.org/InStock",
         "url": "https://smartstore.naver.com/studiomonjo"
@@ -509,7 +726,7 @@
 </head>
 <body class="notebooks">
 
-<header class="page-back"><a href="/ko/">&larr; Studio Monjo</a></header>
+<header class="page-back"><a href="../">&larr; Studio Monjo</a></header>
 <div class="page-corner">
   <a class="page-social-btn" href="https://www.instagram.com/studio.monjo" target="_blank" rel="noopener noreferrer" aria-label="스튜디오 몬조 인스타그램">
     <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -522,221 +739,254 @@
       <span>한국어</span><span class="page-lang-caret" aria-hidden="true">&#9662;</span>
     </button>
     <span class="page-lang-alts" hidden>
-      <a href="/en/notebooks/" class="page-lang-alt" lang="en">EN</a>
-      <a href="/courrier/" class="page-lang-alt" lang="fr">Français</a>
+      <a href="../../en/notebooks/" class="page-lang-alt" lang="en">EN</a>
+      <a href="../../fr/notebooks/" class="page-lang-alt" lang="fr">Français</a>
     </span>
   </div>
 </div>
 
-<main>
+<main id="main" class="nb-maison-page">
 
-  <!-- 히어로 분위기 — 펜과 차가 놓인 펼쳐진 노트, 위에서. -->
-  <div class="nb-hero-atmosphere">
-    <picture>
-      <source srcset="/media/web/notebooks/DSCF1076.webp" type="image/webp">
-      <img src="/media/web/notebooks/DSCF1076.jpg" alt="책상 위에 펼쳐진 스튜디오 몬조 노트와 그 옆의 검정색 세일러 만년필, 작은 분홍색 찻잔." fetchpriority="high" decoding="async" width="1600" height="1066">
-    </picture>
-  </div>
-
-  <section class="nb-hero">
-    <div class="nb-eyebrow"><span class="seal" aria-hidden="true"></span>노트</div>
-    <h1 class="nb-title">손그림 노트, 50권 한정 에디션.</h1>
-    <p class="nb-sub">손으로 그린 한 점의 수채 원화를, 스캔해 50권의 노트에 다시 인쇄합니다. 그리고 한 권 한 권은 주문 시 당신의 선택으로 마무리됩니다 — 당신의 실, 당신의 속지. 두 가지 사이즈. 서울에서.</p>
-  </section>
-
-  <section class="nb-video-section">
-    <div class="nb-video-inner">
-      <div class="nb-video-text">
-        <div class="nb-eyebrow">제작 과정</div>
-        <h2 class="nb-video-title">한 장의 커버, 처음부터 낙관까지.</h2>
-        <p class="nb-video-body">한 장의 두꺼운 아티스트용 종이에서 시작합니다. 잉크로 선을 먼저 잡고, 그 위에 수채를 얹고, 마지막에 작은 주홍색 낙관을 찍습니다. 밑그림은 없습니다. 선이 들어가거나, 들어가지 않거나.</p>
-        <p class="nb-video-body">원화 노트가 완성되면, 그 수채화를 고해상도로 스캔해 50권의 노트에 다시 인쇄합니다. 각 권은 손으로 스탭 바인딩하고, 안쪽에 번호를 적은 뒤, 주문 시 고르신 실과 속지로 마무리합니다.</p>
+  <section class="nb-maison-hero">
+    <figure class="nb-maison-visual" aria-label="책상 위의 스튜디오 몬조 노트">
+      <picture>
+        <source srcset="../../media/web/notebooks/DSCF1070.webp" type="image/webp">
+        <img src="../../media/web/notebooks/DSCF1070.jpg" alt="수채 그림과 붉은 낙관이 있는 스튜디오 몬조 노트 커버." fetchpriority="high" decoding="async" width="1066" height="1600">
+      </picture>
+    </figure>
+    <div class="nb-maison-copy">
+      <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Seoul</div>
+      <h1 class="nb-maison-title"><span>한 점의 그림.</span><span>오십 권의 노트.</span></h1>
+      <p class="nb-maison-sub">각 에디션은 실제 수채 원화에서 시작합니다. 원화는 한 점의 작품으로 판매되고, 이어 50권의 노트가 만들어집니다. 붉은 낙관을 찍은 뒤 이미지는 은퇴합니다.</p>
+      <div class="nb-maison-actions">
+        <a href="#edition">에디션 방식</a>
+        <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버에서 보기</a>
       </div>
-      <div class="nb-video-frame">
-        <!-- autoplay + mute + loop. mute=1 is required by browsers for
-             autoplay; loop=1 needs playlist=<id> to actually loop. -->
-        <iframe
-          src="https://www.youtube.com/embed/JA6xexkCOco?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=JA6xexkCOco&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
-          title="스튜디오 몬조 — 카드 그리는 과정"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+      <div class="nb-hero-ledger" aria-label="스튜디오 몬조 에디션 기본 정보">
+        <div class="nb-ledger-cell">
+          <div class="nb-ledger-label">원화</div>
+          <div class="nb-ledger-value">1/1 작품</div>
+        </div>
+        <div class="nb-ledger-cell">
+          <div class="nb-ledger-label">수량</div>
+          <div class="nb-ledger-value">노트 50권</div>
+        </div>
+        <div class="nb-ledger-cell">
+          <div class="nb-ledger-label">사이즈</div>
+          <div class="nb-ledger-value">A6와 A5</div>
+        </div>
+        <div class="nb-ledger-cell">
+          <div class="nb-ledger-label">낙관</div>
+          <div class="nb-ledger-value">항상 붉은색</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 어떻게 쓰이는가 — 2단: 왼쪽 이미지, 오른쪽 텍스트 + 사양 -->
-  <section class="nb-feature">
-    <div class="nb-feature-grid">
-      <figure class="nb-feature-figure">
+  <section class="nb-belief">
+    <div class="nb-belief-inner">
+      <h2 class="nb-belief-title">손으로 만든 것.</h2>
+      <div class="nb-belief-copy">
+        <p>스튜디오 몬조는 프랑스에서 출발해 서울에 자리 잡은 작업실입니다. 아틀리에, 에디션, 하우스 마크라는 감각과 종이를 가까이 두는 서울의 리듬을 함께 가져갑니다.</p>
+        <p>노트는 조용히 쓰고 생각하는 시간을 위해 만듭니다. 그림, 종이, 실, 낙관은 모두 그 순간을 위해 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="nb-section-maison" id="edition">
+    <div class="nb-section-grid nb-section-grid--reverse">
+      <figure class="nb-section-figure">
         <picture>
-          <source srcset="/media/web/notebooks/DSCF1070.webp" type="image/webp">
-          <img src="/media/web/notebooks/DSCF1070.jpg" alt="서울 작업실 책상 위에 세워진 손그림 스튜디오 몬조 노트. 흰색 결이 있는 커버에 그려진 나뭇가지, 빨간 열매, 가지 끝에 매달린 작고 파란 물방울 캐릭터. 한쪽 모서리에 주홍색 낙관, 스파인에 보이는 빨간 실 스탭 바인딩." loading="lazy" decoding="async" width="1066" height="1600">
+          <source srcset="../../media/web/notebooks/DSCF1072.webp" type="image/webp">
+          <img src="../../media/web/notebooks/DSCF1072.jpg" alt="에디션 문구와 붉은 제본 실이 보이는 스튜디오 몬조 노트 안쪽." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
-      <div class="nb-feature-text">
-        <div class="nb-eyebrow">어떻게 쓰이는가</div>
-        <h2>글을 쓰기 위한 페이지로 만든 노트.</h2>
-        <p>안의 종이는 한 가지 기준으로 고릅니다. 만년필 잉크가 어떻게 얹히는지. 에디션마다 일본산 만년필 전용 종이를 사용합니다. 잉크와 느린 필기에 너그럽고, 수채를 받아내며, 페이지가 번지지 않습니다.</p>
-        <p>두 가지 사이즈 — 주머니에 넣을 수 있는 작은 것, 책상에 어울리는 큰 것. 에디션마다 달라지는 것은 커버의 그림, 때로는 종이의 무게, 때로는 실의 색입니다. 달라지지 않는 것은 글을 쓰기 위해 만들어졌다는 사실입니다. <a href="#" data-open-materials>재료 자세히 보기 &rsaquo;</a></p>
-        <div class="nb-specs">
-          <div class="nb-spec">
-            <div class="nb-spec-label">커버</div>
-            <div class="nb-spec-value">수채화, 스캔 후 인쇄</div>
+      <div class="nb-maison-copyblock">
+        <div class="nb-maison-label"><span class="seal" aria-hidden="true"></span>에디션 방식</div>
+        <h2 class="nb-maison-heading">번호가 있는 에디션.</h2>
+        <p>모든 에디션은 한 점의 수채 원화에서 시작합니다. 그 원화는 1/1 작품으로 판매됩니다.</p>
+        <p>원화는 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 50번째 노트가 작업실을 떠나면, 그 이미지는 다시 사용하지 않습니다.</p>
+        <div class="nb-ritual-list" aria-label="스튜디오 몬조 에디션 과정">
+          <div class="nb-ritual-item">
+            <div class="nb-ritual-num">01</div>
+            <h3 class="nb-ritual-title">원화 그리기</h3>
+            <p class="nb-ritual-body">종이 위에 잉크와 수채. 손으로 그린 한 점의 작품입니다.</p>
           </div>
-          <div class="nb-spec">
-            <div class="nb-spec-label">속지</div>
-            <div class="nb-spec-value">만년필용 종이, 에디션마다 크림 또는 화이트</div>
+          <div class="nb-ritual-item">
+            <div class="nb-ritual-num">02</div>
+            <h3 class="nb-ritual-title">그림 스캔</h3>
+            <p class="nb-ritual-body">선과 색이 잘 남도록 원화를 조심스럽게 스캔합니다.</p>
           </div>
-          <div class="nb-spec">
-            <div class="nb-spec-label">제본</div>
-            <div class="nb-spec-value">스탭 바인딩, 실 색은 주문 시 선택</div>
+          <div class="nb-ritual-item">
+            <div class="nb-ritual-num">03</div>
+            <h3 class="nb-ritual-title">커버 50장 인쇄</h3>
+            <p class="nb-ritual-body">각 노트는 같은 한정 이미지와 에디션 표시를 가집니다.</p>
           </div>
-          <div class="nb-spec">
-            <div class="nb-spec-label">에디션</div>
-            <div class="nb-spec-value">50권의 인쇄 + 한 점의 원화, 두 사이즈</div>
+          <div class="nb-ritual-item">
+            <div class="nb-ritual-num">04</div>
+            <h3 class="nb-ritual-title">배송 전 낙관</h3>
+            <p class="nb-ritual-body">서울을 떠나기 전, 각 노트를 확인하고 붉은 낙관을 찍습니다.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 에디션 — 한 점의 수채 원화 + 50권의 고해상도 인쇄 -->
-  <section class="nb-feature nb-feature--reverse">
-    <div class="nb-feature-grid">
-      <figure class="nb-feature-figure">
-        <picture>
-          <source srcset="/media/web/notebooks/DSCF1072.webp" type="image/webp">
-          <img src="/media/web/notebooks/DSCF1072.jpg" alt="노트 안쪽 뒷표지의 디테일. 'Édition N° 001 — Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.' 인쇄와 함께 보이는 붉은 스탭 바인딩 실." loading="lazy" decoding="async" width="1066" height="1600">
-        </picture>
-      </figure>
-      <div class="nb-feature-text">
-        <div class="nb-eyebrow">에디션</div>
-        <h2>한 점의 원화. 50권의 인쇄.</h2>
-        <p>각 에디션은 작업실에서 손으로 그린 한 점의 수채화로 시작됩니다. 그 첫 번째 노트 — 커버에 진짜 원화가 그려진 노트 — 는 단 하나뿐이고, 원작 그림으로서 별도로 판매됩니다.</p>
-        <p>그다음 그 수채화를 고해상도로 스캔하여, 50권의 노트에 다시 인쇄합니다. 1번부터 50번까지 번호가 매겨지고, 안쪽에 날짜와 스튜디오 마크가 적힙니다. 50권이 다 나가면, 거기까지입니다. 재인쇄도, 대체품도 없습니다. 새로운 그림이 시작됩니다.</p>
+  <section class="nb-section-maison nb-section-maison--warm">
+    <div class="nb-choice-panel">
+      <div class="nb-choice-head">
+        <div class="nb-maison-label">쓰는 사람을 위해</div>
+        <h2 class="nb-maison-heading">당신의 선택으로.</h2>
+        <div class="nb-maison-copyblock">
+          <p>스튜디오 몬조가 에디션을 정합니다. 당신은 실 색과 속지 스타일을 선택합니다.</p>
+        </div>
+      </div>
+      <div class="nb-choice-grid">
+        <div class="nb-choice-card">
+          <div class="nb-choice-name">사이즈</div>
+          <div class="nb-choice-value">A6 또는 A5</div>
+          <p>A6는 함께 다니기 좋고, A5는 책상 위에서 더 넓게 씁니다.</p>
+        </div>
+        <div class="nb-choice-card">
+          <div class="nb-choice-name">실</div>
+          <div class="nb-choice-value">제본 색상</div>
+          <p>실은 등 쪽에 보입니다. 숨겨진 부자재가 아니라 노트의 일부입니다.</p>
+        </div>
+        <div class="nb-choice-card">
+          <div class="nb-choice-name">속지</div>
+          <div class="nb-choice-value">페이지 스타일</div>
+          <p>당신이 쓰는 방식에 맞는 구조를 고릅니다.</p>
+          <div class="nb-paper-styles" aria-label="선택 가능한 속지 스타일">
+            <span>무지</span>
+            <span>라인</span>
+            <span>격자</span>
+            <span>도트</span>
+          </div>
+        </div>
+        <div class="nb-choice-card">
+          <div class="nb-choice-name">종이</div>
+          <div class="nb-choice-value">에디션마다 선택</div>
+          <p>종이는 에디션마다 달라질 수 있습니다. 그림과 필기감에 맞춰 고릅니다.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 당신의 선택으로 — 주문 시 커스터마이즈. 임시 이미지: 속지 클로즈업
-       (고객이 고르는 속지 스타일을 대신 보여줌. 추후 실 스풀과 종이 샘플 플랫레이로 교체). -->
-  <section class="nb-feature">
-    <div class="nb-feature-grid">
-      <figure class="nb-feature-figure">
+  <section class="nb-section-maison">
+    <div class="nb-section-grid">
+      <figure class="nb-section-figure">
         <picture>
-          <source srcset="/media/web/notebooks/IMG_4605.webp" type="image/webp">
-          <img src="/media/web/notebooks/IMG_4605.jpg" alt="스튜디오 몬조 노트의 만년필용 속지 클로즈업." loading="lazy" decoding="async">
+          <source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp">
+          <img src="../../media/web/notebooks/IMG_4605.jpg" alt="스튜디오 몬조 노트 속지의 클로즈업." loading="lazy" decoding="async">
         </picture>
       </figure>
-      <div class="nb-feature-text">
-        <div class="nb-eyebrow">당신의 선택으로</div>
-        <h2>한 권 한 권을, 조금씩 당신의 것으로.</h2>
-        <p>에디션의 모든 노트는 주문 시 당신의 선택으로 마무리됩니다. 제본의 <strong>실 색</strong>과 안쪽의 <strong>속지 스타일</strong>을 직접 고르실 수 있습니다.</p>
-        <p>제가 에디션마다 정하는 것은, 그림과 함께 살아가야 하는 것들입니다. <strong>커버 종이</strong>는 그 수채화를 가장 잘 받아내는 것으로, <strong>속지 색</strong>은 — 크림 또는 화이트 — 커버와 가장 잘 어울리는 것으로. 두 겹의 선택, 각자 어울리는 자리에서.</p>
+      <div class="nb-maison-copyblock">
+        <div class="nb-maison-label">쓰는 페이지</div>
+        <h2 class="nb-maison-heading">종이는 선택입니다.</h2>
+        <p>스튜디오 몬조는 하나의 영구적인 종이에 묶이지 않습니다. 에디션마다 다른 무게, 색, 표면을 선택할 수 있습니다.</p>
+        <p>기준은 페이지입니다. 손 아래에서 좋게 느껴지고, 잉크를 깨끗하게 받아야 하며, 그림과 재료로서 맞아야 합니다.</p>
+        <p><a href="#" data-open-materials>재료 팔레트 보기 &rsaquo;</a></p>
       </div>
     </div>
   </section>
 
-  <!-- 사람의 손으로 — 2단 반전: 왼쪽 텍스트, 오른쪽 이미지 -->
-  <section class="nb-feature nb-feature--reverse">
-    <div class="nb-feature-grid">
-      <figure class="nb-feature-figure">
+  <section class="nb-section-maison nb-seal-proof">
+    <div class="nb-section-grid nb-section-grid--reverse">
+      <figure class="nb-section-figure">
         <picture>
-          <source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp">
-          <img src="/media/web/notebooks/DSCF1074.jpg" alt="노트의 크림색 속지 위, 한 매듭의 붉은 왁스 실을 매크로로 촬영한 클로즈업." loading="lazy" decoding="async" width="1066" height="1600">
+          <source srcset="../../media/web/notebooks/DSCF1070.webp" type="image/webp">
+          <img src="../../media/web/notebooks/DSCF1070.jpg" alt="수채 그림과 붉은 낙관이 있는 스튜디오 몬조 노트 커버." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
-      <div class="nb-feature-text">
-        <div class="nb-eyebrow">사람의 손으로</div>
-        <h2>사람이 만든 물건. 예전엔 굳이 말할 필요가 없던 일.</h2>
-        <p>한 권 한 권의 커버는 결정의 흔적입니다. 붓이 어느 방향으로 갈지, 선이 어디에서 멈출지, 손이 무엇을 남기기로 할지. 템플릿도, 미리보기도, 다시 시도할 기회도 없습니다. 선이 들어가거나, 들어가지 않거나.</p>
-        <p>한 권에서 다음 한 권으로 달라지는 것은, 사람이 그린다는 사실이 가져오는 변화입니다. 달라지지 않는 것은 그 정성입니다. 어떤 것은, 여전히, 천천히, 손으로, 누군가가 누군가를 위해 만들어야 하는 것입니다.</p>
+      <div class="nb-maison-copyblock">
+        <div class="nb-maison-label">붉은 낙관</div>
+        <h2 class="nb-maison-heading">마지막 표시.</h2>
+        <p>붉은 낙관은 스튜디오 몬조에 계속 남는 표시입니다. 노트가 작업실을 떠나기 전 마지막으로 하는 일입니다.</p>
+        <p>인쇄된 커버는 확인하고, 손으로 만지고, 붉은 낙관을 찍은 뒤 스튜디오 몬조 노트가 됩니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 노트 안쪽 디테일 두 장 -->
   <section class="nb-details-band" aria-label="모든 노트 안쪽에 인쇄된 문구">
     <div class="nb-details-grid">
       <figure>
         <picture>
-          <source srcset="/media/web/notebooks/DSCF1071.webp" type="image/webp">
-          <img src="/media/web/notebooks/DSCF1071.jpg" alt="노트를 펼치면 처음 보이는 페이지. 작은 짙은 청색 세리프 활자로 'Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.' 가 인쇄되어 있습니다." loading="lazy" decoding="async" width="1066" height="1600">
+          <source srcset="../../media/web/notebooks/DSCF1071.webp" type="image/webp">
+          <img src="../../media/web/notebooks/DSCF1071.jpg" alt="손으로 만든 물건에 대한 프랑스어 문구가 인쇄된 노트 첫 페이지." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
       <figure>
         <picture>
-          <source srcset="/media/web/notebooks/DSCF1073.webp" type="image/webp">
-          <img src="/media/web/notebooks/DSCF1073.jpg" alt="노트 마지막 페이지. 작은 이탤릭 세리프 활자로 'Merci d'avoir donné vie à ce carnet. www.studiomonjo.com' 가 인쇄되어 있습니다." loading="lazy" decoding="async" width="1066" height="1600">
+          <source srcset="../../media/web/notebooks/DSCF1073.webp" type="image/webp">
+          <img src="../../media/web/notebooks/DSCF1073.jpg" alt="스튜디오 몬조의 감사 문구와 웹사이트 주소가 인쇄된 노트 마지막 페이지." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
     </div>
   </section>
 
-  <section class="nb-cta">
-    <div class="nb-cta-inner">
-      <div class="nb-cta-eyebrow">구매</div>
-      <h2 class="nb-cta-title">네이버 스마트 스토어에서.</h2>
-      <p class="nb-cta-body">현재의 에디션은 스튜디오 몬조 네이버 스마트 스토어에서 만날 수 있습니다. 해외 배송도 같은 스토어를 통해 안내해 드립니다.</p>
-      <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버 스토어 열기 <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
+  <section class="nb-shop-maison">
+    <div class="nb-shop-inner">
+      <div class="nb-maison-label">열린 에디션</div>
+      <h2 class="nb-shop-title">지금 가능한 노트.</h2>
+      <p class="nb-shop-body">현재 열린 에디션을 확인하세요. A6 또는 A5를 고르고, 실 색과 속지 스타일을 선택합니다.</p>
+      <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버에서 보기 <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
 
   <footer class="nb-footer">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="nb-footer-mark" width="18" height="18">
+    <img src="../../media/web/branding/monjo-mark-256.png" alt="" class="nb-footer-mark" width="18" height="18">
     <a href="https://studiomonjo.com/">Studio Monjo</a> &middot; 서울 &middot; © 2026
   </footer>
 
 </main>
 
-<!-- MATERIALS MODAL — full materials reference -->
+<!-- MATERIALS MODAL -->
 <div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
   <div class="nb-modal-backdrop" data-close-modal></div>
   <div class="nb-modal-panel" role="document">
     <button type="button" class="nb-modal-close" data-close-modal aria-label="닫기">&times;</button>
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>재료</div>
-      <h2 class="nb-modal-title" id="materialsModalTitle">무엇으로 만들어집니다.</h2>
-      <p class="nb-modal-lede">한 권의 노트는 네 가지 재료로 만들어집니다. 어떤 것은 제가 에디션마다 정합니다 — 커버 종이와 속지 색, 둘 다 수채화에 어울리도록 고릅니다. 어떤 것은 주문 시 당신이 정합니다 — 실 색과 속지 스타일. 그 모두가 한 작은 팔레트 안에 머뭅니다.</p>
+      <h2 class="nb-modal-title" id="materialsModalTitle">무엇으로 만드는가.</h2>
+      <p class="nb-modal-lede">각 노트는 작은 재료 팔레트에서 만들어집니다. 스튜디오 몬조는 에디션마다 커버 종이와 필기용 종이를 고릅니다. 당신은 실 색과 속지 스타일을 선택합니다.</p>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/L1001423.webp" type="image/webp"><img src="/media/web/notebooks/L1001423.jpg" alt="두꺼운 아티스트용 종이에 손으로 그린 노트 커버" loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="두꺼운 아티스트용 종이 위의 손그림 노트 커버" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">두꺼운 아티스트용 종이 · 에디션마다 선정</div>
+          <div class="nb-modal-maker-origin">커버 종이, 에디션마다 선택</div>
           <div class="nb-modal-maker-name">커버</div>
-          <div class="nb-modal-maker-role">수채로 그린 뒤, 인쇄</div>
-          <p class="nb-modal-maker-body">커버 종이는 에디션마다 수채화에 어울리는 것으로 고릅니다 — 풍부한 팔레트에는 더 두껍고 결이 있는 종이로, 차분한 그림에는 더 매끈하고 밝은 종이로. 원화는 이 종이 위에 직접 그려지고, 뒤따르는 50권은 같은 종이에 고해상도로 인쇄됩니다. 글을 쓰기 위한 종이가 아니라, 그림을 받기 위한 종이입니다.</p>
+          <div class="nb-modal-maker-role">원화 한 점, 인쇄 커버 50장</div>
+          <p class="nb-modal-maker-body">원화는 손으로 그리고, 고해상도로 스캔합니다. 50권의 노트 커버는 그 스캔에서 인쇄합니다. 커버 종이는 그림에 맞춰 고르므로 에디션마다 달라질 수 있습니다.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4605.jpg" alt="만년필 전용 종이의 속지" loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="만년필에 맞춘 노트 속지" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">만년필 전용 종이 · 에디션마다 크림 또는 화이트 · 스타일은 주문 시 선택</div>
+          <div class="nb-modal-maker-origin">필기용 종이, 에디션마다 선택</div>
           <div class="nb-modal-maker-name">속지</div>
-          <div class="nb-modal-maker-role">글을 쓰기 위한 종이</div>
-          <p class="nb-modal-maker-body">매끄럽되 미끈하지 않은 일본산 만년필 전용 종이입니다. 잉크가 표면에 차분히 앉습니다. 번짐도, 뒷면 비침도 없습니다. 수채는 머무르고, 연필은 또렷하게 읽힙니다. 색은 제가 에디션마다 정합니다 — 크림 또는 화이트, 커버와 잘 어울리는 쪽으로. 스타일은 주문 시 그 에디션에서 가능한 옵션 중에서 직접 고르실 수 있습니다.</p>
+          <div class="nb-modal-maker-role">무지, 라인, 격자 또는 도트</div>
+          <p class="nb-modal-maker-body">속지는 에디션에 맞춰 고른 뒤, 선택한 페이지 스타일로 준비합니다. 손 아래에서 좋게 느껴지고, 잉크를 깨끗하게 받아야 하며, 커버 그림과 자연스럽게 맞아야 합니다.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="/media/web/notebooks/IMG_4604.jpg" alt="전문가용 수채 물감으로 그린 커버" loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4604.jpg" alt="수채로 그린 노트 커버" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">아티스트용 수채 · 러시아</div>
-          <div class="nb-modal-maker-name">물감</div>
-          <div class="nb-modal-maker-role">깊이를 잃지 않는 안료</div>
-          <p class="nb-modal-maker-body">20세기 초까지 거슬러 올라가는 전통의 전문가용 수채 물감입니다. 북쪽의 여름 몇 주간 해가 완전히 지지 않는 백야에서 이름을 따왔습니다. 안료 농도가 유난히 높아서, 물에 많이 희석해도 색이 쉽게 바래지 않습니다. 깊이가 살아 있고, 흐릿한 얼룩으로 주저앉지 않습니다. 모든 커버에 찍히는 작은 주홍색 낙관도 같은 팔레트에서 나옵니다.</p>
+          <div class="nb-modal-maker-origin">잉크와 수채</div>
+          <div class="nb-modal-maker-name">그림</div>
+          <div class="nb-modal-maker-role">에디션 이미지의 시작</div>
+          <p class="nb-modal-maker-body">그림은 종이 위의 잉크 선과 실제 수채에서 시작합니다. 스캔은 그 흔적을 옮기지만, 이미지는 언제나 작업실에서 만든 물리적인 작품으로 시작됩니다.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="/media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="/media/web/notebooks/DSCF1074.jpg" alt="노트의 크림색 속지 위, 한 매듭의 붉은 왁스 실을 매크로로 촬영한 클로즈업." loading="lazy"></picture></figure>
+        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="../../media/web/notebooks/DSCF1074.jpg" alt="노트 속지 위 붉은 왁스 실 매듭의 클로즈업." loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">왁스 린넨 실 · 프랑스 · 색은 주문 시 선택</div>
+          <div class="nb-modal-maker-origin">왁스 실, 색은 주문 시 선택</div>
           <div class="nb-modal-maker-name">제본</div>
-          <div class="nb-modal-maker-role">손으로 스탭 바인딩, 스파인에 보이는 실</div>
-          <p class="nb-modal-maker-body">백오십 년이 넘도록 실을 만들어 온 프랑스의 한 공방에서 나온 케이블 왁스 린넨입니다. 이미 꼰 두 가닥을 다시 꼬아 만든 뒤, 녹말과 밀랍을 녹인 물에 담갔다 빼냅니다. 살짝 딱딱하면서도 매끈하고, 놀라울 만큼 튼튼합니다. 수십 년이 지나도 늘어나거나 해지지 않습니다. 색은 주문 시 직접 고르실 수 있습니다. 기본은 주홍빛 붉은색으로, 모든 커버의 낙관과 호응합니다.</p>
+          <div class="nb-modal-maker-role">손으로 매고, 등 쪽에 보이는 실</div>
+          <p class="nb-modal-maker-body">제본은 손으로 꿰매고 그대로 보이게 둡니다. 실 색은 주문 시 선택합니다. 붉은색은 낙관과 이어지는 스튜디오 몬조의 하우스 컬러로 남습니다.</p>
         </div>
       </div>
     </div>
@@ -769,7 +1019,7 @@
   });
 })();
 </script>
-<script src="/js/lang-pill.js"></script>
+<script src="../../js/lang-pill.js"></script>
 
 </body>
 </html>
