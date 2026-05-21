@@ -17,13 +17,13 @@
     var saved = null;
     try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
     var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    var locale = saved || (browser.indexOf('ko') === 0 ? 'ko' : 'en');
-    if (locale !== 'en' && locale !== 'ko') locale = 'en';
-    location.replace('/' + locale + '/notebooks/');
-  } catch (e) { location.replace('/en/notebooks/'); }
+    var locale = saved || (browser.indexOf('fr') === 0 ? 'fr' : (browser.indexOf('ko') === 0 ? 'ko' : 'en'));
+    if (locale !== 'en' && locale !== 'ko' && locale !== 'fr') locale = 'en';
+    location.replace('../' + locale + '/notebooks/');
+  } catch (e) { location.replace('../en/notebooks/'); }
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="0; url=/en/notebooks/"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=../en/notebooks/"></noscript>
 </head>
-<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Notebooks &amp; cards. <a href="/en/notebooks/">English</a> · <a href="/ko/notebooks/">한국어</a></p></body>
+<body><p style="font-family:system-ui,sans-serif;padding:24px;color:#6e6e6e;">Notebooks. <a href="../en/notebooks/">English</a> · <a href="../fr/notebooks/">Français</a> · <a href="../ko/notebooks/">한국어</a></p></body>
 </html>

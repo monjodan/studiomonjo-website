@@ -2,31 +2,13 @@
 <!--
   Courrier de Séoul — French-only subscription page.
 
-  STRIPE INTEGRATION:
-    Two recurring subscription products. Replace the href values below
-    (search for STRIPE_LINK_) with the corresponding Stripe Payment Link
-    URLs from the Stripe dashboard:
-
-      data-tier="monthly" → recurring 15 €/mois
-      data-tier="yearly"  → recurring 165 €/an (11 × 15 €, 1 mois offert)
-
-    On Stripe Checkout, configure custom fields to capture:
-      - Recipient name and postal address (collect shipping address)
-      - "Pour qui ?" field (pour soi / pour quelqu'un d'autre)
-      - "Mot pour la première enveloppe" — optional textarea
-
-    Cancellation, address updates, and payment-method changes go through
-    the Stripe Customer Portal (configure under Settings → Billing →
-    Customer portal). The portal link is auto-included in Stripe receipts.
+  Add real Stripe Payment Links before opening subscriptions.
 
   DISPATCH RULE (referenced in copy and FAQ):
     All envelopes ship in the second week of each month. Subscribers who
     join BEFORE that week receive the same month's envelope; after, the
     next month's.
 
-  FRENCH COPY:
-    French copy is a working draft by a non-native speaker. Native pass
-    required before any paid promotion.
 -->
 <html lang="fr">
 <head>
@@ -40,9 +22,7 @@
 <link rel="canonical" href="https://studiomonjo.com/courrier/">
 <link rel="alternate" hreflang="fr-FR" href="https://studiomonjo.com/courrier/">
 <link rel="alternate" hreflang="fr" href="https://studiomonjo.com/courrier/">
-<link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/">
-<link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/">
-<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/courrier/">
 
 <meta property="og:site_name" content="Courrier de Séoul">
 <meta property="og:title" content="Courrier de Séoul. Une lettre par mois.">
@@ -64,8 +44,8 @@
 <meta name="twitter:image" content="https://studiomonjo.com/media/web/photography/L1001447.jpg">
 <meta name="twitter:image:alt" content="Une enveloppe peinte à la main, prête à partir de Séoul.">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../media/web/branding/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../media/web/branding/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +63,7 @@
     "price": "15.00",
     "priceCurrency": "EUR",
     "url": "https://studiomonjo.com/courrier/",
-    "availability": "https://schema.org/InStock"
+    "availability": "https://schema.org/PreOrder"
   }
 }
 </script>
@@ -317,14 +297,21 @@
     text-underline-offset: 3px;
   }
 
-  /* Empty image placeholders — kept until photos arrive */
-  .photo-placeholder {
+  .courrier-photo {
+    aspect-ratio: 4 / 5;
     background: var(--paper-warm-darker);
     border: 1px solid var(--rule-strong);
-    aspect-ratio: 4 / 5;
+    overflow: hidden;
     width: 100%;
   }
-  .photo-placeholder--landscape { aspect-ratio: 4 / 3; }
+  .courrier-photo--landscape { aspect-ratio: 4 / 3; }
+  .courrier-photo picture,
+  .courrier-photo img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  .courrier-photo img { object-fit: cover; }
 
   /* Three-column "ce qui arrive" — la lettre, la carte postale, la fiche mémoire. */
   .envelope-grid {
@@ -439,6 +426,16 @@
     transform: translateY(-2px);
     background: var(--paper-warm);
   }
+  .pricing-tier[aria-disabled="true"] {
+    cursor: default;
+  }
+  .pricing-tier[aria-disabled="true"]:hover {
+    border-color: var(--rule-strong);
+    transform: none;
+  }
+  .pricing-tier--featured[aria-disabled="true"]:hover {
+    border-color: var(--ink-warm);
+  }
   .pricing-tier--featured {
     border-color: var(--ink-warm);
   }
@@ -504,6 +501,7 @@
     content: '→';
     font-size: 14px;
   }
+  .pricing-tier[aria-disabled="true"] .pricing-tier-cta::after { content: ''; }
   .pricing-trust {
     font-family: var(--sans);
     font-size: 12px;
@@ -563,8 +561,22 @@
 <body class="courrier">
 
 <header class="courrier-back">
-  <a href="https://studiomonjo.com/">&larr; Studio Monjo</a>
+  <a href="../fr/" data-back>&larr; Studio Monjo</a>
 </header>
+<script>
+(function () {
+  var back = document.querySelector('.courrier-back a[data-back]');
+  if (!back) return;
+  back.addEventListener('click', function (e) {
+    try {
+      if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    } catch (err) { /* let the href fallback run */ }
+  });
+})();
+</script>
 
 <div class="courrier-corner">
   <a class="courrier-social-btn" href="https://www.instagram.com/studio.monjo" target="_blank" rel="noopener noreferrer" aria-label="Studio Monjo sur Instagram">
@@ -603,19 +615,34 @@
 
       <div class="envelope-grid">
         <div class="envelope-piece">
-          <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
+          <figure class="envelope-piece-figure courrier-photo">
+            <picture>
+              <source srcset="../media/web/photography/L1001446-2.webp" type="image/webp">
+              <img src="../media/web/photography/L1001446-2.jpg" alt="Carnet et enveloppe sur une table claire à Séoul." loading="lazy" decoding="async" width="1800" height="1198">
+            </picture>
+          </figure>
           <div class="envelope-piece-label">La lettre</div>
           <p class="envelope-piece-title">Une page de vie à Séoul, signée à la main.</p>
           <p class="envelope-piece-body">Ce que j'ai vu dans le mois, ce qui m'a frappé, ce que j'avais envie de partager. Tapée et imprimée pour qu'elle soit lisible, puis signée à l'encre sur chaque exemplaire. C'est une lettre, pas un bulletin.</p>
         </div>
         <div class="envelope-piece">
-          <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
+          <figure class="envelope-piece-figure courrier-photo">
+            <picture>
+              <source srcset="../media/web/photography/L1001447.webp" type="image/webp">
+              <img src="../media/web/photography/L1001447.jpg" alt="Image peinte à l’aquarelle et sceau rouge Studio Monjo." loading="lazy" decoding="async" width="1800" height="1198">
+            </picture>
+          </figure>
           <div class="envelope-piece-label">La carte postale</div>
           <p class="envelope-piece-title">Une carte du mois, à garder ou à envoyer.</p>
           <p class="envelope-piece-body">Une carte postale faite chaque mois à partir d'une photographie ou d'un dessin. Imprimée sur papier carte, prête à écrire, prête à affranchir. À garder pour soi, à punaiser, ou à envoyer à quelqu'un d'autre — comme on faisait, avant. La correspondance peut continuer.</p>
         </div>
         <div class="envelope-piece">
-          <div class="envelope-piece-figure photo-placeholder" aria-hidden="true"></div>
+          <figure class="envelope-piece-figure courrier-photo">
+            <picture>
+              <source srcset="../media/web/photography/L1001463-2.webp" type="image/webp">
+              <img src="../media/web/photography/L1001463-2.jpg" alt="Pinceaux, aquarelle et papier sur la table de travail Studio Monjo." loading="lazy" decoding="async" width="1198" height="1800">
+            </picture>
+          </figure>
           <div class="envelope-piece-label">La fiche mémoire</div>
           <p class="envelope-piece-title">Un mot, un concept, un fait. À retenir.</p>
           <p class="envelope-piece-body">Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école. Un mot d'une autre langue, un concept, un fait — quelque chose à apprendre, à retenir, à ressortir trois jours plus tard pour voir si ça tient. Un petit entraînement mensuel pour la mémoire, sans leçon ni examen.</p>
@@ -627,7 +654,12 @@
   <!-- L'ÉCRITURE — typed for legibility, signed by hand. The choice is the point. -->
   <section class="courrier-section courrier-section--wide">
     <div class="letter-block">
-      <div class="photo-placeholder" aria-hidden="true"></div>
+      <figure class="courrier-photo courrier-photo--landscape">
+        <picture>
+          <source srcset="../media/web/photography/L1001456.webp" type="image/webp">
+          <img src="../media/web/photography/L1001456.jpg" alt="Table d’écriture avec papier, aquarelle, pinceaux et encre." loading="lazy" decoding="async" width="1800" height="1198">
+        </picture>
+      </figure>
       <div class="letter-block-text">
         <div class="section-eyebrow">L'écriture</div>
         <h2 class="section-title">Tapée pour qu'on la lise. Signée à la main.</h2>
@@ -675,30 +707,28 @@
 
   <!-- PRICING — the centerpiece, four clickable tiers each linking to its Stripe Payment Link -->
   <section id="offrir" class="courrier-section courrier-section--wide" style="text-align: center;">
-    <div class="pricing-block">
-      <div class="section-eyebrow" style="text-align: center;">S'abonner ou offrir</div>
-      <h2 class="section-title">Choisissez la durée. Réglez par carte.</h2>
-      <p style="max-width: 560px; margin: 0 auto 8px;">L'adresse de livraison demandée à l'étape suivante détermine le destinataire : votre adresse si l'abonnement est pour vous, celle d'une autre personne si vous l'offrez. L'enveloppe arrive directement dans sa boîte aux lettres, signée à la main, accompagnée d'un éventuel mot d'introduction que vous pouvez écrire au moment du paiement.</p>
+      <div class="pricing-block">
+        <div class="section-eyebrow" style="text-align: center;">S'abonner ou offrir</div>
+      <h2 class="section-title">Les abonnements ouvriront ici.</h2>
+      <p style="max-width: 560px; margin: 0 auto 8px;">Quand le paiement sera prêt, vous choisirez la durée puis l'adresse de livraison : la vôtre si l'abonnement est pour vous, celle d'une autre personne si vous l'offrez. L'enveloppe arrivera directement dans sa boîte aux lettres, signée à la main, avec l'éventuel mot d'introduction ajouté au moment du paiement.</p>
 
       <div class="pricing-tiers pricing-tiers--two">
-        <!-- STRIPE_LINK_MONTHLY — recurring 15 €/mois subscription -->
-        <a href="https://buy.stripe.com/REPLACE_MONTHLY" class="pricing-tier" data-tier="monthly" rel="noopener">
+        <div class="pricing-tier" data-tier="monthly" aria-disabled="true">
           <div class="pricing-tier-label">Au mois</div>
           <div class="pricing-tier-price">15 €<span class="pricing-tier-suffix"> / mois</span></div>
           <div class="pricing-tier-detail">Abonnement mensuel<br>Annulable à tout moment</div>
-          <div class="pricing-tier-cta">Choisir</div>
-        </a>
-        <!-- STRIPE_LINK_YEARLY — recurring 165 €/an subscription (11 × 15 €, 1 mois offert) -->
-        <a href="https://buy.stripe.com/REPLACE_YEARLY" class="pricing-tier pricing-tier--featured" data-tier="yearly" rel="noopener">
+          <div class="pricing-tier-cta">Bientôt ouvert</div>
+        </div>
+        <div class="pricing-tier pricing-tier--featured" data-tier="yearly" aria-disabled="true">
           <div class="pricing-tier-label">À l'année</div>
           <div class="pricing-tier-price">165 €<span class="pricing-tier-suffix"> / an</span></div>
           <div class="pricing-tier-detail">Douze enveloppes<br>Un mois offert</div>
-          <div class="pricing-tier-cta">Choisir</div>
-        </a>
+          <div class="pricing-tier-cta">Bientôt ouvert</div>
+        </div>
       </div>
 
-      <p class="pricing-trust">Paiement sécurisé par <strong>Stripe</strong>. Carte bancaire et Apple Pay. L'abonnement se gère depuis l'espace client Stripe, dont le lien arrive avec la confirmation de paiement.</p>
-      <p class="pricing-trust">Expédition en France métropolitaine. Si la personne n'aime pas, l'abonnement s'annule à tout moment et les enveloppes non envoyées sont remboursées.</p>
+      <p class="pricing-trust">Paiement sécurisé par <strong>Stripe</strong>. Les liens de paiement seront ajoutés ici avant l'ouverture des abonnements.</p>
+      <p class="pricing-trust">Expédition en France métropolitaine. Une fois ouvert, l'abonnement pourra s'annuler à tout moment depuis l'espace client Stripe.</p>
     </div>
   </section>
 
@@ -729,13 +759,13 @@
       <dd>L'abonnement s'annule à tout moment depuis votre espace client. Les enveloppes non envoyées sont remboursées. Sans question.</dd>
 
       <dt>Qui fait tout ça ?</dt>
-      <dd>Jordan Monnet. Français, installé à Séoul. La même personne tient le studio <a href="https://studiomonjo.com/">Studio Monjo</a>, dont Courrier de Séoul est une branche par voie postale.</dd>
+      <dd>Jordan Monnet. Français, installé à Séoul. La même personne tient le studio <a href="../fr/">Studio Monjo</a>, dont Courrier de Séoul est une branche par voie postale.</dd>
     </dl>
   </section>
 
   <footer class="courrier-footer">
-    <img src="/media/web/branding/monjo-mark-256.png" alt="" class="courrier-footer-mark" width="18" height="18">
-    Une création de <a href="https://studiomonjo.com/">Studio Monjo</a> &middot; Séoul
+    <img src="../media/web/branding/monjo-mark-256.png" alt="" class="courrier-footer-mark" width="18" height="18">
+    Une création de <a href="../fr/">Studio Monjo</a> &middot; Séoul
   </footer>
 
 </main>
