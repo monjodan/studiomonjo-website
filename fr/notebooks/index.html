@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carnets peints à la main pour stylo plume | Studio Monjo</title>
-<meta name="description" content="Carnets Studio Monjo : aquarelle originale, édition de 50, papier coréen sélectionné par Jordan pour stylo plume, pages blanches, lignées ou quadrillées.">
+<meta name="description" content="Carnets Studio Monjo depuis Séoul : aquarelle originale, édition de 50, fabrication à la commande, papier coréen pour stylo plume, pages blanches, lignées ou quadrillées.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -16,7 +16,7 @@
 
 <meta property="og:site_name" content="Studio Monjo">
 <meta property="og:title" content="Carnets peints à la main pour stylo plume">
-<meta property="og:description" content="Couvertures issues d’aquarelles originales, scans haute fidélité, éditions de 50 et papier coréen sélectionné par Jordan pour stylo plume.">
+<meta property="og:description" content="Aquarelles originales, scans haute fidélité, éditions de 50, fabrication à la commande et papier coréen testé au stylo plume.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/fr/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
@@ -467,6 +467,44 @@
     border: 1px solid var(--rule-strong);
     padding: 7px 9px;
   }
+  .nb-cert-icons {
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .nb-cert-chip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 11px;
+    border: 1px solid var(--rule-strong);
+    background: rgba(250,246,237,0.38);
+    color: inherit;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nb-cert-chip:hover,
+  .nb-cert-chip:focus-visible {
+    background: var(--paper-warm);
+    border-color: #c7b89f;
+  }
+  .nb-cert-code {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-cert-meaning {
+    font-size: 0.86rem;
+    line-height: 1.32;
+    color: var(--ink-warm-soft);
+  }
   .nb-seal-proof {
     background: var(--ink-warm);
     color: var(--paper-warm);
@@ -646,6 +684,42 @@
   .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm-mid); margin-bottom: 14px; }
   .nb-modal-maker-body { font-family: var(--serif); font-weight: 300; font-size: 0.98rem; line-height: 1.7; color: var(--ink-warm-mid); margin: 0; }
   .nb-modal-maker-body em { font-style: italic; color: var(--ink-warm); }
+  .nb-standards-list {
+    border-top: 1px solid var(--rule);
+  }
+  .nb-standard-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-standard-code {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-standard-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.26rem;
+    line-height: 1.2;
+    color: var(--ink-warm);
+    margin-bottom: 6px;
+  }
+  .nb-standard-item p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--ink-warm-mid);
+    margin: 0;
+  }
+  @media (max-width: 580px) { .nb-standard-item { grid-template-columns: 1fr; gap: 8px; } }
   body.is-modal-open { overflow: hidden; }
 </style>
 
@@ -670,7 +744,7 @@
       "@type": "Product",
       "position": 1,
       "name": "Carnet d’édition Studio Monjo, A6",
-      "description": "Carnet A6 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen sélectionné par Jordan pour stylo plume.",
+      "description": "Carnet A6 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen pour stylo plume, en pages blanches, lignées ou quadrillées.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -684,7 +758,7 @@
       "@type": "Product",
       "position": 2,
       "name": "Carnet d’édition Studio Monjo, A5",
-      "description": "Carnet A5 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen sélectionné par Jordan pour stylo plume.",
+      "description": "Carnet A5 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen pour stylo plume, en pages blanches, lignées ou quadrillées.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -731,7 +805,7 @@
     <div class="nb-maison-copy">
       <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Séoul</div>
       <h1 class="nb-maison-title">Carnets peints à la main. Papier pour stylo plume.</h1>
-      <p class="nb-maison-sub">Chaque carnet Monjo commence par une aquarelle originale peinte à Séoul. La couverture est scannée en haute fidélité et imprimée en édition numérotée de 50 exemplaires. À l’intérieur : un papier coréen sélectionné par Jordan et testé au stylo plume, disponible en pages blanches, lignées ou quadrillées.</p>
+      <p class="nb-maison-sub">Chaque carnet Monjo commence par une aquarelle originale peinte à Séoul. La couverture est scannée en haute fidélité et imprimée en édition numérotée de 50 exemplaires. Chaque carnet est fabriqué à la commande avec un papier coréen pensé pour le stylo plume, en pages blanches, lignées ou quadrillées.</p>
       <div class="nb-maison-actions">
         <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Voir sur Naver</a>
       </div>
@@ -742,7 +816,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Papier</div>
-          <div class="nb-ledger-value">Coréen, choisi par Jordan</div>
+          <div class="nb-ledger-value">Papier coréen stylo plume</div>
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Intérieur</div>
@@ -750,7 +824,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Matières</div>
-          <div class="nb-ledger-value">FSC, sans chlore, sans acide</div>
+          <div class="nb-ledger-value">FSC, ECF, sans acide</div>
         </div>
       </div>
     </div>
@@ -760,9 +834,9 @@
     <div class="nb-belief-inner">
       <h2 class="nb-belief-title">Fait par la main.</h2>
       <div class="nb-belief-copy">
-        <p>Studio Monjo est français d’origine et installé à Séoul. Le travail emprunte aux deux mondes : l’atelier, l’édition, la marque de maison, et une proximité quotidienne avec le papier.</p>
-        <p>Les carnets sont faits pour l’acte privé d’écrire. Image, papier, fil et sceau servent ce moment.</p>
-        <p>Le papier intérieur est choisi pour le stylo plume : ligne nette, peu de plume, pas de traversée facile de l’encre en usage ordinaire.</p>
+        <p>Studio Monjo est français d’origine et installé à Séoul. Le travail emprunte aux deux mondes : l’atelier, l’édition, le sceau d’approbation de l’artiste, et une proximité quotidienne avec le papier.</p>
+        <p>Les carnets sont faits pour l’acte privé d’écrire. L’image, le papier, le fil et le sceau servent ce moment.</p>
+        <p>Le papier intérieur est choisi pour le stylo plume : trait net, peu de diffusion, pas de traversée facile de l’encre en usage ordinaire.</p>
       </div>
     </div>
   </section>
@@ -798,8 +872,8 @@
           </div>
           <div class="nb-ritual-item">
             <div class="nb-ritual-num">04</div>
-            <h3 class="nb-ritual-title">Sceller avant l’envoi</h3>
-            <p class="nb-ritual-body">Avant de quitter Séoul, chaque carnet imprimé est vérifié et scellé en rouge par l’artiste.</p>
+            <h3 class="nb-ritual-title">Approuver l’impression</h3>
+            <p class="nb-ritual-body">Avant de quitter Séoul, chaque couverture imprimée est vérifiée puis marquée du sceau rouge d’approbation de l’artiste.</p>
           </div>
         </div>
       </div>
@@ -810,9 +884,9 @@
     <div class="nb-choice-panel">
       <div class="nb-choice-head">
         <div class="nb-maison-label">La page</div>
-        <h2 class="nb-maison-heading">Trois intérieurs, trois manières de penser.</h2>
+        <h2 class="nb-maison-heading">Choisir l’intérieur, fabriquer le carnet.</h2>
         <div class="nb-maison-copyblock">
-          <p>La couverture appartient à l’édition. L’intérieur appartient à celle ou celui qui écrit.</p>
+          <p>La couverture appartient à l’édition. Le format et le type de pages sont choisis au moment de la commande.</p>
         </div>
       </div>
       <div class="nb-choice-grid">
@@ -829,7 +903,7 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">Papier</div>
           <div class="nb-choice-value">Pensé pour le stylo plume</div>
-          <p>Jordan sélectionne le papier intérieur en Corée du Sud et le teste avec de vrais stylos et de vraies encres.</p>
+          <p>Le papier intérieur est sélectionné en Corée du Sud puis essayé avec de vrais stylos et de vraies encres.</p>
           <div class="nb-paper-styles" aria-label="Styles de pages disponibles">
             <span>Blanc</span>
             <span>Lignes</span>
@@ -839,7 +913,13 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">Matières</div>
           <div class="nb-choice-value">Papiers certifiés</div>
-          <p>Le papier intérieur est FSC, sans chlore et sans acide. Le papier de couverture est FSC, ECF et sans acide.</p>
+          <p>FSC parle de l’origine forestière, ECF/sans chlore d’une chimie de blanchiment plus propre, et sans acide d’une meilleure tenue dans le temps.</p>
+          <div class="nb-cert-icons" aria-label="Standards papier">
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">FSC</span><span class="nb-cert-meaning">Forêts responsables</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">ECF</span><span class="nb-cert-meaning">Sans chlore élémentaire</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">pH</span><span class="nb-cert-meaning">Papier sans acide</span></button>
+          </div>
+          <p><a href="#" data-open-paper-proof>Comprendre les standards papier &rsaquo;</a></p>
         </div>
       </div>
     </div>
@@ -856,9 +936,11 @@
       <div class="nb-maison-copyblock">
         <div class="nb-maison-label">La page d’écriture</div>
         <h2 class="nb-maison-heading">Le papier fait partie du produit.</h2>
-        <p>Le papier de couverture et le papier intérieur sont tous deux sélectionnés en Corée du Sud par Jordan pour Studio Monjo.</p>
+        <p>Le papier de couverture et le papier intérieur sont tous deux sélectionnés en Corée du Sud pour Studio Monjo.</p>
         <p>La page doit être agréable sous la main, tenir proprement l’encre d’un stylo plume, accompagner l’image et rester juste comme matière.</p>
+        <p>Le papier actuel est choisi après essais d’écriture : netteté du trait, faible diffusion et résistance aux traversées ordinaires.</p>
         <p><a href="#" data-open-materials>Voir la palette de matières &rsaquo;</a></p>
+        <p><a href="#" data-open-paper-proof>Comprendre les standards papier &rsaquo;</a></p>
       </div>
     </div>
   </section>
@@ -872,10 +954,10 @@
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
-        <div class="nb-maison-label">Le sceau rouge</div>
-        <h2 class="nb-maison-heading">La dernière marque.</h2>
-        <p>Le sceau rouge est permanent chez Studio Monjo. C’est le dernier geste avant qu’un carnet quitte l’atelier.</p>
-        <p>Une couverture imprimée devient un carnet Studio Monjo après avoir été vérifiée, manipulée et scellée en rouge.</p>
+        <div class="nb-maison-label">Sceau d’approbation</div>
+        <h2 class="nb-maison-heading">Vérifié avant de partir.</h2>
+        <p>Le sceau rouge n’est pas un logo Studio Monjo. C’est le sceau d’approbation de l’artiste, posé après vérification de l’impression de l’aquarelle.</p>
+        <p>Il marque le moment où une couverture imprimée est contrôlée, manipulée et acceptée dans l’édition.</p>
       </div>
     </div>
   </section>
@@ -909,9 +991,9 @@
 
   <section class="nb-shop-maison">
     <div class="nb-shop-inner">
-      <div class="nb-maison-label">Éditions ouvertes</div>
+      <div class="nb-maison-label">Éditions disponibles</div>
       <h2 class="nb-shop-title">Disponible maintenant.</h2>
-      <p class="nb-shop-body">Les éditions de carnets disponibles sont vendues sur la boutique Naver Smart Store de Studio Monjo.</p>
+      <p class="nb-shop-body">Les éditions de carnets disponibles sont fabriquées à la commande et vendues sur la boutique Naver Smart Store de Studio Monjo.</p>
       <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Voir sur Naver <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
@@ -922,6 +1004,43 @@
   </footer>
 
 </main>
+
+<!-- PAPER STANDARDS MODAL -->
+<div class="nb-modal" id="paperProofModal" role="dialog" aria-modal="true" aria-labelledby="paperProofModalTitle" aria-hidden="true">
+  <div class="nb-modal-backdrop" data-close-modal></div>
+  <div class="nb-modal-panel" role="document">
+    <button type="button" class="nb-modal-close" data-close-modal aria-label="Fermer">&times;</button>
+    <div class="nb-modal-inner">
+      <div class="nb-modal-eyebrow">Standards papier</div>
+      <h2 class="nb-modal-title" id="paperProofModalTitle">Pourquoi ces mentions comptent.</h2>
+      <p class="nb-modal-lede">Le papier de couverture est FSC, ECF et sans acide. Le papier intérieur est FSC, sans chlore et sans acide. Comme ECF et « sans chlore » sont des notions liées au blanchiment, elles sont expliquées ici comme un même signal de chimie plus propre.</p>
+
+      <div class="nb-standards-list">
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">FSC</div>
+          <div>
+            <h3 class="nb-standard-title">Origine forestière responsable</h3>
+            <p>La certification FSC relie le papier à une matière forestière suivie dans la chaîne d’approvisionnement, avec des exigences de gestion responsable.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">ECF</div>
+          <div>
+            <h3 class="nb-standard-title">Blanchiment plus propre</h3>
+            <p>ECF signifie sans chlore élémentaire : la pâte est blanchie sans chlore gazeux élémentaire. C’est proche de la mention sans chlore utilisée pour le papier intérieur.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">pH</div>
+          <div>
+            <h3 class="nb-standard-title">Papier sans acide</h3>
+            <p>Un papier sans acide résiste mieux au jaunissement et à la fragilité avec le temps, ce qui convient à un carnet que l’on garde.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MATERIALS MODAL — the complete materials reference -->
 <div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
@@ -936,20 +1055,20 @@
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="Couverture de carnet peinte à la main sur papier épais" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Corée du Sud · sélectionné par Jordan</div>
+          <div class="nb-modal-maker-origin">Corée du Sud · sélectionné pour Studio Monjo</div>
           <div class="nb-modal-maker-name">La couverture</div>
           <div class="nb-modal-maker-role">Un original, cinquante couvertures imprimées</div>
-          <p class="nb-modal-maker-body">Le papier de couverture est sélectionné en Corée du Sud par Jordan pour Studio Monjo. Il doit supporter l’encre, l’aquarelle, le scan, la coupe, la reliure et l’usage quotidien sans perdre la sensation d’un papier d’artiste. Le papier de couverture actuel est FSC, ECF et sans acide.</p>
+          <p class="nb-modal-maker-body">Le papier de couverture est sélectionné en Corée du Sud pour Studio Monjo. Il doit supporter l’encre, l’aquarelle, le scan, la coupe, la reliure et l’usage quotidien sans perdre la sensation d’un papier d’artiste. Le papier de couverture actuel est FSC, ECF et sans acide.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="Pages intérieures choisies pour l’écriture au stylo plume" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Corée du Sud · sélectionné par Jordan · blanc, lignes ou carreaux</div>
+          <div class="nb-modal-maker-origin">Corée du Sud · blanc, lignes ou carreaux</div>
           <div class="nb-modal-maker-name">Le papier intérieur</div>
           <div class="nb-modal-maker-role">Fait pour l’acte d’écrire</div>
-          <p class="nb-modal-maker-body">Le papier intérieur est lui aussi sélectionné en Corée du Sud par Jordan, puis choisi après des essais d’écriture. Il est doux sans devenir glissant, net avec l’encre de stylo plume, et résiste à la plume et aux traversées ordinaires. La feuille est certifiée FSC, sans chlore et sans acide.</p>
+          <p class="nb-modal-maker-body">Le papier intérieur est sélectionné en Corée du Sud, puis choisi après des essais d’écriture. Il est doux sans devenir glissant, net avec l’encre de stylo plume, et résiste à la diffusion comme aux traversées ordinaires. La feuille est certifiée FSC, sans chlore et sans acide.</p>
         </div>
       </div>
 
@@ -969,7 +1088,7 @@
           <div class="nb-modal-maker-origin">Fil ciré</div>
           <div class="nb-modal-maker-name">La reliure</div>
           <div class="nb-modal-maker-role">Reliure cousue à la main, visible sur le dos</div>
-          <p class="nb-modal-maker-body">La reliure est cousue à la main et laissée visible. Le rouge reste la couleur de maison de Studio Monjo parce qu’il répond au sceau de l’artiste.</p>
+          <p class="nb-modal-maker-body">La reliure est cousue à la main et laissée visible. Le fil rouge dialogue avec le sceau d’approbation de l’artiste sans transformer ce sceau en logo.</p>
         </div>
       </div>
     </div>
@@ -978,27 +1097,43 @@
 
 <script>
 (function () {
-  var modal = document.getElementById('materialsModal');
-  if (!modal) return;
-  var triggers = document.querySelectorAll('[data-open-materials]');
-  var closers = modal.querySelectorAll('[data-close-modal]');
-  function open(e) {
+  var activeModal = null;
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (activeModal === modal) activeModal = null;
+    if (!document.querySelector('.nb-modal.is-open')) {
+      document.body.classList.remove('is-modal-open');
+    }
+  }
+
+  function openModal(modal, e) {
     if (e) e.preventDefault();
+    activeModal = modal;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-modal-open');
     var closeBtn = modal.querySelector('.nb-modal-close');
     if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 100);
   }
-  function close() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('is-modal-open');
+
+  function setupModal(id, triggerSelector) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    document.querySelectorAll(triggerSelector).forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) { openModal(modal, e); });
+    });
+    modal.querySelectorAll('[data-close-modal]').forEach(function (closer) {
+      closer.addEventListener('click', function () { closeModal(modal); });
+    });
   }
-  triggers.forEach(function (t) { t.addEventListener('click', open); });
-  closers.forEach(function (c) { c.addEventListener('click', close); });
+
+  setupModal('materialsModal', '[data-open-materials]');
+  setupModal('paperProofModal', '[data-open-paper-proof]');
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    if (e.key === 'Escape' && activeModal) closeModal(activeModal);
   });
 })();
 </script>
