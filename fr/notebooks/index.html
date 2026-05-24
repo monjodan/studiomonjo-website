@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carnets peints à la main pour stylo plume | Studio Monjo</title>
-<meta name="description" content="Carnets Studio Monjo depuis Séoul : aquarelle originale, édition de 50, fabrication à la commande, papier coréen pour stylo plume, pages blanches, lignées ou quadrillées.">
+<meta name="description" content="Carnets d’art Studio Monjo depuis Séoul : aquarelle originale, édition de 50, fabrication à la commande, papier FSC sans acide testé au stylo plume.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -16,7 +16,7 @@
 
 <meta property="og:site_name" content="Studio Monjo">
 <meta property="og:title" content="Carnets peints à la main pour stylo plume">
-<meta property="og:description" content="Aquarelles originales, scans haute fidélité, éditions de 50, fabrication à la commande et papier coréen testé au stylo plume.">
+<meta property="og:description" content="Aquarelles originales, scans haute fidélité, éditions de 50, fabrication à la commande et papier FSC testé au stylo plume.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/fr/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
@@ -131,7 +131,7 @@
     min-height: 100vh;
     min-height: 100svh;
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     border-bottom: 1px solid var(--rule);
   }
   .nb-maison-visual {
@@ -142,14 +142,14 @@
   }
   .nb-maison-visual picture {
     position: absolute;
-    inset: clamp(72px, 8vw, 112px) clamp(36px, 5vw, 76px);
+    inset: 0;
   }
   .nb-maison-visual img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
   }
   .nb-maison-visual::after {
@@ -197,7 +197,7 @@
     font-family: var(--serif);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(2.65rem, 5.4vw, 4.6rem);
+    font-size: clamp(2.65rem, 5.1vw, 4.5rem);
     line-height: 1;
     letter-spacing: -0.012em;
     color: var(--ink-warm);
@@ -306,7 +306,7 @@
     margin-bottom: 1.15em;
   }
   .nb-section-maison {
-    padding: clamp(64px, 9vw, 128px) var(--pad-x);
+    padding: clamp(56px, 7vw, 104px) var(--pad-x);
     border-bottom: 1px solid var(--rule);
   }
   .nb-section-maison--warm {
@@ -484,13 +484,7 @@
     color: inherit;
     text-align: left;
     font: inherit;
-    cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
-  }
-  .nb-cert-chip:hover,
-  .nb-cert-chip:focus-visible {
-    background: var(--paper-warm);
-    border-color: #c7b89f;
   }
   .nb-cert-code {
     font-family: var(--sans);
@@ -504,6 +498,85 @@
     font-size: 0.86rem;
     line-height: 1.32;
     color: var(--ink-warm-soft);
+  }
+  .nb-spec-layout {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(44px, 7vw, 96px);
+    align-items: start;
+  }
+  .nb-spec-copy {
+    max-width: 440px;
+  }
+  .nb-spec-board {
+    border-top: 1px solid var(--rule-strong);
+  }
+  .nb-spec-row {
+    display: grid;
+    grid-template-columns: minmax(116px, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(18px, 3vw, 36px);
+    padding: clamp(20px, 3vw, 30px) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-spec-name {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-warm-light);
+  }
+  .nb-spec-value {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.58rem);
+    line-height: 1.22;
+    color: var(--ink-warm);
+    margin-bottom: 7px;
+  }
+  .nb-spec-row p {
+    font-size: 0.98rem;
+    line-height: 1.62;
+    color: var(--ink-warm-soft);
+    margin: 0;
+  }
+  .nb-info-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 10px 14px;
+    border: 1px solid var(--rule-strong);
+    background: transparent;
+    color: var(--ink-warm);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nb-info-button:hover,
+  .nb-info-button:focus-visible {
+    background: var(--paper-warm);
+    border-color: #c7b89f;
+  }
+  .nb-paper-feature .nb-section-figure img {
+    object-position: center;
+  }
+  .nb-inscriptions {
+    padding: clamp(64px, 9vw, 124px) var(--pad-x);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-inscriptions-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .nb-inscriptions-head {
+    max-width: 760px;
+    margin-bottom: clamp(34px, 5vw, 56px);
   }
   .nb-seal-proof {
     background: var(--ink-warm);
@@ -577,9 +650,10 @@
   @media (max-width: 980px) {
     .nb-maison-hero,
     .nb-belief-inner,
-    .nb-section-grid {
-      grid-template-columns: 1fr;
-    }
+	    .nb-section-grid,
+	    .nb-spec-layout {
+	      grid-template-columns: 1fr;
+	    }
     .nb-maison-visual {
       min-height: min(68vh, 620px);
     }
@@ -589,9 +663,12 @@
     .nb-section-grid--reverse .nb-section-figure {
       order: 0;
     }
-    .nb-choice-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+	    .nb-choice-grid {
+	      grid-template-columns: repeat(2, 1fr);
+	    }
+	    .nb-spec-copy {
+	      max-width: 700px;
+	    }
     .nb-choice-card:nth-child(odd) {
       border-left: 0;
       padding-left: 0;
@@ -612,9 +689,13 @@
     }
     .nb-hero-ledger,
     .nb-ritual-list,
-    .nb-choice-grid {
-      grid-template-columns: 1fr;
-    }
+	    .nb-choice-grid {
+	      grid-template-columns: 1fr;
+	    }
+	    .nb-spec-row {
+	      grid-template-columns: 1fr;
+	      gap: 8px;
+	    }
     .nb-ledger-cell,
     .nb-ritual-item,
     .nb-ritual-item:nth-child(even),
@@ -630,7 +711,7 @@
   }
 
 
-  /* Materials modal — the complete materials reference, opened in a popup */
+  /* Paper standards modal */
   .nb-modal { position: fixed; inset: 0; z-index: 100; display: none; }
   .nb-modal.is-open { display: block; }
   .nb-modal-backdrop { position: absolute; inset: 0; background: rgba(26,24,22,0.55); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity 280ms ease; }
@@ -744,7 +825,7 @@
       "@type": "Product",
       "position": 1,
       "name": "Carnet d’édition Studio Monjo, A6",
-      "description": "Carnet A6 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen pour stylo plume, en pages blanches, lignées ou quadrillées.",
+      "description": "Carnet A6 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier FSC sans acide testé au stylo plume.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -758,7 +839,7 @@
       "@type": "Product",
       "position": 2,
       "name": "Carnet d’édition Studio Monjo, A5",
-      "description": "Carnet A5 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier coréen pour stylo plume, en pages blanches, lignées ou quadrillées.",
+      "description": "Carnet A5 issu d’une édition limitée Studio Monjo. Une aquarelle originale est scannée en haute fidélité et imprimée sur cinquante couvertures. Reliure cousue à la main avec papier FSC sans acide testé au stylo plume.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -804,39 +885,28 @@
     </figure>
     <div class="nb-maison-copy">
       <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Séoul</div>
-      <h1 class="nb-maison-title">Carnets peints à la main. Papier pour stylo plume.</h1>
-      <p class="nb-maison-sub">Chaque carnet Monjo commence par une aquarelle originale peinte à Séoul. La couverture est scannée en haute fidélité et imprimée en édition numérotée de 50 exemplaires. Chaque carnet est fabriqué à la commande avec un papier coréen pensé pour le stylo plume, en pages blanches, lignées ou quadrillées.</p>
+      <h1 class="nb-maison-title">Carnets d’art limités, faits pour l’encre.</h1>
+      <p class="nb-maison-sub">Une aquarelle peinte à Séoul devient cinquante couvertures numérotées. Chaque carnet est fabriqué à la commande, en A6 ou A5, puis relié avec un papier FSC sans acide choisi et testé pour l’écriture au stylo plume.</p>
       <div class="nb-maison-actions">
         <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Voir sur Naver</a>
       </div>
       <div class="nb-hero-ledger" aria-label="Essentiels d’une édition Studio Monjo">
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Édition</div>
-          <div class="nb-ledger-value">50 carnets</div>
+          <div class="nb-ledger-value">50 exemplaires</div>
         </div>
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Papier</div>
-          <div class="nb-ledger-value">Papier coréen stylo plume</div>
+          <div class="nb-ledger-label">Oeuvre</div>
+          <div class="nb-ledger-value">Aquarelle originale</div>
         </div>
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Intérieur</div>
+          <div class="nb-ledger-label">Pages</div>
           <div class="nb-ledger-value">Blanc, lignes ou carreaux</div>
         </div>
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Matières</div>
-          <div class="nb-ledger-value">FSC, ECF, sans acide</div>
+          <div class="nb-ledger-label">Papier</div>
+          <div class="nb-ledger-value">FSC, sans acide</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="nb-belief">
-    <div class="nb-belief-inner">
-      <h2 class="nb-belief-title">Fait par la main.</h2>
-      <div class="nb-belief-copy">
-        <p>Studio Monjo est français d’origine et installé à Séoul. Le travail emprunte aux deux mondes : l’atelier, l’édition, le sceau d’approbation de l’artiste, et une proximité quotidienne avec le papier.</p>
-        <p>Les carnets sont faits pour l’acte privé d’écrire. L’image, le papier, le fil et le sceau servent ce moment.</p>
-        <p>Le papier intérieur est choisi pour le stylo plume : trait net, peu de diffusion, pas de traversée facile de l’encre en usage ordinaire.</p>
       </div>
     </div>
   </section>
@@ -851,9 +921,9 @@
       </figure>
       <div class="nb-maison-copyblock">
         <div class="nb-maison-label"><span class="seal" aria-hidden="true"></span>Le rituel d’édition</div>
-        <h2 class="nb-maison-heading">Un tirage numéroté.</h2>
+        <h2 class="nb-maison-heading">Une peinture, cinquante couvertures.</h2>
         <p>Chaque édition commence par une aquarelle originale, vendue comme oeuvre 1/1.</p>
-        <p>La peinture est scannée en haute qualité et imprimée sur cinquante couvertures. Quand le cinquantième carnet quitte l’atelier, l’image est retirée.</p>
+        <p>La peinture est scannée en haute fidélité et imprimée sur cinquante couvertures. Quand le cinquantième carnet quitte l’atelier, l’image est retirée.</p>
         <div class="nb-ritual-list" aria-label="Processus d’édition Studio Monjo">
           <div class="nb-ritual-item">
             <div class="nb-ritual-num">01</div>
@@ -880,67 +950,63 @@
     </div>
   </section>
 
-  <section class="nb-section-maison nb-section-maison--warm">
-    <div class="nb-choice-panel">
-      <div class="nb-choice-head">
-        <div class="nb-maison-label">La page</div>
-        <h2 class="nb-maison-heading">Choisir l’intérieur, fabriquer le carnet.</h2>
+  <section class="nb-section-maison nb-section-maison--warm" id="paper">
+    <div class="nb-spec-layout">
+      <div class="nb-spec-copy">
+        <div class="nb-maison-label">Papier et pages</div>
+        <h2 class="nb-maison-heading">Un papier certifié, choisi pour l’encre.</h2>
         <div class="nb-maison-copyblock">
-          <p>La couverture appartient à l’édition. Le format et le type de pages sont choisis au moment de la commande.</p>
+          <p>Le papier est la matière. Couverture et intérieur sont choisis ensemble pour que le carnet reste cohérent : dense en main, propre sous la plume, responsable dans son origine.</p>
+          <p>Le papier de couverture est FSC, ECF et sans acide. Le papier intérieur est FSC, sans chlore et sans acide.</p>
+          <button type="button" class="nb-info-button" data-open-paper-proof>Standards papier</button>
         </div>
       </div>
-      <div class="nb-choice-grid">
-        <div class="nb-choice-card">
-          <div class="nb-choice-name">Format</div>
-          <div class="nb-choice-value">A6 ou A5</div>
-          <p>Le A6 vous accompagne. Le A5 donne au bureau plus de place pour les pensées longues.</p>
-        </div>
-        <div class="nb-choice-card">
-          <div class="nb-choice-name">Intérieur</div>
-          <div class="nb-choice-value">Blanc, lignes ou carreaux</div>
-          <p>Blanc pour les pages ouvertes, lignes pour l’écriture longue, carreaux pour les plans, les schémas, les listes et les marges.</p>
-        </div>
-        <div class="nb-choice-card">
-          <div class="nb-choice-name">Papier</div>
-          <div class="nb-choice-value">Pensé pour le stylo plume</div>
-          <p>Le papier intérieur est sélectionné en Corée du Sud puis essayé avec de vrais stylos et de vraies encres.</p>
-          <div class="nb-paper-styles" aria-label="Styles de pages disponibles">
-            <span>Blanc</span>
-            <span>Lignes</span>
-            <span>Carreaux</span>
+      <div class="nb-spec-board" aria-label="Formats, styles de pages et standards papier">
+        <div class="nb-spec-row">
+          <div class="nb-spec-name">Format</div>
+          <div>
+            <div class="nb-spec-value">A6 ou A5</div>
+            <p>Le A6 est intime et portable. Le A5 donne au bureau plus de place pour l’écriture longue.</p>
           </div>
         </div>
-        <div class="nb-choice-card">
-          <div class="nb-choice-name">Matières</div>
-          <div class="nb-choice-value">Papiers certifiés</div>
-          <p>FSC parle de l’origine forestière, ECF/sans chlore d’une chimie de blanchiment plus propre, et sans acide d’une meilleure tenue dans le temps.</p>
-          <div class="nb-cert-icons" aria-label="Standards papier">
-            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">FSC</span><span class="nb-cert-meaning">Forêts responsables</span></button>
-            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">ECF</span><span class="nb-cert-meaning">Sans chlore élémentaire</span></button>
-            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">pH</span><span class="nb-cert-meaning">Papier sans acide</span></button>
+        <div class="nb-spec-row">
+          <div class="nb-spec-name">Pages</div>
+          <div>
+            <div class="nb-spec-value">Blanc, lignes ou carreaux</div>
+            <p>Blanc pour dessiner et noter librement, lignes pour le journal et les lettres, carreaux pour plans, schémas et listes.</p>
           </div>
-          <p><a href="#" data-open-paper-proof>Comprendre les standards papier &rsaquo;</a></p>
+        </div>
+        <div class="nb-spec-row">
+          <div class="nb-spec-name">Encre</div>
+          <div>
+            <div class="nb-spec-value">Testé au stylo plume</div>
+            <p>Choisi pour un trait net, une faible diffusion et une résistance aux traversées ordinaires avec de vrais stylos et encres.</p>
+          </div>
+        </div>
+        <div class="nb-spec-row">
+          <div class="nb-spec-name">Papier</div>
+          <div>
+            <div class="nb-spec-value">FSC, sans acide</div>
+            <p>FSC parle d’origine forestière responsable, ECF/sans chlore d’une chimie de blanchiment plus propre, et sans acide d’une meilleure tenue dans le temps.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="nb-section-maison">
+  <section class="nb-section-maison nb-paper-feature">
     <div class="nb-section-grid">
       <figure class="nb-section-figure">
         <picture>
-          <source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp">
-          <img src="../../media/web/notebooks/IMG_4605.jpg" alt="Détail du papier intérieur d’un carnet Studio Monjo." loading="lazy" decoding="async">
+          <source srcset="../../media/web/notebooks/L1001424.webp" type="image/webp">
+          <img src="../../media/web/notebooks/L1001424.jpg" alt="Carnet Studio Monjo ouvert avec papier blanc et reliure cousue au fil rouge." loading="lazy" decoding="async" width="1065" height="1600">
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
-        <div class="nb-maison-label">La page d’écriture</div>
-        <h2 class="nb-maison-heading">Le papier fait partie du produit.</h2>
-        <p>Le papier de couverture et le papier intérieur sont tous deux sélectionnés en Corée du Sud pour Studio Monjo.</p>
-        <p>La page doit être agréable sous la main, tenir proprement l’encre d’un stylo plume, accompagner l’image et rester juste comme matière.</p>
-        <p>Le papier actuel est choisi après essais d’écriture : netteté du trait, faible diffusion et résistance aux traversées ordinaires.</p>
-        <p><a href="#" data-open-materials>Voir la palette de matières &rsaquo;</a></p>
-        <p><a href="#" data-open-paper-proof>Comprendre les standards papier &rsaquo;</a></p>
+        <div class="nb-maison-label">La surface d’écriture</div>
+        <h2 class="nb-maison-heading">Le luxe discret, c’est la façon dont l’encre se pose.</h2>
+        <p>La page ne doit pas sembler couchée, glissante ou jetable. La plume doit avancer, le trait rester net, et l’encre ordinaire ne pas traverser facilement.</p>
+        <p>C’est le standard derrière le choix du papier : non pas une formule décorative, mais la partie du carnet que la main rencontre chaque jour.</p>
       </div>
     </div>
   </section>
@@ -962,17 +1028,16 @@
     </div>
   </section>
 
-  <section class="nb-belief">
-    <div class="nb-belief-inner">
-      <h2 class="nb-belief-title">Des mots français, marques discrètes de l’édition.</h2>
-      <div class="nb-belief-copy">
-        <p>À l’intérieur de la couverture, on lit : <em>Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.</em></p>
-        <p>Au dos, la mention d’édition apparaît telle qu’elle est imprimée sur l’objet : <em>Édition N° 001. Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.</em></p>
+  <section class="nb-inscriptions" aria-label="Inscriptions imprimées dans chaque carnet">
+    <div class="nb-inscriptions-inner">
+      <div class="nb-inscriptions-head">
+        <div class="nb-maison-label">Marques d’édition en français</div>
+        <h2 class="nb-maison-heading">L’objet garde ses propres mots.</h2>
+        <div class="nb-maison-copyblock">
+          <p>À l’intérieur de la couverture, on lit : <em>Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.</em></p>
+          <p>Au dos, la mention d’édition apparaît telle qu’elle est imprimée sur l’objet : <em>Édition N° 001. Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.</em></p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="nb-details-band" aria-label="Inscriptions imprimées dans chaque carnet">
     <div class="nb-details-grid">
       <figure>
         <picture>
@@ -986,6 +1051,7 @@
           <img src="../../media/web/notebooks/DSCF1072.jpg" alt="Dos intérieur du carnet avec la mention d’édition : Édition N° 001. Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
+    </div>
     </div>
   </section>
 
@@ -1012,7 +1078,7 @@
     <button type="button" class="nb-modal-close" data-close-modal aria-label="Fermer">&times;</button>
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow">Standards papier</div>
-      <h2 class="nb-modal-title" id="paperProofModalTitle">Pourquoi ces mentions comptent.</h2>
+      <h2 class="nb-modal-title" id="paperProofModalTitle">La certification du papier.</h2>
       <p class="nb-modal-lede">Le papier de couverture est FSC, ECF et sans acide. Le papier intérieur est FSC, sans chlore et sans acide. Comme ECF et « sans chlore » sont des notions liées au blanchiment, elles sont expliquées ici comme un même signal de chimie plus propre.</p>
 
       <div class="nb-standards-list">
@@ -1036,59 +1102,6 @@
             <h3 class="nb-standard-title">Papier sans acide</h3>
             <p>Un papier sans acide résiste mieux au jaunissement et à la fragilité avec le temps, ce qui convient à un carnet que l’on garde.</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MATERIALS MODAL — the complete materials reference -->
-<div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
-  <div class="nb-modal-backdrop" data-close-modal></div>
-  <div class="nb-modal-panel" role="document">
-    <button type="button" class="nb-modal-close" data-close-modal aria-label="Fermer">&times;</button>
-    <div class="nb-modal-inner">
-      <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>Matières</div>
-      <h2 class="nb-modal-title" id="materialsModalTitle">De quoi c’est fait.</h2>
-      <p class="nb-modal-lede">Chaque carnet réunit des matières choisies pour l’écriture et pour l’aquarelle originale : papier de couverture coréen, papier intérieur coréen, aquarelle et fil ciré.</p>
-
-      <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="Couverture de carnet peinte à la main sur papier épais" loading="lazy"></picture></figure>
-        <div>
-          <div class="nb-modal-maker-origin">Corée du Sud · sélectionné pour Studio Monjo</div>
-          <div class="nb-modal-maker-name">La couverture</div>
-          <div class="nb-modal-maker-role">Un original, cinquante couvertures imprimées</div>
-          <p class="nb-modal-maker-body">Le papier de couverture est sélectionné en Corée du Sud pour Studio Monjo. Il doit supporter l’encre, l’aquarelle, le scan, la coupe, la reliure et l’usage quotidien sans perdre la sensation d’un papier d’artiste. Le papier de couverture actuel est FSC, ECF et sans acide.</p>
-        </div>
-      </div>
-
-      <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="Pages intérieures choisies pour l’écriture au stylo plume" loading="lazy"></picture></figure>
-        <div>
-          <div class="nb-modal-maker-origin">Corée du Sud · blanc, lignes ou carreaux</div>
-          <div class="nb-modal-maker-name">Le papier intérieur</div>
-          <div class="nb-modal-maker-role">Fait pour l’acte d’écrire</div>
-          <p class="nb-modal-maker-body">Le papier intérieur est sélectionné en Corée du Sud, puis choisi après des essais d’écriture. Il est doux sans devenir glissant, net avec l’encre de stylo plume, et résiste à la diffusion comme aux traversées ordinaires. La feuille est certifiée FSC, sans chlore et sans acide.</p>
-        </div>
-      </div>
-
-      <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4604.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4604.jpg" alt="Couverture peinte avec de vraies aquarelles" loading="lazy"></picture></figure>
-        <div>
-          <div class="nb-modal-maker-origin">Encre et aquarelle</div>
-          <div class="nb-modal-maker-name">La peinture</div>
-          <div class="nb-modal-maker-role">La source de l’image d’édition</div>
-          <p class="nb-modal-maker-body">La peinture commence par une ligne d’encre et une vraie aquarelle sur papier. Le scan garde cette trace, mais l’image commence toujours comme une oeuvre physique faite à l’atelier.</p>
-        </div>
-      </div>
-
-      <div class="nb-modal-maker">
-        <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="../../media/web/notebooks/DSCF1074.jpg" alt="Détail d’un noeud de fil ciré rouge sur le papier intérieur crème d’un carnet." loading="lazy"></picture></figure>
-        <div>
-          <div class="nb-modal-maker-origin">Fil ciré</div>
-          <div class="nb-modal-maker-name">La reliure</div>
-          <div class="nb-modal-maker-role">Reliure cousue à la main, visible sur le dos</div>
-          <p class="nb-modal-maker-body">La reliure est cousue à la main et laissée visible. Le fil rouge dialogue avec le sceau d’approbation de l’artiste sans transformer ce sceau en logo.</p>
         </div>
       </div>
     </div>
@@ -1129,7 +1142,6 @@
     });
   }
 
-  setupModal('materialsModal', '[data-open-materials]');
   setupModal('paperProofModal', '[data-open-paper-proof]');
 
   document.addEventListener('keydown', function (e) {
