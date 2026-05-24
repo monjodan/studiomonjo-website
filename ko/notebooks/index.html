@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>만년필에 맞춘 손그림 노트 | 스튜디오 몬조</title>
-<meta name="description" content="스튜디오 몬조 노트는 서울에서 그린 수채 원화에서 시작해 50권 한정 에디션으로 만듭니다. 조던이 한국에서 직접 고른 만년필용 종이와 무지, 라인, 방안 속지를 사용합니다.">
+<meta name="description" content="스튜디오 몬조 노트는 서울에서 그린 수채 원화, 50권 한정 에디션, 주문 제작 방식, 만년필용 한국 종이, 무지·라인·방안 속지를 갖춘 노트입니다.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -16,7 +16,7 @@
 
 <meta property="og:site_name" content="스튜디오 몬조">
 <meta property="og:title" content="만년필에 맞춘 손그림 노트">
-<meta property="og:description" content="서울에서 그린 원화, 고해상도 스캔과 프린트, 조던이 직접 고른 한국 종이, 50권 한정 에디션.">
+<meta property="og:description" content="서울에서 그린 원화, 고해상도 스캔과 프린트, 만년필에 맞춘 한국 종이, 주문 제작, 50권 한정 에디션.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/ko/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
@@ -494,6 +494,44 @@
     border: 1px solid var(--rule-strong);
     padding: 7px 9px;
   }
+  .nb-cert-icons {
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .nb-cert-chip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 11px;
+    border: 1px solid var(--rule-strong);
+    background: rgba(250,246,237,0.38);
+    color: inherit;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nb-cert-chip:hover,
+  .nb-cert-chip:focus-visible {
+    background: var(--paper-warm);
+    border-color: #c7b89f;
+  }
+  .nb-cert-code {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-cert-meaning {
+    font-size: 0.86rem;
+    line-height: 1.32;
+    color: var(--ink-warm-soft);
+  }
   .nb-seal-proof {
     background: var(--ink-warm);
     color: var(--paper-warm);
@@ -673,6 +711,42 @@
   .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm-mid); margin-bottom: 14px; }
   .nb-modal-maker-body { font-family: var(--serif); font-weight: 300; font-size: 0.98rem; line-height: 1.7; color: var(--ink-warm-mid); margin: 0; }
   .nb-modal-maker-body em { font-style: italic; color: var(--ink-warm); }
+  .nb-standards-list {
+    border-top: 1px solid var(--rule);
+  }
+  .nb-standard-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-standard-code {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-standard-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.26rem;
+    line-height: 1.2;
+    color: var(--ink-warm);
+    margin-bottom: 6px;
+  }
+  .nb-standard-item p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--ink-warm-mid);
+    margin: 0;
+  }
+  @media (max-width: 580px) { .nb-standard-item { grid-template-columns: 1fr; gap: 8px; } }
   body.is-modal-open { overflow: hidden; }
 </style>
 
@@ -697,7 +771,7 @@
       "@type": "Product",
       "position": 1,
       "name": "스튜디오 몬조 에디션 노트, A6",
-      "description": "스튜디오 몬조 한정 에디션의 A6 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 조던이 한국에서 직접 고른 만년필용 종이로 손바느질 제본합니다.",
+      "description": "스튜디오 몬조 한정 에디션의 A6 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 만년필용 한국 종이로 주문 제작하고 손바느질 제본합니다.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -711,7 +785,7 @@
       "@type": "Product",
       "position": 2,
       "name": "스튜디오 몬조 에디션 노트, A5",
-      "description": "스튜디오 몬조 한정 에디션의 A5 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 조던이 한국에서 직접 고른 만년필용 종이로 손바느질 제본합니다.",
+      "description": "스튜디오 몬조 한정 에디션의 A5 노트. 한 점의 수채 원화를 고해상도로 스캔해 50권의 노트 커버에 인쇄합니다. 만년필용 한국 종이로 주문 제작하고 손바느질 제본합니다.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -758,7 +832,7 @@
     <div class="nb-maison-copy">
       <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Seoul</div>
       <h1 class="nb-maison-title"><span>손그림 커버와</span><span>만년필용 종이.</span></h1>
-      <p class="nb-maison-sub">몬조 노트는 서울에서 그린 수채 원화에서 시작합니다. 커버는 고해상도로 스캔해 50권 한정 에디션으로 인쇄하고, 내지는 조던이 한국에서 직접 고른 만년필용 종이를 사용합니다. 무지, 라인, 방안 중 선택할 수 있어요.</p>
+      <p class="nb-maison-sub">몬조 노트는 서울에서 그린 수채 원화에서 시작합니다. 커버는 고해상도로 스캔해 50권 한정 에디션으로 인쇄하고, 각 노트는 만년필에 맞춘 한국 종이로 주문 제작합니다. 무지, 라인, 방안 중 선택할 수 있어요.</p>
       <div class="nb-maison-actions">
         <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버에서 보기</a>
       </div>
@@ -769,7 +843,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">종이</div>
-          <div class="nb-ledger-value">조던이 고른 한국 종이</div>
+          <div class="nb-ledger-value">만년필용 한국 종이</div>
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">속지</div>
@@ -777,7 +851,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">재료</div>
-          <div class="nb-ledger-value">FSC, 무염소, 중성지</div>
+          <div class="nb-ledger-value">FSC, ECF, 중성지</div>
         </div>
       </div>
     </div>
@@ -787,8 +861,8 @@
     <div class="nb-belief-inner">
       <h2 class="nb-belief-title">손으로 만든 것.</h2>
       <div class="nb-belief-copy">
-        <p>스튜디오 몬조는 프랑스에서 출발해 서울에 자리 잡은 작업실입니다. 아틀리에, 에디션, 하우스 마크라는 감각과 종이를 가까이 두는 서울의 리듬을 함께 가져갑니다.</p>
-        <p>노트는 조용히 쓰고 생각하는 시간을 위해 만듭니다. 그림, 종이, 실, 낙관은 모두 그 순간을 위해 있습니다.</p>
+        <p>스튜디오 몬조는 프랑스에서 출발해 서울에 자리 잡은 작업실입니다. 아틀리에, 에디션, 작가 승인 낙관이라는 감각과 종이를 가까이 두는 서울의 리듬을 함께 가져갑니다.</p>
+        <p>노트는 주문에 맞춰 만들고, 조용히 쓰고 생각하는 시간을 위해 존재합니다. 그림, 종이, 실, 낙관은 모두 그 순간을 위해 있습니다.</p>
         <p>내지는 만년필을 기준으로 고릅니다. 선이 깨끗하게 남고, 번짐이 적으며, 보통의 사용에서 잉크가 쉽게 뚫고 지나가지 않는 종이입니다.</p>
       </div>
     </div>
@@ -825,8 +899,8 @@
           </div>
           <div class="nb-ritual-item">
             <div class="nb-ritual-num">04</div>
-            <h3 class="nb-ritual-title">배송 전 낙관</h3>
-            <p class="nb-ritual-body">서울을 떠나기 전, 각 노트를 확인하고 붉은 낙관을 찍습니다.</p>
+            <h3 class="nb-ritual-title">인쇄 승인 낙관</h3>
+            <p class="nb-ritual-body">서울을 떠나기 전, 인쇄된 커버를 확인하고 작가의 붉은 승인 낙관을 찍습니다.</p>
           </div>
         </div>
       </div>
@@ -837,9 +911,9 @@
     <div class="nb-choice-panel">
       <div class="nb-choice-head">
         <div class="nb-maison-label">속지</div>
-        <h2 class="nb-maison-heading">생각하는 방식이 모두 같지는 않으니까요.</h2>
+        <h2 class="nb-maison-heading">쓰는 방식을 고르고, 노트는 주문에 맞춰 만듭니다.</h2>
         <div class="nb-maison-copyblock">
-          <p>커버는 에디션의 것이고, 안쪽 페이지는 쓰는 사람의 것입니다.</p>
+          <p>커버는 에디션의 것이고, 사이즈와 속지는 쓰는 사람의 선택에 맞춰 주문 제작합니다.</p>
         </div>
       </div>
       <div class="nb-choice-grid">
@@ -856,7 +930,7 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">종이</div>
           <div class="nb-choice-value">만년필에 맞춘 종이</div>
-          <p>조던이 한국에서 직접 고르고, 실제 펜과 잉크로 시험합니다.</p>
+          <p>한국에서 고른 내지를 실제 펜과 잉크로 시험합니다.</p>
           <div class="nb-paper-styles" aria-label="선택 가능한 속지 스타일">
             <span>무지</span>
             <span>라인</span>
@@ -866,7 +940,13 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">재료</div>
           <div class="nb-choice-value">인증 종이</div>
-          <p>내지는 FSC 인증, 무염소, 중성지입니다. 커버지는 FSC, ECF, 중성지 조건을 갖추고 있습니다.</p>
+          <p>FSC는 책임 있는 산림 원료, ECF/무염소는 더 깨끗한 표백 방식, 중성지는 오래 보관하기 좋은 종이를 뜻합니다.</p>
+          <div class="nb-cert-icons" aria-label="종이 기준">
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">FSC</span><span class="nb-cert-meaning">책임 있는 산림 원료</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">ECF</span><span class="nb-cert-meaning">원소염소 무사용 표백</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">pH</span><span class="nb-cert-meaning">중성지 보존성</span></button>
+          </div>
+          <p><a href="#" data-open-paper-proof>종이 기준 자세히 보기 &rsaquo;</a></p>
         </div>
       </div>
     </div>
@@ -883,9 +963,11 @@
       <div class="nb-maison-copyblock">
         <div class="nb-maison-label">쓰는 페이지</div>
         <h2 class="nb-maison-heading">종이는 제품의 일부입니다.</h2>
-        <p>커버지와 내지 모두 조던이 스튜디오 몬조를 위해 한국에서 직접 고른 종이입니다.</p>
+        <p>커버지와 내지는 모두 스튜디오 몬조를 위해 한국에서 선택한 종이입니다.</p>
         <p>기준은 페이지입니다. 손 아래에서 좋게 느껴지고, 만년필 잉크를 깨끗하게 받아야 하며, 그림과 재료로서 맞아야 합니다.</p>
+        <p>현재 내지는 선명도, 번짐, 일반적인 잉크 비침을 실제로 써 보며 고른 종이입니다.</p>
         <p><a href="#" data-open-materials>재료 팔레트 보기 &rsaquo;</a></p>
+        <p><a href="#" data-open-paper-proof>종이 기준 이해하기 &rsaquo;</a></p>
       </div>
     </div>
   </section>
@@ -899,10 +981,10 @@
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
-        <div class="nb-maison-label">붉은 낙관</div>
-        <h2 class="nb-maison-heading">마지막 표시.</h2>
-        <p>붉은 낙관은 스튜디오 몬조에 계속 남는 표시입니다. 노트가 작업실을 떠나기 전 마지막으로 하는 일입니다.</p>
-        <p>인쇄된 커버는 확인하고, 손으로 만지고, 붉은 낙관을 찍은 뒤 스튜디오 몬조 노트가 됩니다.</p>
+        <div class="nb-maison-label">작가 승인 낙관</div>
+        <h2 class="nb-maison-heading">떠나기 전 확인한 표시.</h2>
+        <p>붉은 낙관은 스튜디오 몬조 로고가 아닙니다. 인쇄된 그림을 작가가 확인하고 승인했다는 표시입니다.</p>
+        <p>인쇄된 커버는 확인하고, 손으로 만지고, 이 낙관을 받은 뒤 에디션의 일부가 됩니다.</p>
       </div>
     </div>
   </section>
@@ -936,9 +1018,9 @@
 
   <section class="nb-shop-maison">
     <div class="nb-shop-inner">
-      <div class="nb-maison-label">열린 에디션</div>
+      <div class="nb-maison-label">주문 가능 에디션</div>
       <h2 class="nb-shop-title">지금 가능한 노트.</h2>
-      <p class="nb-shop-body">현재 노트 에디션은 스튜디오 몬조 네이버 스마트스토어에서 판매합니다.</p>
+      <p class="nb-shop-body">가능한 에디션은 주문에 맞춰 제작하며 스튜디오 몬조 네이버 스마트스토어에서 판매합니다.</p>
       <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버에서 보기 <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
@@ -949,6 +1031,43 @@
   </footer>
 
 </main>
+
+<!-- PAPER STANDARDS MODAL -->
+<div class="nb-modal" id="paperProofModal" role="dialog" aria-modal="true" aria-labelledby="paperProofModalTitle" aria-hidden="true">
+  <div class="nb-modal-backdrop" data-close-modal></div>
+  <div class="nb-modal-panel" role="document">
+    <button type="button" class="nb-modal-close" data-close-modal aria-label="닫기">&times;</button>
+    <div class="nb-modal-inner">
+      <div class="nb-modal-eyebrow">종이 기준</div>
+      <h2 class="nb-modal-title" id="paperProofModalTitle">종이 기준이 왜 중요한가.</h2>
+      <p class="nb-modal-lede">커버지는 FSC, ECF, 중성지입니다. 내지는 FSC, 무염소, 중성지입니다. ECF와 무염소는 서로 가까운 표백 관련 표현이므로, 여기서는 더 깨끗한 표백 방식이라는 하나의 가치로 설명합니다.</p>
+
+      <div class="nb-standards-list">
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">FSC</div>
+          <div>
+            <h3 class="nb-standard-title">책임 있는 산림 원료</h3>
+            <p>FSC는 목재 섬유가 책임 있게 관리되는 산림과 추적 가능한 공급망에서 왔음을 보여주는 기준입니다.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">ECF</div>
+          <div>
+            <h3 class="nb-standard-title">더 깨끗한 표백 방식</h3>
+            <p>ECF는 원소염소 무사용을 뜻합니다. 펄프를 표백할 때 원소염소 가스를 쓰지 않는 방식으로, 내지의 무염소 표현과 같은 방향의 환경 기준입니다.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">pH</div>
+          <div>
+            <h3 class="nb-standard-title">중성지</h3>
+            <p>중성지는 산성 종이보다 변색과 부스러짐이 적어, 오래 간직할 노트에 더 알맞습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MATERIALS MODAL -->
 <div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
@@ -963,20 +1082,20 @@
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="두꺼운 아티스트용 종이 위의 손그림 노트 커버" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">한국 · 조던이 직접 소싱</div>
+          <div class="nb-modal-maker-origin">한국 · 스튜디오 몬조를 위해 선택</div>
           <div class="nb-modal-maker-name">커버</div>
           <div class="nb-modal-maker-role">원화 한 점, 인쇄 커버 50장</div>
-          <p class="nb-modal-maker-body">커버지는 스튜디오 몬조를 위해 조던이 한국에서 직접 고릅니다. 잉크와 수채, 스캔, 재단, 제본, 그리고 매일 손에 닿는 시간을 견디면서도 아티스트 종이의 느낌을 잃지 않아야 합니다. 현재 커버지는 FSC, ECF, 중성지 조건을 갖춘 종이입니다.</p>
+          <p class="nb-modal-maker-body">커버지는 스튜디오 몬조를 위해 한국에서 선택한 종이입니다. 잉크와 수채, 스캔, 재단, 제본, 그리고 매일 손에 닿는 시간을 견디면서도 아티스트 종이의 느낌을 잃지 않아야 합니다. 현재 커버지는 FSC, ECF, 중성지 조건을 갖춘 종이입니다.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="만년필에 맞춘 노트 속지" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">한국 · 조던이 직접 소싱 · 무지, 라인, 방안</div>
+          <div class="nb-modal-maker-origin">한국 · 무지, 라인, 방안</div>
           <div class="nb-modal-maker-name">속지</div>
           <div class="nb-modal-maker-role">글을 쓰기 위한 종이</div>
-          <p class="nb-modal-maker-body">내지도 조던이 한국에서 직접 고르고, 실제 펜과 잉크로 시험합니다. 너무 미끄럽지 않으면서 만년필 선이 깨끗하게 남고, 번짐과 보통의 사용에서 생기는 잉크 뚫림을 줄인 종이입니다. 내지는 FSC 인증, 무염소, 중성지 조건을 갖추고 있습니다.</p>
+          <p class="nb-modal-maker-body">내지는 한국에서 선택한 뒤 실제 펜과 잉크로 시험합니다. 너무 미끄럽지 않으면서 만년필 선이 깨끗하게 남고, 번짐과 보통의 사용에서 생기는 잉크 뚫림을 줄인 종이입니다. 내지는 FSC 인증, 무염소, 중성지 조건을 갖추고 있습니다.</p>
         </div>
       </div>
 
@@ -996,7 +1115,7 @@
           <div class="nb-modal-maker-origin">왁스 실</div>
           <div class="nb-modal-maker-name">제본</div>
           <div class="nb-modal-maker-role">손으로 매고, 등 쪽에 보이는 실</div>
-          <p class="nb-modal-maker-body">제본은 손으로 꿰매고 그대로 보이게 둡니다. 붉은색은 낙관과 이어지는 스튜디오 몬조의 하우스 컬러로 남습니다.</p>
+          <p class="nb-modal-maker-body">제본은 손으로 꿰매고 그대로 보이게 둡니다. 붉은 실은 작가 승인 낙관과 조용히 이어지지만, 낙관을 로고처럼 쓰지는 않습니다.</p>
         </div>
       </div>
     </div>
@@ -1005,27 +1124,43 @@
 
 <script>
 (function () {
-  var modal = document.getElementById('materialsModal');
-  if (!modal) return;
-  var triggers = document.querySelectorAll('[data-open-materials]');
-  var closers = modal.querySelectorAll('[data-close-modal]');
-  function open(e) {
+  var activeModal = null;
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (activeModal === modal) activeModal = null;
+    if (!document.querySelector('.nb-modal.is-open')) {
+      document.body.classList.remove('is-modal-open');
+    }
+  }
+
+  function openModal(modal, e) {
     if (e) e.preventDefault();
+    activeModal = modal;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-modal-open');
     var closeBtn = modal.querySelector('.nb-modal-close');
     if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 100);
   }
-  function close() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('is-modal-open');
+
+  function setupModal(id, triggerSelector) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    document.querySelectorAll(triggerSelector).forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) { openModal(modal, e); });
+    });
+    modal.querySelectorAll('[data-close-modal]').forEach(function (closer) {
+      closer.addEventListener('click', function () { closeModal(modal); });
+    });
   }
-  triggers.forEach(function (t) { t.addEventListener('click', open); });
-  closers.forEach(function (c) { c.addEventListener('click', close); });
+
+  setupModal('materialsModal', '[data-open-materials]');
+  setupModal('paperProofModal', '[data-open-paper-proof]');
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    if (e.key === 'Escape' && activeModal) closeModal(activeModal);
   });
 })();
 </script>

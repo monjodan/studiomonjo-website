@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hand-painted fountain-pen notebooks from Seoul | Studio Monjo</title>
-<meta name="description" content="Original watercolour notebooks from Seoul in editions of 50, with Jordan-sourced Korean fountain-pen paper in blank, lined, or squared pages.">
+<meta name="description" content="Studio Monjo notebooks from Seoul: original watercolour covers, editions of 50, made to order with Korean fountain-pen paper in blank, lined, or squared pages.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -16,7 +16,7 @@
 
 <meta property="og:site_name" content="Studio Monjo">
 <meta property="og:title" content="Hand-painted fountain-pen notebooks from Seoul">
-<meta property="og:description" content="Original watercolour covers, high-fidelity scans, editions of 50, and Jordan-sourced Korean paper for fountain pens.">
+<meta property="og:description" content="Original watercolour covers, high-fidelity scans, editions of 50, made-to-order pages, and Korean paper tested for fountain pens.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/en/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
@@ -466,6 +466,44 @@
     border: 1px solid var(--rule-strong);
     padding: 7px 9px;
   }
+  .nb-cert-icons {
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .nb-cert-chip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 11px;
+    border: 1px solid var(--rule-strong);
+    background: rgba(250,246,237,0.38);
+    color: inherit;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .nb-cert-chip:hover,
+  .nb-cert-chip:focus-visible {
+    background: var(--paper-warm);
+    border-color: #c7b89f;
+  }
+  .nb-cert-code {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-cert-meaning {
+    font-size: 0.86rem;
+    line-height: 1.32;
+    color: var(--ink-warm-soft);
+  }
   .nb-seal-proof {
     background: var(--ink-warm);
     color: var(--paper-warm);
@@ -645,6 +683,42 @@
   .nb-modal-maker-role { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-warm-mid); margin-bottom: 14px; }
   .nb-modal-maker-body { font-family: var(--serif); font-weight: 300; font-size: 0.98rem; line-height: 1.7; color: var(--ink-warm-mid); margin: 0; }
   .nb-modal-maker-body em { font-style: italic; color: var(--ink-warm); }
+  .nb-standards-list {
+    border-top: 1px solid var(--rule);
+  }
+  .nb-standard-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nb-standard-code {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-warm);
+  }
+  .nb-standard-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.26rem;
+    line-height: 1.2;
+    color: var(--ink-warm);
+    margin-bottom: 6px;
+  }
+  .nb-standard-item p {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 0.98rem;
+    line-height: 1.68;
+    color: var(--ink-warm-mid);
+    margin: 0;
+  }
+  @media (max-width: 580px) { .nb-standard-item { grid-template-columns: 1fr; gap: 8px; } }
   body.is-modal-open { overflow: hidden; }
 </style>
 
@@ -669,7 +743,7 @@
       "@type": "Product",
       "position": 1,
       "name": "Studio Monjo edition notebook, A6",
-      "description": "A6 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Jordan-sourced Korean paper for fountain pens.",
+      "description": "A6 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Korean fountain-pen paper in blank, lined, or squared styles.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -683,7 +757,7 @@
       "@type": "Product",
       "position": 2,
       "name": "Studio Monjo edition notebook, A5",
-      "description": "A5 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Jordan-sourced Korean paper for fountain pens.",
+      "description": "A5 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Korean fountain-pen paper in blank, lined, or squared styles.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -730,7 +804,7 @@
     <div class="nb-maison-copy">
       <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Seoul</div>
       <h1 class="nb-maison-title">Hand-painted notebooks. Fountain pen paper.</h1>
-      <p class="nb-maison-sub">Each edition begins as an original watercolour in Seoul. The cover is scanned in high fidelity and printed as a numbered edition of 50. Inside: Korean paper sourced by Jordan and tested with fountain pens, available blank, lined, or squared.</p>
+      <p class="nb-maison-sub">Each edition begins as an original watercolour in Seoul. The cover is scanned in high fidelity and printed as a numbered edition of 50. Each notebook is made to order with Korean fountain-pen paper, available blank, lined, or squared.</p>
       <div class="nb-maison-actions">
         <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">View on Naver</a>
       </div>
@@ -741,7 +815,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Paper</div>
-          <div class="nb-ledger-value">Jordan-sourced Korean paper</div>
+          <div class="nb-ledger-value">Korean fountain-pen paper</div>
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Inside</div>
@@ -749,7 +823,7 @@
         </div>
         <div class="nb-ledger-cell">
           <div class="nb-ledger-label">Materials</div>
-          <div class="nb-ledger-value">FSC, chlorine free, acid free</div>
+          <div class="nb-ledger-value">FSC, ECF, acid free</div>
         </div>
       </div>
     </div>
@@ -759,8 +833,8 @@
     <div class="nb-belief-inner">
       <h2 class="nb-belief-title">Made by a hand.</h2>
       <div class="nb-belief-copy">
-        <p>Studio Monjo is French by origin and based in Seoul. The work borrows from both worlds: the atelier, the edition, the house mark, and a daily closeness to paper.</p>
-        <p>The notebooks are made for the private act of writing. Artwork, paper, thread and seal all serve that moment.</p>
+        <p>Studio Monjo is French by origin and based in Seoul. The work borrows from both worlds: the atelier, the edition, the artist's approval mark, and a daily closeness to paper.</p>
+        <p>The notebooks are made to order for the private act of writing. Artwork, paper, thread and seal all serve that moment.</p>
         <p>The interior paper is selected for fountain pens: clean lines, little feathering, and no easy bleed-through in ordinary use.</p>
       </div>
     </div>
@@ -797,8 +871,8 @@
           </div>
           <div class="nb-ritual-item">
             <div class="nb-ritual-num">04</div>
-            <h3 class="nb-ritual-title">Seal before shipping</h3>
-            <p class="nb-ritual-body">Before it leaves Seoul, each printed notebook is inspected and sealed in red by the artist.</p>
+            <h3 class="nb-ritual-title">Approve the print</h3>
+            <p class="nb-ritual-body">Before it leaves Seoul, each printed cover is checked and marked with the artist's red approval seal.</p>
           </div>
         </div>
       </div>
@@ -809,9 +883,9 @@
     <div class="nb-choice-panel">
       <div class="nb-choice-head">
         <div class="nb-maison-label">The page</div>
-        <h2 class="nb-maison-heading">Three interiors, for three ways of thinking.</h2>
+        <h2 class="nb-maison-heading">Choose the inside. We make the notebook.</h2>
         <div class="nb-maison-copyblock">
-          <p>The cover belongs to the edition. The inside belongs to the person who writes in it.</p>
+          <p>The cover belongs to the edition. The page style and size are chosen when the notebook is made to order.</p>
         </div>
       </div>
       <div class="nb-choice-grid">
@@ -828,7 +902,7 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">Paper</div>
           <div class="nb-choice-value">Made for fountain pens</div>
-          <p>Jordan sources the interior sheet in South Korea and tests it with real pens and inks.</p>
+          <p>The interior sheet is selected in South Korea and tested with real pens and inks.</p>
           <div class="nb-paper-styles" aria-label="Available inside page styles">
             <span>Blank</span>
             <span>Lines</span>
@@ -838,7 +912,13 @@
         <div class="nb-choice-card">
           <div class="nb-choice-name">Materials</div>
           <div class="nb-choice-value">Certified papers</div>
-          <p>Interior paper is FSC, chlorine free and acid free. Cover paper is FSC, ECF and acid free.</p>
+          <p>FSC speaks to forest sourcing; ECF/chlorine-free speaks to cleaner bleaching chemistry; acid free helps the paper keep better over time.</p>
+          <div class="nb-cert-icons" aria-label="Paper standards">
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">FSC</span><span class="nb-cert-meaning">Responsible forest sourcing</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">ECF</span><span class="nb-cert-meaning">Elemental chlorine free bleaching</span></button>
+            <button type="button" class="nb-cert-chip" data-open-paper-proof><span class="nb-cert-code">pH</span><span class="nb-cert-meaning">Acid-free longevity</span></button>
+          </div>
+          <p><a href="#" data-open-paper-proof>What the paper standards mean &rsaquo;</a></p>
         </div>
       </div>
     </div>
@@ -855,9 +935,11 @@
       <div class="nb-maison-copyblock">
         <div class="nb-maison-label">The writing page</div>
         <h2 class="nb-maison-heading">Paper is part of the product.</h2>
-        <p>Both the cover paper and the interior paper are sourced by Jordan in South Korea for Studio Monjo.</p>
+        <p>Both the cover paper and the interior paper are selected in South Korea for Studio Monjo.</p>
         <p>The page must feel good under the hand, hold fountain-pen ink cleanly, suit the artwork, and make sense as a material choice.</p>
+        <p>The current interior paper was chosen through writing tests for line sharpness, feathering, and ordinary bleed-through.</p>
         <p><a href="#" data-open-materials>See the material palette &rsaquo;</a></p>
+        <p><a href="#" data-open-paper-proof>Understand the paper standards &rsaquo;</a></p>
       </div>
     </div>
   </section>
@@ -871,10 +953,10 @@
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
-        <div class="nb-maison-label">The red seal</div>
-        <h2 class="nb-maison-heading">The final mark.</h2>
-        <p>The red seal is permanent to Studio Monjo. It is the last act before a notebook leaves the studio.</p>
-        <p>A printed cover becomes a Studio Monjo notebook after it has been checked, handled and sealed in red.</p>
+        <div class="nb-maison-label">Artist approval seal</div>
+        <h2 class="nb-maison-heading">Approved before it leaves.</h2>
+        <p>The red seal is not a Studio Monjo logo. It is the artist's approval seal, added after the print of the painting has been checked.</p>
+        <p>It marks the moment a printed cover has been handled, inspected, and accepted as part of the edition.</p>
       </div>
     </div>
   </section>
@@ -910,7 +992,7 @@
     <div class="nb-shop-inner">
       <div class="nb-maison-label">Available editions</div>
       <h2 class="nb-shop-title">Available now.</h2>
-      <p class="nb-shop-body">Current notebook editions are sold through the Studio Monjo Naver Smart Store.</p>
+      <p class="nb-shop-body">Available notebook editions are made to order and sold through the Studio Monjo Naver Smart Store.</p>
       <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">View on Naver <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
@@ -922,6 +1004,43 @@
 
 </main>
 
+<!-- PAPER STANDARDS MODAL -->
+<div class="nb-modal" id="paperProofModal" role="dialog" aria-modal="true" aria-labelledby="paperProofModalTitle" aria-hidden="true">
+  <div class="nb-modal-backdrop" data-close-modal></div>
+  <div class="nb-modal-panel" role="document">
+    <button type="button" class="nb-modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="nb-modal-inner">
+      <div class="nb-modal-eyebrow">Paper standards</div>
+      <h2 class="nb-modal-title" id="paperProofModalTitle">Why the paper claims matter.</h2>
+      <p class="nb-modal-lede">The cover paper is FSC, ECF, and acid free. The interior paper is FSC, chlorine free, and acid free. Since ECF and chlorine-free are related bleaching terms, we explain them as one cleaner-bleaching signal rather than two separate virtues.</p>
+
+      <div class="nb-standards-list">
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">FSC</div>
+          <div>
+            <h3 class="nb-standard-title">Responsible forest sourcing</h3>
+            <p>FSC certification gives paper a traceable connection to responsibly managed forest material through the supply chain.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">ECF</div>
+          <div>
+            <h3 class="nb-standard-title">Cleaner bleaching chemistry</h3>
+            <p>ECF means elemental chlorine free: the pulp is bleached without elemental chlorine gas. That is closely related to the chlorine-free wording used for the interior sheet.</p>
+          </div>
+        </div>
+        <div class="nb-standard-item">
+          <div class="nb-standard-code">pH</div>
+          <div>
+            <h3 class="nb-standard-title">Acid-free paper</h3>
+            <p>Acid-free paper is less likely to yellow or become brittle over time, so the notebook keeps better as an object you may want to keep.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MATERIALS MODAL — the complete materials reference -->
 <div class="nb-modal" id="materialsModal" role="dialog" aria-modal="true" aria-labelledby="materialsModalTitle" aria-hidden="true">
   <div class="nb-modal-backdrop" data-close-modal></div>
@@ -930,25 +1049,25 @@
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>Materials</div>
       <h2 class="nb-modal-title" id="materialsModalTitle">What it is made of.</h2>
-      <p class="nb-modal-lede">Each notebook is built from materials chosen for writing and for the original painting: Korean cover paper, Korean interior paper, watercolour, and waxed thread.</p>
+      <p class="nb-modal-lede">Each notebook is built from materials chosen for writing, for the printed cover, and for the original painting: Korean cover paper, Korean interior paper, watercolour, and waxed thread.</p>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="A hand-painted notebook cover on heavy artist paper" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">South Korea · sourced by Jordan</div>
+          <div class="nb-modal-maker-origin">South Korea · selected for Studio Monjo</div>
           <div class="nb-modal-maker-name">The cover</div>
           <div class="nb-modal-maker-role">One original, fifty printed covers</div>
-          <p class="nb-modal-maker-body">The cover paper is sourced in South Korea by Jordan for Studio Monjo. It has to take ink, watercolour, scanning, cutting, binding, and daily handling without losing the feeling of an artist paper. The current cover paper is FSC, ECF, and acid free.</p>
+          <p class="nb-modal-maker-body">The cover paper is selected in South Korea for Studio Monjo. It has to take ink, watercolour, scanning, cutting, binding, and daily handling without losing the feeling of an artist paper. The current cover paper is FSC, ECF, and acid free.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="Interior pages of fountain pen paper" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">South Korea · sourced by Jordan · blank, lined, or squared</div>
+          <div class="nb-modal-maker-origin">South Korea · blank, lined, or squared</div>
           <div class="nb-modal-maker-name">The paper inside</div>
           <div class="nb-modal-maker-role">Made for the act of writing</div>
-          <p class="nb-modal-maker-body">The interior paper is also sourced in South Korea by Jordan and selected through writing tests. It is smooth without becoming slippery, clean with fountain-pen ink, and resistant to feathering and ordinary bleed-through. The sheet is FSC certified, chlorine free, and acid free.</p>
+          <p class="nb-modal-maker-body">The interior paper is selected in South Korea through writing tests. It is smooth without becoming slippery, clean with fountain-pen ink, and resistant to feathering and ordinary bleed-through. The sheet is FSC certified, chlorine free, and acid free.</p>
         </div>
       </div>
 
@@ -968,7 +1087,7 @@
           <div class="nb-modal-maker-origin">Waxed thread</div>
           <div class="nb-modal-maker-name">The binding</div>
           <div class="nb-modal-maker-role">Stab-bound by hand, visible on the spine</div>
-          <p class="nb-modal-maker-body">The binding is stitched by hand and left visible. Red remains the Studio Monjo house colour because it echoes the artist seal.</p>
+          <p class="nb-modal-maker-body">The binding is stitched by hand and left visible. The red thread echoes the artist's approval seal without turning the seal into a logo.</p>
         </div>
       </div>
     </div>
@@ -977,27 +1096,43 @@
 
 <script>
 (function () {
-  var modal = document.getElementById('materialsModal');
-  if (!modal) return;
-  var triggers = document.querySelectorAll('[data-open-materials]');
-  var closers = modal.querySelectorAll('[data-close-modal]');
-  function open(e) {
+  var activeModal = null;
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (activeModal === modal) activeModal = null;
+    if (!document.querySelector('.nb-modal.is-open')) {
+      document.body.classList.remove('is-modal-open');
+    }
+  }
+
+  function openModal(modal, e) {
     if (e) e.preventDefault();
+    activeModal = modal;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-modal-open');
     var closeBtn = modal.querySelector('.nb-modal-close');
     if (closeBtn) setTimeout(function () { closeBtn.focus(); }, 100);
   }
-  function close() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('is-modal-open');
+
+  function setupModal(id, triggerSelector) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    document.querySelectorAll(triggerSelector).forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) { openModal(modal, e); });
+    });
+    modal.querySelectorAll('[data-close-modal]').forEach(function (closer) {
+      closer.addEventListener('click', function () { closeModal(modal); });
+    });
   }
-  triggers.forEach(function (t) { t.addEventListener('click', open); });
-  closers.forEach(function (c) { c.addEventListener('click', close); });
+
+  setupModal('materialsModal', '[data-open-materials]');
+  setupModal('paperProofModal', '[data-open-paper-proof]');
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    if (e.key === 'Escape' && activeModal) closeModal(activeModal);
   });
 })();
 </script>

@@ -15,6 +15,7 @@
   var body = document.body;
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+  var canPreview = !isMobile && (!window.matchMedia || window.matchMedia('(hover: hover) and (pointer: fine)').matches);
 
   var doors = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-door'));
   var bgs   = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-bg'));
@@ -34,22 +35,24 @@
     bgs.forEach(function (bg) { bg.classList.remove('is-active'); });
     doors.forEach(function (d) { d.classList.remove('is-hovered'); });
   }
-  doors.forEach(function (door) {
-    var n = door.dataset.door;
-    door.addEventListener('mouseenter', function () { activateDoor(n); });
-    door.addEventListener('focusin',    function () { activateDoor(n); });
-    door.addEventListener('mouseleave', function () {
-      // Defer so a quick move to a sibling door doesn't flicker
-      setTimeout(function () {
-        if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
-      }, 0);
+  if (canPreview) {
+    doors.forEach(function (door) {
+      var n = door.dataset.door;
+      door.addEventListener('mouseenter', function () { activateDoor(n); });
+      door.addEventListener('focusin',    function () { activateDoor(n); });
+      door.addEventListener('mouseleave', function () {
+        // Defer so a quick move to a sibling door doesn't flicker
+        setTimeout(function () {
+          if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
+        }, 0);
+      });
+      door.addEventListener('focusout', function () {
+        setTimeout(function () {
+          if (!doors.some(function (d) { return d.matches(':focus-within') || d.matches(':hover'); })) deactivateDoors();
+        }, 0);
+      });
     });
-    door.addEventListener('focusout', function () {
-      setTimeout(function () {
-        if (!doors.some(function (d) { return d.matches(':focus-within') || d.matches(':hover'); })) deactivateDoors();
-      }, 0);
-    });
-  });
+  }
 
   // --- 2. MOBILE — entire door is the tap target ---------------------------
   // Tapping anywhere on the door (outside the explicit buttons) navigates
