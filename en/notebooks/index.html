@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Monjo notebooks. One painting, fifty notebooks.</title>
-<meta name="description" content="Studio Monjo makes handmade A5 and A6 notebooks in Seoul. Every edition begins as one original watercolour, then becomes fifty printed notebooks, each sealed in red before shipping.">
+<title>Hand-painted fountain-pen notebooks from Seoul | Studio Monjo</title>
+<meta name="description" content="Original watercolour notebooks from Seoul in editions of 50, with Jordan-sourced Korean fountain-pen paper in blank, lined, or squared pages.">
 <meta name="theme-color" content="#faf6ed">
 <meta name="robots" content="index, follow">
 
@@ -15,8 +15,8 @@
 <link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/">
 
 <meta property="og:site_name" content="Studio Monjo">
-<meta property="og:title" content="Studio Monjo notebooks. One painting, fifty notebooks.">
-<meta property="og:description" content="Every Studio Monjo notebook edition begins as one original watercolour, then becomes fifty printed notebooks, each sealed in red before shipping.">
+<meta property="og:title" content="Hand-painted fountain-pen notebooks from Seoul">
+<meta property="og:description" content="Original watercolour covers, high-fidelity scans, editions of 50, and Jordan-sourced Korean paper for fountain pens.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://studiomonjo.com/en/notebooks/">
 <meta property="og:image" content="https://studiomonjo.com/media/web/notebooks/DSCF1070.jpg">
@@ -139,15 +139,16 @@
     background: var(--paper-warm-soft);
     overflow: hidden;
   }
-  .nb-maison-visual picture,
+  .nb-maison-visual picture {
+    position: absolute;
+    inset: clamp(72px, 8vw, 112px) clamp(36px, 5vw, 76px);
+  }
   .nb-maison-visual img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-  }
-  .nb-maison-visual img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
   .nb-maison-visual::after {
@@ -158,7 +159,7 @@
     pointer-events: none;
   }
   .nb-maison-copy {
-    padding: clamp(92px, 9vw, 144px) var(--pad-x) clamp(48px, 6vw, 80px);
+    padding: clamp(80px, 7vw, 112px) var(--pad-x) clamp(40px, 5vw, 64px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -195,8 +196,8 @@
     font-family: var(--serif);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(3rem, 7vw, 6.2rem);
-    line-height: 0.95;
+    font-size: clamp(2.65rem, 5.4vw, 4.6rem);
+    line-height: 1;
     letter-spacing: -0.012em;
     color: var(--ink-warm);
     max-width: 720px;
@@ -208,13 +209,13 @@
     line-height: 1.62;
     color: var(--ink-warm-mid);
     max-width: 620px;
-    margin-bottom: 38px;
+    margin-bottom: 28px;
   }
   .nb-maison-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-    margin-bottom: 42px;
+    margin-bottom: 32px;
   }
   .nb-maison-actions a {
     display: inline-flex;
@@ -668,7 +669,7 @@
       "@type": "Product",
       "position": 1,
       "name": "Studio Monjo edition notebook, A6",
-      "description": "A6 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high quality and printed on fifty notebook covers. Each notebook is sealed in red before shipping, with thread colour and page style chosen at order.",
+      "description": "A6 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Jordan-sourced Korean paper for fountain pens.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -682,7 +683,7 @@
       "@type": "Product",
       "position": 2,
       "name": "Studio Monjo edition notebook, A5",
-      "description": "A5 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high quality and printed on fifty notebook covers. Each notebook is sealed in red before shipping, with thread colour and page style chosen at order.",
+      "description": "A5 notebook from a Studio Monjo limited edition. One original watercolour is scanned in high fidelity and printed on fifty notebook covers. Stab-bound by hand with Jordan-sourced Korean paper for fountain pens.",
       "brand": { "@type": "Organization", "name": "Studio Monjo" },
       "offers": {
         "@type": "Offer",
@@ -728,28 +729,27 @@
     </figure>
     <div class="nb-maison-copy">
       <div class="nb-house-kicker"><span class="seal" aria-hidden="true"></span>Studio Monjo, Seoul</div>
-      <h1 class="nb-maison-title">One painting. Fifty notebooks.</h1>
-      <p class="nb-maison-sub">Each edition begins as a real watercolour. The original is sold once. Fifty notebooks follow, sealed in red, then the image is retired.</p>
+      <h1 class="nb-maison-title">Hand-painted notebooks. Fountain pen paper.</h1>
+      <p class="nb-maison-sub">Each edition begins as an original watercolour in Seoul. The cover is scanned in high fidelity and printed as a numbered edition of 50. Inside: Korean paper sourced by Jordan and tested with fountain pens, available blank, lined, or squared.</p>
       <div class="nb-maison-actions">
-        <a href="#edition">The edition ritual</a>
         <a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">View on Naver</a>
       </div>
       <div class="nb-hero-ledger" aria-label="Studio Monjo edition essentials">
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Artwork</div>
-          <div class="nb-ledger-value">1/1 artwork</div>
-        </div>
-        <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Run</div>
+          <div class="nb-ledger-label">Edition</div>
           <div class="nb-ledger-value">50 notebooks</div>
         </div>
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Formats</div>
-          <div class="nb-ledger-value">A6 and A5</div>
+          <div class="nb-ledger-label">Paper</div>
+          <div class="nb-ledger-value">Jordan-sourced Korean paper</div>
         </div>
         <div class="nb-ledger-cell">
-          <div class="nb-ledger-label">Seal</div>
-          <div class="nb-ledger-value">Always red</div>
+          <div class="nb-ledger-label">Inside</div>
+          <div class="nb-ledger-value">Blank, lined, or squared</div>
+        </div>
+        <div class="nb-ledger-cell">
+          <div class="nb-ledger-label">Materials</div>
+          <div class="nb-ledger-value">FSC, chlorine free, acid free</div>
         </div>
       </div>
     </div>
@@ -761,6 +761,7 @@
       <div class="nb-belief-copy">
         <p>Studio Monjo is French by origin and based in Seoul. The work borrows from both worlds: the atelier, the edition, the house mark, and a daily closeness to paper.</p>
         <p>The notebooks are made for the private act of writing. Artwork, paper, thread and seal all serve that moment.</p>
+        <p>The interior paper is selected for fountain pens: clean lines, little feathering, and no easy bleed-through in ordinary use.</p>
       </div>
     </div>
   </section>
@@ -807,10 +808,10 @@
   <section class="nb-section-maison nb-section-maison--warm">
     <div class="nb-choice-panel">
       <div class="nb-choice-head">
-        <div class="nb-maison-label">Made for its writer</div>
-        <h2 class="nb-maison-heading">Finished for you.</h2>
+        <div class="nb-maison-label">The page</div>
+        <h2 class="nb-maison-heading">Three interiors, for three ways of thinking.</h2>
         <div class="nb-maison-copyblock">
-          <p>Studio Monjo sets the edition. You choose the thread colour and the page style inside.</p>
+          <p>The cover belongs to the edition. The inside belongs to the person who writes in it.</p>
         </div>
       </div>
       <div class="nb-choice-grid">
@@ -820,25 +821,24 @@
           <p>A6 travels with you. A5 gives the desk more room for longer thought.</p>
         </div>
         <div class="nb-choice-card">
-          <div class="nb-choice-name">Thread</div>
-          <div class="nb-choice-value">Your binding colour</div>
-          <p>The thread is visible on the spine. It is part of the object, not a hidden construction detail.</p>
+          <div class="nb-choice-name">Inside</div>
+          <div class="nb-choice-value">Blank, lined, or squared</div>
+          <p>Blank for open pages, lined for long writing, squared for plans, diagrams, lists, and margins.</p>
         </div>
         <div class="nb-choice-card">
-          <div class="nb-choice-name">Inside</div>
-          <div class="nb-choice-value">Your page style</div>
-          <p>Choose the structure that best supports the way you write.</p>
+          <div class="nb-choice-name">Paper</div>
+          <div class="nb-choice-value">Made for fountain pens</div>
+          <p>Jordan sources the interior sheet in South Korea and tests it with real pens and inks.</p>
           <div class="nb-paper-styles" aria-label="Available inside page styles">
             <span>Blank</span>
             <span>Lines</span>
             <span>Squares</span>
-            <span>Dots</span>
           </div>
         </div>
         <div class="nb-choice-card">
-          <div class="nb-choice-name">Paper</div>
-          <div class="nb-choice-value">Chosen per edition</div>
-          <p>The paper may change from one edition to the next. It is selected to fit the artwork and the writing experience.</p>
+          <div class="nb-choice-name">Materials</div>
+          <div class="nb-choice-value">Certified papers</div>
+          <p>Interior paper is FSC, chlorine free and acid free. Cover paper is FSC, ECF and acid free.</p>
         </div>
       </div>
     </div>
@@ -854,9 +854,9 @@
       </figure>
       <div class="nb-maison-copyblock">
         <div class="nb-maison-label">The writing page</div>
-        <h2 class="nb-maison-heading">Paper is a decision.</h2>
-        <p>Studio Monjo does not build around one permanent paper. Each edition can ask for a different sheet, weight, colour or surface.</p>
-        <p>The page must feel good under the hand, hold ink cleanly, suit the artwork and make sense as a material choice.</p>
+        <h2 class="nb-maison-heading">Paper is part of the product.</h2>
+        <p>Both the cover paper and the interior paper are sourced by Jordan in South Korea for Studio Monjo.</p>
+        <p>The page must feel good under the hand, hold fountain-pen ink cleanly, suit the artwork, and make sense as a material choice.</p>
         <p><a href="#" data-open-materials>See the material palette &rsaquo;</a></p>
       </div>
     </div>
@@ -879,6 +879,16 @@
     </div>
   </section>
 
+  <section class="nb-belief">
+    <div class="nb-belief-inner">
+      <h2 class="nb-belief-title">French words, quiet edition marks.</h2>
+      <div class="nb-belief-copy">
+        <p>The inside cover carries the line: <em>Pour celles et ceux qui croient encore à la beauté des objets façonnés à la main.</em> For those who still believe in the beauty of objects shaped by hand.</p>
+        <p>The back cover carries the edition language exactly as it appears on the object: <em>Édition N° 001. Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio.</em></p>
+      </div>
+    </div>
+  </section>
+
   <section class="nb-details-band" aria-label="Inscriptions printed inside every notebook">
     <div class="nb-details-grid">
       <figure>
@@ -889,8 +899,8 @@
       </figure>
       <figure>
         <picture>
-          <source srcset="../../media/web/notebooks/DSCF1073.webp" type="image/webp">
-          <img src="../../media/web/notebooks/DSCF1073.jpg" alt="The closing page inside the notebook with Studio Monjo thanks and website address." loading="lazy" decoding="async" width="1066" height="1600">
+          <source srcset="../../media/web/notebooks/DSCF1072.webp" type="image/webp">
+          <img src="../../media/web/notebooks/DSCF1072.jpg" alt="The inside back cover with the French limited-edition mark: Édition N° 001. Limitée à 50 exemplaires. Fait à la main à Séoul dans notre studio." loading="lazy" decoding="async" width="1066" height="1600">
         </picture>
       </figure>
     </div>
@@ -900,7 +910,7 @@
     <div class="nb-shop-inner">
       <div class="nb-maison-label">Available editions</div>
       <h2 class="nb-shop-title">Available now.</h2>
-      <p class="nb-shop-body">See the editions currently open. Choose A6 or A5, then choose thread colour and page style.</p>
+      <p class="nb-shop-body">Current notebook editions are sold through the Studio Monjo Naver Smart Store.</p>
       <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">View on Naver <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
     </div>
   </section>
@@ -920,25 +930,25 @@
     <div class="nb-modal-inner">
       <div class="nb-modal-eyebrow"><span class="seal" aria-hidden="true"></span>Materials</div>
       <h2 class="nb-modal-title" id="materialsModalTitle">What it is made of.</h2>
-      <p class="nb-modal-lede">Each notebook is built from a small material palette. Studio Monjo chooses the cover paper and the writing paper for each edition. You choose the thread colour and the page style inside.</p>
+      <p class="nb-modal-lede">Each notebook is built from materials chosen for writing and for the original painting: Korean cover paper, Korean interior paper, watercolour, and waxed thread.</p>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/L1001423.webp" type="image/webp"><img src="../../media/web/notebooks/L1001423.jpg" alt="A hand-painted notebook cover on heavy artist paper" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Cover paper, chosen per edition</div>
+          <div class="nb-modal-maker-origin">South Korea · sourced by Jordan</div>
           <div class="nb-modal-maker-name">The cover</div>
           <div class="nb-modal-maker-role">One original, fifty printed covers</div>
-          <p class="nb-modal-maker-body">The original artwork is painted by hand, then scanned in high quality. The fifty notebook covers are printed from that scan. The cover paper is chosen for the artwork, so the paper can change from one edition to the next.</p>
+          <p class="nb-modal-maker-body">The cover paper is sourced in South Korea by Jordan for Studio Monjo. It has to take ink, watercolour, scanning, cutting, binding, and daily handling without losing the feeling of an artist paper. The current cover paper is FSC, ECF, and acid free.</p>
         </div>
       </div>
 
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/IMG_4605.webp" type="image/webp"><img src="../../media/web/notebooks/IMG_4605.jpg" alt="Interior pages of fountain pen paper" loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Writing paper, chosen per edition</div>
+          <div class="nb-modal-maker-origin">South Korea · sourced by Jordan · blank, lined, or squared</div>
           <div class="nb-modal-maker-name">The paper inside</div>
-          <div class="nb-modal-maker-role">Blank, lines, squares or dots</div>
-          <p class="nb-modal-maker-body">The inside paper is selected for the edition, then prepared in the page style you choose. It must feel good under the hand, hold ink cleanly and sit naturally with the artwork on the cover.</p>
+          <div class="nb-modal-maker-role">Made for the act of writing</div>
+          <p class="nb-modal-maker-body">The interior paper is also sourced in South Korea by Jordan and selected through writing tests. It is smooth without becoming slippery, clean with fountain-pen ink, and resistant to feathering and ordinary bleed-through. The sheet is FSC certified, chlorine free, and acid free.</p>
         </div>
       </div>
 
@@ -955,10 +965,10 @@
       <div class="nb-modal-maker">
         <figure class="nb-modal-maker-figure"><picture><source srcset="../../media/web/notebooks/DSCF1074.webp" type="image/webp"><img src="../../media/web/notebooks/DSCF1074.jpg" alt="Macro detail of a single knot of red waxed thread on the cream interior paper of a notebook." loading="lazy"></picture></figure>
         <div>
-          <div class="nb-modal-maker-origin">Waxed thread, colour at order</div>
+          <div class="nb-modal-maker-origin">Waxed thread</div>
           <div class="nb-modal-maker-name">The binding</div>
           <div class="nb-modal-maker-role">Stab-bound by hand, visible on the spine</div>
-          <p class="nb-modal-maker-body">The binding is stitched by hand and left visible. You choose the thread colour at order. Red remains the Studio Monjo house colour because it echoes the artist seal.</p>
+          <p class="nb-modal-maker-body">The binding is stitched by hand and left visible. Red remains the Studio Monjo house colour because it echoes the artist seal.</p>
         </div>
       </div>
     </div>
