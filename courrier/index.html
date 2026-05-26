@@ -575,6 +575,17 @@
     font-size: 0.9rem;
     color: var(--ink-warm-soft);
   }
+  .pricing-tier-saving {
+    font-family: var(--serif);
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-warm-soft);
+    margin: -2px 0 10px;
+  }
+  .pricing-tier-saving strong {
+    color: var(--ink-warm);
+    font-weight: 400;
+  }
   .pricing-tier-detail {
     font-family: var(--serif);
     font-size: 13px;
@@ -824,18 +835,21 @@
         <div class="pricing-tier" data-tier="monthly" aria-disabled="true">
           <div class="pricing-tier-label">Au mois</div>
           <div class="pricing-tier-price">15 €<span class="pricing-tier-suffix"> / mois</span></div>
+          <div class="pricing-tier-saving">Prix de référence mensuel</div>
           <div class="pricing-tier-detail">Abonnement mensuel<br>Annulable à tout moment</div>
           <div class="pricing-tier-cta">Bientôt ouvert</div>
         </div>
         <div class="pricing-tier" data-tier="quarterly" aria-disabled="true">
           <div class="pricing-tier-label">Trois mois</div>
           <div class="pricing-tier-price">40 €</div>
+          <div class="pricing-tier-saving">Au lieu de 45 €<br><strong>5 € économisés (11 %)</strong></div>
           <div class="pricing-tier-detail">Trois enveloppes<br>Pour essayer ou offrir</div>
           <div class="pricing-tier-cta">Bientôt ouvert</div>
         </div>
         <div class="pricing-tier pricing-tier--featured" data-tier="yearly" aria-disabled="true">
           <div class="pricing-tier-label">À l'année</div>
           <div class="pricing-tier-price">120 €<span class="pricing-tier-suffix"> / an</span></div>
+          <div class="pricing-tier-saving">Au lieu de 180 €<br><strong>60 € économisés (33 %)</strong></div>
           <div class="pricing-tier-detail">Douze enveloppes<br>Le meilleur tarif</div>
           <div class="pricing-tier-cta">Bientôt ouvert</div>
         </div>
