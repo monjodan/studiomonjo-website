@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  Courrier de Séoul — French-only subscription page.
+  Courrier de Séoul: French only subscription page.
 
   Add real Stripe Payment Links before opening subscriptions.
 
@@ -56,7 +56,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Courrier de Séoul",
-  "description": "Abonnement mensuel par voie postale. Chaque mois, une lettre imprimée sur papier hanji traditionnel à base de mûrier à papier, une carte postale à garder ou à envoyer, et une fiche mémoire à retenir, enveloppées dans un papier fleuri bleu — depuis Séoul.",
+  "description": "Abonnement mensuel par voie postale. Chaque mois, une lettre imprimée sur papier hanji traditionnel à base de mûrier à papier, une carte postale à garder ou à envoyer, et une fiche mémoire à retenir, enveloppées dans un papier fleuri bleu, depuis Séoul.",
   "brand": { "@type": "Organization", "name": "Studio Monjo" },
   "offers": {
     "@type": "AggregateOffer",
@@ -69,21 +69,21 @@
     "offers": [
       {
         "@type": "Offer",
-        "name": "Courrier de Séoul — abonnement mensuel",
+        "name": "Courrier de Séoul, abonnement mensuel",
         "price": "15.00",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/PreOrder"
       },
       {
         "@type": "Offer",
-        "name": "Courrier de Séoul — trois mois",
+        "name": "Courrier de Séoul, trois mois",
         "price": "40.00",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/PreOrder"
       },
       {
         "@type": "Offer",
-        "name": "Courrier de Séoul — un an",
+        "name": "Courrier de Séoul, un an",
         "price": "120.00",
         "priceCurrency": "EUR",
         "availability": "https://schema.org/PreOrder"
@@ -94,7 +94,7 @@
 </script>
 
 <style>
-  /* Courrier de Séoul — sub-brand, scoped to body.courrier */
+  /* Courrier de Séoul: sub-brand, scoped to body.courrier */
   :root {
     --paper-warm: #faf6ed;
     --paper-warm-soft: #f4ecda;
@@ -131,7 +131,7 @@
   body.courrier :focus-visible { outline: 2px solid var(--ink-warm); outline-offset: 3px; }
   body.courrier strong { font-weight: 500; color: var(--ink-warm); }
 
-  /* Back-pill for the Courrier page — same shape as elsewhere on the site */
+  /* Back-pill for the Courrier page: same shape as elsewhere on the site */
   .courrier-back { position: fixed; top: 18px; left: 18px; z-index: 60; display: inline-block; }
   .courrier-back a {
     display: inline-block;
@@ -160,7 +160,7 @@
     .courrier-back a { padding: 9px 13px; font-size: 10px; }
   }
 
-  /* Social buttons — top-right, two standalone round pills (matching the
+  /* Social buttons: top-right, two standalone round pills (matching the
      pattern used everywhere else, but warm-toned for Courrier). */
   .courrier-corner {
     position: fixed; top: 18px; right: 18px; z-index: 60;
@@ -195,7 +195,7 @@
     .courrier-social-btn svg { width: 13px; height: 13px; }
   }
 
-  /* Hero — the full Courrier object first */
+  /* Hero: the full Courrier object first */
   .courrier-hero {
     align-items: end;
     background: var(--ink-warm);
@@ -406,7 +406,7 @@
   }
   body.courrier .courrier-photo--writing img { object-position: 52% 100%; }
 
-  /* Three-column "ce qui arrive" — la lettre, la carte postale, la fiche mémoire. */
+  /* Three-column "ce qui arrive": la lettre, la carte postale, la fiche mémoire. */
   .envelope-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -443,7 +443,7 @@
     margin: 0;
   }
 
-  /* Letter block — image + copy */
+  /* Letter block: image + copy */
   .letter-block {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -481,7 +481,7 @@
     color: var(--ink-warm-mid);
   }
 
-  /* Pricing — the centerpiece */
+  /* Pricing: the centerpiece */
   .pricing-block {
     text-align: center;
     max-width: 880px;
@@ -497,7 +497,7 @@
   }
   @media (max-width: 800px) { .pricing-tiers { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 460px) { .pricing-tiers { grid-template-columns: 1fr; } }
-  /* Two-tier variant — wider cards, centered */
+  /* Two-tier variant: wider cards, centered */
   .pricing-tiers--two {
     grid-template-columns: repeat(2, minmax(0, 280px));
     justify-content: center;
@@ -699,7 +699,7 @@
 
 <main>
 
-  <!-- HERO — neutral on self vs gift; both paths are first-class -->
+  <!-- HERO: neutral on self vs gift; both paths are first-class -->
   <section class="courrier-hero">
     <figure class="courrier-hero-media" aria-label="Courrier de Séoul enveloppé dans un papier fleuri bleu">
       <picture>
@@ -710,14 +710,14 @@
     <div class="courrier-hero-copy">
       <div class="courrier-eyebrow"><span class="seal" aria-hidden="true"></span>Abonnement mensuel · depuis Séoul</div>
       <h1 class="courrier-title">Une enveloppe par mois.<br>À recevoir, ou à offrir.</h1>
-      <p class="courrier-sub">Une lettre, une carte postale et une fiche mémoire, rassemblées dans un papier fleuri bleu. Un rendez-vous mensuel depuis Séoul, pour rester présent dans la vie de quelqu'un qu'on aime — ou dans la sienne.</p>
+      <p class="courrier-sub">Une lettre, une carte postale et une fiche mémoire, rassemblées dans un papier fleuri bleu. Un rendez-vous mensuel depuis Séoul, à offrir à quelqu'un qu'on aime ou à garder pour soi.</p>
       <div class="courrier-hero-actions">
         <a href="#offrir" class="btn-courrier btn-primary-dark">S'abonner</a>
       </div>
     </div>
   </section>
 
-  <!-- LE GESTE — origin story up front -->
+  <!-- LE GESTE: origin story up front -->
   <section class="courrier-section">
     <p>Courrier de Séoul est né d'une envie d'écrire plus souvent à ma grand-mère, à Paris, qui ne peut plus venir me voir. De l'envie qu'elle continue de me suivre, mois après mois, sans rien avoir à faire d'autre qu'ouvrir sa boîte aux lettres. Et de l'idée plus large qui en a découlé : que les personnes qu'on aime, qui ne voyagent plus, reçoivent chaque mois quelque chose qui ressemble à une visite.</p>
 
@@ -752,7 +752,7 @@
           </figure>
           <div class="envelope-piece-label">La carte postale</div>
           <p class="envelope-piece-title">Une carte du mois, à garder ou à envoyer.</p>
-          <p class="envelope-piece-body">Une carte postale faite chaque mois à partir d'une photographie ou d'un dessin. Imprimée sur papier carte, prête à écrire, prête à affranchir. À garder pour soi, à punaiser, ou à envoyer à quelqu'un d'autre — comme on faisait, avant. La correspondance peut continuer.</p>
+          <p class="envelope-piece-body">Une carte postale faite chaque mois à partir d'une photographie ou d'un dessin. Imprimée sur papier carte, prête à écrire, prête à affranchir. À garder pour soi, à punaiser, ou à envoyer à quelqu'un d'autre, comme on faisait avant. La correspondance peut continuer.</p>
         </div>
         <div class="envelope-piece">
           <figure class="envelope-piece-figure courrier-photo">
@@ -763,13 +763,13 @@
           </figure>
           <div class="envelope-piece-label">La fiche mémoire</div>
           <p class="envelope-piece-title">Un mot, un concept, un fait. À retenir.</p>
-          <p class="envelope-piece-body">Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école. Un mot d'une autre langue, un concept, un fait — quelque chose à apprendre, à retenir, à ressortir trois jours plus tard pour voir si ça tient. Un petit entraînement mensuel pour la mémoire, sans leçon ni examen.</p>
+          <p class="envelope-piece-body">Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école. Un mot d'une autre langue, un concept ou un fait à apprendre, à retenir, à ressortir trois jours plus tard pour voir si ça tient. Un petit entraînement mensuel pour la mémoire, sans leçon ni examen.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- L'ÉCRITURE — typed for legibility, signed by hand. The choice is the point. -->
+  <!-- L'ÉCRITURE: typed for legibility, signed by hand. The choice is the point. -->
   <section class="courrier-section courrier-section--wide">
     <div class="letter-block">
       <figure class="courrier-photo courrier-photo--landscape courrier-photo--writing">
@@ -781,10 +781,10 @@
       <div class="letter-block-text">
         <div class="section-eyebrow">L'écriture</div>
         <h2 class="section-title">Tapée pour qu'on la lise. Imprimée sur hanji.</h2>
-        <p>La lettre est écrite chaque mois sur ordinateur, puis imprimée. C'est un choix : je préfère qu'elle soit lisible — par tout le monde, à toute heure, sous toutes les lumières — plutôt que belle au point d'être devinée.</p>
+        <p>La lettre est écrite chaque mois sur ordinateur, puis imprimée. C'est un choix : je préfère qu'elle soit lisible pour tout le monde, à toute heure et sous toutes les lumières, plutôt que belle au point d'être devinée.</p>
         <p>Le papier, lui, reste profondément coréen : un hanji traditionnel fait à partir de mûrier à papier, avec une texture légèrement fibreuse et un éclat que la lumière révèle quand on incline la feuille.</p>
         <p>Chaque exemplaire est ensuite signé à la main, à l'encre, sur le tirage. C'est la signature qui rend honnête l'idée d'un abonnement : ce n'est pas un envoi automatique, c'est moi qui prends la plume sur chaque enveloppe avant qu'elle ne parte.</p>
-        <p>Une lettre, c'est avant tout ce qu'on écrit à quelqu'un. Le geste reste personnel même si l'outil est sobre — surtout quand le destinataire est quelqu'un dont on aime sincèrement qu'il puisse la lire sans effort.</p>
+        <p>Une lettre, c'est avant tout ce qu'on écrit à quelqu'un. Le geste reste personnel même si l'outil est sobre, surtout quand le destinataire est quelqu'un dont on aime sincèrement qu'il puisse la lire sans effort.</p>
       </div>
     </div>
   </section>
@@ -806,7 +806,7 @@
       <ol class="process-steps">
         <li>
           <div class="process-num"><em>i.</em></div>
-          <p class="process-text">Vous choisissez la durée et payez par carte. À l'étape de paiement, vous indiquez l'adresse de livraison — la vôtre ou celle de la personne à qui vous offrez l'abonnement — et, si vous le souhaitez, un mot pour la première enveloppe.</p>
+          <p class="process-text">Vous choisissez la durée et payez par carte. À l'étape de paiement, vous indiquez l'adresse de livraison : la vôtre ou celle de la personne à qui vous offrez l'abonnement. Vous pouvez aussi ajouter un mot pour la première enveloppe.</p>
         </li>
         <li>
           <div class="process-num"><em>ii.</em></div>
@@ -824,7 +824,7 @@
     </div>
   </section>
 
-  <!-- PRICING — subscription tiers; Stripe links will be added before opening. -->
+  <!-- PRICING: subscription tiers; Stripe links will be added before opening. -->
   <section id="offrir" class="courrier-section courrier-section--wide" style="text-align: center;">
       <div class="pricing-block">
         <div class="section-eyebrow" style="text-align: center;">S'abonner ou offrir</div>
@@ -866,19 +866,19 @@
     <h2 class="section-title">Ce qu'on me demande souvent.</h2>
     <dl class="courrier-faq">
       <dt>Pourquoi avoir lancé Courrier de Séoul ?</dt>
-      <dd>Pour écrire plus souvent à ma grand-mère, à Paris, qui ne peut plus venir me voir. Au début, l'idée était simple : une page par mois, dans sa boîte aux lettres, pour qu'elle continue de me suivre. Très vite, je me suis dit que d'autres personnes — d'autres parents, d'autres grands-parents, d'autres amis qui ne voyagent plus — méritaient ce même geste de la part de ceux qui les aiment. C'est de là que part Courrier.</dd>
+      <dd>Pour écrire plus souvent à ma grand-mère, à Paris, qui ne peut plus venir me voir. Au début, l'idée était simple : une page par mois, dans sa boîte aux lettres, pour qu'elle continue de me suivre. Très vite, je me suis dit que d'autres personnes, des parents, des grands-parents ou des amis qui ne voyagent plus, méritaient ce même geste de la part de ceux qui les aiment. C'est de là que part Courrier.</dd>
 
       <dt>La lettre est-elle écrite à la main ?</dt>
-      <dd>Non, et volontairement. Je l'écris chaque mois sur ordinateur, puis je l'imprime. Je préfère qu'elle soit lisible par tout le monde — y compris par les yeux qui ne suivent plus facilement une écriture cursive, et qui sont souvent ceux des personnes à qui on l'offre. En revanche, chaque exemplaire est signé à la main, à l'encre, sur le tirage. La signature reste un geste, et c'est elle qui rend honnête l'idée d'un abonnement.</dd>
+      <dd>Non, et volontairement. Je l'écris chaque mois sur ordinateur, puis je l'imprime. Je préfère qu'elle soit lisible par tout le monde, y compris par les yeux qui ne suivent plus facilement une écriture cursive, et qui sont souvent ceux des personnes à qui on l'offre. En revanche, chaque exemplaire est signé à la main, à l'encre, sur le tirage. La signature reste un geste, et c'est elle qui rend honnête l'idée d'un abonnement.</dd>
 
       <dt>Quand part la première enveloppe ?</dt>
       <dd>Toutes les enveloppes partent la deuxième semaine du mois. Si vous vous abonnez avant cette deuxième semaine, vous recevez l'enveloppe du mois en cours. Sinon, vous recevez celle du mois suivant.</dd>
 
       <dt>À quoi sert la carte postale ?</dt>
-      <dd>À deux choses, au choix. À la garder pour soi — comme une petite image du mois à punaiser quelque part. Ou à l'envoyer à quelqu'un d'autre, par voie postale : la carte est imprimée sur papier carte, prête à écrire et à affranchir. C'est une façon discrète d'inviter à la correspondance, comme on faisait avant. Si vous l'envoyez, une chaîne se forme entre Séoul, vous, et la personne à qui vous l'adressez.</dd>
+      <dd>À deux choses, au choix. À la garder pour soi, comme une petite image du mois à punaiser quelque part. Ou à l'envoyer à quelqu'un d'autre, par voie postale : la carte est imprimée sur papier carte, prête à écrire et à affranchir. C'est une façon discrète d'inviter à la correspondance, comme on faisait avant. Si vous l'envoyez, une chaîne se forme entre Séoul, vous, et la personne à qui vous l'adressez.</dd>
 
       <dt>Qu'est-ce que la fiche mémoire ?</dt>
-      <dd>Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école pour réviser. Au recto, quelque chose à apprendre : un mot d'une autre langue, un concept, un fait. Pas de leçon ni d'examen — juste un petit entraînement mensuel pour la mémoire, à glisser dans un agenda, à punaiser à côté du téléphone, ou à ressortir trois jours plus tard pour voir si ça tient.</dd>
+      <dd>Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école pour réviser. Au recto, quelque chose à apprendre : un mot d'une autre langue, un concept, un fait. Il n'y a pas de leçon ni d'examen, seulement un petit entraînement mensuel pour la mémoire, à glisser dans un agenda, à punaiser à côté du téléphone, ou à ressortir trois jours plus tard pour voir si ça tient.</dd>
 
       <dt>Comment annuler ou modifier l'adresse ?</dt>
       <dd>Depuis votre espace client Stripe. Le lien arrive avec votre confirmation de paiement et figure aussi sur chaque reçu. L'annulation y est immédiate ; la modification d'adresse prend effet dès l'envoi suivant.</dd>
