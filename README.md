@@ -17,7 +17,7 @@ Legacy product URLs are kept only as redirects:
 - `/letters/` redirects to `/courrier/`.
 - Per-locale `/shop/`, `/materials/`, and `/letters/` pages redirect to the same destinations.
 
-There is no backend and no generated shop grid in this version. The notebooks page explains the edition model and sends buyers to Naver.
+There is no backend and no generated shop grid in this version. The notebooks page explains the dated writing-objects line and sends buyers to Naver.
 
 ## Local Preview
 
@@ -44,11 +44,13 @@ Open `http://127.0.0.1:4173/`.
 | `media/web/` | Optimized media served by the site |
 | `sitemap.xml`, `robots.txt`, `CNAME` | SEO and GitHub Pages plumbing |
 
-## Editions Model
+## Dated Line Model
 
-Each notebook edition starts with one original watercolour. The original is sold as a 1/1 artwork. The image is scanned in high quality and printed on fifty notebook covers. Each notebook is sealed in red before shipping. Customers choose the format, binding thread, and inside page style.
+Studio Monjo is the house. Writing by hand is the center. Robey is one illustrated series inside that world.
 
-Paper is chosen carefully for each edition and may change when the artwork or writing experience calls for a different sheet.
+Each Robey in Seoul design is grounded by date, then kept available, paused, or retired when the line moves on. Customers choose the inside page style for the current notebook format.
+
+Paper is chosen carefully for fountain pen writing and may change when the artwork or writing experience calls for a different sheet.
 
 ## Media Pipeline
 

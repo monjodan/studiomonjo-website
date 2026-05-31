@@ -226,6 +226,43 @@ body.home-arrival {
   position: relative;
   z-index: 5;
 }
+.home-arrival-statement {
+  color: var(--ink);
+  left: 50%;
+  max-width: min(520px, calc(100vw - 260px));
+  pointer-events: none;
+  position: fixed;
+  text-align: center;
+  top: 78px;
+  transform: translateX(-50%);
+  z-index: 55;
+}
+.home-arrival-statement span {
+  color: var(--ink-light);
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.home-arrival-statement strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+html[lang="ko"] .home-arrival-statement strong {
+  font-family: var(--serif-ko);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-style: normal;
+  font-weight: 400;
+}
 .home-arrival-door {
   align-items: stretch;
   background: var(--paper-warm);
@@ -351,6 +388,7 @@ body.home-arrival.is-hovering .home-arrival-door:not(.is-hovered) .home-arrival-
 
 @media (max-width: 900px) {
   body.home-arrival { height: 100svh; overflow: hidden; }
+  .home-arrival-statement { display: none; }
   .home-arrival-logo { top: calc(18px + env(safe-area-inset-top)); }
   .home-arrival-corner {
     align-items: flex-start;
