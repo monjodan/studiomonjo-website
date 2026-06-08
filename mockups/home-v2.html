@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Monjo — Mockup v2: Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FFFFFF;
+  --paper-edge: #EEEEEE;
+  --ink: #0A0A0A;
+  --ink-mid: #666666;
+  --ink-soft: #999999;
+  --sans: 'Inter Tight', 'Pretendard', system-ui, -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* TOP BAR */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 48px;
+  background: var(--paper);
+  height: 64px;
+}
+.wordmark, .nav-link, .lang a, .lang span {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-right { display: flex; gap: 36px; align-items: center; }
+.nav-link { color: var(--ink-mid); }
+.nav-link:hover, .nav-link.active { color: var(--ink); }
+.lang { display: flex; gap: 10px; }
+.lang a { color: var(--ink-mid); letter-spacing: 0.24em; }
+.lang a.current { color: var(--ink); }
+.lang span { color: var(--ink-soft); letter-spacing: 0; }
+
+/* PAINTING ROW */
+.painting {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px;
+}
+.painting-img {
+  max-width: min(900px, 60vw);
+  max-height: 70vh;
+  width: auto; height: auto;
+  object-fit: contain;
+}
+.painting-label {
+  margin-top: 56px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.painting-label .sep { color: var(--ink-soft); margin: 0 12px; }
+.painting-label .price { color: var(--ink); }
+.painting-label.muted { color: var(--ink-soft); }
+
+/* INTRO PARAGRAPH */
+.intro {
+  padding: 240px 48px;
+  display: flex;
+  justify-content: center;
+}
+.intro-inner {
+  max-width: 580px;
+  text-align: center;
+}
+.intro-inner p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 1.4em;
+}
+.intro-inner p:last-child { margin-bottom: 0; }
+.intro-inner p .ko {
+  color: var(--ink-mid);
+  font-size: 13px;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px 48px;
+  text-align: center;
+}
+.footer-line {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.footer-line .sep { color: var(--ink-soft); margin: 0 14px; }
+
+/* MOCKUP TAG (kept minimal) */
+.mockup-tag {
+  position: fixed; top: 20px; right: 20px; z-index: 200;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: transparent;
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 20px 24px; }
+  .nav-right { gap: 18px; }
+  .painting { padding: 64px 24px; }
+  .painting-img { max-width: 90vw; max-height: 60vh; }
+  .painting-label { margin-top: 40px; font-size: 10px; }
+  .painting-label .sep { margin: 0 8px; }
+  .intro { padding: 160px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="mockup-tag">Mockup v2</div>
+
+<nav>
+  <a href="#" class="wordmark">Studio Monjo</a>
+  <div class="nav-right">
+    <a href="#" class="nav-link">Editions</a>
+    <a href="#" class="nav-link">Writing</a>
+    <a href="#" class="nav-link">About</a>
+    <span class="lang">
+      <a href="#" class="current">EN</a>
+      <span>·</span>
+      <a href="#">한국어</a>
+    </span>
+  </div>
+</nav>
+
+<section class="painting">
+  <img class="painting-img" src="../media/web/notebooks/L1001423.jpg" alt="Lotus, No. 002">
+  <p class="painting-label">
+    Lotus, No. 002 <span class="sep">—</span> 연꽃 <span class="sep">—</span> A6 <span class="sep">—</span> 7 of 20 remaining <span class="sep">—</span> <span class="price">₩65,000</span>
+  </p>
+</section>
+
+<section class="painting">
+  <img class="painting-img" src="../media/web/notebooks/IMG_4604.jpg" alt="Birds & Berries, No. 001">
+  <p class="painting-label muted">
+    Birds &amp; Berries, No. 001 <span class="sep">—</span> 새와 열매 <span class="sep">—</span> A6 <span class="sep">—</span> Edition closed
+  </p>
+</section>
+
+<section class="painting">
+  <img class="painting-img" src="../media/web/notebooks/IMG_4606.jpg" alt="Plum Branch, No. 003">
+  <p class="painting-label">
+    Plum Branch, No. 003 <span class="sep">—</span> 매화 가지 <span class="sep">—</span> A5 <span class="sep">—</span> 14 of 20 remaining <span class="sep">—</span> <span class="price">₩95,000</span>
+  </p>
+</section>
+
+<section class="intro">
+  <div class="intro-inner">
+    <p>Studio Monjo makes hand-painted notebooks and letter cards in Seoul. Each design is painted in a run of twenty, hand-numbered, and never repeated.</p>
+    <p>The work is small, slow, and made for the kind of writer who already knows the difference one good page can make.</p>
+    <p class="ko"><span class="ko">서울에서 손으로 그리는 수채화 노트와 편지 카드. 각 디자인은 20점 한정.</span></p>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-line">Studio Monjo <span class="sep">·</span> Seoul <span class="sep">·</span> 2026</p>
+</footer>
+
+</body>
+</html>

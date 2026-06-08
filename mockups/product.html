@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Monjo — Mockup: Lotus, No. 002</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F7F3EC;
+  --paper-soft: #EFEAE0;
+  --paper-edge: #E4DED2;
+  --ink: #1A1612;
+  --ink-mid: #5A544C;
+  --ink-soft: #8B847A;
+  --ink-faint: #B8B1A4;
+  --vermilion: #A83227;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --serif-ko: 'Nanum Myeongjo', serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  padding-top: 88px;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 56px;
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.nav-logo { display: inline-flex; align-items: baseline; gap: 14px; }
+.nav-mark { width: 14px; height: 14px; background: var(--vermilion); display: inline-block; transform: translateY(2px); }
+.nav-word { font-family: var(--sans); font-size: 11px; font-weight: 300; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.nav-right { display: flex; gap: 36px; align-items: center; }
+.nav-link { font-family: var(--sans); font-size: 11px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; }
+.nav-link.active { color: var(--ink); }
+.nav-link:hover { color: var(--ink); }
+.lang { display: flex; gap: 10px; align-items: center; font-family: var(--sans); font-size: 10px; letter-spacing: 0.18em; color: var(--ink-faint); }
+.lang a { color: var(--ink-faint); }
+.lang .current { color: var(--ink); }
+
+/* BREADCRUMB */
+.crumbs {
+  max-width: 1200px;
+  margin: 64px auto 56px;
+  padding: 0 56px;
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.crumbs a { color: var(--ink-soft); }
+.crumbs a:hover { color: var(--ink); }
+.crumbs .sep { margin: 0 14px; color: var(--ink-faint); }
+
+/* LEAD IMAGE */
+.lead {
+  max-width: 900px;
+  margin: 0 auto 96px;
+  padding: 0 32px;
+}
+.lead img {
+  width: 100%;
+  height: auto;
+  background: var(--paper-soft);
+}
+
+/* TITLE */
+.title-block {
+  max-width: 580px;
+  margin: 0 auto 64px;
+  padding: 0 32px;
+  text-align: center;
+}
+.title-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 24px;
+}
+.title-en {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.005em;
+}
+.title-ko {
+  font-family: var(--serif-ko);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+}
+.title-meta {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.title-meta .dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--ink-faint); margin: 0 12px; vertical-align: middle; }
+
+/* SUPPORTING IMAGES */
+.supporting {
+  max-width: 1200px;
+  margin: 0 auto 128px;
+  padding: 0 56px;
+}
+.supporting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.supporting-grid figure {
+  position: relative;
+  background: var(--paper-soft);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.supporting-grid figure img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+.supporting-grid figure:hover img { transform: scale(1.03); }
+.supporting-grid figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(26, 22, 18, 0.7));
+  padding: 32px 24px 16px;
+  color: #FAF7F2;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.supporting-grid figure:hover figcaption { opacity: 1; }
+
+/* PROSE */
+.prose {
+  max-width: 580px;
+  margin: 0 auto 96px;
+  padding: 0 32px;
+}
+.prose p {
+  font-size: 20px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+}
+.prose p:last-child { margin-bottom: 0; }
+
+/* THIS COPY */
+.this-copy {
+  max-width: 580px;
+  margin: 0 auto 96px;
+  padding: 64px 32px;
+  border-top: 1px solid var(--paper-edge);
+  border-bottom: 1px solid var(--paper-edge);
+  text-align: center;
+}
+.this-copy-label {
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 300;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 20px;
+}
+.this-copy-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.this-copy-text strong { font-weight: 500; font-style: normal; color: var(--vermilion); }
+
+/* MATERIALS */
+.materials {
+  max-width: 580px;
+  margin: 0 auto 96px;
+  padding: 0 32px;
+}
+.materials-label {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.materials dl {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 18px 24px;
+}
+.materials dt {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 4px;
+}
+.materials dd {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* PRICE / BUY */
+.action {
+  max-width: 580px;
+  margin: 96px auto 240px;
+  padding: 0 32px;
+  text-align: center;
+}
+.action-price {
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 400;
+  letter-spacing: 0.10em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.action-price .dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--ink-faint); margin: 0 12px; vertical-align: middle; }
+.action-buy {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--vermilion);
+  border-bottom: 1px solid var(--vermilion);
+  padding: 8px 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.action-buy:hover { color: var(--ink); border-color: var(--ink); }
+.action-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 28px;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--paper-edge);
+  padding: 64px 56px 48px;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.footer-mark { display: flex; align-items: baseline; gap: 12px; }
+.footer-mark .dot { width: 10px; height: 10px; background: var(--vermilion); transform: translateY(1px); }
+.footer-mark .word { font-family: var(--sans); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.footer-meta { font-family: var(--sans); font-size: 10px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--ink-soft); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-family: var(--sans); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+.footer-links a:hover { color: var(--ink); }
+
+/* MOCKUP TAG */
+.mockup-tag {
+  position: fixed; top: 12px; right: 12px; z-index: 200;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--sans); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 6px 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="mockup-tag">Mockup · Product</div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-mark"></span>
+    <span class="nav-word">Studio Monjo</span>
+  </a>
+  <div class="nav-right">
+    <a href="#" class="nav-link active">Editions</a>
+    <a href="#" class="nav-link">Writing</a>
+    <a href="#" class="nav-link">Materials</a>
+    <a href="#" class="nav-link">About</a>
+    <span class="lang">
+      <span class="current">EN</span>
+      <span>·</span>
+      <a href="#">한국어</a>
+    </span>
+  </div>
+</nav>
+
+<nav class="crumbs" aria-label="Breadcrumb" style="position: static; padding: 0 56px; height: auto; background: transparent; border: none; display: block;">
+  <a href="#">Editions</a><span class="sep">·</span><a href="#">A6 notebooks</a><span class="sep">·</span><span>Lotus, No. 002</span>
+</nav>
+
+<section class="lead">
+  <img src="../media/web/notebooks/L1001423.jpg" alt="Lotus notebook, full cover">
+</section>
+
+<section class="title-block">
+  <div class="title-eyebrow">Edition of 20 · Painted February 2026</div>
+  <h1 class="title-en">Lotus, No. 002</h1>
+  <p class="title-ko">연꽃, 두 번째 에디션</p>
+  <p class="title-meta">A6 <span class="dot"></span> 40 pages <span class="dot"></span> Iroful 75gsm <span class="dot"></span> Hand-stitched</p>
+</section>
+
+<section class="supporting">
+  <div class="supporting-grid">
+    <figure>
+      <img src="../media/web/notebooks/L1001425.jpg" alt="Detail of plum branch and lotus painting">
+      <figcaption>Detail · Plum branch over lotus</figcaption>
+    </figure>
+    <figure>
+      <img src="../media/web/notebooks/L1001424.jpg" alt="Hand-stitched binding">
+      <figcaption>Binding · French waxed linen, hand-stitched</figcaption>
+    </figure>
+    <figure>
+      <img src="../media/web/notebooks/IMG_4606.jpg" alt="Notebook in hand for scale">
+      <figcaption>Scale · Held in the hand, A6</figcaption>
+    </figure>
+    <figure>
+      <img src="../media/web/notebooks/IMG_4605.jpg" alt="Vermilion seal stamped on cover">
+      <figcaption>Seal · Vermilion, hand-stamped</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="prose">
+  <p>The second edition. A branch of plum blossom painted in ink, arcing over a red lotus blooming at the base. Each cover is finished with a small vermilion seal, stamped by hand.</p>
+  <p>Like every Studio Monjo edition, the twenty are variations on a theme. The composition is the same. The marks, the drips, the placement of the seal vary from one cover to the next. Painted in February in the studio in Seongsu, on the same week the first plum blossoms came out along the Han River.</p>
+</section>
+
+<section class="this-copy">
+  <p class="this-copy-label">About this copy</p>
+  <p class="this-copy-text">This is number <strong>7 of 20.</strong> The plum branch sits a touch higher than usual; the seal is stamped slightly off-center, just below the blossom on the left. Signed inside the back cover.</p>
+</section>
+
+<section class="materials">
+  <p class="materials-label">Materials</p>
+  <dl>
+    <dt>Cover</dt>
+    <dd>Hahnemühle 230gsm watercolour paper, painted by hand.</dd>
+    <dt>Paper</dt>
+    <dd>Iroful 75gsm, from Sakae in Tokyo. Fountain-pen ready, no feathering, no bleed.</dd>
+    <dt>Ink</dt>
+    <dd>Platinum Pigment Carbon, archival.</dd>
+    <dt>Watercolour</dt>
+    <dd>Nevskaya Palitra, Saint Petersburg.</dd>
+    <dt>Thread</dt>
+    <dd>French waxed linen, hand-stitched.</dd>
+    <dt>Seal</dt>
+    <dd>Vermilion, hand-stamped from the studio chop.</dd>
+  </dl>
+</section>
+
+<section class="action">
+  <p class="action-price">₩65,000 <span class="dot"></span> €43 <span class="dot"></span> $48</p>
+  <a href="#" class="action-buy">Reserve this copy →</a>
+  <p class="action-note">Ships within five days from Seoul. Free worldwide shipping over ₩90,000.</p>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <span class="dot"></span>
+      <span class="word">Studio Monjo</span>
+    </div>
+    <div class="footer-meta">Seoul · © 2026</div>
+    <div class="footer-links">
+      <a href="#">Editions</a>
+      <a href="#">Writing</a>
+      <a href="#">Materials</a>
+      <a href="#">About</a>
+      <a href="#">한국어</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
