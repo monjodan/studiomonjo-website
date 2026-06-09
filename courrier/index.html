@@ -3,6 +3,7 @@
   Courrier de Séoul: French only subscription page.
 
   PayPal hosted button IDs:
+    Monthly subscription: P-22199535T89054321NIT743Q
     Three months: PSFPGF5SCTZUN
     One year: KZBGWZ5PK8X3C
 
@@ -73,13 +74,21 @@
   "brand": { "@type": "Organization", "name": "Studio Monjo" },
   "offers": {
     "@type": "AggregateOffer",
-    "lowPrice": "40.00",
+    "lowPrice": "15.00",
     "highPrice": "120.00",
     "priceCurrency": "EUR",
-    "offerCount": "2",
+    "offerCount": "3",
     "url": "https://studiomonjo.com/courrier/",
     "availability": "https://schema.org/InStock",
     "offers": [
+      {
+        "@type": "Offer",
+        "name": "Courrier de Séoul, abonnement mensuel",
+        "price": "15.00",
+        "priceCurrency": "EUR",
+        "url": "https://studiomonjo.com/courrier/#offrir",
+        "availability": "https://schema.org/InStock"
+      },
       {
         "@type": "Offer",
         "name": "Courrier de Séoul, trois mois",
@@ -512,6 +521,13 @@
     gap: 24px;
   }
   @media (max-width: 600px) { .pricing-tiers--two { grid-template-columns: minmax(0, 320px); } }
+  .pricing-tiers--courrier {
+    grid-template-columns: repeat(3, minmax(0, 260px));
+    justify-content: center;
+    gap: 18px;
+  }
+  @media (max-width: 900px) { .pricing-tiers--courrier { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .pricing-tiers--courrier { grid-template-columns: minmax(0, 340px); } }
   .pricing-tier {
     appearance: none;
     background: var(--paper-warm);
@@ -537,22 +553,6 @@
     border-color: var(--ink-warm);
     outline: 2px solid var(--ink-warm);
     outline-offset: 4px;
-  }
-  .pricing-tier--featured {
-    border-color: var(--ink-warm);
-  }
-  .pricing-tier--featured::before {
-    content: 'Meilleur prix';
-    position: absolute;
-    top: -10px; left: 22px;
-    background: var(--ink-warm);
-    color: var(--paper-warm);
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 4px 10px;
   }
   .pricing-tier-label {
     font-family: var(--sans);
@@ -694,6 +694,16 @@
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
+  }
+  .payment-success {
+    border: 1px solid var(--rule);
+    color: var(--ink-warm);
+    font-family: var(--sans);
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 16px;
+    text-align: center;
   }
   body.payment-dialog-open { overflow: hidden; }
 
@@ -894,7 +904,7 @@
         </li>
         <li>
           <div class="process-num"><em>iv.</em></div>
-          <p class="process-text">Chaque paiement couvre la durée choisie. Avant la dernière enveloppe, je vous écris pour confirmer si vous souhaitez renouveler ou arrêter.</p>
+          <p class="process-text">L'abonnement mensuel se renouvelle automatiquement. Les durées de trois mois et d'un an sont payées une seule fois ; avant la dernière enveloppe, je vous écris pour confirmer si vous souhaitez renouveler ou arrêter.</p>
         </li>
       </ol>
     </div>
@@ -907,7 +917,14 @@
       <h2 class="section-title">Choisissez la durée.</h2>
       <p style="max-width: 560px; margin: 0 auto 8px;">Le paiement est sécurisé par PayPal, avec un compte PayPal ou par carte bancaire. Aucun compte PayPal n'est nécessaire pour payer par carte. Après paiement, je vous écris sous 48 heures pour confirmer l'adresse de livraison : la vôtre si l'abonnement est pour vous, celle d'une autre personne si vous l'offrez.</p>
 
-      <div class="pricing-tiers pricing-tiers--two">
+      <div class="pricing-tiers pricing-tiers--courrier">
+        <button class="pricing-tier" type="button" data-paypal-plan="monthly" aria-haspopup="dialog" aria-controls="payment-dialog">
+          <div class="pricing-tier-label">Mensuel</div>
+          <div class="pricing-tier-price">15 €<span class="pricing-tier-suffix"> / mois</span></div>
+          <div class="pricing-tier-saving">Renouvelé chaque mois<br><strong>Annulable avant le prochain envoi</strong></div>
+          <div class="pricing-tier-detail">Une enveloppe par mois<br>Pour recevoir sans choisir de fin</div>
+          <div class="pricing-tier-cta">S'abonner mensuellement</div>
+        </button>
         <button class="pricing-tier" type="button" data-paypal-plan="quarterly" aria-haspopup="dialog" aria-controls="payment-dialog">
           <div class="pricing-tier-label">Trois mois</div>
           <div class="pricing-tier-price">40 €</div>
@@ -915,7 +932,7 @@
           <div class="pricing-tier-detail">Trois enveloppes<br>Pour essayer ou offrir</div>
           <div class="pricing-tier-cta">Choisir cette durée</div>
         </button>
-        <button class="pricing-tier pricing-tier--featured" type="button" data-paypal-plan="yearly" aria-haspopup="dialog" aria-controls="payment-dialog">
+        <button class="pricing-tier" type="button" data-paypal-plan="yearly" aria-haspopup="dialog" aria-controls="payment-dialog">
           <div class="pricing-tier-label">À l'année</div>
           <div class="pricing-tier-price">120 €<span class="pricing-tier-suffix"> / an</span></div>
           <div class="pricing-tier-saving">Soit 10 € par mois<br><strong>60 € économisés (33 %)</strong></div>
@@ -925,7 +942,7 @@
       </div>
 
       <p class="pricing-trust">Paiement sécurisé par <strong>PayPal</strong>. Vous pouvez payer avec PayPal ou par carte bancaire, sans compte PayPal.</p>
-      <p class="pricing-trust">Expédition en France métropolitaine. Chaque paiement couvre la durée choisie ; les enveloppes non envoyées peuvent être remboursées si besoin.</p>
+      <p class="pricing-trust">Expédition en France métropolitaine. Les enveloppes non envoyées peuvent être remboursées si besoin.</p>
     </div>
   </section>
 
@@ -950,7 +967,7 @@
       <dd>Une petite fiche chaque mois, dans l'esprit de celles qu'on faisait à l'école pour réviser. Au recto, quelque chose à apprendre : un mot d'une autre langue, un concept, un fait. Il n'y a pas de leçon ni d'examen, seulement un petit entraînement mensuel pour la mémoire, à glisser dans un agenda, à punaiser à côté du téléphone, ou à ressortir trois jours plus tard pour voir si ça tient.</dd>
 
       <dt>Comment annuler ou modifier l'adresse ?</dt>
-      <dd>Pour modifier l'adresse, il suffit de répondre à l'email de confirmation. Pour arrêter, vous pouvez ne pas renouveler à la fin de la période choisie. Si vous souhaitez interrompre avant, écrivez-moi et les enveloppes non envoyées sont remboursées.</dd>
+      <dd>Pour modifier l'adresse, il suffit de répondre à l'email de confirmation. Pour arrêter l'abonnement mensuel, vous pouvez l'annuler depuis PayPal ou m'écrire. Pour les formules trois mois et un an, vous pouvez simplement ne pas renouveler à la fin de la période choisie. Si vous souhaitez interrompre avant, écrivez-moi et les enveloppes non envoyées sont remboursées.</dd>
 
       <dt>Faut-il un compte PayPal ?</dt>
       <dd>Non. Le paiement est géré par PayPal, mais vous pouvez choisir le paiement par carte bancaire sans créer de compte PayPal.</dd>
@@ -979,10 +996,18 @@
   </div>
 </dialog>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAAGKJEn0xU8IlDFtKR_2SX2oyjKNN6W7XGooWhciKr-NxGvvz4-V6KbmxjYoc8riqc-OqSAde4SrCz6rw&amp;components=hosted-buttons&amp;disable-funding=venmo&amp;currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAJVahq7PY3LuyA0rggLn4F4XMKs36oupFhjScPP_iMgNWedXpItkMAHE4boEW6O-YmHk-97gBNDH8x6I&amp;vault=true&amp;intent=subscription&amp;components=buttons,hosted-buttons&amp;disable-funding=venmo&amp;currency=EUR"></script>
 <script>
 (function () {
   var plans = {
+    monthly: {
+      type: 'subscription',
+      planId: 'P-22199535T89054321NIT743Q',
+      label: "l'abonnement mensuel",
+      title: 'Abonnement mensuel',
+      text: "Une enveloppe Courrier de Séoul chaque mois. L'abonnement se renouvelle automatiquement via PayPal, 15 € par mois, et peut être annulé avant le prochain envoi.",
+      url: 'https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-22199535T89054321NIT743Q'
+    },
     quarterly: {
       hostedButtonId: 'PSFPGF5SCTZUN',
       label: 'trois mois',
@@ -1014,6 +1039,11 @@
   function renderPayPal(plan) {
     slot.innerHTML = '<p class="payment-loading">Chargement du paiement PayPal...</p>';
 
+    if (plan.type === 'subscription') {
+      renderSubscription(plan);
+      return;
+    }
+
     if (!window.paypal || !window.paypal.HostedButtons) {
       slot.innerHTML = fallbackMarkup(plan);
       return;
@@ -1025,6 +1055,45 @@
       var rendered = window.paypal.HostedButtons({
         hostedButtonId: plan.hostedButtonId
       }).render('#paypal-hosted-button-active');
+
+      if (rendered && typeof rendered.catch === 'function') {
+        rendered.catch(function () {
+          slot.innerHTML = fallbackMarkup(plan);
+        });
+      }
+    } catch (err) {
+      slot.innerHTML = fallbackMarkup(plan);
+    }
+  }
+
+  function renderSubscription(plan) {
+    if (!window.paypal || !window.paypal.Buttons) {
+      slot.innerHTML = fallbackMarkup(plan);
+      return;
+    }
+
+    slot.innerHTML = '<div id="paypal-subscription-button-active"></div>';
+
+    try {
+      var rendered = window.paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'silver',
+          layout: 'vertical',
+          label: 'paypal'
+        },
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            plan_id: plan.planId
+          });
+        },
+        onApprove: function (data) {
+          slot.innerHTML = '<p class="payment-success">Merci. Votre abonnement mensuel est confirmé.<br>Référence PayPal : ' + data.subscriptionID + '</p>';
+        },
+        onError: function () {
+          slot.innerHTML = fallbackMarkup(plan);
+        }
+      }).render('#paypal-subscription-button-active');
 
       if (rendered && typeof rendered.catch === 'function') {
         rendered.catch(function () {
