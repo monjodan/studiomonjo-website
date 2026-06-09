@@ -1,9 +1,7 @@
 /**
  * Studio Monjo — home arrival page (the doors landing).
  *
- *   1. Hover/focus a door → fade in its background photograph + make
- *      the other doors translucent. Driven by JS class toggles so it
- *      works regardless of :has() support and regardless of DOM order.
+ *   1. Desktop: hover/focus gives the active door a subtle opening state.
  *   2. Mobile: tapping anywhere on a door (outside the explicit buttons)
  *      navigates to the door's primary destination.
  *
@@ -12,43 +10,37 @@
  * browser handles the paint.
  */
 (function () {
-  var body = document.body;
-  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
   var canPreview = !isMobile && (!window.matchMedia || window.matchMedia('(hover: hover) and (pointer: fine)').matches);
 
   var doors = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-door'));
-  var bgs   = Array.prototype.slice.call(document.querySelectorAll('.home-arrival-bg'));
 
-  // --- 1. HOVER / FOCUS — activate the matching background ----------------
+  // --- 1. DESKTOP — active door state --------------------------------------
   function activateDoor(n) {
-    body.classList.add('is-hovering');
-    bgs.forEach(function (bg) {
-      bg.classList.toggle('is-active', bg.dataset.bg === String(n));
-    });
-    doors.forEach(function (d) {
-      d.classList.toggle('is-hovered', d.dataset.door === String(n));
+    document.body.classList.add('is-hovering');
+    document.body.classList.remove('is-door-1-active', 'is-door-2-active', 'is-door-3-active');
+    document.body.classList.add('is-door-' + n + '-active');
+    doors.forEach(function (door) {
+      door.classList.toggle('is-hovered', door.dataset.door === String(n));
     });
   }
   function deactivateDoors() {
-    body.classList.remove('is-hovering');
-    bgs.forEach(function (bg) { bg.classList.remove('is-active'); });
-    doors.forEach(function (d) { d.classList.remove('is-hovered'); });
+    document.body.classList.remove('is-hovering', 'is-door-1-active', 'is-door-2-active', 'is-door-3-active');
+    doors.forEach(function (door) { door.classList.remove('is-hovered'); });
   }
   if (canPreview) {
     doors.forEach(function (door) {
       var n = door.dataset.door;
       door.addEventListener('mouseenter', function () { activateDoor(n); });
-      door.addEventListener('focusin',    function () { activateDoor(n); });
+      door.addEventListener('focusin', function () { activateDoor(n); });
       door.addEventListener('mouseleave', function () {
-        // Defer so a quick move to a sibling door doesn't flicker
         setTimeout(function () {
           if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
         }, 0);
       });
       door.addEventListener('focusout', function () {
         setTimeout(function () {
-          if (!doors.some(function (d) { return d.matches(':focus-within') || d.matches(':hover'); })) deactivateDoors();
+          if (!doors.some(function (d) { return d.matches(':hover') || d.matches(':focus-within'); })) deactivateDoors();
         }, 0);
       });
     });
