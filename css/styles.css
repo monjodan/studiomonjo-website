@@ -344,9 +344,6 @@ html[lang="ko"] .home-arrival-hero em {
   width: 100%;
   z-index: 2;
 }
-.home-arrival-door-2 .home-arrival-door-inner {
-  max-width: 320px;
-}
 .home-arrival-door-body {
   left: 0;
   position: absolute;
@@ -466,7 +463,12 @@ html[lang="ko"] .home-arrival-door-route { font-family: var(--sans-ko); letter-s
 }
 
 @media (max-width: 900px) {
-  body.home-arrival { height: 100svh; overflow: hidden; }
+  body.home-arrival {
+    height: auto;
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
   .home-arrival-hero { display: none; }
   .home-arrival-logo { top: calc(18px + env(safe-area-inset-top)); }
   .home-arrival-corner {
@@ -475,14 +477,14 @@ html[lang="ko"] .home-arrival-door-route { font-family: var(--sans-ko); letter-s
   }
   .home-arrival-page {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, minmax(0, 1fr));
-    height: 100svh;
-    min-height: 0;
+    grid-template-rows: none;
+    height: auto;
+    min-height: 100svh;
   }
   .home-arrival-door {
     border-bottom: 0.5px solid rgba(10,10,10,0.06);
     border-right: 0;
-    min-height: 0;
+    min-height: calc(100svh / 3);
     padding: 18px 22px;
   }
   .home-arrival-door::before,
@@ -500,6 +502,7 @@ html[lang="ko"] .home-arrival-door-route { font-family: var(--sans-ko); letter-s
   }
   .home-arrival-door-body {
     position: static;
+    width: 100%;
   }
   .home-arrival-door-mark {
     height: 26px;
@@ -522,7 +525,7 @@ html[lang="ko"] .home-arrival-door-route { font-family: var(--sans-ko); letter-s
     margin-bottom: 10px;
     max-width: none;
   }
-  .home-arrival-door-actions { gap: 8px; }
+  .home-arrival-door-actions { gap: 8px; width: 100%; }
   .home-arrival-door-actions .home-arrival-btn {
     font-size: 10px;
     letter-spacing: 0.1em;
