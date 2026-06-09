@@ -2,10 +2,10 @@
 <!--
   Courrier de Séoul: French only subscription page.
 
-  PayPal hosted button IDs:
-    Monthly subscription: P-22199535T89054321NIT743Q
-    Three months: PSFPGF5SCTZUN
-    One year: KZBGWZ5PK8X3C
+  PayPal IDs:
+    Monthly subscription plan: P-22199535T89054321NIT743Q
+    Three-month payment link: PSFPGF5SCTZUN
+    One-year payment link: KZBGWZ5PK8X3C
 
   DISPATCH RULE (referenced in copy and FAQ):
     All envelopes ship in the second week of each month. Subscribers who
@@ -675,6 +675,51 @@
   .paypal-button-slot {
     min-height: 118px;
   }
+  .paypal-button-frame {
+    margin: 0 auto;
+    max-width: 360px;
+  }
+  .subscription-summary {
+    margin: 0 auto 20px;
+    max-width: 360px;
+  }
+  .subscription-summary-figure {
+    aspect-ratio: 4 / 5;
+    background: var(--paper-warm-darker);
+    margin: 0 auto 14px;
+    max-width: 240px;
+    overflow: hidden;
+    width: min(68vw, 240px);
+  }
+  .subscription-summary-figure img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+  .subscription-summary-title {
+    color: var(--ink-warm);
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+  .subscription-summary-price {
+    color: var(--ink-warm);
+    font-family: var(--serif);
+    font-size: 1.28rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+  .subscription-summary-body {
+    color: var(--ink-warm-mid);
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin: 0;
+  }
   .payment-loading,
   .payment-fallback {
     border: 1px solid var(--rule);
@@ -910,7 +955,7 @@
     </div>
   </section>
 
-  <!-- PRICING: subscription tiers paid with PayPal hosted buttons. -->
+  <!-- PRICING: subscription tiers paid with PayPal. -->
   <section id="offrir" class="courrier-section courrier-section--wide" style="text-align: center;">
       <div class="pricing-block">
         <div class="section-eyebrow" style="text-align: center;">S'abonner ou offrir</div>
@@ -922,27 +967,27 @@
           <div class="pricing-tier-label">Mensuel</div>
           <div class="pricing-tier-price">15 €<span class="pricing-tier-suffix"> / mois</span></div>
           <div class="pricing-tier-saving">Renouvelé chaque mois<br><strong>Annulable avant le prochain envoi</strong></div>
-          <div class="pricing-tier-detail">Une enveloppe par mois<br>Pour recevoir sans choisir de fin</div>
+          <div class="pricing-tier-detail">Une enveloppe chaque mois<br>Lettre, carte postale, fiche mémoire<br>Livraison incluse en France</div>
           <div class="pricing-tier-cta">S'abonner mensuellement</div>
         </button>
         <button class="pricing-tier" type="button" data-paypal-plan="quarterly" aria-haspopup="dialog" aria-controls="payment-dialog">
           <div class="pricing-tier-label">Trois mois</div>
           <div class="pricing-tier-price">40 €</div>
           <div class="pricing-tier-saving">Soit 13,33 € par mois<br><strong>5 € économisés (11 %)</strong></div>
-          <div class="pricing-tier-detail">Trois enveloppes<br>Pour essayer ou offrir</div>
+          <div class="pricing-tier-detail">Trois enveloppes<br>Lettre, carte postale, fiche mémoire<br>Livraison incluse en France</div>
           <div class="pricing-tier-cta">Choisir cette durée</div>
         </button>
         <button class="pricing-tier" type="button" data-paypal-plan="yearly" aria-haspopup="dialog" aria-controls="payment-dialog">
           <div class="pricing-tier-label">À l'année</div>
           <div class="pricing-tier-price">120 €<span class="pricing-tier-suffix"> / an</span></div>
           <div class="pricing-tier-saving">Soit 10 € par mois<br><strong>60 € économisés (33 %)</strong></div>
-          <div class="pricing-tier-detail">Douze enveloppes<br>Le meilleur tarif</div>
+          <div class="pricing-tier-detail">Douze enveloppes<br>Lettre, carte postale, fiche mémoire<br>Livraison incluse en France</div>
           <div class="pricing-tier-cta">Choisir cette durée</div>
         </button>
       </div>
 
       <p class="pricing-trust">Paiement sécurisé par <strong>PayPal</strong>. Vous pouvez payer avec PayPal ou par carte bancaire, sans compte PayPal.</p>
-      <p class="pricing-trust">Expédition en France métropolitaine. Les enveloppes non envoyées peuvent être remboursées si besoin.</p>
+      <p class="pricing-trust">Livraison incluse en France métropolitaine.</p>
     </div>
   </section>
 
@@ -1005,21 +1050,24 @@
       planId: 'P-22199535T89054321NIT743Q',
       label: "l'abonnement mensuel",
       title: 'Abonnement mensuel',
-      text: "Une enveloppe Courrier de Séoul chaque mois. L'abonnement se renouvelle automatiquement via PayPal, 15 € par mois, et peut être annulé avant le prochain envoi.",
+      text: "Une enveloppe Courrier de Séoul chaque mois. Le paiement est sécurisé par PayPal ; vous pouvez payer avec PayPal ou par carte bancaire.",
+      productTitle: 'Courrier de Séoul · abonnement mensuel',
+      productPrice: '€15.00 EUR / mois',
+      productText: "Chaque mois, une lettre préparée à Séoul est envoyée à une adresse en France, avec une carte postale et une fiche mémoire. Livraison incluse. Annulable avant le prochain envoi.",
       url: 'https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-22199535T89054321NIT743Q'
     },
     quarterly: {
       hostedButtonId: 'PSFPGF5SCTZUN',
       label: 'trois mois',
       title: 'Trois mois',
-      text: "Trois enveloppes Courrier de Séoul. Paiement par PayPal ou carte bancaire, 40 €. Aucun compte PayPal n'est nécessaire pour payer par carte.",
+      text: "Trois enveloppes Courrier de Séoul : lettre, carte postale et fiche mémoire. Livraison incluse. Après paiement, je vous écris pour confirmer l'adresse et l'éventuel message à glisser dans la première enveloppe. Paiement par PayPal ou carte bancaire, 40 €.",
       url: 'https://www.paypal.com/ncp/payment/PSFPGF5SCTZUN'
     },
     yearly: {
       hostedButtonId: 'KZBGWZ5PK8X3C',
       label: 'un an',
       title: 'Un an',
-      text: "Douze enveloppes Courrier de Séoul. Paiement par PayPal ou carte bancaire, 120 €. Aucun compte PayPal n'est nécessaire pour payer par carte.",
+      text: "Douze enveloppes Courrier de Séoul : lettre, carte postale et fiche mémoire. Livraison incluse. Après paiement, je vous écris pour confirmer l'adresse et l'éventuel message à glisser dans la première enveloppe. Paiement par PayPal ou carte bancaire, 120 €.",
       url: 'https://www.paypal.com/ncp/payment/KZBGWZ5PK8X3C'
     }
   };
@@ -1029,11 +1077,32 @@
   var text = document.getElementById('payment-dialog-text');
   var slot = document.getElementById('paypal-button-slot');
   var activeTrigger = null;
+  var paypalButtonStyle = {
+    shape: 'pill',
+    color: 'silver',
+    layout: 'vertical',
+    label: 'paypal',
+    height: 45
+  };
 
   if (!dialog || !title || !text || !slot) return;
 
   function fallbackMarkup(plan) {
     return '<p class="payment-fallback">Le bouton PayPal ne s&rsquo;est pas chargé. Vous pouvez ouvrir le paiement directement.<br><a href="' + plan.url + '" target="_blank" rel="noopener noreferrer">Ouvrir PayPal pour ' + plan.label + '</a></p>';
+  }
+
+  function subscriptionSummaryMarkup(plan) {
+    return '<div class="subscription-summary">' +
+      '<figure class="subscription-summary-figure">' +
+        '<picture>' +
+          '<source srcset="../media/web/photography/L1001514.webp" type="image/webp">' +
+          '<img src="../media/web/photography/L1001514.jpg" alt="Lettre Courrier de Séoul imprimée sur hanji, posée près d&rsquo;une plante." loading="lazy" decoding="async" width="1363" height="2048">' +
+        '</picture>' +
+      '</figure>' +
+      '<p class="subscription-summary-title">' + plan.productTitle + '</p>' +
+      '<p class="subscription-summary-price">' + plan.productPrice + '</p>' +
+      '<p class="subscription-summary-body">' + plan.productText + '</p>' +
+    '</div>';
   }
 
   function renderPayPal(plan) {
@@ -1049,11 +1118,12 @@
       return;
     }
 
-    slot.innerHTML = '<div id="paypal-hosted-button-active"></div>';
+    slot.innerHTML = '<div class="paypal-button-frame" id="paypal-hosted-button-active"></div>';
 
     try {
       var rendered = window.paypal.HostedButtons({
-        hostedButtonId: plan.hostedButtonId
+        hostedButtonId: plan.hostedButtonId,
+        style: paypalButtonStyle
       }).render('#paypal-hosted-button-active');
 
       if (rendered && typeof rendered.catch === 'function') {
@@ -1072,16 +1142,11 @@
       return;
     }
 
-    slot.innerHTML = '<div id="paypal-subscription-button-active"></div>';
+    slot.innerHTML = subscriptionSummaryMarkup(plan) + '<div class="paypal-button-frame" id="paypal-subscription-button-active"></div>';
 
     try {
       var rendered = window.paypal.Buttons({
-        style: {
-          shape: 'pill',
-          color: 'silver',
-          layout: 'vertical',
-          label: 'paypal'
-        },
+        style: paypalButtonStyle,
         createSubscription: function (data, actions) {
           return actions.subscription.create({
             plan_id: plan.planId
