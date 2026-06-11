@@ -90,9 +90,11 @@
     text-rendering: optimizeLegibility;
     padding-top: 0;
   }
-  body.notebooks img { max-width: 100%; height: auto; display: block; }
+  body.notebooks img,
+  body.notebooks video { max-width: 100%; height: auto; display: block; }
   body.notebooks .nb-maison-visual img,
   body.notebooks .nb-section-figure img,
+  body.notebooks .nb-section-figure video,
   body.notebooks .nb-details-grid img,
   body.notebooks .nb-modal-maker-figure img {
     width: 100%;
@@ -389,13 +391,15 @@
     aspect-ratio: 4 / 5;
   }
   .nb-section-figure picture,
-  .nb-section-figure img {
+  .nb-section-figure img,
+  .nb-section-figure video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
-  .nb-section-figure img {
+  .nb-section-figure img,
+  .nb-section-figure video {
     object-fit: cover;
   }
   .nb-maison-label {
@@ -620,7 +624,8 @@
     background: var(--paper-warm);
     border-color: #c7b89f;
   }
-  .nb-paper-feature .nb-section-figure img {
+  .nb-paper-feature .nb-section-figure img,
+  .nb-paper-feature .nb-section-figure video {
     object-position: center;
   }
   .nb-inscriptions {
@@ -897,13 +902,7 @@
     { "@type": "PropertyValue", "name": "Pages", "value": "48" },
     { "@type": "PropertyValue", "name": "Interior options", "value": "Blank, lined, or grid" },
     { "@type": "PropertyValue", "name": "Product families", "value": "Robey in Seoul and Monjo Line" }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "KRW",
-    "availability": "https://schema.org/InStock",
-    "url": "https://smartstore.naver.com/studiomonjo"
-  }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -1103,7 +1102,10 @@
     <div class="nb-section-grid">
       <figure class="nb-section-figure">
         <picture>
-          <img src="../../media/web/notebooks/folding-action.gif" alt="커팅 매트 위에서 스튜디오 몬조 종이를 손으로 접고 누르는 모습." loading="lazy" decoding="async" width="480" height="640">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="커팅 매트 위에서 스튜디오 몬조 종이를 손으로 접고 누르는 모습." width="480" height="640">
+            <source src="../../media/web/notebooks/folding-action.mp4" type="video/mp4">
+            <img src="../../media/web/notebooks/folding-action.gif" alt="커팅 매트 위에서 스튜디오 몬조 종이를 손으로 접고 누르는 모습." loading="lazy" decoding="async" width="480" height="640">
+          </video>
         </picture>
       </figure>
       <div>
@@ -1177,7 +1179,10 @@
     <div class="nb-section-grid nb-section-grid--reverse">
       <figure class="nb-section-figure">
         <picture>
-          <img src="../../media/web/notebooks/robey-binding-thread-work-naver-small.gif" alt="서울 작업실에서 손으로 노트 실 제본을 하는 모습." loading="lazy" decoding="async" width="420" height="457">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="서울 작업실에서 손으로 노트 실 제본을 하는 모습." width="420" height="456">
+            <source src="../../media/web/notebooks/robey-binding-thread-work-naver-small.mp4" type="video/mp4">
+            <img src="../../media/web/notebooks/robey-binding-thread-work-naver-small.gif" alt="서울 작업실에서 손으로 노트 실 제본을 하는 모습." loading="lazy" decoding="async" width="420" height="457">
+          </video>
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
@@ -1266,7 +1271,10 @@
     <div class="nb-section-grid">
       <figure class="nb-section-figure">
         <picture>
-          <img src="../../media/web/notebooks/robey-paper-ink-handling.gif" alt="스튜디오 몬조 노트 종이 위 만년필 필기 테스트." loading="lazy" decoding="async" width="520" height="594">
+          <video autoplay muted loop playsinline preload="metadata" poster="../../media/web/notebooks/robey-paper-ink-handling-strip.jpg" aria-label="스튜디오 몬조 노트 종이 위 만년필 필기 테스트." width="520" height="594">
+            <source src="../../media/web/notebooks/robey-paper-ink-handling.mp4" type="video/mp4">
+            <img src="../../media/web/notebooks/robey-paper-ink-handling.gif" alt="스튜디오 몬조 노트 종이 위 만년필 필기 테스트." loading="lazy" decoding="async" width="520" height="594">
+          </video>
         </picture>
       </figure>
       <div class="nb-maison-copyblock">
@@ -1352,13 +1360,12 @@
       <h2 class="nb-shop-title">스튜디오 몬조 네이버 스마트스토어에서 구매할 수 있습니다.</h2>
       <p class="nb-shop-body">일러스트 에디션을 원하면 러비 인 서울을, 미니멀한 데일리 노트를 원하면 몬조 라인을 고르세요. 그다음 A5 또는 A6, 무지, 라인, 방안 속지를 선택할 수 있습니다.</p>
       <a class="nb-shop-link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">네이버 스토어 <span class="nb-cta-ext" aria-hidden="true">&#8599;</span></a>
-      <p class="nb-shop-note">현재 판매와 결제는 한국 고객에게 익숙한 네이버 스마트스토어에서 진행합니다.</p>
     </div>
   </section>
 
   <footer class="nb-footer">
     <img src="../../media/web/branding/monjo-mark-256.png" alt="" class="nb-footer-mark" width="18" height="18">
-    <a href="https://studiomonjo.com/">Studio Monjo</a> &middot; 서울 &middot; © 2026
+    <a href="../">Studio Monjo</a> &middot; <a href="../about/">이야기</a> &middot; 서울 &middot; © 2026
   </footer>
 
 </main>

@@ -30,6 +30,33 @@
   </url>
 
   <url>
+    <loc>https://studiomonjo.com/en/about/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/"/>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/ko/about/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/"/>
+  </url>
+
+  <url>
+    <loc>https://studiomonjo.com/fr/about/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/"/>
+  </url>
+
+  <url>
     <loc>https://studiomonjo.com/en/notebooks/</loc>
     <lastmod>2026-06-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
