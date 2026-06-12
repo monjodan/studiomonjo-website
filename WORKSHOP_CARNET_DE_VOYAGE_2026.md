@@ -12,9 +12,9 @@ Bind it on day two. Fill it for the rest of your trip.
 ## Description
 I'm Jordan, a French maker living in Seoul. I learned to write in a cahier, the notebook every French child grows up with, and now I bind notebooks by hand in my atelier.
 
-In this workshop you make a carnet de voyage, the French travel journal. You fold and sew a pocket journal with thread in the color you choose, and you make the cover yours: a line in ink, a wash of watercolour, the date of your trip, on real Canson paper. Blank pages for everyone; a line template card if you want guidance. At the end you sign the last page the way I sign my editions: made by hand in Seoul, with your name and the date.
+In this workshop you make a carnet de voyage, the French travel journal. You fold and sew an A5 journal with thread in the color you choose, and you make the cover yours: a line in ink, a wash of watercolour, the date of your trip, on real Canson paper. Blank pages for everyone; a line template card if you want guidance. At the end you sign the last page the way I sign my editions: made by hand in Seoul, with your name and the date.
 
-Then the journal does what it was made for. You carry it for the rest of your trip, and Korea fills it.
+Then the journal does what it was made for. You carry it for the rest of your trip and Korea fills it: notes, sketches, light watercolour, tickets and stamps glued in.
 
 While we work I'll tell you about the cahier, about why a French binder ended up in Seoul, and about Robey, the small character in my notebook editions who wanders this city and keeps what he finds. You'll be doing the same.
 
