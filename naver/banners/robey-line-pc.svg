@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="480" viewBox="0 0 1920 480">
+  <!-- v3: original split structure; photo = the balloon cover on black felt,
+       the single clearest product image the line owns. -->
+  <defs>
+    <clipPath id="photoClip">
+      <rect x="960" y="0" width="960" height="480"/>
+    </clipPath>
+  </defs>
+  <rect width="1920" height="480" fill="#fffaf0"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/robey-orange-balloon-cover.jpg" x="960" y="-80" width="960" height="639" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+    <text x="114" y="148" font-size="30" font-weight="800" letter-spacing="3" fill="#9a5139">러비 라인</text>
+    <text x="112" y="236" font-size="58" font-weight="900" fill="#211d19">그림과 이야기가 있는</text>
+    <text x="112" y="310" font-size="58" font-weight="900" fill="#211d19">만년필 노트<tspan fill="#B8231D">.</tspan></text>
+    <text x="114" y="376" font-size="28" font-weight="600" fill="#5c5248">서울을 발견하는 작은 로봇, 러비의 세 장면.</text>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="420" viewBox="0 0 750 420">
+  <!-- v3: original split structure; photo = Robey under the petals, close. -->
+  <defs>
+    <clipPath id="photoClip">
+      <rect x="426" y="0" width="324" height="420"/>
+    </clipPath>
+  </defs>
+  <rect width="750" height="420" fill="#fffaf0"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/robey-cover-detail.jpg" x="405" y="-24" width="370" height="450" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+    <text x="48" y="98" font-size="21" font-weight="800" letter-spacing="2" fill="#9a5139">러비 라인</text>
+    <text x="46" y="162" font-size="36" font-weight="900" fill="#211d19">그림과 이야기가</text>
+    <text x="46" y="212" font-size="36" font-weight="900" fill="#211d19">있는 만년필 노트<tspan fill="#B8231D">.</tspan></text>
+    <text x="48" y="274" font-size="20" font-weight="600" fill="#5c5248">서울을 발견하는 작은 로봇,</text>
+    <text x="48" y="304" font-size="20" font-weight="600" fill="#5c5248">러비의 세 장면.</text>
+  </g>
+</svg>

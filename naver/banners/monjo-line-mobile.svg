@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="420" viewBox="0 0 750 420">
+  <!-- v3: original split structure, three text elements, no chips. -->
+  <defs>
+    <clipPath id="photoClip">
+      <rect x="426" y="0" width="324" height="420"/>
+    </clipPath>
+  </defs>
+  <rect width="750" height="420" fill="#f6f6f2"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/monjo-line-black-thread-detail.jpg" x="405" y="-24" width="370" height="450" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+    <text x="48" y="98" font-size="21" font-weight="800" letter-spacing="2" fill="#5e5e58">몬조 라인</text>
+    <text x="46" y="166" font-size="40" font-weight="900" fill="#171717">만년필이 편한</text>
+    <text x="46" y="220" font-size="40" font-weight="900" fill="#171717">손제본 노트<tspan fill="#B8231D">.</tspan></text>
+    <text x="48" y="282" font-size="21" font-weight="600" fill="#4a4a46">번짐 없는 105g 종이.</text>
+    <text x="48" y="314" font-size="21" font-weight="600" fill="#4a4a46">서울에서 한 권씩.</text>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="480" viewBox="0 0 1920 480">
+  <defs>
+    <clipPath id="photoClip">
+      <rect x="960" y="0" width="960" height="480"/>
+    </clipPath>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f6f6f2"/>
+      <stop offset="0.48" stop-color="#f6f6f2" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#f6f6f2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="480" fill="#f6f6f2"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/monjo-line-cover.jpg" x="930" y="-80" width="1050" height="700" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <rect x="820" y="0" width="460" height="480" fill="url(#fade)"/>
+  <text x="112" y="104" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="#5e5e58">에센셜 라인</text>
+  <text x="112" y="182" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="74" font-weight="900" fill="#171717">몬조 라인</text>
+  <text x="112" y="250" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="38" font-weight="650" fill="#343430">일러스트 없이, 쓰는 일에 집중한</text>
+  <text x="112" y="305" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="38" font-weight="650" fill="#343430">손제본 만년필 노트</text>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="27" font-weight="750" fill="#292926">
+    <rect x="112" y="352" width="154" height="54" rx="27" fill="#ffffff" stroke="#d9d9d3"/>
+    <text x="143" y="388">A5 · A6</text>
+    <rect x="282" y="352" width="222" height="54" rx="27" fill="#ffffff" stroke="#d9d9d3"/>
+    <text x="314" y="388">무지 · 줄 · 모눈</text>
+    <rect x="520" y="352" width="218" height="54" rx="27" fill="#171717"/>
+    <text x="552" y="388" fill="#ffffff">검은색 실 제본</text>
+  </g>
+</svg>
