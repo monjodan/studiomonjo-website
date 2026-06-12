@@ -135,6 +135,20 @@ One column, 860px, mobile-first. NOT the old template (hero → chips → logist
 
 ### Platform-level setup (do once)
 
+### 전시 카테고리 (store navigation — June 2026, final)
+
+Two category systems with different jobs. Search categories are per listing and affect 적합도: A5 listings sit in 노트 (cid 50003556), A6 listings in 수첩 (cid 50003559) — set once per the catalog table, never changed. Display categories (전시 카테고리) are store navigation only, zero search impact; names can be brand language.
+
+| 전시 카테고리 | Listings | Banner (naver/banners/) |
+|---|---|---|
+| 전체상품 | all 8 (automatic) | all-products-pc.png 1920×480 · all-products-mobile.png 750×420 |
+| 몬조 라인 | 카이에 A5, 포켓 A6, 세트 | monjo-line-pc.png · monjo-line-mobile.png |
+| 러비 에디션 | 에디션 001/002/003 A5, 포켓, 3종 세트 | robey-line-pc.png · robey-line-mobile.png |
+
+Naming rationale: nav names stay short and the banner subtitle does the explaining (몬조: 만년필이 편한 손제본 노트 / 러비: 그림과 이야기가 있는 만년필 노트). "러비 에디션" matches the cross-sell line used verbatim on every Monjo page; 일러스트 stays out of nav names (storybook misread). Optional fourth category 세트 (몬조 세트 + 러비 3종 세트, multi-assigned) for gift traffic — works without a banner.
+
+Banner system v4 (June 2026): split layout, solid panel left, navy-session photo right, straight edge, seal-red period, no gradients. Photos: backlit spines (전체상품 PC), dedication spread (전체상품 mobile), solo white cover wide / pair stack (몬조), editions fan (러비). All claims calibrated (번짐이 적은, never 번짐 없는). PC 1920×480 (admin allows 225–750 high), mobile 750×420 (allows 180–1200).
+
 - Enable 구매유도메세지 and 베스트리뷰 상단 노출 widgets (스토어전시관리 > 스마트스토어).
 - Pin a 공지사항 above all products: first-review event or workshop note.
 - Seed the first 10 reviews per listing via 체험단; never buy reviews (store-level suspension risk).

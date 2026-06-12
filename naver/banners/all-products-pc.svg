@@ -1,15 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="480" viewBox="0 0 1920 480">
-  <!-- 전체상품 (store landing) banner — the brand layer.
-       v3 system: solid panel, straight edge, product photo, three text
-       elements, seal-red period. Photo = the workbench with the whole
-       catalog being made. -->
-  <defs>
-    <clipPath id="photoClip">
-      <rect x="960" y="0" width="960" height="480"/>
-    </clipPath>
-  </defs>
+  <!-- v4: backlit spines: three thread colors, light through paper (the catalog as craft).
+       Same split system: solid panel, straight edge, seal-red period. -->
+  <defs><clipPath id="photoClip"><rect x="960" y="0" width="960" height="480"/></clipPath></defs>
   <rect width="1920" height="480" fill="#f6f6f2"/>
-  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/robey-editions-process-table.jpg" x="960" y="-150" width="1100" height="619" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/robey-spines-backlit.jpg" x="960" y="-80" width="960" height="640" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
   <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif">
     <text x="114" y="148" font-size="30" font-weight="800" letter-spacing="3" fill="#5e5e58">스튜디오몬조</text>
     <text x="112" y="236" font-size="60" font-weight="900" fill="#171717">프랑스의 교실에서,</text>
