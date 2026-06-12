@@ -12,3 +12,11 @@ media/paintings/
 media/photography/
 media/posters/
 media/profile/
+
+# Internal documents and operational files — never published
+/*.md
+!/README.md
+/*.pdf
+/mockups/
+/naver/
+/courrier-mockups.html
