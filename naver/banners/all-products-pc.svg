@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="480" viewBox="0 0 1920 480">
-  <!-- v4: backlit spines: three thread colors, light through paper (the catalog as craft).
+  <!-- v4: the workbench: wrapped parcel, cutter, awl, Sajou thread (craftsmanship).
        Same split system: solid panel, straight edge, seal-red period. -->
   <defs><clipPath id="photoClip"><rect x="960" y="0" width="960" height="480"/></clipPath></defs>
   <rect width="1920" height="480" fill="#f6f6f2"/>
-  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/robey-spines-backlit.jpg" x="960" y="-80" width="960" height="640" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
+  <image href="file:///Users/jmonnet/Programming/StudioMonjo/studiomonjo-website/media/web/notebooks/packaging-workbench.jpg" x="960" y="-150" width="960" height="640" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)"/>
   <g font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif">
     <text x="114" y="148" font-size="30" font-weight="800" letter-spacing="3" fill="#5e5e58">스튜디오몬조</text>
     <text x="112" y="236" font-size="60" font-weight="900" fill="#171717">프랑스의 교실에서,</text>
