@@ -28,18 +28,19 @@ Every element of the loop is human, real, and verifiable: the place exists, the 
 3. **작업실 (The Studio)** — 몬조단, Seoul, the five steps, the hands.
 4. **안심 (Technical reassurance)** — paper, ink behavior (calibrated), options, specs, FAQ. Last, quiet, per the Apple register rule.
 
-Container design: clean and minimal, no painted UI elements (brand book: contents never leak into the container). The illustrations enter as photographed content — macro close-ups of the watercolor per edition.
+Container design: clean and minimal, no painted UI elements (brand book: contents never leak into the container). The illustrations enter as photographed content — macro close-ups of the artwork per edition.
 
 ## Series mechanics
 
 - Editions are numbered and accumulate. Each new edition = a new place Robey discovered, a new letter. The collection question that brings buyers back: 러비는 다음에 어디로 갈까.
 - The letters are collectible objects (Field Notes' edition-lore model). The 3종 세트 reframes as 세 장면, 세 통의 편지.
 - "아직 글을 쓸 수 없습니다" is a series-level hook — whether Robey ever learns to write is a long-arc decision that belongs to 몬조단 alone. Do not resolve it in marketing copy.
+- **Medium is never named in product copy.** Jordan paints every edition himself, but some are watercolour on paper and some are painted on iPad. No 수채/수채화/물 번짐 claims on pages unless Jordan confirms a specific edition is analog. Safe register: 직접 그린 그림/원화, 붓 자국 (true of both media).
 - Place-naming is deliberately half-open: the page says the scene is real ("이 장면은 실제로 있습니다") without naming the spot. Letting readers guess/find the place is an engagement mechanic. (Jordan may choose to name places later — his call per edition.)
 
 ## Provenance (revised June 2026 — backstage, never front-stage)
 
-**The real photos never appear on product pages** — Jordan's call: showing the photo pulls people out of Robey's world. The realness lives as one quiet sentence in the 작업실 movement ("표지의 장면은 몬조단이 서울에서 실제로 보고 느낀 작은 순간에서 시작합니다"), where the maker speaks and backstage belongs. On the page, the painting carries the world alone — each Robey page gets a 표지 block with the watercolor close-up (brush marks, water blooms).
+**The real photos never appear on product pages** — Jordan's call: showing the photo pulls people out of Robey's world. The realness lives as one quiet sentence in the 작업실 movement ("표지의 장면은 몬조단이 서울에서 실제로 보고 느낀 작은 순간에서 시작합니다"), where the maker speaks and backstage belongs. On the page, the painting carries the world alone — each Robey page gets a 표지 block with the artwork close-up (brush marks).
 
 The photo→painting pairs are **blog and Instagram content**: the making-of genre, where backstage is expected and earns discovery. One post per edition: the place (unnamed), the photo, the painting, the sewn notebook.
 

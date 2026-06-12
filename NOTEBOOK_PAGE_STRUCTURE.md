@@ -131,7 +131,7 @@ This is the most important new section on the page. It explains the model and el
 
 **Body copy (single column, max 580px):**
 
-> *Each Monjo design exists as one original watercolour painting and fifty notebooks bearing that painting on the cover.*
+> *Each Monjo design exists as one original painting and fifty notebooks bearing that painting on the cover.*
 >
 > *The original is a piece of paper that was touched by a brush. There is one of it. It is sold once, to one person.*
 >
