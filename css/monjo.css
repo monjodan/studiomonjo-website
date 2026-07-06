@@ -1,0 +1,547 @@
+/* ============================================================
+   Studio Monjo — "the bench" design system
+   Ported from new-design/Studio-Monjo.dc.html into static CSS.
+   No framework. Loaded by the home (bench) and the three cahiers.
+   ============================================================ */
+
+/* ---- self-hosted fonts (variable TTF; woff2 subsetting is a later pass) ---- */
+@font-face {
+  font-family: 'Noto Serif KR';
+  src: url('/assets/fonts/NotoSerifKR-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 200 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('/assets/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Caveat';
+  src: url('/assets/fonts/Caveat-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+:root {
+  --bench: #0b0906;         /* filmed bench, near-black warm */
+  --cream: #F6EFE0;         /* cahier paper */
+  --ink: #221D15;           /* dark warm ink */
+  --ink-soft: #5F5748;      /* secondary text */
+  --ink-faint: rgba(34, 29, 21, 0.45);
+  --cream-hi: #faf6ed;      /* light text on the bench */
+  --accent: #B0392E;        /* persimmon-red */
+  --accent-hi: #D0665A;     /* accent hover */
+  --rule: #E2D7BE;          /* hairline on cream */
+  /* thread colors */
+  --thread-red: #B0392E;
+  --thread-orange: #C87433;
+  --thread-navy: #3F5E8C;
+  --thread-black: #33302B;
+  --serif: 'Noto Serif KR', serif;
+  --sans: 'Noto Sans KR', system-ui, sans-serif;
+  --hand: 'Caveat', cursive;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  min-height: 100%;
+  background: var(--bench);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+html[lang="ko"] body { word-break: keep-all; }
+img { display: block; height: auto; max-width: 100%; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+button { color: inherit; font: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: #fff; }
+input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 12px; z-index: 2000;
+  background: var(--ink); color: var(--cream-hi);
+  font-family: var(--sans); font-size: 13px; padding: 8px 16px; text-decoration: none;
+}
+.skip-link:focus { left: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   THE BENCH — filmed arrival (home page)
+   ============================================================ */
+.bench {
+  position: fixed; inset: 0;
+  background: var(--bench);
+  overflow: hidden;
+}
+.bench__video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 45%;
+}
+.bench__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(11,9,6,0.82) 0%, rgba(11,9,6,0.45) 44%, rgba(11,9,6,0.1) 75%);
+}
+.bench__inner {
+  position: relative; z-index: 2;
+  height: 100%; box-sizing: border-box;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  gap: clamp(16px, 4vh, 40px);
+  padding: clamp(56px, 10vh, 130px) clamp(26px, 7vw, 110px) clamp(48px, 9vh, 96px);
+  overflow-y: auto;
+}
+.bench__eyebrow {
+  margin: 0; font-family: var(--sans);
+  font-size: 11px; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase;
+  color: rgba(250, 246, 237, 0.7); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+.bench__title {
+  margin: 18px 0 0; font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2rem, min(5.6vw, 8.5vh), 4.4rem); line-height: 1.14;
+  color: var(--cream-hi); text-shadow: 0 2px 14px rgba(0,0,0,0.55);
+}
+.bench__lede {
+  margin: 16px 0 0; max-width: 480px; font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.3vw, 1.08rem); font-weight: 400; line-height: 1.75;
+  color: rgba(250, 246, 237, 0.8); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+.bench__footline {
+  position: absolute; right: 26px; bottom: 22px; z-index: 2; margin: 0; text-align: right;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(250, 246, 237, 0.5); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+/* doors — the three cahier links */
+.doors {
+  margin-top: auto; display: flex; flex-direction: column;
+  gap: clamp(14px, 2.6vh, 24px); align-items: flex-start;
+}
+.door {
+  background: none; border: none; padding: 0; cursor: pointer; text-align: left; text-decoration: none;
+  display: flex; align-items: baseline; gap: 16px;
+  transition: transform 0.3s ease;
+}
+.door:hover { transform: translateX(10px); }
+.door__num {
+  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  color: rgba(250, 246, 237, 0.55);
+}
+.door__text { display: flex; flex-direction: column; gap: 4px; }
+.door__label {
+  align-self: flex-start; font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.25rem, min(3vw, 4.5vh), 2.4rem); line-height: 1.2; color: var(--cream-hi);
+  border-bottom: 2px solid rgba(208, 102, 90, 0); text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  transition: border-color 0.3s ease;
+}
+.door:hover .door__label,
+.door:focus-visible .door__label { border-bottom-color: var(--accent-hi); }
+.door__sub {
+  font-family: var(--sans); font-size: clamp(0.78rem, 1vw, 0.88rem); font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250, 246, 237, 0.6);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+/* film grain + vignette over the bench */
+@keyframes monjoGrain {
+  0%{transform:translate(0,0)} 10%{transform:translate(-4%,2%)} 20%{transform:translate(3%,-3%)}
+  30%{transform:translate(-2%,4%)} 40%{transform:translate(4%,1%)} 50%{transform:translate(-3%,-2%)}
+  60%{transform:translate(2%,3%)} 70%{transform:translate(-4%,-1%)} 80%{transform:translate(1%,-4%)}
+  90%{transform:translate(3%,2%)} 100%{transform:translate(0,0)}
+}
+.grain {
+  position: fixed; inset: -60%; z-index: 240; pointer-events: none; opacity: 0.15;
+  animation: monjoGrain 0.9s steps(6) infinite;
+}
+.vignette {
+  position: fixed; inset: 0; z-index: 239; pointer-events: none;
+  background: radial-gradient(115% 95% at 50% 45%, rgba(0,0,0,0) 58%, rgba(6,4,2,0.5) 100%);
+}
+@media (prefers-reduced-motion: reduce) { .grain { animation: none; } }
+
+/* bench chrome — wordmark + shop */
+.chrome-mark {
+  position: fixed; top: 22px; left: 26px; z-index: 250;
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.chrome-mark img { height: 17px; width: auto; opacity: 0.95; }
+.chrome-mark span {
+  font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(250, 246, 237, 0.95); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+/* top-right group on the bench: language pill + shop, one flex row so
+   variable-width labels (Boutique, 스토어) never overlap */
+.chrome-actions { position: fixed; top: 22px; right: 26px; z-index: 250; display: flex; align-items: center; gap: 18px; }
+.chrome-shop {
+  line-height: 1;
+  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(250, 246, 237, 0.9); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  transition: color 0.2s ease; white-space: nowrap;
+}
+.chrome-shop:hover { color: #fff; }
+
+/* language pill (shared markup with lang-pill.js), bench = light. */
+.page-lang { font-family: var(--sans); display: flex; align-items: center; line-height: 1; }
+.page-lang-current {
+  background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(250, 246, 237, 0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+.page-lang-caret { font-size: 9px; }
+.page-lang-alts { display: inline-flex; gap: 10px; margin-left: 10px; }
+.page-lang-alt {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-decoration: none;
+  color: rgba(250, 246, 237, 0.7);
+}
+.page-lang-alt:hover { color: #fff; }
+
+/* ============================================================
+   THE CAHIER — cream editorial pages (notebooks / letter / workshop)
+   ============================================================ */
+.cahier {
+  min-height: 100vh;
+  background: var(--cream);
+  overflow-x: hidden;
+}
+.cahier__bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 340;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 15px 26px 26px;
+  background: linear-gradient(to bottom, var(--cream) 55%, rgba(246, 239, 224, 0));
+  pointer-events: none;
+}
+.cahier__bar > * { pointer-events: auto; }
+.cahier__back,
+.cahier__action {
+  background: none; border: none; padding: 0; cursor: pointer; text-decoration: none;
+  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink); transition: color 0.2s ease;
+}
+.cahier__back:hover, .cahier__action:hover { color: var(--accent); }
+.cahier__mark {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(34, 29, 21, 0.5); text-decoration: none;
+}
+/* cahier context recolors the language pill to ink */
+.cahier .page-lang { position: static; }
+.cahier .page-lang-current { color: var(--ink); text-shadow: none; }
+.cahier .page-lang-alt { color: rgba(34, 29, 21, 0.6); }
+.cahier .page-lang-alt:hover { color: var(--accent); }
+
+/* width wrappers */
+.wrap { max-width: 1150px; margin-left: auto; margin-right: auto; padding-left: clamp(26px, 7vw, 60px); padding-right: clamp(26px, 7vw, 60px); }
+.wrap--880 { max-width: 880px; }
+.wrap--820 { max-width: 820px; }
+.wrap--640 { max-width: 640px; }
+.wrap--620 { max-width: 620px; }
+
+/* title leaf */
+.lede { text-align: center; padding-top: clamp(100px, 15vh, 150px); }
+.lede__eyebrow {
+  margin: 0; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--accent);
+}
+.lede__title {
+  margin: 20px 0 0; font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.18; color: var(--ink);
+}
+.lede__text {
+  margin: 20px auto 0; max-width: 560px; font-family: var(--sans);
+  font-size: 1rem; line-height: 1.8; color: var(--ink-soft);
+}
+
+/* shared type helpers */
+.eyebrow {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(34, 29, 21, 0.55);
+}
+.eyebrow--muted { color: rgba(34, 29, 21, 0.5); }
+.eyebrow--red { color: var(--accent); }
+.plate-no {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(34, 29, 21, 0.45);
+}
+.hand { font-family: var(--hand); color: #4A4238; line-height: 1.4; }
+.hand--red { color: var(--accent); }
+.rule { height: 1px; background: var(--rule); border: 0; }
+.rule--short { width: 70px; margin: 44px auto 0; }
+
+.text-link {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid rgba(34, 29, 21, 0.35); transition: color 0.2s ease, border-color 0.2s ease;
+}
+.text-link:hover { color: var(--accent); border-color: var(--accent); }
+.naver-link {
+  display: inline-block; font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(34, 29, 21, 0.35); padding-bottom: 3px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.naver-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* establishing plate figure — reset the browser's default figure side margins
+   only via top/bottom, so .wrap's auto side margins keep it centered */
+.plate { margin-top: 0; margin-bottom: 0; }
+.plate__cap {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-top: 16px;
+}
+.plate__title { font-family: var(--serif); font-weight: 300; font-size: 1.05rem; color: var(--ink); }
+
+/* contents list */
+.contents__label { margin: 0 0 12px; }
+.contents__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: clamp(20px, 3vw, 40px); padding: clamp(22px, 3vw, 34px) 0;
+}
+.contents__item {
+  background: none; border: none; padding: 0; cursor: pointer; text-align: left;
+  display: flex; gap: 14px; align-items: baseline; transition: transform 0.25s ease;
+}
+.contents__item:hover { transform: translateX(6px); }
+.contents__numeral {
+  font-family: var(--serif); font-style: italic; font-weight: 200; font-size: 1.5rem; line-height: 1;
+  color: rgba(34, 29, 21, 0.5);
+}
+.contents__name {
+  display: inline-block; font-family: var(--serif); font-weight: 400; font-size: 1.2rem; color: var(--ink);
+  border-bottom: 1px dotted rgba(34, 29, 21, 0.45); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.contents__item:hover .contents__name { color: var(--accent); border-color: var(--accent); }
+.contents__desc {
+  display: block; margin-top: 7px; font-family: var(--sans); font-size: 0.88rem; line-height: 1.6; color: var(--ink-soft);
+}
+
+/* a notebook "line" (illustrated / practice / monjo) */
+.line { margin-top: clamp(80px, 11vw, 130px); }
+.line__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.line__title {
+  margin: 0; display: flex; align-items: baseline; gap: 14px; font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: var(--ink);
+}
+.line__title .num { font-style: italic; font-weight: 200; color: rgba(34, 29, 21, 0.5); }
+.line__note {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(34, 29, 21, 0.45);
+}
+.line__dash { display: block; margin-top: 14px; }
+.line__intro { margin: 18px 0 0; max-width: 640px; font-family: var(--sans); font-size: 0.98rem; line-height: 1.75; color: var(--ink-soft); }
+
+/* editions grid — painting above, sewn cover overlaid */
+.editions {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+  gap: clamp(28px, 4vw, 52px); margin-top: clamp(36px, 5vw, 56px);
+}
+.edition { margin: 0; }
+.edition__art { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.edition__row {
+  display: flex; gap: 16px; align-items: flex-start; margin-top: -9%; padding: 0 5%;
+}
+.edition__row--reverse { flex-direction: row-reverse; }
+.edition__cover {
+  width: 44%; height: auto;
+  /* drop-shadow (not box-shadow) so cut-out notebooks cast a shadow that
+     follows their silhouette and appear to float over the painting */
+  filter: drop-shadow(0 16px 20px rgba(34, 29, 21, 0.4));
+}
+.edition__cap { padding-top: 14%; }
+.edition__cap--right { text-align: right; }
+.edition__tag {
+  display: flex; align-items: center; gap: 8px; font-family: var(--sans);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(34, 29, 21, 0.55);
+}
+.edition__cap--right .edition__tag { justify-content: flex-end; }
+.swatch { width: 18px; height: 2.5px; border-radius: 2px; background: var(--accent); }
+.edition__name { margin-top: 8px; font-family: var(--serif); font-weight: 400; font-size: 1.2rem; line-height: 1.3; color: var(--ink); }
+.edition__line { margin: 7px 0 0; font-family: var(--hand); font-size: 1.25rem; line-height: 1.4; color: #4A4238; }
+.edition__cap .naver-link { margin-top: 12px; }
+/* placeholder cover art (practice line, artwork to come) */
+.edition__placeholder {
+  width: 100%; aspect-ratio: 4 / 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: #EFE6D1;
+}
+.edition__glyph { font-family: var(--serif); font-weight: 200; font-size: clamp(5.5rem, 10vw, 8.5rem); line-height: 1; color: var(--ink); }
+.edition__cover-blank {
+  width: 44%; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center;
+  background: #E7DCC2; box-shadow: 0 12px 24px -12px rgba(34, 29, 21, 0.5);
+}
+.edition__cover-blank span {
+  font-family: var(--sans); font-size: 9.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(34, 29, 21, 0.4); text-align: center; line-height: 1.8;
+}
+
+/* craft strip — three macro plates */
+.craft-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: clamp(16px, 2.5vw, 28px); margin-top: clamp(56px, 8vw, 88px);
+}
+.craft-strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.craft-caption {
+  margin: 14px 0 0; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  font-family: var(--serif); font-weight: 300; font-size: 1.05rem; color: var(--ink);
+}
+
+/* your-mark aside (company notebooks) */
+.aside-col { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 440px; }
+.aside-col h4 { margin: 14px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.25; color: var(--ink); }
+.aside-col p { margin: 14px 0 0; font-family: var(--sans); font-size: 0.98rem; line-height: 1.75; color: var(--ink-soft); }
+.aside-arrow { display: flex; align-items: center; gap: 12px; margin-top: clamp(26px, 3.5vw, 40px); }
+.aside-arrow .hand { font-size: 1.45rem; display: inline-block; transform: rotate(-1.5deg); }
+
+/* one-breath spec line */
+.spec-line {
+  margin: 0; padding: clamp(20px, 3vw, 30px) 0; text-align: center;
+  font-family: var(--sans); font-size: 0.92rem; letter-spacing: 0.06em; line-height: 2; color: var(--ink-soft);
+}
+
+/* end leaf */
+.end { text-align: center; padding-top: clamp(80px, 11vw, 130px); padding-bottom: clamp(120px, 14vw, 160px); }
+.end__title { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.3; color: var(--ink); }
+.end__hand { margin: 16px 0 0; font-family: var(--hand); font-size: 1.5rem; color: #4A4238; }
+.end__note { margin: 34px 0 0; font-family: var(--sans); font-size: 0.95rem; line-height: 2.1; color: var(--ink-soft); }
+.fin { margin: 40px 0 0; font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(34, 29, 21, 0.4); }
+
+.leaf-actions { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 32px; }
+.leaf-link {
+  font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(34, 29, 21, 0.45); padding-bottom: 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.leaf-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* waitlist form */
+.waitlist { display: flex; align-items: flex-end; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 32px; }
+.waitlist__input {
+  width: min(300px, 74vw); background: transparent; border: none; border-bottom: 1px solid rgba(34, 29, 21, 0.4);
+  color: var(--ink); font-family: var(--serif); font-weight: 300; font-size: 1.1rem; padding: 8px 2px; text-align: center; outline: none;
+}
+.waitlist__submit {
+  background: transparent; border: none; cursor: pointer; font-family: var(--sans);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink); border-bottom: 1px solid rgba(34, 29, 21, 0.45); padding: 8px 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.waitlist__submit:hover { color: var(--accent); border-color: var(--accent); }
+.waitlist__done { margin: 32px 0 0; font-family: var(--serif); font-weight: 300; font-size: 1.15rem; color: var(--ink); }
+
+/* workshop steps */
+.steps {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: clamp(24px, 4vw, 48px);
+}
+.step { border-top: 1px solid var(--rule); padding-top: 18px; }
+.step__num { font-family: var(--serif); font-style: italic; font-weight: 200; font-size: 1.7rem; line-height: 1; color: rgba(34, 29, 21, 0.5); }
+.step h4 { margin: 12px 0 0; font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); }
+.step p { margin: 8px 0 0; font-family: var(--sans); font-size: 0.93rem; line-height: 1.7; color: var(--ink-soft); }
+
+/* inside-the-envelope / what-you-leave-with grids */
+.trio {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(24px, 4vw, 48px); margin-top: clamp(36px, 5vw, 56px);
+}
+.trio figure { margin: 0; }
+.trio__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.trio__name { margin-top: 14px; font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); }
+.trio__desc { margin: 6px 0 0; font-family: var(--sans); font-size: 0.93rem; line-height: 1.65; color: var(--ink-soft); }
+
+.split {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: clamp(28px, 5vw, 72px); align-items: end;
+}
+.split__body { max-width: 380px; padding-bottom: 6px; }
+.split__body h3 { margin: 14px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.25; color: var(--ink); }
+.split__body p { margin: 16px 0 0; font-family: var(--sans); font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
+
+/* prose block (why-it-exists) */
+.prose { text-align: center; }
+.prose__lead { margin: 24px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.75; color: var(--ink); }
+.prose__body { margin: 20px 0 0; font-family: var(--sans); font-size: 1rem; line-height: 1.85; color: var(--ink-soft); }
+
+/* ---- Robey, the wandering ink puppet ---- */
+.robey {
+  position: fixed; bottom: 12px; left: 120px; z-index: 355; pointer-events: none;
+  width: 54px; height: 76px; filter: drop-shadow(0 5px 4px rgba(10, 8, 5, 0.28));
+}
+
+/* ---- Courrier subscription pricing + PayPal checkout ---- */
+.pricing { text-align: center; }
+.pricing__note { margin: 20px auto 0; max-width: 580px; font-family: var(--sans); font-size: 0.98rem; line-height: 1.8; color: var(--ink-soft); }
+.tiers {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(18px, 2.5vw, 30px); margin-top: clamp(36px, 5vw, 56px); text-align: left;
+}
+.tier {
+  display: flex; flex-direction: column; gap: 10px; cursor: pointer;
+  padding: clamp(24px, 3vw, 34px); background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--rule); font: inherit; color: inherit;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.tier:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 18px 36px -24px rgba(34, 29, 21, 0.5); }
+.tier__label { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); }
+.tier__price { font-family: var(--serif); font-weight: 300; font-size: clamp(1.9rem, 3.2vw, 2.4rem); line-height: 1; color: var(--ink); }
+.tier__price span { font-size: 0.9rem; color: var(--ink-soft); }
+.tier__saving { font-family: var(--sans); font-size: 0.85rem; line-height: 1.5; color: var(--ink-soft); }
+.tier__detail { font-family: var(--sans); font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); margin-top: 2px; }
+.tier__cta {
+  margin-top: auto; padding-top: 12px; align-self: flex-start;
+  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink); border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
+}
+.tier:hover .tier__cta { color: var(--accent); border-color: var(--accent); }
+.pricing__trust { margin: 22px auto 0; font-family: var(--sans); font-size: 0.85rem; line-height: 1.6; color: var(--ink-soft); }
+
+.payment-dialog {
+  position: fixed; inset: 0; margin: auto; /* centre in the viewport */
+  border: none; padding: 0; max-width: 460px; width: calc(100% - 32px);
+  max-height: calc(100dvh - 40px); overflow-y: auto;
+  background: var(--cream); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(10, 8, 5, 0.55);
+}
+.payment-dialog::backdrop { background: rgba(11, 9, 6, 0.55); }
+.payment-dialog__inner { padding: clamp(24px, 4vw, 40px); }
+.payment-dialog__close {
+  float: right; background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.payment-dialog__close:hover { color: var(--accent); }
+.payment-dialog__title { font-family: var(--serif); font-weight: 300; font-size: 1.6rem; color: var(--ink); margin: 0 0 10px; }
+.payment-dialog__text { font-family: var(--sans); font-size: 0.92rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; }
+.paypal-button-slot { min-height: 50px; }
+.paypal-button-frame { margin-top: 6px; }
+.payment-loading, .payment-fallback, .payment-success { font-family: var(--sans); font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); }
+.payment-fallback a, .payment-success { color: var(--ink); }
+.subscription-summary { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.subscription-summary-figure { margin: 0 0 8px; }
+.subscription-summary-figure img { width: 100%; height: auto; }
+.subscription-summary-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin: 0; }
+.subscription-summary-price { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; color: var(--ink); margin: 0; }
+.subscription-summary-body { font-family: var(--sans); font-size: 0.88rem; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+body.payment-dialog-open { overflow: hidden; }
+
+/* ---- view-transition cross-fade (bench <-> cahier), cross-document MPA ---- */
+@view-transition { navigation: auto; }
+/* The snapshot overlay defaults to pointer-events:auto and sits in the top
+   layer, so a click during the ~0.5s cross-fade lands on the frozen snapshot
+   and is swallowed. Make the whole overlay tree click-through so taps reach
+   the live page while it animates. */
+::view-transition,
+::view-transition-group(*),
+::view-transition-image-pair(*),
+::view-transition-old(*),
+::view-transition-new(*) { pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0.5s; }
+}
