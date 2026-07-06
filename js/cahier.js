@@ -8,6 +8,24 @@
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- keep autoplay videos looping silently (some mobile browsers block
+     native autoplay and show a play button; force muted playback) ---- */
+  Array.prototype.forEach.call(document.querySelectorAll('video[autoplay]'), function (v) {
+    v.muted = true;
+    v.playsInline = true;
+    var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    play();
+    v.addEventListener('loadeddata', play);
+    v.addEventListener('canplay', play);
+    var onGesture = function () {
+      play();
+      document.removeEventListener('touchstart', onGesture);
+      document.removeEventListener('pointerdown', onGesture);
+    };
+    document.addEventListener('touchstart', onGesture, { passive: true });
+    document.addEventListener('pointerdown', onGesture);
+  });
+
   /* ---- paper texture ---- */
   var cahier = document.querySelector('.cahier');
   if (cahier) {
