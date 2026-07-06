@@ -4,6 +4,9 @@
 # Local tooling
 .claude/
 
+# Design prototype / staging workspace (source deck + duplicate media; not served)
+new-design/
+
 # Original / full-resolution media (not served; site uses media/web/)
 media/branding/
 media/logos/
