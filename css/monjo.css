@@ -202,10 +202,13 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
   color: rgba(250, 246, 237, 0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .page-lang-caret { font-size: 9px; }
-.page-lang-alts { display: inline-flex; gap: 10px; margin-left: 10px; }
+/* visibility is driven by the .is-open class (lang-pill.js) so the menu
+   closes again after opening — not just the initial [hidden] attribute */
+.page-lang-alts { display: none; gap: 10px; margin-left: 10px; }
+.page-lang.is-open .page-lang-alts { display: inline-flex; }
 .page-lang-alt {
   font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-decoration: none;
-  color: rgba(250, 246, 237, 0.7);
+  color: rgba(250, 246, 237, 0.7); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .page-lang-alt:hover { color: #fff; }
 
@@ -554,4 +557,16 @@ body.payment-dialog-open { overflow: hidden; }
   /* editions stack in one column here; open up the space between them so the
      next painting doesn't crowd the previous caption */
   .editions { row-gap: clamp(52px, 13vw, 68px); }
+
+  /* language menu opens as a vertical dropdown below the button so it no
+     longer expands sideways over the STUDIO MONJO wordmark */
+  .page-lang { position: relative; }
+  .page-lang.is-open .page-lang-alts {
+    position: absolute; top: calc(100% + 12px); right: 0; margin-left: 0;
+    flex-direction: column; align-items: flex-end; gap: 2px;
+    padding: 10px 14px; border-radius: 10px;
+    background: rgba(11, 9, 6, 0.82);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .page-lang-alt { padding: 7px 0; } /* larger tap targets */
 }
