@@ -5,8 +5,7 @@ Static site for [studiomonjo.com](https://studiomonjo.com), hosted on GitHub Pag
 The public architecture is deliberately small:
 
 - `/` redirects to the visitor's saved or browser language.
-- `/en/`, `/ko/`, `/fr/` are the three-door home pages.
-- `/courrier/` is the French-only Courrier de Séoul product page.
+- `/en/`, `/ko/`, `/fr/` are the localized home pages.
 - `/en/notebooks/`, `/ko/notebooks/`, `/fr/notebooks/` are matching notebook pages.
 - `/en/workshops/`, `/ko/workshops/`, `/fr/workshops/` are matching workshop pages.
 
@@ -14,8 +13,7 @@ Legacy product URLs are kept only as redirects:
 
 - `/notebooks/` redirects to the current locale's notebooks page.
 - `/materials/` redirects to the current locale's notebooks page.
-- `/letters/` redirects to `/courrier/`.
-- Per-locale `/shop/`, `/materials/`, and `/letters/` pages redirect to the same destinations.
+- Per-locale `/shop/` and `/materials/` pages redirect to the same destinations.
 
 There is no backend and no generated shop grid in this version. The notebooks page explains the dated writing-objects line and sends buyers to Naver.
 
@@ -35,8 +33,7 @@ Open `http://127.0.0.1:4173/`.
 | --- | --- |
 | `index.html` | Locale redirect |
 | `en/`, `ko/`, `fr/` | Trilingual home, notebooks, workshops, and redirects |
-| `courrier/` | French-only Courrier de Séoul product page |
-| `notebooks/`, `materials/`, `letters/` | Compatibility redirects |
+| `notebooks/`, `materials/` | Compatibility redirects |
 | `css/styles.css` | Shared home, workshop, and chrome styles |
 | `js/home-arrival.js` | Door hover/tap behavior on the home page |
 | `js/lang-pill.js` | Shared language dropdown |

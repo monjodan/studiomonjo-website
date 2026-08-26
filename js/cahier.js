@@ -1,5 +1,5 @@
 /**
- * Cahier pages (notebooks / letter / workshop) shared behaviour:
+ * Cahier pages (notebooks / workshop) shared behaviour:
  *   - a faint warm paper fibre texture on the page
  *   - smooth in-page jumps for the "contents" links ([data-goto="#id"])
  *   - the waitlist form: posts to Formspree, swaps to an inline "noted"
