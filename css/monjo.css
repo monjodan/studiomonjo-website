@@ -126,7 +126,7 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
   color: rgba(250, 246, 237, 0.5); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
-/* doors — the three cahier links */
+/* doors — links to the studio's two cahier sections */
 .doors {
   margin-top: auto; display: flex; flex-direction: column;
   gap: clamp(14px, 2.6vh, 24px); align-items: flex-start;
@@ -213,7 +213,7 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 .page-lang-alt:hover { color: #fff; }
 
 /* ============================================================
-   THE CAHIER — cream editorial pages (notebooks / letter / workshop)
+   THE CAHIER — cream editorial pages (notebooks / workshop)
    ============================================================ */
 .cahier {
   min-height: 100vh;
@@ -451,16 +451,6 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 .step h4 { margin: 12px 0 0; font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); }
 .step p { margin: 8px 0 0; font-family: var(--sans); font-size: 0.93rem; line-height: 1.7; color: var(--ink-soft); }
 
-/* inside-the-envelope / what-you-leave-with grids */
-.trio {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  gap: clamp(24px, 4vw, 48px); margin-top: clamp(36px, 5vw, 56px);
-}
-.trio figure { margin: 0; }
-.trio__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.trio__name { margin-top: 14px; font-family: var(--serif); font-weight: 400; font-size: 1.15rem; color: var(--ink); }
-.trio__desc { margin: 6px 0 0; font-family: var(--sans); font-size: 0.93rem; line-height: 1.65; color: var(--ink-soft); }
-
 .split {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: clamp(28px, 5vw, 72px); align-items: end;
@@ -469,70 +459,11 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 .split__body h3 { margin: 14px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.25; color: var(--ink); }
 .split__body p { margin: 16px 0 0; font-family: var(--sans); font-size: 1rem; line-height: 1.8; color: var(--ink-soft); }
 
-/* prose block (why-it-exists) */
-.prose { text-align: center; }
-.prose__lead { margin: 24px 0 0; font-family: var(--serif); font-weight: 300; font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.75; color: var(--ink); }
-.prose__body { margin: 20px 0 0; font-family: var(--sans); font-size: 1rem; line-height: 1.85; color: var(--ink-soft); }
-
 /* ---- Robey, the wandering ink puppet ---- */
 .robey {
   position: fixed; bottom: 12px; left: 120px; z-index: 355; pointer-events: none;
   width: 54px; height: 76px; filter: drop-shadow(0 5px 4px rgba(10, 8, 5, 0.28));
 }
-
-/* ---- Courrier subscription pricing + PayPal checkout ---- */
-.pricing { text-align: center; }
-.pricing__note { margin: 20px auto 0; max-width: 580px; font-family: var(--sans); font-size: 0.98rem; line-height: 1.8; color: var(--ink-soft); }
-.tiers {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-  gap: clamp(18px, 2.5vw, 30px); margin-top: clamp(36px, 5vw, 56px); text-align: left;
-}
-.tier {
-  display: flex; flex-direction: column; gap: 10px; cursor: pointer;
-  padding: clamp(24px, 3vw, 34px); background: rgba(255, 255, 255, 0.35);
-  border: 1px solid var(--rule); font: inherit; color: inherit;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.tier:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 18px 36px -24px rgba(34, 29, 21, 0.5); }
-.tier__label { font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); }
-.tier__price { font-family: var(--serif); font-weight: 300; font-size: clamp(1.9rem, 3.2vw, 2.4rem); line-height: 1; color: var(--ink); }
-.tier__price span { font-size: 0.9rem; color: var(--ink-soft); }
-.tier__saving { font-family: var(--sans); font-size: 0.85rem; line-height: 1.5; color: var(--ink-soft); }
-.tier__detail { font-family: var(--sans); font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); margin-top: 2px; }
-.tier__cta {
-  margin-top: auto; padding-top: 12px; align-self: flex-start;
-  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink); border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s;
-}
-.tier:hover .tier__cta { color: var(--accent); border-color: var(--accent); }
-.pricing__trust { margin: 22px auto 0; font-family: var(--sans); font-size: 0.85rem; line-height: 1.6; color: var(--ink-soft); }
-
-.payment-dialog {
-  position: fixed; inset: 0; margin: auto; /* centre in the viewport */
-  border: none; padding: 0; max-width: 460px; width: calc(100% - 32px);
-  max-height: calc(100dvh - 40px); overflow-y: auto;
-  background: var(--cream); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(10, 8, 5, 0.55);
-}
-.payment-dialog::backdrop { background: rgba(11, 9, 6, 0.55); }
-.payment-dialog__inner { padding: clamp(24px, 4vw, 40px); }
-.payment-dialog__close {
-  float: right; background: none; border: none; cursor: pointer;
-  font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft);
-}
-.payment-dialog__close:hover { color: var(--accent); }
-.payment-dialog__title { font-family: var(--serif); font-weight: 300; font-size: 1.6rem; color: var(--ink); margin: 0 0 10px; }
-.payment-dialog__text { font-family: var(--sans); font-size: 0.92rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 20px; }
-.paypal-button-slot { min-height: 50px; }
-.paypal-button-frame { margin-top: 6px; }
-.payment-loading, .payment-fallback, .payment-success { font-family: var(--sans); font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); }
-.payment-fallback a, .payment-success { color: var(--ink); }
-.subscription-summary { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
-.subscription-summary-figure { margin: 0 0 8px; }
-.subscription-summary-figure img { width: 100%; height: auto; }
-.subscription-summary-title { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin: 0; }
-.subscription-summary-price { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; color: var(--ink); margin: 0; }
-.subscription-summary-body { font-family: var(--sans); font-size: 0.88rem; line-height: 1.6; color: var(--ink-soft); margin: 0; }
-body.payment-dialog-open { overflow: hidden; }
 
 /* ---- view-transition cross-fade (bench <-> cahier), cross-document MPA ---- */
 @view-transition { navigation: auto; }
