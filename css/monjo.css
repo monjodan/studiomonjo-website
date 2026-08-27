@@ -522,6 +522,7 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
   margin: 0; font-family: var(--serif); font-weight: 300;
   font-size: clamp(2.35rem, 4.7vw, 4.1rem); line-height: 1.06;
   letter-spacing: -0.025em; color: var(--ink);
+  transform: translateY(-0.08em);
 }
 .visit-opening__intro {
   margin: 5px 0 0; max-width: 490px; font-family: var(--sans);
@@ -575,10 +576,11 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
   gap: clamp(26px, 5vw, 72px); align-items: start;
 }
 .visit-section__number { padding-top: 8px; color: var(--accent); }
-.visit-section h2 {
+.visit-section__head h2 {
   margin: 0; font-family: var(--serif); font-weight: 300;
   font-size: clamp(2.2rem, 4.4vw, 3.8rem); line-height: 1.08;
   letter-spacing: -0.025em; color: var(--ink);
+  transform: translateY(-0.08em);
 }
 .visit-section__copy {
   margin: 5px 0 0; font-family: var(--sans); font-size: 0.94rem;
