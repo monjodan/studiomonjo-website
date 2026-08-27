@@ -2,8 +2,8 @@
  * Cahier pages (notebooks / workshop) shared behaviour:
  *   - a faint warm paper fibre texture on the page
  *   - smooth in-page jumps for the "contents" links ([data-goto="#id"])
- *   - the waitlist form: posts to Formspree, swaps to an inline "noted"
- *     confirmation without leaving the page (works without JS too)
+ *   - Formspree forms: waitlist and company brief confirmations stay inline
+ *     without leaving the page (both still work without JS)
  */
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,7 +28,7 @@
 
   /* ---- paper texture ---- */
   var cahier = document.querySelector('.cahier');
-  if (cahier) {
+  if (cahier && !cahier.hasAttribute('data-flat-paper')) {
     var c = document.createElement('canvas');
     c.width = 160; c.height = 160;
     var ctx = c.getContext('2d');
@@ -68,7 +68,46 @@
       fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
         .then(function (r) { return r.ok ? r : Promise.reject(r); })
         .then(showDone)
-        .catch(function () { form.submit(); }); // fall back to a plain POST
+      .catch(function () { form.submit(); }); // fall back to a plain POST
+    });
+  }
+
+  /* ---- company brief -> Formspree, inline acknowledgement ---- */
+  var companyForm = document.querySelector('[data-company-form]');
+  if (companyForm) {
+    var companyDone = document.querySelector('[data-company-form-done]');
+    var companyStatus = companyForm.querySelector('[data-company-form-status]');
+    var companySubmit = companyForm.querySelector('button[type="submit"]');
+    var setCompanyPending = function (pending) {
+      companyForm.setAttribute('aria-busy', pending ? 'true' : 'false');
+      if (companySubmit) companySubmit.disabled = pending;
+    };
+
+    companyForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      setCompanyPending(true);
+      if (companyStatus) companyStatus.hidden = true;
+
+      fetch(companyForm.getAttribute('action'), {
+        method: 'POST',
+        body: new FormData(companyForm),
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (r) { return r.ok ? r : Promise.reject(r); })
+        .then(function () {
+          companyForm.hidden = true;
+          if (companyDone) {
+            companyDone.hidden = false;
+            companyDone.focus();
+          }
+        })
+        .catch(function () {
+          setCompanyPending(false);
+          if (companyStatus) {
+            companyStatus.textContent = 'The brief could not be sent. Please try again, or use the email link above.';
+            companyStatus.hidden = false;
+          }
+        });
     });
   }
 })();
