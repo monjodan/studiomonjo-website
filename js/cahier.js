@@ -104,7 +104,7 @@
         .catch(function () {
           setCompanyPending(false);
           if (companyStatus) {
-            companyStatus.textContent = 'The brief could not be sent. Please try again, or use the email link above.';
+            companyStatus.textContent = companyForm.getAttribute('data-error-message') || 'The brief could not be sent. Please try again, or use the email link above.';
             companyStatus.hidden = false;
           }
         });
