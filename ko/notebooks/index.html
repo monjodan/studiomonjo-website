@@ -37,7 +37,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/monjo.css?v=studio-conversion-20260827">
+<link rel="stylesheet" href="/css/monjo.css?v=robey-story-card-20260901">
 
 <script type="application/ld+json">
 {
@@ -136,6 +136,28 @@
       </figure>
     </div>
 
+    <article class="unique-piece" aria-labelledby="yeobaek-title">
+      <div class="unique-piece__copy">
+        <p class="unique-piece__eyebrow">한 권의 이야기</p>
+        <h3 id="yeobaek-title">여백</h3>
+        <p>일부러 비워 둔 자리라는 뜻의 여백에서 시작한 세로로 긴 노트입니다. 결이 보이는 흰 종이, 둥근 모서리, 흰 실, 손으로 쓴 표지는 이 한 권을 위해 함께 골랐습니다. 뒷면에는 짧은 이야기를 한국어, 프랑스어, 영어로 적었습니다.</p>
+      </div>
+      <figure class="unique-piece__hero">
+        <img src="/media/web/notebooks/yeobaek-front-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="결이 보이는 흰 종이에 여백 글씨를 손으로 쓴 단 한 권의 노트 앞표지">
+        <figcaption>앞표지 &middot; 손으로 쓴 서예</figcaption>
+      </figure>
+      <div class="unique-piece__details">
+        <figure class="unique-piece__detail">
+          <img src="/media/web/notebooks/yeobaek-front-back-thread-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="앞표지와 이야기가 적힌 뒷면, 흰 제본 실을 함께 보여 주는 여백 노트">
+          <figcaption>앞표지와 뒷표지, 흰 실</figcaption>
+        </figure>
+        <figure class="unique-piece__detail">
+          <img src="/media/web/notebooks/yeobaek-meaning-detail-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="여백 노트에 한국어, 프랑스어, 영어로 적힌 일부러 비워 둔 자리라는 뜻">
+          <figcaption>여백 &middot; 일부러 비워 둔 자리</figcaption>
+        </figure>
+      </div>
+    </article>
+
     <div class="availability-note">
       <span class="availability-note__status">지금 스튜디오에 있는 노트</span>
       <p>사진 속 노트는 예시입니다. 이미 주인을 만났을 수 있고, 다음 노트는 전혀 다른 모습일 수 있습니다. 판매 중인 노트나 작업 중인 노트가 궁금하면 메시지를 보내 주세요.</p>
@@ -157,7 +179,16 @@
         <div><span>작업대에서</span><p>표지를 인쇄하고 에디션을 엮어 러비의 편지를 넣습니다.</p></div>
       </div>
 
-      <div class="scenes">
+      <div class="scene-carousel" data-scene-carousel data-scene-template="{total}개 중 {current}번째 장면: {name}" role="region" aria-roledescription="carousel" aria-labelledby="robey-title">
+        <div class="scene-carousel__controls" data-scene-controls hidden>
+          <p class="scene-carousel__count" aria-hidden="true"><span data-scene-current>01</span> / 06</p>
+          <p class="visually-hidden" data-scene-live aria-live="polite" aria-atomic="true"></p>
+          <div class="scene-carousel__buttons">
+            <button class="scene-carousel__button" type="button" data-scene-previous aria-controls="robey-scenes">&#8592; 이전 장면</button>
+            <button class="scene-carousel__button" type="button" data-scene-next aria-controls="robey-scenes">다음 장면 &#8594;</button>
+          </div>
+        </div>
+        <div class="scenes" id="robey-scenes" data-scene-track tabindex="0">
         <article class="scene">
           <figure class="scene__painting">
             <img src="/media/web/img/robey-001-art-full.jpg" alt="장면 001 그림: 돌담 곁 떨어지는 꽃잎 아래의 러비">
@@ -220,7 +251,81 @@
             </div>
           </div>
         </article>
+        <article class="scene scene--reverse">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-004-tree-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="장면 004 그림: 잎이 떨어지기 시작한 나무 아래에서 쉬는 러비">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--004" src="/media/web/notebooks/robey-004-tree-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="장면 004를 인쇄하고 꿰맨 러비 노트">
+            </div>
+            <p class="scene__edition">그림 &rarr; 노트 &middot; 004 &middot; 초록 실</p>
+            <h3 class="scene__name">나무 아래</h3>
+            <p class="scene__line">잎이 먼저 움직였습니다. 조금 더 바라보고 싶었습니다.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">구매 가능</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">국내 스토어 &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">인스타그램 주문 &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-005-jamsil-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="장면 005 그림: 석촌호수 건너 롯데월드타워를 바라보는 러비">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--005" src="/media/web/notebooks/robey-005-seokchon-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="장면 005를 인쇄하고 꿰맨 러비 노트">
+            </div>
+            <p class="scene__edition">그림 &rarr; 노트 &middot; 005 &middot; 남색 실</p>
+            <h3 class="scene__name">석촌호수 건너</h3>
+            <p class="scene__line">호수 건너 타워는 그림에 담을 만큼 가까워 보였습니다.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">구매 가능</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">국내 스토어 &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">인스타그램 주문 &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene scene--reverse">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-006-namsan-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="장면 006 그림: 남산서울타워로 이어지는 길을 오르는 러비">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--006" src="/media/web/notebooks/robey-006-namsan-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="장면 006을 빨간 실로 꿰맨 러비 노트">
+            </div>
+            <p class="scene__edition">그림 &rarr; 노트 &middot; 006 &middot; 빨간 실</p>
+            <h3 class="scene__name">남산을 오르며</h3>
+            <p class="scene__line">모퉁이를 돌 때마다 타워가 조금씩 높아졌습니다.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">구매 가능</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">국내 스토어 &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">인스타그램 주문 &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+        </div>
       </div>
+
+      <aside class="robey-letter" aria-labelledby="robey-letter-title">
+        <figure class="robey-letter__photo">
+          <img src="/media/web/notebooks/postcards-handwritten-fan.jpg" width="1600" height="1066" loading="lazy" alt="짙은 남색 테이블 위에 부채꼴로 펼쳐 놓은 프랑스어와 한국어 러비 이야기 카드">
+        </figure>
+        <div class="robey-letter__copy">
+          <p class="robey-letter__label">노트 속 이야기</p>
+          <h3 id="robey-letter-title">러비가 보내는 편지.</h3>
+          <p>러비 노트마다 접힌 이야기 카드가 한 장씩 들어 있습니다. 그림 속에서 러비가 무엇을 보았는지, 왜 그곳에 멈춰 섰는지 적은 편지입니다.</p>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -265,7 +370,7 @@
 </main>
 
 </div>
-<script src="/js/cahier.js?v=flat-paper-20260827"></script>
+  <script src="/js/cahier.js?v=robey-carousel-20260831b"></script>
 <script src="/js/lang-pill.js"></script>
 </body>
 </html>

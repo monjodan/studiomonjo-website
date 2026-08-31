@@ -37,7 +37,7 @@
 
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/media/web/branding/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/monjo.css?v=studio-conversion-20260827">
+<link rel="stylesheet" href="/css/monjo.css?v=robey-story-card-20260901">
 
 <script type="application/ld+json">
 {
@@ -136,6 +136,28 @@
       </figure>
     </div>
 
+    <article class="unique-piece" aria-labelledby="yeobaek-title">
+      <div class="unique-piece__copy">
+        <p class="unique-piece__eyebrow">Une pièce en détail</p>
+        <h3 id="yeobaek-title">Yeobaek</h3>
+        <p>Un cahier tout en hauteur, né de l'idée coréenne de l'espace que l'on choisit de laisser vide. Papier blanc texturé, coins arrondis, fil blanc et calligraphie peinte à la main ont été choisis uniquement pour cette pièce. Au dos, un court texte en coréen, en français et en anglais.</p>
+      </div>
+      <figure class="unique-piece__hero">
+        <img src="/media/web/notebooks/yeobaek-front-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="La couverture du cahier unique Yeobaek, calligraphiée en coréen sur un papier blanc texturé">
+        <figcaption>Couverture &middot; calligraphie peinte à la main</figcaption>
+      </figure>
+      <div class="unique-piece__details">
+        <figure class="unique-piece__detail">
+          <img src="/media/web/notebooks/yeobaek-front-back-thread-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="Le cahier Yeobaek ouvert pour montrer sa couverture, son texte au dos et sa reliure en fil blanc">
+          <figcaption>Couverture, dos et reliure</figcaption>
+        </figure>
+        <figure class="unique-piece__detail">
+          <img src="/media/web/notebooks/yeobaek-meaning-detail-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="Les mots espace laissé vide imprimés en coréen, en français et en anglais dans le cahier Yeobaek">
+          <figcaption>여백 &middot; un espace laissé vide</figcaption>
+        </figure>
+      </div>
+    </article>
+
     <div class="availability-note">
       <span class="availability-note__status">En ce moment au studio</span>
       <p>Les cahiers photographiés ici sont des exemples. Ils ont peut-être déjà trouvé leur propriétaire, et le prochain sera sans doute très différent. Écrivez-moi pour savoir ce qui est disponible ou en cours de fabrication.</p>
@@ -157,7 +179,16 @@
         <div><span>À l'établi</span><p>J'imprime la couverture, relie l'édition et ajoute la lettre de Robey.</p></div>
       </div>
 
-      <div class="scenes">
+      <div class="scene-carousel" data-scene-carousel data-scene-template="Scène {current} sur {total} : {name}" role="region" aria-roledescription="carousel" aria-labelledby="robey-title">
+        <div class="scene-carousel__controls" data-scene-controls hidden>
+          <p class="scene-carousel__count" aria-hidden="true"><span data-scene-current>01</span> / 06</p>
+          <p class="visually-hidden" data-scene-live aria-live="polite" aria-atomic="true"></p>
+          <div class="scene-carousel__buttons">
+            <button class="scene-carousel__button" type="button" data-scene-previous aria-controls="robey-scenes">&#8592; Précédente</button>
+            <button class="scene-carousel__button" type="button" data-scene-next aria-controls="robey-scenes">Suivante &#8594;</button>
+          </div>
+        </div>
+        <div class="scenes" id="robey-scenes" data-scene-track tabindex="0">
         <article class="scene">
           <figure class="scene__painting">
             <img src="/media/web/img/robey-001-art-full.jpg" alt="Peinture de la scène 001 : Robey sous des pétales qui tombent près d'un mur de pierre">
@@ -220,7 +251,81 @@
             </div>
           </div>
         </article>
+        <article class="scene scene--reverse">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-004-tree-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="Peinture de la scène 004 : Robey se repose sous un arbre dont les feuilles commencent à tomber">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--004" src="/media/web/notebooks/robey-004-tree-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="La scène 004 imprimée et cousue sous forme de cahier Robey">
+            </div>
+            <p class="scene__edition">Peinture &rarr; cahier &middot; 004 &middot; fil vert</p>
+            <h3 class="scene__name">Sous l'arbre</h3>
+            <p class="scene__line">les feuilles ont bougé les premières. je suis resté les regarder.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">Disponible</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Boutique en Corée &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">Commander sur Instagram &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-005-jamsil-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="Peinture de la scène 005 : Robey regarde la Lotte World Tower de l'autre côté du lac Seokchon">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--005" src="/media/web/notebooks/robey-005-seokchon-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="La scène 005 imprimée et cousue sous forme de cahier Robey">
+            </div>
+            <p class="scene__edition">Peinture &rarr; cahier &middot; 005 &middot; fil bleu nuit</p>
+            <h3 class="scene__name">De l'autre côté du lac Seokchon</h3>
+            <p class="scene__line">de l'autre côté du lac, la tour semblait assez proche pour être dessinée.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">Disponible</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Boutique en Corée &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">Commander sur Instagram &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene scene--reverse">
+          <figure class="scene__painting">
+            <img src="/media/web/notebooks/robey-006-namsan-painting-full-user.jpg" width="1331" height="2000" loading="lazy" alt="Peinture de la scène 006 : Robey monte le chemin vers la N Seoul Tower à Namsan">
+          </figure>
+          <div class="scene__object">
+            <div class="scene__cover-wrap">
+              <img class="scene__cover scene__cover--masked scene__cover--006" src="/media/web/notebooks/robey-006-namsan-main-1000x1000.jpg" width="1000" height="1000" loading="lazy" alt="La scène 006 imprimée et cousue en cahier Robey avec un fil rouge">
+            </div>
+            <p class="scene__edition">Peinture &rarr; cahier &middot; 006 &middot; fil rouge</p>
+            <h3 class="scene__name">En montant à Namsan</h3>
+            <p class="scene__line">à chaque tournant, la tour paraissait un peu plus haute.</p>
+            <div class="scene__buy">
+              <span class="scene__availability">Disponible</span>
+              <span class="scene__links">
+                <a class="scene__link" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener noreferrer">Boutique en Corée &#8599;</a>
+                <a class="scene__link" href="https://ig.me/m/studio.monjo" target="_blank" rel="noopener noreferrer">Commander sur Instagram &#8599;</a>
+              </span>
+            </div>
+          </div>
+        </article>
+        </div>
       </div>
+
+      <aside class="robey-letter" aria-labelledby="robey-letter-title">
+        <figure class="robey-letter__photo">
+          <img src="/media/web/notebooks/postcards-handwritten-fan.jpg" width="1600" height="1066" loading="lazy" alt="Cartes pliées de Robey en français et en coréen, déployées sur une table bleu nuit">
+        </figure>
+        <div class="robey-letter__copy">
+          <p class="robey-letter__label">La carte pliée</p>
+          <h3 id="robey-letter-title">Une lettre de Robey, glissée à l’intérieur.</h3>
+          <p>Chaque cahier Robey est accompagné d’une carte pliée. Robey y raconte ce qu’il a vu dans la scène et ce qui lui a donné envie de s’y arrêter.</p>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -265,7 +370,7 @@
 </main>
 
 </div>
-<script src="/js/cahier.js?v=flat-paper-20260827"></script>
+  <script src="/js/cahier.js?v=robey-carousel-20260831b"></script>
 <script src="/js/lang-pill.js"></script>
 </body>
 </html>
