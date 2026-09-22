@@ -1,5 +1,5 @@
 /**
- * Cahier pages (notebooks / workshop) shared behaviour:
+ * Studio pages (notebooks / about / company editions) shared behaviour:
  *   - a faint warm paper fibre texture on the page
  *   - smooth in-page jumps for the "contents" links ([data-goto="#id"])
  *   - Formspree forms: waitlist and company brief confirmations stay inline
@@ -11,6 +11,11 @@
   /* ---- keep autoplay videos looping silently (some mobile browsers block
      native autoplay and show a play button; force muted playback) ---- */
   Array.prototype.forEach.call(document.querySelectorAll('video[autoplay]'), function (v) {
+    if (reduce) {
+      v.autoplay = false;
+      v.pause();
+      return;
+    }
     v.muted = true;
     v.playsInline = true;
     var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
@@ -203,7 +208,7 @@
         .catch(function () {
           setCompanyPending(false);
           if (companyStatus) {
-            companyStatus.textContent = companyForm.getAttribute('data-error-message') || 'The brief could not be sent. Please try again, or use the email link above.';
+            companyStatus.textContent = companyForm.getAttribute('data-error-message') || 'The brief could not be sent. Please try again, or contact the studio on LinkedIn.';
             companyStatus.hidden = false;
           }
         });

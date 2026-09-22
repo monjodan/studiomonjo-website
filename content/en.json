@@ -1,0 +1,310 @@
+{
+  "nav": {
+    "notebooks": "Notebooks",
+    "about": "Our story",
+    "company": "Company editions",
+    "buy": "How to buy",
+    "project": "Start a project",
+    "language": "Language",
+    "skip": "Skip to content",
+    "home": "Home",
+    "menu": "Explore the studio"
+  },
+  "footer": {
+    "line": "For the art of writing by hand.",
+    "place": "Made by Jordan Monnet in Seoul.",
+    "social": "Instagram",
+    "back": "Back to the notebooks",
+    "shop": "Shop in Korea"
+  },
+  "notebooks": {
+    "title": "The notebooks",
+    "description": "Explore hand-bound notebooks made by Jordan Monnet in Seoul, from illustrated Robey editions with blank 105gsm pages to one-of-a-kind pieces.",
+    "eyebrow": "Made by hand in Seoul",
+    "heading": "A little world.\nRoom for yours.",
+    "intro": "I make each notebook by hand in my Seoul studio. Choose a cover you feel close to; the pages inside are yours to fill.",
+    "robeyNav": "Robey editions",
+    "uniqueNav": "One of a kind",
+    "insideNav": "Inside the notebook",
+    "collection": "The Robey collection",
+    "collectionIntro": "Meet Robey, a small robot discovering our world. I draw his adventures, then turn each scene into a notebook with its own story.",
+    "price": "Pocket €15 · Standard €25",
+    "priceNote": "International prices · shipping confirmed with your order.",
+    "choose": "Choose this notebook",
+    "edition": "Robey",
+    "from": "From €15",
+    "products": [
+      {
+        "name": "Petals at the Window",
+        "scene": "A quiet moment beneath the falling petals.",
+        "alt": "White Robey notebook with an illustration of falling petals, photographed on navy."
+      },
+      {
+        "name": "The Orange Balloon",
+        "scene": "A small companion. A little possibility.",
+        "alt": "White Robey notebook with the orange balloon illustration, photographed on navy."
+      },
+      {
+        "name": "The Little Library",
+        "scene": "So many stories still to discover.",
+        "alt": "White Robey notebook with the library illustration, photographed on navy."
+      },
+      {
+        "name": "Under the Tree",
+        "scene": "Taking time to notice the leaves.",
+        "alt": "White Robey notebook with the tree illustration and green thread, photographed on navy."
+      },
+      {
+        "name": "Seokchon Lake",
+        "scene": "Looking across the water, looking up.",
+        "alt": "White Robey notebook with Seokchon Lake and Lotte World Tower, photographed on navy."
+      },
+      {
+        "name": "Namsan",
+        "scene": "One step, then another, towards the tower.",
+        "alt": "White Robey notebook with the Namsan Seoul Tower illustration and red thread, photographed on navy."
+      }
+    ],
+    "insideKicker": "The next story is yours",
+    "insideTitle": "For the way\nyou think.",
+    "insideText": "A sentence, a sketch, a thought that needs a little room. The pages are left blank so you can move between them freely.",
+    "paperTitle": "105gsm paper",
+    "paperText": "Chosen for handwriting, including fountain pens.",
+    "guidesTitle": "Blank pages. A little guidance.",
+    "guidesText": "Lined and grid guide sheets slip beneath the page when you want them, and lift out when you don’t.",
+    "bindingTitle": "Folded, sewn, checked",
+    "bindingText": "I fold, sew and check each notebook at my studio table in Seoul.",
+    "videoCaption": "A visitor adding their own words and drawings.",
+    "videoAlt": "A visitor writing beneath a sketch in an open notebook on a navy table",
+    "guideCaption": "Blank pages, with removable lined and grid guides.",
+    "guideAlt": "Removable lined and grid guide sheets on navy",
+    "uniqueKicker": "One of a kind",
+    "uniqueTitle": "Some ideas become just one notebook.",
+    "uniqueText": "Calligraphy, a piece of hanji, a photograph. These individual pieces let the material lead. Each has its own proportions and details.",
+    "uniqueNote": "Examples from the studio. Ask what is available now.",
+    "uniqueAsk": "Ask about a piece",
+    "uniqueProducts": [
+      {
+        "name": "Yeobaek · 여백",
+        "line": "Space left empty, expressed in calligraphy.",
+        "alt": "A tall white Yeobaek notebook with Korean calligraphy on navy"
+      },
+      {
+        "name": "Hanji & thread",
+        "line": "Torn paper, held by a few careful stitches.",
+        "alt": "A small navy notebook with calligraphy on hand-torn hanji sewn onto its cover"
+      },
+      {
+        "name": "A photograph, kept",
+        "line": "An image given a place on the cover.",
+        "alt": "A navy notebook with a photograph stitched to a white paper panel"
+      }
+    ],
+    "storyKicker": "Behind the notebooks",
+    "storyTitle": "Why make them by hand?",
+    "storyText": "My grandmother’s dip pen, my own fountain pens, and the pleasure of letting a thought take its time.",
+    "storyLink": "Read the studio’s story",
+    "orderTitle": "Found your notebook?",
+    "orderText": "Shop in Korea, or speak with the studio about an international order.",
+    "orderButton": "Choose how to buy",
+    "blankAlt": "An open hand-bound notebook with blank white pages",
+    "seoTitle": "Hand-Bound Notebooks & Robey Editions | Studio Monjo",
+    "faqTitle": "Questions about the notebooks",
+    "faq": [
+      {
+        "question": "Who makes Studio Monjo notebooks?",
+        "answer": "I’m Jordan Monnet, a French maker in Seoul. I fold, sew and check each notebook by hand in my studio."
+      },
+      {
+        "question": "What paper do Robey notebooks use?",
+        "answer": "Robey notebooks have blank 105gsm pages chosen for handwriting, including fountain pens. Removable lined and grid guide sheets slip beneath the page when you want them."
+      },
+      {
+        "question": "Where can I buy a notebook?",
+        "answer": "For delivery in South Korea, order through the Studio Monjo Naver shop. For an international order, message Studio Monjo on Instagram with your notebook choice and delivery country. I’ll confirm availability, shipping and payment details."
+      },
+      {
+        "question": "Can I order notebooks for my company?",
+        "answer": "Yes. Company editions start at 20 copies. Choose a white cover with your logo or an original Robey illustration, with your message inside. Share your quantity, timing and idea through the company enquiry form."
+      }
+    ]
+  },
+  "about": {
+    "title": "Our story",
+    "description": "Meet Jordan Monnet, the French maker behind Studio Monjo in Seoul, and discover why he makes notebooks by hand for writing, drawing and personal stories.",
+    "eyebrow": "Jordan Monnet · The maker behind Studio Monjo",
+    "heading": "Why I make\nnotebooks.",
+    "intro": "I’m a French maker in Seoul. I fold, sew and check every notebook myself. But what interests me most is what happens after it leaves my hands.",
+    "portraitAlt": "Jordan smiling at his market table, surrounded by the notebooks he makes",
+    "portraitCaption": "Out of the studio, meeting the people who will fill these pages.",
+    "originTitle": "Why a notebook?",
+    "origin": [
+      "My grandmother learned to write with a dip pen. I grew up with fountain pens. Later, I spent many years working in artificial intelligence. The tools changed, but the physical act of writing stayed with me: a pen, ink, paper, and the pause before a line.",
+      "Working among words that can be generated so quickly made me appreciate something else: taking the time to write by hand and allowing a thought to wander. Studio Monjo began with that feeling.",
+      "A notebook makes room for that time. You can turn an idea over, cross something out, draw beside it, or leave a page unfinished. It holds the way you think, as well as the words you finally choose."
+    ],
+    "makingTitle": "Why make it by hand?",
+    "making": [
+      "Folding the sheets, drawing the thread through the spine, checking a finished notebook: these are small, repeated actions, but they make the object personal. Every notebook carries some of my time and attention.",
+      "I leave the pages blank. There are lined and grid guides if you need them, but no prescribed way to fill the book. I want the care I put into making it to become an invitation for someone else to use it."
+    ],
+    "pull": "A notebook carries my time.\nThen it begins to carry yours.",
+    "robeyTitle": "Seeing the world with Robey",
+    "robey": [
+      "Robey is a small robot meeting the human world for the first time. Through his eyes, I draw moments we can become too used to seeing: falling petals, a library, a walk beneath the trees.",
+      "I want to look again at what makes us human, and at the things that make our world beautiful and surprising. Each illustrated notebook holds the beginning of that story. Its blank pages leave room for yours."
+    ],
+    "marketKicker": "When the notebook changes hands",
+    "marketTitle": "The story that stayed with me.",
+    "market": [
+      "At a market, a child became absorbed in Robey’s story. They wanted to draw inside the notebook and invent his next adventure, and worked hard to persuade their mother.",
+      "When the notebook was finally theirs, they asked me to write a short message on the first page. I loved the thought that a story I had begun could continue in someone else’s imagination. I still hope that notebook is filling up with their own wonderful stories.",
+      "That is why meeting people at markets matters to me. I hear what they see in a cover, what they feel about Robey, and what they want to put on the pages. These encounters stay with me when I return to the studio."
+    ],
+    "marketAlt": "Studio Monjo’s notebook stand at the Maison France Festival",
+    "marketCaption": "The studio out in the world · Maison France Festival, September 2026.",
+    "signature": "Jordan Monnet",
+    "signatureDetail": "Maker & illustrator · Seoul",
+    "close": "The notebook’s next chapter belongs to you.",
+    "closeLink": "Find your notebook",
+    "signingAlt": "Jordan writing a personal message inside a notebook at the Maison France Festival",
+    "seoTitle": "Jordan Monnet, Notebook Maker in Seoul | Studio Monjo"
+  },
+  "company": {
+    "title": "Company editions",
+    "description": "Custom hand-bound notebooks made in Seoul from 20 copies. Choose your logo or an original Robey illustration, with an opening message for your team or partners.",
+    "eyebrow": "Studio Monjo · Company editions",
+    "heading": "Your story.\nSomething to keep.",
+    "intro": "A welcome for a new colleague. A thank-you to a partner. A place remembered. Give a hand-bound notebook made around what you want to say.",
+    "heroAlt": "A white Studio Monjo branded notebook photographed on deep navy",
+    "heroCaption": "Studio Monjo’s own edition · a starting point for yours.",
+    "facts": [
+      [
+        "From 20 copies",
+        "Made by hand in Seoul"
+      ],
+      [
+        "A5 or pocket A6",
+        "Blank pages + writing guides"
+      ],
+      [
+        "Your mark or illustration",
+        "A message inside"
+      ]
+    ],
+    "optionsKicker": "Two ways to make it yours",
+    "optionsTitle": "Start with your identity.\nOr a story only you could tell.",
+    "brandLabel": "01 · Brand Edition",
+    "brandTitle": "A familiar mark.\nA personal gesture.",
+    "brandText": "Your logo and colours on a white cover. Binding thread chosen to match. A first-page message that says why you’re giving it, and your line beside the edition number.",
+    "brandPrice": "From €20 / notebook",
+    "brandTime": "Around 4 weeks",
+    "brandAlt": "White Studio Monjo cover and matching thread on a navy surface",
+    "illustrationLabel": "02 · Illustration Edition",
+    "illustrationTitle": "Your world,\nseen through Robey’s eyes.",
+    "illustrationText": "An original illustration of a place, product or object that matters to your company, with Robey, a curious little robot, discovering it. Created for your edition, with a short story in the two languages you choose.",
+    "illustrationPrice": "From €25 / notebook",
+    "illustrationTime": "Around 6–8 weeks",
+    "illustrationAlt": "A collection of white notebooks with original Robey illustrated covers on navy",
+    "illustrationCaption": "Robey studio editions shown as examples of the illustration style.",
+    "pricingNote": "Starting prices per A5 notebook for 20–99 copies, excluding VAT. Pocket A6 is €5 less. Volume pricing is available.",
+    "optionLink": "Discuss this edition",
+    "detailsKicker": "Considered, inside and out",
+    "detailsTitle": "The cover is\nonly the beginning.",
+    "detailsText": "The words on the first page give the notebook its occasion. The pages that follow give the recipient space for their own.",
+    "details": [
+      [
+        "The cover",
+        "Your identity or an original illustration."
+      ],
+      [
+        "The thread",
+        "A colour that belongs to your edition."
+      ],
+      [
+        "The opening page",
+        "Your welcome, wish or thank-you."
+      ],
+      [
+        "The numbered back",
+        "A small detail that makes each copy part of the edition."
+      ]
+    ],
+    "detailsAlt": "A company dedication printed inside an open hand-bound notebook on navy",
+    "detailsCaption": "A studio sample showing the printed opening message.",
+    "processTitle": "From a conversation\nto the last stitch.",
+    "process": [
+      [
+        "Tell me the occasion",
+        "Share the quantity, timing and what you’d like the notebook to express."
+      ],
+      [
+        "See your edition",
+        "Review the cover, thread, message and any illustrated story before making begins."
+      ],
+      [
+        "Made, then given",
+        "I fold, sew and number the notebooks. Each is wrapped individually, then delivered together."
+      ]
+    ],
+    "delivery": "20–2,000 copies · Korea delivery included · International shipping quoted separately. Larger orders and firm event dates are discussed when we plan the edition.",
+    "briefKicker": "Let’s make an edition",
+    "briefTitle": "What would you\nlike to give?",
+    "briefText": "A few details are enough to begin. I’ll reply personally within one week to discuss your idea, a quote and the next steps.",
+    "linkedin": "Find Studio Monjo on LinkedIn",
+    "name": "Your name",
+    "workEmail": "Work email",
+    "organization": "Company",
+    "country": "Delivery country",
+    "quantity": "Approximate quantity",
+    "edition": "Edition",
+    "choose": "Choose an edition",
+    "brand": "Brand Edition",
+    "illustration": "Illustration Edition",
+    "unsure": "Not sure yet",
+    "story": "The occasion, and what you have in mind",
+    "date": "Desired date (optional)",
+    "dateHint": "A date or a rough month",
+    "submit": "Send your enquiry",
+    "sending": "Sending…",
+    "error": "Your enquiry could not be sent. Please try again, or contact Studio Monjo on LinkedIn.",
+    "successTitle": "Thank you for your enquiry.",
+    "successText": "I’ll be in touch within one week. — Jordan",
+    "privacy": "Your details are sent to the studio through Formspree to answer your enquiry.",
+    "seoTitle": "Custom Company Notebooks, Hand-Bound in Seoul | Studio Monjo"
+  },
+  "buy": {
+    "title": "A notebook for you.",
+    "intro": "Where would you like to order?",
+    "close": "Close",
+    "selected": "Your choice",
+    "generic": "Studio Monjo notebooks",
+    "korea": "South Korea",
+    "international": "Outside Korea",
+    "business": "Company order",
+    "koreaTitle": "Shop through Naver.",
+    "koreaText": "Browse the available covers and formats, see current prices, and order for delivery in Korea.",
+    "koreaLink": "Open the Naver shop",
+    "internationalTitle": "Let’s arrange your order.",
+    "internationalText": "Message the studio on Instagram with the notebook you like and your delivery country. I’ll confirm availability, shipping and how to pay before you order.",
+    "internationalLink": "Message on Instagram",
+    "businessTitle": "Make an edition together.",
+    "businessText": "Tell me your quantity, occasion and timing. Use the enquiry form, or connect with the studio on LinkedIn.",
+    "businessLink": "Start a company enquiry",
+    "linkedin": "Studio Monjo on LinkedIn",
+    "availability": "Availability, final prices and delivery are confirmed by the shop or studio.",
+    "fallbackTitle": "How to buy",
+    "fallbackText": "For delivery in Korea, order through Naver. For international orders, message the studio with your choice and destination.",
+    "uniqueTitle": "Ask what’s in the studio.",
+    "uniqueText": "These are individual pieces. Message me with the notebook you like and your delivery country; I’ll confirm what is available and how to order.",
+    "uniqueLink": "Ask on Instagram"
+  },
+  "home": {
+    "description": "Handmade notebooks by French maker Jordan Monnet in Seoul. Discover illustrated Robey notebooks, one-of-a-kind pieces and custom company editions.",
+    "lede": "Hand-bound notebooks. Stories to begin, pages to make your own.",
+    "subNotebooks": "Find your notebook",
+    "subAbout": "Why I make notebooks by hand",
+    "subCompany": "An edition for your people and your story",
+    "seoTitle": "Handmade Notebooks in Seoul | Studio Monjo"
+  }
+}

@@ -3,6 +3,10 @@
 
 # Local tooling
 .claude/
+__pycache__/
+
+# Validated GitHub Pages artifact
+/_site/
 
 # Design prototype / staging workspace (source deck + duplicate media; not served)
 new-design/

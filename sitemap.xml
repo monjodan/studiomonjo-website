@@ -1,113 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://studiomonjo.com/en/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/"/>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/" />
   </url>
-
-  <url>
-    <loc>https://studiomonjo.com/ko/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/"/>
-  </url>
-
   <url>
     <loc>https://studiomonjo.com/fr/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/"/>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/" />
   </url>
-
+  <url>
+    <loc>https://studiomonjo.com/ko/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/" />
+  </url>
   <url>
     <loc>https://studiomonjo.com/en/notebooks/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/"/>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/" />
   </url>
-
-  <url>
-    <loc>https://studiomonjo.com/en/company-editions/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/"/>
-  </url>
-
-  <url>
-    <loc>https://studiomonjo.com/ko/company-editions/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/"/>
-  </url>
-
-  <url>
-    <loc>https://studiomonjo.com/fr/company-editions/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/"/>
-  </url>
-
-  <url>
-    <loc>https://studiomonjo.com/ko/notebooks/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/"/>
-  </url>
-
   <url>
     <loc>https://studiomonjo.com/fr/notebooks/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/"/>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/" />
   </url>
-
   <url>
-    <loc>https://studiomonjo.com/en/workshops/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/workshops/"/>
+    <loc>https://studiomonjo.com/ko/notebooks/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/notebooks/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/notebooks/" />
   </url>
-
   <url>
-    <loc>https://studiomonjo.com/ko/workshops/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/workshops/"/>
+    <loc>https://studiomonjo.com/en/about/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/" />
   </url>
-
   <url>
-    <loc>https://studiomonjo.com/fr/workshops/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/workshops/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/workshops/"/>
+    <loc>https://studiomonjo.com/fr/about/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/" />
   </url>
-
+  <url>
+    <loc>https://studiomonjo.com/ko/about/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/about/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/about/" />
+  </url>
+  <url>
+    <loc>https://studiomonjo.com/en/company-editions/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/" />
+  </url>
+  <url>
+    <loc>https://studiomonjo.com/fr/company-editions/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/" />
+  </url>
+  <url>
+    <loc>https://studiomonjo.com/ko/company-editions/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/" />
+  </url>
 </urlset>

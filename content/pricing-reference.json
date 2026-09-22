@@ -1,0 +1,32 @@
+{
+  "reference_date": "2026-09-21",
+  "source": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-krw.en.html",
+  "krw_per_eur": 1576.63,
+  "round_up_increment_eur": 5,
+  "english_prices": {
+    "pocket": {
+      "krw": 21000,
+      "eur": 15
+    },
+    "standard": {
+      "krw": 32000,
+      "eur": 25
+    },
+    "brand_a5": {
+      "krw": 24000,
+      "eur": 20
+    },
+    "illustration_a5": {
+      "krw": 32000,
+      "eur": 25
+    },
+    "brand_a6": {
+      "krw": 21000,
+      "eur": 15
+    },
+    "illustration_a6": {
+      "krw": 29000,
+      "eur": 20
+    }
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "nav": {
+    "notebooks": "Les cahiers",
+    "about": "Notre histoire",
+    "company": "Éditions d’entreprise",
+    "buy": "Comment acheter",
+    "project": "Commencer un projet",
+    "language": "Langue",
+    "skip": "Aller au contenu",
+    "home": "Accueil",
+    "menu": "Découvrir le studio"
+  },
+  "footer": {
+    "line": "Pour l’art d’écrire à la main.",
+    "place": "Fabriqué par Jordan Monnet à Séoul.",
+    "social": "Instagram",
+    "back": "Revenir aux cahiers",
+    "shop": "Acheter en Corée"
+  },
+  "notebooks": {
+    "title": "Les cahiers",
+    "description": "Les cahiers de Jordan Monnet, reliés à la main à Séoul : éditions illustrées de Robey aux pages blanches de 105 g/m², et pièces uniques.",
+    "eyebrow": "Faits main à Séoul",
+    "heading": "Un petit monde.\nÀ vous d’écrire.",
+    "intro": "Je fabrique chaque cahier à la main dans mon atelier à Séoul. Choisissez une couverture qui vous touche ; les pages intérieures sont à vous.",
+    "robeyNav": "Les éditions Robey",
+    "uniqueNav": "Les pièces uniques",
+    "insideNav": "À l’intérieur",
+    "collection": "La collection Robey",
+    "collectionIntro": "Voici Robey, un petit robot qui découvre notre monde. Je dessine ses aventures, puis chaque scène devient un cahier avec sa propre histoire.",
+    "price": "Poche ₩21,000 · Standard ₩32,000",
+    "priceNote": "Formats et disponibilités dans la boutique.",
+    "choose": "Choisir ce cahier",
+    "edition": "Robey",
+    "from": "À partir de ₩21,000",
+    "products": [
+      {
+        "name": "Pétales à la fenêtre",
+        "scene": "Un moment de calme sous les pétales qui tombent.",
+        "alt": "Cahier Robey blanc illustré de pétales qui tombent, photographié sur fond bleu nuit."
+      },
+      {
+        "name": "Le ballon orange",
+        "scene": "Un petit compagnon. Une possibilité qui s’ouvre.",
+        "alt": "Cahier Robey blanc illustré du ballon orange, photographié sur fond bleu nuit."
+      },
+      {
+        "name": "La petite bibliothèque",
+        "scene": "Tant d’histoires encore à découvrir.",
+        "alt": "Cahier Robey blanc illustré de la bibliothèque, photographié sur fond bleu nuit."
+      },
+      {
+        "name": "Sous l’arbre",
+        "scene": "Prendre le temps de regarder les feuilles.",
+        "alt": "Cahier Robey blanc illustré de l’arbre, cousu de fil vert et photographié sur fond bleu nuit."
+      },
+      {
+        "name": "De l’autre côté du lac Seokchon",
+        "scene": "Le regard traverse l’eau, puis se lève.",
+        "alt": "Cahier Robey blanc illustré du lac Seokchon et de la Lotte World Tower, photographié sur fond bleu nuit."
+      },
+      {
+        "name": "En montant à Namsan",
+        "scene": "Un pas, puis un autre, vers la tour.",
+        "alt": "Cahier Robey blanc illustré de la N Seoul Tower à Namsan, cousu de fil rouge et photographié sur fond bleu nuit."
+      }
+    ],
+    "insideKicker": "La prochaine histoire est la vôtre",
+    "insideTitle": "Pour votre façon\nde penser.",
+    "insideText": "Une phrase, un croquis, une idée qui demande un peu de place. Les pages restent blanches pour que vous puissiez passer librement de l’un à l’autre.",
+    "paperTitle": "Papier 105 g/m²",
+    "paperText": "Choisi pour l’écriture à la main, y compris au stylo-plume.",
+    "guidesTitle": "Des pages blanches. Quelques repères.",
+    "guidesText": "Les guides lignés et quadrillés se glissent sous la page quand vous en avez besoin, puis se retirent.",
+    "bindingTitle": "Plié, cousu, vérifié",
+    "bindingText": "Je plie, couds et vérifie chaque cahier à ma table de travail, à Séoul.",
+    "videoCaption": "Une personne y ajoute ses mots et ses dessins.",
+    "videoAlt": "Une personne écrit sous un croquis dans un cahier ouvert sur une table bleu nuit",
+    "guideCaption": "Des pages blanches et des guides lignés et quadrillés amovibles.",
+    "guideAlt": "Feuilles guides amovibles lignées et quadrillées sur fond bleu marine",
+    "uniqueKicker": "Pièces uniques",
+    "uniqueTitle": "Certaines idées ne deviennent qu’un seul cahier.",
+    "uniqueText": "Une calligraphie, un morceau de hanji, une photographie. Pour ces pièces uniques, la matière donne la direction. Chacune a ses proportions et ses détails.",
+    "uniqueNote": "Quelques exemples du studio. Écrivez-moi pour connaître les pièces disponibles.",
+    "uniqueAsk": "Se renseigner sur une pièce",
+    "uniqueProducts": [
+      {
+        "name": "Yeobaek · 여백",
+        "line": "L’espace laissé vide, exprimé par la calligraphie.",
+        "alt": "Un long cahier blanc Yeobaek calligraphié en coréen, sur fond bleu nuit"
+      },
+      {
+        "name": "Hanji et fil",
+        "line": "Du papier déchiré, retenu par quelques points de couture.",
+        "alt": "Un petit cahier bleu nuit dont la couverture porte un morceau de hanji déchiré à la main, cousu et calligraphié"
+      },
+      {
+        "name": "Une photographie, conservée",
+        "line": "Une image trouve sa place sur la couverture.",
+        "alt": "Un cahier bleu nuit avec une photographie cousue sur un panneau de papier blanc"
+      }
+    ],
+    "storyKicker": "Derrière les cahiers",
+    "storyTitle": "Pourquoi les fabriquer à la main ?",
+    "storyText": "La plume de ma grand-mère, mes propres stylos-plumes et le plaisir de laisser une pensée prendre son temps.",
+    "storyLink": "Lire l’histoire du studio",
+    "orderTitle": "Vous avez trouvé votre cahier ?",
+    "orderText": "Commandez en Corée, ou contactez le studio pour un envoi à l’étranger.",
+    "orderButton": "Choisir comment acheter",
+    "blankAlt": "Un carnet cousu à la main ouvert sur ses pages blanches",
+    "seoTitle": "Cahiers illustrés Robey et pièces uniques | Studio Monjo",
+    "faqTitle": "Questions sur les cahiers",
+    "faq": [
+      {
+        "question": "Qui fabrique les cahiers Studio Monjo ?",
+        "answer": "Je m’appelle Jordan Monnet, je suis un artisan français à Séoul. Je plie, couds et vérifie chaque cahier à la main dans mon atelier."
+      },
+      {
+        "question": "Quel papier est utilisé dans les cahiers Robey ?",
+        "answer": "Les cahiers Robey ont des pages blanches en papier 105 g/m², choisi pour l’écriture à la main, y compris au stylo-plume. Des guides lignés et quadrillés amovibles se glissent sous la page quand vous en avez besoin."
+      },
+      {
+        "question": "Comment acheter un cahier ?",
+        "answer": "Pour une livraison en Corée du Sud, commandez dans la boutique Naver de Studio Monjo. Pour une commande internationale, écrivez au studio sur Instagram en précisant votre choix et le pays de livraison. Je confirmerai la disponibilité, les frais d’envoi et les modalités de paiement."
+      },
+      {
+        "question": "Puis-je commander des cahiers pour mon entreprise ?",
+        "answer": "Oui, les éditions d’entreprise commencent à 20 exemplaires. Choisissez une couverture blanche avec votre logo ou une illustration originale de Robey, avec votre message à l’intérieur. Indiquez la quantité, le calendrier et votre idée dans le formulaire de demande pour les entreprises."
+      }
+    ]
+  },
+  "about": {
+    "title": "Notre histoire",
+    "description": "Rencontrez Jordan Monnet, artisan français à Séoul et créateur de Studio Monjo. Son histoire, son goût de l’écriture et ses cahiers fabriqués à la main.",
+    "eyebrow": "Jordan Monnet · Le créateur de Studio Monjo",
+    "heading": "Pourquoi je fais\ndes cahiers.",
+    "intro": "Je suis un artisan français à Séoul. Je plie, couds et vérifie chaque cahier moi-même. Mais ce qui m’intéresse le plus, c’est ce qui se passe une fois qu’il quitte mes mains.",
+    "portraitAlt": "Jordan sourit derrière son stand, entouré des cahiers qu’il fabrique",
+    "portraitCaption": "Hors de l’atelier, à la rencontre de ceux qui rempliront ces pages.",
+    "originTitle": "Pourquoi un cahier ?",
+    "origin": [
+      "Ma grand-mère a appris à écrire au porte-plume. J’ai grandi avec des stylos-plume. Plus tard, j’ai travaillé de nombreuses années dans l’intelligence artificielle. Les outils ont changé, mais le geste d’écrire m’est resté : un stylo, de l’encre, du papier et la pause avant une ligne.",
+      "Travailler avec des mots que l’on peut générer si vite m’a fait apprécier autre chose : prendre le temps d’écrire à la main et laisser une pensée vagabonder. Studio Monjo est né de ce sentiment.",
+      "Un cahier fait une place à ce temps. On peut y retourner une idée, rayer quelques mots, dessiner à côté ou laisser une page inachevée. Il garde la manière dont on pense, autant que les mots que l’on finit par choisir."
+    ],
+    "makingTitle": "Pourquoi le fabriquer à la main ?",
+    "making": [
+      "Plier les feuilles, passer le fil dans le dos, vérifier le cahier terminé : ces petits gestes se répètent, mais ils rendent l’objet personnel. Chaque cahier porte un peu de mon temps et de mon attention.",
+      "Je laisse les pages blanches. Il y a des guides lignés et quadrillés si vous en avez besoin, mais aucune manière imposée de remplir le cahier. J’aimerais que le soin que je mets à le fabriquer donne à quelqu’un d’autre l’envie de s’en servir."
+    ],
+    "pull": "Un cahier porte un peu de mon temps.\nPuis il commence à porter le vôtre.",
+    "robeyTitle": "Voir le monde avec Robey",
+    "robey": [
+      "Robey est un petit robot qui découvre le monde des humains. À travers ses yeux, je dessine des moments que l’habitude peut nous faire oublier : des pétales qui tombent, une bibliothèque, une promenade sous les arbres.",
+      "J’ai envie de regarder à nouveau ce qui nous rend humains, ce qui rend notre monde beau et surprenant. Chaque cahier illustré porte le début de cette histoire. Ses pages blanches laissent une place à la vôtre."
+    ],
+    "marketKicker": "Quand le cahier change de mains",
+    "marketTitle": "Une histoire qui m’est restée.",
+    "market": [
+      "Sur un marché, un enfant s’est passionné pour l’histoire de Robey. Il voulait dessiner dans le cahier et inventer sa prochaine aventure, et a mis beaucoup d’énergie à convaincre sa mère.",
+      "Quand le cahier a enfin été à lui, il m’a demandé d’écrire un petit mot sur la première page. J’ai aimé l’idée qu’une histoire que j’avais commencée puisse continuer dans l’imagination de quelqu’un d’autre. J’espère toujours que ce cahier se remplit de ses propres et merveilleuses histoires.",
+      "C’est pour cela que les rencontres sur les marchés comptent autant pour moi. J’écoute ce que les gens voient dans une couverture, ce qu’ils ressentent pour Robey et ce qu’ils veulent mettre sur les pages. Je garde ces échanges avec moi quand je retourne au studio."
+    ],
+    "marketAlt": "Le stand de carnets Studio Monjo au Maison France Festival",
+    "marketCaption": "Le studio hors de ses murs · Maison France Festival, septembre 2026.",
+    "signature": "Jordan Monnet",
+    "signatureDetail": "Artisan et illustrateur · Séoul",
+    "close": "Le prochain chapitre du cahier vous appartient.",
+    "closeLink": "Trouver votre cahier",
+    "signingAlt": "Jordan écrit un message personnel dans un cahier au Maison France Festival",
+    "seoTitle": "Jordan Monnet, créateur de cahiers à Séoul | Studio Monjo"
+  },
+  "company": {
+    "title": "Éditions d’entreprise",
+    "description": "Des cahiers d’entreprise reliés à la main à Séoul dès 20 exemplaires. Votre logo ou une illustration originale de Robey, avec un message à l’intérieur.",
+    "eyebrow": "Studio Monjo · Éditions d’entreprise",
+    "heading": "Votre histoire.\nUn objet à garder.",
+    "intro": "Accueillir un collègue. Remercier un partenaire. Se souvenir d’un lieu. Offrez un cahier relié à la main, conçu autour de ce que vous voulez dire.",
+    "heroAlt": "Un carnet blanc marqué Studio Monjo, photographié sur fond bleu marine",
+    "heroCaption": "L’édition du studio · un point de départ pour la vôtre.",
+    "facts": [
+      [
+        "À partir de 20 exemplaires",
+        "Fabriqués à la main à Séoul"
+      ],
+      [
+        "A5 ou poche A6",
+        "Pages blanches et guides d’écriture"
+      ],
+      [
+        "Votre marque ou une illustration",
+        "Un message à l’intérieur"
+      ]
+    ],
+    "optionsKicker": "Deux façons de créer votre édition",
+    "optionsTitle": "Votre identité.\nOu une histoire qui n’appartient qu’à vous.",
+    "brandLabel": "01 · L’Édition de marque",
+    "brandTitle": "Un signe familier.\nUn geste personnel.",
+    "brandText": "Votre logo et vos couleurs sur une couverture blanche. Un fil de reliure assorti. Un message sur la première page qui dit pourquoi vous l’offrez, et votre phrase à côté du numéro d’édition.",
+    "brandPrice": "À partir de ₩24,000 / cahier",
+    "brandTime": "Environ 4 semaines",
+    "brandAlt": "Couverture blanche Studio Monjo et fil assorti sur une surface bleu nuit",
+    "illustrationLabel": "02 · L’Édition illustrée",
+    "illustrationTitle": "Votre univers,\nà travers les yeux de Robey.",
+    "illustrationText": "Une illustration originale d’un lieu, d’un produit ou d’un objet qui compte pour votre entreprise, découvert par Robey, un petit robot curieux. Créée pour votre édition, elle s’accompagne d’une courte histoire dans les deux langues de votre choix.",
+    "illustrationPrice": "À partir de ₩32,000 / cahier",
+    "illustrationTime": "Environ 6–8 semaines",
+    "illustrationAlt": "Un ensemble de cahiers blancs aux couvertures illustrées de Robey, sur fond bleu nuit",
+    "illustrationCaption": "Des éditions Robey du studio, présentées pour montrer le style d’illustration.",
+    "pricingNote": "Prix de départ par cahier A5 pour 20–99 exemplaires, hors TVA. Le format poche A6 coûte ₩3,000 de moins. Des tarifs dégressifs sont proposés.",
+    "optionLink": "Discuter de cette édition",
+    "detailsKicker": "Pensé jusque dans les détails",
+    "detailsTitle": "La couverture\nn’est que le début.",
+    "detailsText": "Les mots de la première page disent à quelle occasion le cahier est offert. Les pages suivantes laissent une place à la personne qui le reçoit.",
+    "details": [
+      [
+        "La couverture",
+        "Votre identité ou une illustration originale."
+      ],
+      [
+        "Le fil",
+        "Une couleur propre à votre édition."
+      ],
+      [
+        "La première page",
+        "Votre mot de bienvenue, votre souhait ou votre merci."
+      ],
+      [
+        "Le verso numéroté",
+        "Un petit détail qui inscrit chaque exemplaire dans l’édition."
+      ]
+    ],
+    "detailsAlt": "Une dédicace d’entreprise imprimée dans un cahier relié à la main, ouvert sur fond bleu nuit",
+    "detailsCaption": "Un exemple du studio montrant le message imprimé en ouverture.",
+    "processTitle": "D’une conversation\nau dernier point de couture.",
+    "process": [
+      [
+        "Parlez-moi de l’occasion",
+        "Précisez la quantité, le calendrier et ce que vous souhaitez exprimer à travers le cahier."
+      ],
+      [
+        "Découvrez votre édition",
+        "Validez la couverture, le fil, le message et l’éventuelle histoire illustrée avant le début de la fabrication."
+      ],
+      [
+        "Fabriqués, puis offerts",
+        "Je plie, couds et numérote les cahiers. Chacun est emballé individuellement, puis tous sont livrés ensemble."
+      ]
+    ],
+    "delivery": "20–2,000 exemplaires · Livraison en Corée incluse · Envoi international sur devis. Nous discutons des grandes quantités et des dates impératives au moment de préparer l’édition.",
+    "briefKicker": "Créons une édition",
+    "briefTitle": "Qu’aimeriez-vous\noffrir ?",
+    "briefText": "Quelques détails suffisent pour commencer. Je vous répondrai personnellement sous une semaine pour parler de votre idée, d’un devis et des prochaines étapes.",
+    "linkedin": "Retrouver Studio Monjo sur LinkedIn",
+    "name": "Votre nom",
+    "workEmail": "Adresse e-mail professionnelle",
+    "organization": "Entreprise",
+    "country": "Pays de livraison",
+    "quantity": "Quantité approximative",
+    "edition": "Édition",
+    "choose": "Choisir une édition",
+    "brand": "Édition de marque",
+    "illustration": "Édition illustrée",
+    "unsure": "Je ne sais pas encore",
+    "story": "L’occasion et ce que vous avez en tête",
+    "date": "Date souhaitée (facultatif)",
+    "dateHint": "Une date ou un mois approximatif",
+    "submit": "Envoyer votre demande",
+    "sending": "Envoi en cours…",
+    "error": "Votre demande n’a pas pu être envoyée. Réessayez ou contactez Studio Monjo sur LinkedIn.",
+    "successTitle": "Merci pour votre demande.",
+    "successText": "Je vous répondrai sous une semaine. — Jordan",
+    "privacy": "Vos coordonnées sont transmises au studio via Formspree pour répondre à votre demande.",
+    "seoTitle": "Cahiers d’entreprise personnalisés | Studio Monjo"
+  },
+  "buy": {
+    "title": "Un cahier pour vous.",
+    "intro": "Où souhaitez-vous commander ?",
+    "close": "Fermer",
+    "selected": "Votre choix",
+    "generic": "Les cahiers Studio Monjo",
+    "korea": "Corée du Sud",
+    "international": "Hors de Corée",
+    "business": "Commande d’entreprise",
+    "koreaTitle": "Commander sur Naver.",
+    "koreaText": "Découvrez les couvertures et formats disponibles, consultez les prix actuels et commandez pour une livraison en Corée.",
+    "koreaLink": "Ouvrir la boutique Naver",
+    "internationalTitle": "Préparons votre commande.",
+    "internationalText": "Écrivez au studio sur Instagram en indiquant le cahier qui vous plaît et le pays de livraison. Je confirmerai la disponibilité, les frais d’envoi et le moyen de paiement avant votre commande.",
+    "internationalLink": "Écrire sur Instagram",
+    "businessTitle": "Créons une édition ensemble.",
+    "businessText": "Indiquez la quantité, l’occasion et votre calendrier. Utilisez le formulaire de demande ou contactez le studio sur LinkedIn.",
+    "businessLink": "Faire une demande pour une entreprise",
+    "linkedin": "Studio Monjo sur LinkedIn",
+    "availability": "La boutique ou le studio confirme les disponibilités, les prix définitifs et la livraison.",
+    "fallbackTitle": "Comment acheter",
+    "fallbackText": "Pour une livraison en Corée, commandez sur Naver. Pour un envoi à l’étranger, indiquez au studio votre choix et votre destination.",
+    "uniqueTitle": "Quels carnets sont à l’atelier ?",
+    "uniqueText": "Ce sont des pièces uniques. Écrivez-moi avec le carnet qui vous plaît et votre pays de livraison ; je vous confirmerai sa disponibilité et les modalités de commande.",
+    "uniqueLink": "Écrire sur Instagram"
+  },
+  "home": {
+    "description": "Les cahiers faits main de Jordan Monnet, artisan français à Séoul : éditions illustrées de Robey, pièces uniques et cahiers personnalisés pour les entreprises.",
+    "lede": "Des cahiers reliés à la main. Des histoires à commencer, des pages à vous approprier.",
+    "subNotebooks": "Trouvez votre cahier",
+    "subAbout": "Pourquoi je fabrique des cahiers à la main",
+    "subCompany": "Une édition pour vos équipes et votre histoire",
+    "seoTitle": "Cahiers faits main à Séoul | Studio Monjo"
+  }
+}
