@@ -34,10 +34,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" href="/media/web/branding/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/StudioSerif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/monjo.css?v=20260922-4">
-<link rel="stylesheet" href="/css/buy.css?v=20260922-4">
+<link rel="stylesheet" href="/css/monjo.css?v=20260922-5">
+<link rel="stylesheet" href="/css/buy.css?v=20260922-5">
 </head>
-<body>
+<body class="bench-home">
 
 <a class="skip-link" href="#bench">Skip to content</a>
 
@@ -46,6 +46,7 @@
 <div class="vignette" aria-hidden="true"></div>
 
 <!-- bench chrome -->
+<header class="bench-header">
 <a class="chrome-mark" href="/en/" aria-label="Studio Monjo home">
   <img src="/media/web/img/mark-white.png" alt="">
   <span>Studio Monjo</span>
@@ -53,16 +54,18 @@
 
 <div class="chrome-actions">
   <div class="page-lang">
-    <button type="button" class="page-lang-current" aria-haspopup="true" aria-expanded="false" aria-label="Switch language">
+    <button type="button" class="page-lang-current" aria-controls="home-languages" aria-expanded="false" aria-label="Switch language">
       <span>EN</span><span class="page-lang-caret" aria-hidden="true">&#9662;</span>
     </button>
-    <span class="page-lang-alts" hidden>
+    <span class="page-lang-alts" id="home-languages" hidden>
       <a href="/ko/" class="page-lang-alt" lang="ko">한국어</a>
       <a href="/fr/" class="page-lang-alt" lang="fr">Français</a>
     </span>
   </div>
   <a class="chrome-shop" href="/en/notebooks/#order" data-buy data-product="" data-product-image="">How to buy <span aria-hidden="true">↗</span></a>
 </div>
+
+</header>
 
 <!-- THE BENCH: filmed arrival -->
 <main id="bench" class="bench">
@@ -83,7 +86,7 @@
 </main>
 
 <script src="/js/bench.js?v=20260922"></script>
-<script src="/js/lang-pill.js"></script>
+<script src="/js/lang-pill.js?v=20260922-5"></script>
 <dialog class="buy-dialog" aria-labelledby="buy-title" aria-describedby="buy-intro" data-buy-dialog data-default-product="Studio Monjo notebooks" data-unique-title="Ask what’s in the studio." data-unique-text="These are individual pieces. Message me with the notebook you like and your delivery country; I’ll confirm what is available and how to order." data-unique-link="Ask on Instagram">
 <button class="buy-close" type="button" data-buy-close aria-label="Close" autofocus>×</button>
 <div class="buy-content"><p class="buy-eyebrow">Studio Monjo</p><h2 id="buy-title">A notebook for you.</h2><p id="buy-intro">Where would you like to order?</p>
@@ -96,6 +99,6 @@
 <section id="buy-business" class="buy-route" data-buy-panel="business" hidden><h3>Make an edition together.</h3><p>Tell me your quantity, occasion and timing. Use the enquiry form, or connect with the studio on LinkedIn.</p><a class="buy-action" data-buy-dismiss href="/en/company-editions/#company-brief">Start a company enquiry <span aria-hidden="true">→</span></a><a class="buy-link" href="https://www.linkedin.com/company/studiomonjo/" target="_blank" rel="noopener noreferrer">Studio Monjo on LinkedIn <span aria-hidden="true">↗</span></a></section>
 <p class="buy-note">Availability, final prices and delivery are confirmed by the shop or studio.</p></div>
 </dialog>
-<script src="/js/studio.js?v=20260922-4"></script>
+<script src="/js/studio.js?v=20260922-5"></script>
 </body>
 </html>

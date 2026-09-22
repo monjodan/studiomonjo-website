@@ -38,7 +38,7 @@
 .about-hero{display:grid;grid-template-columns:1.15fr 1fr;gap:100px;max-width:1160px;align-items:center;padding-block:70px 48px}
 .about-hero-copy h1{font-size:clamp(43px,4.6vw,65px);margin-bottom:30px}
 .about-hero-copy .lead{max-width:470px;font-size:18px;line-height:1.9}
-.about-hero figure{max-width:420px;justify-self:end}
+.about-hero figure{width:100%;min-width:0;max-width:420px;justify-self:end}
 .about-hero figure>img{width:100%;height:auto;max-height:none;aspect-ratio:3/4;object-fit:cover;object-position:center}
 .about-hero figcaption{max-width:360px;font-size:11px;line-height:1.8}
 .founder-letter{padding-top:50px}

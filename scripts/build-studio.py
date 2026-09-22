@@ -35,8 +35,8 @@ def head(locale, page, t):
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" href="/media/web/branding/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/StudioSerif.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/css/{stylesheet}.css?v=20260922-4">
-<link rel="stylesheet" href="/css/buy.css?v=20260922-4">
+<link rel="stylesheet" href="/css/{stylesheet}.css?v=20260922-5">
+<link rel="stylesheet" href="/css/buy.css?v=20260922-5">
 </head>
 <body class="studio-site page-{page}">
 '''
@@ -127,8 +127,15 @@ def update_home(locale,t):
     # All pages share one metadata generator, avoiding stale duplicate entities.
     prefix=head(locale,'home',t).split('<body',1)[0]
     s=re.sub(r'^.*?</head>\s*',lambda _:prefix,s,count=1,flags=re.S)
+    s=s.replace('<body>', '<body class="bench-home">')
+    if '<header class="bench-header">' not in s:
+        s=s.replace('<!-- bench chrome -->', '<!-- bench chrome -->\n<header class="bench-header">')
+        s=s.replace('<!-- THE BENCH: filmed arrival -->', '</header>\n\n<!-- THE BENCH: filmed arrival -->')
+    s=s.replace('aria-haspopup="true"', 'aria-controls="home-languages"')
+    s=s.replace('<span class="page-lang-alts" hidden>', '<span class="page-lang-alts" id="home-languages" hidden>')
+    s=re.sub(r'/js/lang-pill.js(?:\?[^" ]*)?', '/js/lang-pill.js?v=20260922-5', s)
     # Keep the filmed homepage and its typography; refresh navigation and shared ordering only.
-    s=re.sub(r'/css/monjo.css\?[^\"]+', '/css/monjo.css?v=20260922-4', s)
+    s=re.sub(r'/css/monjo.css\?[^\"]+', '/css/monjo.css?v=20260922-5', s)
     s=re.sub(r'<link rel="stylesheet" href="/css/studio-story.css[^\n]+\n?', '', s)
     s=re.sub(r'<p class="bench__lede">.*?</p>',f'<p class="bench__lede">{e(t["home"]["lede"])}</p>',s,flags=re.S)
     doors=''
@@ -139,10 +146,10 @@ def update_home(locale,t):
     s=re.sub(r'(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*(">)',lambda m:m[1]+e(t['home']['description'])+m[2],s)
     s=re.sub(r'"description": "[^"]*"',lambda m:'"description": '+json.dumps(t['home']['description'],ensure_ascii=False),s)
     s=re.sub(r'<link rel="stylesheet" href="/css/buy.css[^\n]+\n?', '', s)
-    s=s.replace('</head>','<link rel="stylesheet" href="/css/buy.css?v=20260922-4">\n</head>')
+    s=s.replace('</head>','<link rel="stylesheet" href="/css/buy.css?v=20260922-5">\n</head>')
     s=re.sub(r'<dialog class="buy-dialog".*?</dialog>\s*','',s,flags=re.S)
     s=re.sub(r'<script src="/js/studio.js[^\n]+\n?','',s)
-    s=s.replace('</body>',buying(locale,t)+'\n<script src="/js/studio.js?v=20260922-4"></script>\n</body>')
+    s=s.replace('</body>',buying(locale,t)+'\n<script src="/js/studio.js?v=20260922-5"></script>\n</body>')
     path.write_text(s)
 
 def update_root(t):
@@ -170,7 +177,7 @@ for locale in LOCALES:
     for key,build in [('notebooks',notebooks),('about',about),('company',company)]:
         route='company-editions' if key=='company' else key
         dest=ROOT/locale/route/'index.html'; dest.parent.mkdir(parents=True,exist_ok=True)
-        dest.write_text(head(locale,key,t)+header(locale,key,t)+build(locale,t)+footer(locale,t)+buying(locale,t)+'\n<script src="/js/studio.js?v=20260922-4" defer></script>\n</body>\n</html>\n')
+        dest.write_text(head(locale,key,t)+header(locale,key,t)+build(locale,t)+footer(locale,t)+buying(locale,t)+'\n<script src="/js/studio.js?v=20260922-5" defer></script>\n</body>\n</html>\n')
     update_home(locale,t)
     print(f'Built {locale}: notebooks, story, company; refreshed home links.')
 

@@ -1,7 +1,6 @@
 /**
  * Language pill dropdown — shared across the homepage and every inner
- * page. The pill collapses to "EN ▾" / "한국어 ▾" / etc. and reveals
- * the alternate languages inline when opened.
+ * page. The pill reveals alternate language links in an anchored disclosure.
  *
  * Open/close behaviour:
  *   - Click on .page-lang-current toggles open
@@ -33,6 +32,7 @@
     function close() {
       box.classList.remove('is-open');
       btn.setAttribute('aria-expanded', 'false');
+      alts.setAttribute('hidden', '');
     }
     function deferredClose() {
       if (closeTimer) clearTimeout(closeTimer);
@@ -51,6 +51,15 @@
     box.addEventListener('mouseleave', deferredClose);
     box.addEventListener('mouseenter', function () {
       if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    });
+    box.addEventListener('focusout', function (event) {
+      if (event.relatedTarget && !box.contains(event.relatedTarget)) close();
+    });
+    box.addEventListener('keydown', function (event) {
+      if (event.key === 'Tab') setTimeout(function () {
+        // Safari can tab to browser chrome with no relatedTarget on focusout.
+        if (!box.contains(document.activeElement)) close();
+      }, 0);
     });
 
     // Click outside the pill closes it.

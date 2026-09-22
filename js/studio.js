@@ -9,8 +9,14 @@
   const picker = document.querySelector('.language-picker');
   if (picker) {
     document.addEventListener('click', event => { if (!picker.contains(event.target)) picker.open = false; });
+    picker.addEventListener('focusout', event => {
+      if (event.relatedTarget && !picker.contains(event.relatedTarget)) picker.open = false;
+    });
     picker.addEventListener('keydown', event => {
       if (event.key === 'Escape') { picker.open = false; picker.querySelector('summary').focus(); }
+      if (event.key === 'Tab') setTimeout(() => {
+        if (!picker.contains(document.activeElement)) picker.open = false;
+      }, 0);
     });
   }
   const dialog = document.querySelector('[data-buy-dialog]');
