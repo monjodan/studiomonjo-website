@@ -87,28 +87,29 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
    THE BENCH — filmed arrival (home page)
    ============================================================ */
 .bench {
-  position: fixed; inset: 0;
-  background: var(--bench);
-  overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column; flex: 1;
+  min-width: 0;
 }
+.bench-home { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
 .bench__video {
-  position: absolute; inset: 0;
+  position: fixed; inset: 0; z-index: 0;
   width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 45%;
   pointer-events: none; /* decorative background: never intercept taps or show controls */
 }
 .bench__scrim {
-  position: absolute; inset: 0;
+  position: fixed; inset: 0; z-index: 1;
   background: linear-gradient(100deg, rgba(11,9,6,0.82) 0%, rgba(11,9,6,0.45) 44%, rgba(11,9,6,0.1) 75%);
 }
 .bench__inner {
   position: relative; z-index: 2;
-  height: 100%; box-sizing: border-box;
+  flex: 1; min-width: 0; box-sizing: border-box;
   display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
-  gap: clamp(16px, 4vh, 40px);
-  padding: clamp(56px, 10vh, 130px) clamp(26px, 7vw, 110px) clamp(48px, 9vh, 96px);
-  overflow-y: auto;
+  gap: clamp(28px, 4svh, 40px);
+  padding: clamp(24px, calc(10svh - 64px), 66px) clamp(26px, 7vw, 110px) 24px;
 }
+.bench__inner > div, .doors { flex-shrink: 0; }
 .bench__eyebrow {
   margin: 0; font-family: var(--sans);
   font-size: 11px; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase;
@@ -125,27 +126,29 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
   color: rgba(250, 246, 237, 0.8); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .bench__footline {
-  position: absolute; right: 26px; bottom: 22px; z-index: 2; margin: 0; text-align: right;
+  position: relative; z-index: 2; margin: 0; text-align: right;
+  padding: 18px max(26px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom));
   font-family: var(--sans); font-size: 10.5px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
   color: rgba(250, 246, 237, 0.5); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
-/* doors — links to the studio's two cahier sections */
+/* Three paths into the studio, kept in flow on short screens. */
 .doors {
   margin-top: auto; display: flex; flex-direction: column;
-  gap: clamp(14px, 2.6vh, 24px); align-items: flex-start;
+  gap: clamp(18px, 2.6svh, 24px); align-items: flex-start; width: min(100%, 640px);
 }
 .door {
   background: none; border: none; padding: 0; cursor: pointer; text-align: left; text-decoration: none;
-  display: flex; align-items: baseline; gap: 16px;
+  display: flex; align-items: baseline; gap: 16px; width: 100%;
   transition: transform 0.3s ease;
 }
 .door:hover { transform: translateX(10px); }
 .door__num {
+  flex: 0 0 18px;
   font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
   color: rgba(250, 246, 237, 0.55);
 }
-.door__text { display: flex; flex-direction: column; gap: 4px; }
+.door__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
 .door__label {
   align-self: flex-start; font-family: var(--serif); font-weight: 300;
   font-size: clamp(1.25rem, min(3vw, 4.5vh), 2.4rem); line-height: 1.2; color: var(--cream-hi);
@@ -156,6 +159,7 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 .door:focus-visible .door__label { border-bottom-color: var(--accent-hi); }
 .door__sub {
   font-family: var(--sans); font-size: clamp(0.78rem, 1vw, 0.88rem); font-weight: 500;
+  line-height: 1.6;
   letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250, 246, 237, 0.6);
   text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
@@ -178,9 +182,14 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 @media (prefers-reduced-motion: reduce) { .grain { animation: none; } }
 
 /* bench chrome — wordmark + shop */
+.bench-header {
+  position: relative; z-index: 250;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
+  padding: max(10px, env(safe-area-inset-top)) max(26px, env(safe-area-inset-right)) 10px max(26px, env(safe-area-inset-left));
+}
 .chrome-mark {
-  position: fixed; top: 22px; left: 26px; z-index: 250;
   display: flex; align-items: center; gap: 10px; text-decoration: none;
+  justify-self: start; min-height: 44px; white-space: nowrap;
 }
 .chrome-mark img { height: 17px; width: auto; opacity: 0.95; }
 .chrome-mark span {
@@ -189,9 +198,9 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 }
 /* top-right group on the bench: language pill + shop, one flex row so
    variable-width labels (Boutique, 스토어) never overlap */
-.chrome-actions { position: fixed; top: 22px; right: 26px; z-index: 250; display: flex; align-items: center; gap: 18px; }
+.chrome-actions { display: flex; align-items: center; gap: 18px; }
 .chrome-shop {
-  line-height: 1;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; line-height: 1.5;
   font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
   color: rgba(250, 246, 237, 0.9); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.6);
   transition: color 0.2s ease; white-space: nowrap;
@@ -199,18 +208,24 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 .chrome-shop:hover { color: #fff; }
 
 /* language pill (shared markup with lang-pill.js), bench = light. */
-.page-lang { font-family: var(--sans); display: flex; align-items: center; line-height: 1; }
+.page-lang { position: relative; font-family: var(--sans); display: flex; align-items: center; line-height: 1; }
 .page-lang-current {
   background: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1;
+  justify-content: center; min-width: 44px; min-height: 44px; padding: 8px;
   font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(250, 246, 237, 0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 .page-lang-caret { font-size: 9px; }
 /* visibility is driven by the .is-open class (lang-pill.js) so the menu
    closes again after opening — not just the initial [hidden] attribute */
-.page-lang-alts { display: none; gap: 10px; margin-left: 10px; }
-.page-lang.is-open .page-lang-alts { display: inline-flex; }
+.page-lang-alts {
+  display: none; position: absolute; top: 100%; right: 0;
+  min-width: 120px; padding: 8px 12px; flex-direction: column; align-items: stretch;
+  background: rgba(11, 9, 6, 0.94); border: 1px solid rgba(250, 246, 237, 0.2);
+}
+.page-lang.is-open .page-lang-alts { display: flex; }
 .page-lang-alt {
+  display: flex; align-items: center; min-height: 44px; padding: 8px; white-space: nowrap;
   font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-decoration: none;
   color: rgba(250, 246, 237, 0.7); text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
@@ -1271,20 +1286,17 @@ input::placeholder { color: rgba(95, 87, 72, 0.55); font-style: italic; }
 /* ---- phones: the layout is otherwise fluid, these are the few mobile tweaks ---- */
 @media (max-width: 640px) {
   /* footline reads centered under the hero rather than tucked bottom-right */
-  .bench__footline { left: 0; right: 0; text-align: center; }
+  .bench__footline { text-align: center; line-height: 1.8; }
+  .bench-header { gap: 0 12px; padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right)); padding-bottom: 0; }
+  .chrome-mark { grid-column: 1; grid-row: 1; }
+  .chrome-actions { display: contents; }
+  .page-lang { grid-column: 2; grid-row: 1; justify-self: end; }
+  .chrome-shop { grid-column: 1 / -1; grid-row: 2; justify-self: end; letter-spacing: 0.14em; }
+  .bench__inner { padding: 24px max(20px, env(safe-area-inset-right)) 20px max(20px, env(safe-area-inset-left)); }
+  .chrome-mark span { letter-spacing: 0.22em; }
+  .door:hover { transform: none; }
   /* editions stack in one column here; open up the space between them so the
      next painting doesn't crowd the previous caption */
   .editions { row-gap: clamp(52px, 13vw, 68px); }
 
-  /* language menu opens as a vertical dropdown below the button so it no
-     longer expands sideways over the STUDIO MONJO wordmark */
-  .page-lang { position: relative; }
-  .page-lang.is-open .page-lang-alts {
-    position: absolute; top: calc(100% + 12px); right: 0; margin-left: 0;
-    flex-direction: column; align-items: flex-end; gap: 2px;
-    padding: 10px 14px; border-radius: 10px;
-    background: rgba(11, 9, 6, 0.82);
-    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-  }
-  .page-lang-alt { padding: 7px 0; } /* larger tap targets */
 }
