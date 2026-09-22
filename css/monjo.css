@@ -4,16 +4,16 @@
    No framework. Loaded by the home (bench) and the three cahiers.
    ============================================================ */
 
-/* ---- self-hosted fonts (variable TTF; woff2 subsetting is a later pass) ---- */
+/* ---- self-hosted variable fonts; Noto subsets cover the current locale copy ---- */
 @font-face {
   font-family: 'Noto Serif KR';
-  src: url('/assets/fonts/NotoSerifKR-VariableFont_wght.ttf') format('truetype-variations');
+  src: url('/assets/fonts/StudioSerif.woff2') format('woff2');
   font-weight: 200 700;
   font-display: swap;
 }
 @font-face {
   font-family: 'Noto Sans KR';
-  src: url('/assets/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype-variations');
+  src: url('/assets/fonts/StudioSans.woff2') format('woff2');
   font-weight: 400 700;
   font-display: swap;
 }

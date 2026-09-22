@@ -1,0 +1,36 @@
+# Studio Monjo
+
+> Hand-bound notebooks made by French maker Jordan Monnet in Seoul, South Korea.
+
+Studio Monjo makes illustrated Robey notebooks, individual pieces, and custom company editions. Jordan folds, sews and checks each notebook himself. Robey is a small robot discovering the human world.
+
+Robey notebooks have blank 105gsm pages and removable lined and grid guides. Pocket A6 and standard A5 formats are available. Individual pieces shown on the website are examples; availability is confirmed through the shop or studio.
+
+English pages show EUR prices; French and Korean pages show KRW. Shipping and final prices are confirmed when ordering. Company editions begin at 20 copies, with Brand and Illustration options. Current details are on the linked pages.
+
+## Website
+
+- [Handmade Notebooks in Seoul | Studio Monjo (en)](https://studiomonjo.com/en/): Handmade notebooks by French maker Jordan Monnet in Seoul. Discover illustrated Robey notebooks, one-of-a-kind pieces and custom company editions.
+- [Cahiers faits main à Séoul | Studio Monjo (fr)](https://studiomonjo.com/fr/): Les cahiers faits main de Jordan Monnet, artisan français à Séoul : éditions illustrées de Robey, pièces uniques et cahiers personnalisés pour les entreprises.
+- [서울의 수제·손제본 노트 | Studio Monjo (ko)](https://studiomonjo.com/ko/): 서울의 프랑스인 제작자 몬조단(Jordan Monnet)이 만드는 스튜디오 몬조 손제본 노트. 로비 그림 에디션, 세상에 한 권뿐인 작품, 기업 맞춤 노트를 만나보세요.
+- [Hand-Bound Notebooks & Robey Editions | Studio Monjo (en)](https://studiomonjo.com/en/notebooks/): Explore hand-bound notebooks made by Jordan Monnet in Seoul, from illustrated Robey editions with blank 105gsm pages to one-of-a-kind pieces.
+- [Cahiers illustrés Robey et pièces uniques | Studio Monjo (fr)](https://studiomonjo.com/fr/notebooks/): Les cahiers de Jordan Monnet, reliés à la main à Séoul : éditions illustrées de Robey aux pages blanches de 105 g/m², et pièces uniques.
+- [로비 그림 노트와 세상에 한 권뿐인 손제본 노트 | Studio Monjo (ko)](https://studiomonjo.com/ko/notebooks/): 몬조단이 서울에서 한 권씩 손으로 만드는 노트. 로비의 여섯 가지 그림 표지, 105gsm 무지 내지와 줄·모눈 가이드, 세상에 한 권뿐인 작품을 살펴보세요.
+- [Jordan Monnet, Notebook Maker in Seoul | Studio Monjo (en)](https://studiomonjo.com/en/about/): Meet Jordan Monnet, the French maker behind Studio Monjo in Seoul, and discover why he makes notebooks by hand for writing, drawing and personal stories.
+- [Jordan Monnet, créateur de cahiers à Séoul | Studio Monjo (fr)](https://studiomonjo.com/fr/about/): Rencontrez Jordan Monnet, artisan français à Séoul et créateur de Studio Monjo. Son histoire, son goût de l’écriture et ses cahiers fabriqués à la main.
+- [몬조단, 서울에서 노트를 만드는 사람 | Studio Monjo (ko)](https://studiomonjo.com/ko/about/): 스튜디오 몬조의 몬조단(Jordan Monnet)은 서울에서 작업하는 프랑스인입니다. 만년필과 손글씨를 좋아하고, 직접 노트를 제본하는 이유와 로비 이야기를 들려드립니다.
+- [Custom Company Notebooks, Hand-Bound in Seoul | Studio Monjo (en)](https://studiomonjo.com/en/company-editions/): Custom hand-bound notebooks made in Seoul from 20 copies. Choose your logo or an original Robey illustration, with an opening message for your team or partners.
+- [Cahiers d’entreprise personnalisés | Studio Monjo (fr)](https://studiomonjo.com/fr/company-editions/): Des cahiers d’entreprise reliés à la main à Séoul dès 20 exemplaires. Votre logo ou une illustration originale de Robey, avec un message à l’intérieur.
+- [기업 맞춤 손제본 노트 · 20권부터 | Studio Monjo (ko)](https://studiomonjo.com/ko/company-editions/): 서울에서 손으로 만드는 기업 맞춤 노트, 20권부터 주문할 수 있습니다. 회사 로고 또는 로비의 오리지널 그림에 제본실과 첫 페이지 메시지를 더합니다.
+
+## Buying and company enquiries
+
+- [Naver shop](https://smartstore.naver.com/studiomonjo): Individual notebook orders for delivery in South Korea.
+- [Instagram orders](https://ig.me/m/studio.monjo): Individual customers outside Korea; confirm availability, shipping and payment with the studio.
+- [Company enquiry form](https://studiomonjo.com/en/company-editions/#company-brief): Custom company notebooks.
+- [Studio Monjo on LinkedIn](https://www.linkedin.com/company/studiomonjo/): Company enquiries and studio updates.
+
+## Optional
+
+- [Full public page text](https://studiomonjo.com/llms-full.txt): Text extracted from the current English, French and Korean pages.
+- [XML sitemap](https://studiomonjo.com/sitemap.xml): Canonical pages and their language equivalents.

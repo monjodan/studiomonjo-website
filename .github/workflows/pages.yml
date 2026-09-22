@@ -27,13 +27,9 @@ jobs:
 
       - name: Prepare static site
         run: |
-          mkdir _site
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='_site' \
-            ./ _site/
-          touch _site/.nojekyll
+          python3 scripts/build-studio.py
+          python3 scripts/check-seo.py
+          python3 scripts/package-pages.py
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

@@ -10,6 +10,11 @@
 (function () {
   var v = document.querySelector('.bench__video');
   if (!v) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.autoplay = false;
+    v.pause();
+    return;
+  }
   v.muted = true;            // the muted *property* must be true at play time (iOS)
   v.playsInline = true;
   var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
