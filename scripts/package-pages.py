@@ -3,7 +3,8 @@
 
 Run build-studio.py first. No dependencies beyond Python's standard library.
 Runtime asset URLs belong in HTML/CSS or complete string literals in JavaScript
-so their dependencies can be included and checked before deployment.
+so their dependencies can be included and checked before deployment. Assets
+used by the Naver shop belong in the required content/naver-media.json manifest.
 """
 from collections import deque
 from html import unescape
@@ -11,6 +12,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 import argparse
+import json
 import os
 import re
 import shutil
@@ -24,6 +26,7 @@ ROUTES = ('', 'notebooks', 'about', 'company-editions', 'workshops')
 ROOT_FILES = {'index.html', 'CNAME', 'robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt', '.nojekyll'}
 MEDIA_TYPES = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif',
                '.ico', '.mp4', '.webm', '.mp3', '.ogg'}
+NAVER_MANIFEST = Path('content/naver-media.json')
 CSS_URL = re.compile(r'url\(\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s)]+))\s*\)', re.I)
 CSS_IMPORT = re.compile(r'@import\s+["\']([^"\']+)["\']', re.I)
 JS_URL = re.compile(r'["\']((?:/|\./|\.\./|https?://)[^"\'\s]+)["\']')
@@ -95,6 +98,105 @@ def allowed(path):
     return parts[:2] == ('media', 'web') and path.suffix.lower() in MEDIA_TYPES
 
 
+def naver_assets(root):
+    """Require an explicit, safe inventory of externally referenced shop media."""
+    source = root / NAVER_MANIFEST
+    if not source.is_file():
+        raise ValueError(f'Missing required Naver media manifest: {NAVER_MANIFEST}')
+    data = json.loads(source.read_text(encoding='utf-8'))
+    if not isinstance(data, dict) or not isinstance(data.get('description'), str):
+        raise ValueError(f'{NAVER_MANIFEST}: expected an object with a string description')
+    assets = data.get('assets')
+    if not isinstance(assets, list) or not assets:
+        raise ValueError(f'{NAVER_MANIFEST}: assets must be a nonempty list')
+    paths = []
+    seen = set()
+    for value in assets:
+        if not isinstance(value, str) or not value:
+            raise ValueError(f'{NAVER_MANIFEST}: each asset must be a nonempty path string')
+        path = Path(value)
+        url = urlsplit(value)
+        if (value != path.as_posix() or value != value.strip()
+                or '\\' in value or unquote(value) != value
+                or any(ord(char) < 32 or ord(char) == 127 for char in value)
+                or url.scheme or url.netloc or url.query or url.fragment
+                or '?' in value or '#' in value
+                or path.parts[:2] != ('media', 'web') or '..' in path.parts
+                or not allowed(path)):
+            raise ValueError(f'{NAVER_MANIFEST}: unsafe or unsupported media path: {value!r}')
+        if path in seen:
+            raise ValueError(f'{NAVER_MANIFEST}: duplicate media path: {value}')
+        seen.add(path)
+        paths.append(path)
+    return paths
+
+
+def gif_metadata(data):
+    """Read GIF extension metadata without treating compressed pixels as text.
+
+    Subblocks are joined within each extension so an address split across block
+    boundaries still gets checked. Reject malformed framing instead of silently
+    skipping bytes whose purpose cannot be established.
+    """
+    position = 0
+
+    def take(size):
+        nonlocal position
+        end = position + size
+        if end > len(data):
+            raise ValueError('truncated block')
+        result = data[position:end]
+        position = end
+        return result
+
+    def subblocks():
+        blocks = []
+        while True:
+            size = take(1)[0]
+            if not size:
+                return b''.join(blocks)
+            blocks.append(take(size))
+
+    if take(6) not in (b'GIF87a', b'GIF89a'):
+        raise ValueError('invalid signature')
+    screen = take(7)
+    if screen[4] & 0x80:
+        take(3 * (2 ** ((screen[4] & 7) + 1)))
+    metadata = []
+    while True:
+        marker = take(1)[0]
+        if marker == 0x3b:  # Trailer: no unclassified trailing bytes are allowed.
+            if position != len(data):
+                raise ValueError('unexpected bytes after trailer')
+            return metadata
+        if marker == 0x2c:  # Image descriptor, optional palette, then LZW pixels.
+            descriptor = take(9)
+            if descriptor[8] & 0x80:
+                take(3 * (2 ** ((descriptor[8] & 7) + 1)))
+            if not 2 <= take(1)[0] <= 8:
+                raise ValueError('invalid LZW minimum code size')
+            subblocks()
+        elif marker == 0x21:
+            label = take(1)[0]
+            if label == 0xfe:  # Comment extension has no fixed header.
+                metadata.append(subblocks())
+            elif label in (0xf9, 0x01, 0xff):
+                header_size = {0xf9: 4, 0x01: 12, 0xff: 11}[label]
+                if take(1)[0] != header_size:
+                    raise ValueError('invalid extension header size')
+                header = take(header_size)
+                if label == 0xf9:  # Graphics control has only a fixed block.
+                    if take(1) != b'\x00':
+                        raise ValueError('missing graphics control terminator')
+                    metadata.append(header)
+                else:  # Plain text and application extensions have subblocks.
+                    metadata.append(header + subblocks())
+            else:
+                raise ValueError(f'unrecognized extension label: {label:#x}')
+        else:
+            raise ValueError(f'unrecognized block marker: {marker:#x}')
+
+
 def build_manifest(root):
     domain = (root / 'CNAME').read_text().strip()
     if domain != 'studiomonjo.com':
@@ -102,6 +204,7 @@ def build_manifest(root):
     base = 'https://' + domain
     queue = deque(Path(name) for name in sorted(ROOT_FILES - {'.nojekyll'}))
     queue.extend(Path(locale, route, 'index.html') for locale in LOCALES for route in ROUTES)
+    queue.extend(naver_assets(root))
     manifest, pages, links = {}, {}, []
     errors = []
 
@@ -139,9 +242,16 @@ def build_manifest(root):
             continue
         data = source.read_bytes()
         manifest[relative] = data
-        # Inspect emitted bytes, including metadata inside binary assets. Checking
-        # actual addresses leaves ordinary email form labels and field types valid.
-        if EMAIL.search(data) or b'mailto:' in data.lower():
+        # Inspect emitted bytes, including metadata inside binary assets. GIF
+        # palettes and compressed pixels can randomly resemble email addresses;
+        # structurally parse those files and scan their extension metadata.
+        privacy_data = [data]
+        if relative.suffix.lower() == '.gif':
+            try:
+                privacy_data = gif_metadata(data)
+            except ValueError as error:
+                errors.append(f'Invalid GIF structure in public file: {relative}: {error}')
+        if any(EMAIL.search(payload) or b'mailto:' in payload.lower() for payload in privacy_data):
             errors.append(f'Email address or mailto link in public file: {relative}')
         if relative.suffix in ('.html', '.css', '.js', '.svg', '.xml', '.txt'):
             text = data.decode('utf-8')

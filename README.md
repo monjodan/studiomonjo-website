@@ -52,15 +52,30 @@ English prices use EUR, rounded upward to the next €5 from the [ECB reference 
 
 ## GitHub Pages
 
-The existing workflow builds the HTML and packages only public pages and their referenced assets:
+The existing workflow builds the HTML and packages public pages, their referenced assets, and protected Naver shop media:
 
 ```sh
 python3 scripts/build-studio.py
 python3 scripts/check-seo.py
+python3 scripts/test-package-pages.py
 python3 scripts/package-pages.py
 ```
 
-The `_site/` output is the complete deployment artifact. The packager checks local links, anchors, missing assets and exposed email addresses, including asset metadata. Copy sources, research notes, scripts and unused media are excluded. GitHub Pages serves ordinary static files; Python runs only during preparation. The root-relative URLs target the existing `studiomonjo.com` custom domain in `CNAME`.
+The `_site/` output is the complete deployment artifact. The packager checks local links, anchors, missing assets and exposed email addresses, including asset metadata. Copy sources, research notes, scripts and media without a website or Naver dependency are excluded. GitHub Pages serves ordinary static files; Python runs only during preparation. The root-relative URLs target the existing `studiomonjo.com` custom domain in `CNAME`.
+
+### Naver shop image hosting
+
+Naver product descriptions embed images directly from `https://studiomonjo.com/media/web/notebooks/`. These URLs are a public dependency even when no website page uses the image. Never delete or rename them merely because they appear unused on the website.
+
+`content/naver-media.json` protects all 58 image paths found in the 15 HTML sources in [the maintained Naver Store folder](https://drive.google.com/drive/folders/14f5y4LsqxAwwKXP6J94k_A2OrTlXrnr0), audited on 27 September 2026. This includes 44 paths used by the nine documented live listing sources and preserves legacy/prototype URL compatibility. The original JPEGs and animated GIFs stay in `media/web/notebooks/`; the private listing documents and dependency manifest are not published. Packaging fails if the manifest or any protected asset is missing or unsafe.
+
+When a listing adds a website-hosted image, commit its approved public asset and add its exact repository-relative path to this manifest before publishing the listing. Keep existing paths until every external reference has been deliberately retired. After deploying, verify HTTP responses, media content types and original file bytes:
+
+```sh
+python3 scripts/check-naver-media.py
+```
+
+The same check accepts `--base-url http://127.0.0.1:8795` to verify a local server serving `_site/`.
 
 ## Search and AI discovery
 
