@@ -40,9 +40,9 @@
     "sizeGuide": {
       "open": "Guide des formats",
       "title": "Guide des formats",
-      "pocket": "Environ 105 × 148 mm. Le format d’une carte postale, il se glisse dans une poche de veste.",
-      "standard": "Environ 148 × 210 mm. Le format classique du cahier, avec de la place pour écrire et dessiner.",
-      "shared": "Les deux comptent 48 pages (24 feuilles) de papier blanc 105 g/m², avec des guides lignés et quadrillés amovibles."
+      "pocket": "Environ 105 × 148 mm, 52 pages (13 feuilles pliées). Le format d’une carte postale, il se glisse dans une poche de veste.",
+      "standard": "Environ 148 × 210 mm, 56 pages (14 feuilles pliées). Le format classique du cahier, avec de la place pour écrire et dessiner.",
+      "shared": "Les deux sont en papier blanc 105 g/m², avec des guides lignés et quadrillés amovibles."
     },
     "choose": "Choisir ce cahier",
     "edition": "Roby",

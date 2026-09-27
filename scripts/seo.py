@@ -184,7 +184,7 @@ def write_discovery(copy):
     guide = ['# Studio Monjo', '', '> Hand-bound notebooks made by French maker Jordan Monnet in Seoul, South Korea.', '',
              'Studio Monjo makes illustrated Robey notebooks, individual pieces, and custom company editions. '
              'Jordan folds, sews and checks each notebook himself. Robey (Roby in French, 러비 in Korean) is a small robot discovering the human world.', '',
-             'Robey notebooks have 48 blank 105gsm pages (24 sheets) and removable lined and grid guides. They come in pocket A6 (about 105 × 148 mm) and standard A5 (about 148 × 210 mm). '
+             'Robey notebooks have blank 105gsm pages and removable lined and grid guides. They come in pocket A6 (about 105 × 148 mm, 52 pages from 13 folded sheets) and standard A5 (about 148 × 210 mm, 56 pages from 14 folded sheets). '
              'Individual pieces shown on the website are examples; availability is confirmed through the shop or studio.', '',
              f'Every language shows prices for both routes: in Korea through Naver, pocket ₩{prices["pocket"]["krw"]:,} and standard ₩{prices["standard"]["krw"]:,}; international orders through Instagram, pocket €{prices["pocket"]["eur"]} and standard €{prices["standard"]["eur"]}. Shipping and final prices are confirmed when ordering. '
              'Company editions begin at 20 copies, with Brand and Illustration options. Current details are on the linked pages.', '',

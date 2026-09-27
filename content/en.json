@@ -40,9 +40,9 @@
     "sizeGuide": {
       "open": "Size guide",
       "title": "Size guide",
-      "pocket": "About 105 × 148 mm. The size of a postcard, it slips into a jacket pocket.",
-      "standard": "About 148 × 210 mm. The classic notebook size, with room to write and draw.",
-      "shared": "Both have 48 pages (24 sheets) of blank 105gsm paper, with removable lined and grid guides."
+      "pocket": "About 105 × 148 mm, 52 pages (13 folded sheets). The size of a postcard, it slips into a jacket pocket.",
+      "standard": "About 148 × 210 mm, 56 pages (14 folded sheets). The classic notebook size, with room to write and draw.",
+      "shared": "Both use blank 105gsm paper, with removable lined and grid guides."
     },
     "choose": "Choose this notebook",
     "edition": "Robey",
