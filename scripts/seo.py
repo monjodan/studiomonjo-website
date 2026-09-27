@@ -47,7 +47,7 @@ def structured_data(locale, page, t):
                     'https://smartstore.naver.com/studiomonjo']},
         {'@type': 'Person', '@id': person, 'name': 'Jordan Monnet',
          'url': page_url(locale, 'about'), 'image': BASE + '/media/web/studio/jordan-market.webp',
-         'jobTitle': 'Notebook maker', 'worksFor': {'@id': studio}},
+         'jobTitle': 'Notebook maker and illustrator', 'worksFor': {'@id': studio}},
         {'@type': 'WebSite', '@id': website, 'name': 'Studio Monjo', 'url': BASE + '/',
          'inLanguage': list(LOCALES), 'publisher': {'@id': studio}},
     ]
@@ -70,7 +70,7 @@ def structured_data(locale, page, t):
                       'name': t['notebooks']['collection'], 'numberOfItems': 6,
                       'itemListElement': [
                           {'@type': 'ListItem', 'position': i,
-                           'name': f'Robey {i:03d} · {product["name"]}',
+                           'name': f'{t["notebooks"]["edition"]} {i:03d} · {product["name"]}',
                            'url': url + f'#robey-{i:03d}',
                            'image': BASE + f'/media/web/studio/robey-{i:03d}-cover.webp'}
                           for i, product in enumerate(t['notebooks']['products'], 1)]}
@@ -180,12 +180,13 @@ def write_discovery(copy):
     ET.indent(sitemap, space='  ')
     (ROOT / 'sitemap.xml').write_bytes(ET.tostring(sitemap, encoding='utf-8', xml_declaration=True) + b'\n')
     (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n')
+    prices = json.loads((ROOT / 'content' / 'pricing-reference.json').read_text())['english_prices']
     guide = ['# Studio Monjo', '', '> Hand-bound notebooks made by French maker Jordan Monnet in Seoul, South Korea.', '',
              'Studio Monjo makes illustrated Robey notebooks, individual pieces, and custom company editions. '
-             'Jordan folds, sews and checks each notebook himself. Robey is a small robot discovering the human world.', '',
-             'Robey notebooks have blank 105gsm pages and removable lined and grid guides. Pocket A6 and standard A5 formats are available. '
+             'Jordan folds, sews and checks each notebook himself. Robey (Roby in French, 러비 in Korean) is a small robot discovering the human world.', '',
+             'Robey notebooks have 48 blank 105gsm pages (24 sheets) and removable lined and grid guides. They come in pocket A6 (about 105 × 148 mm) and standard A5 (about 148 × 210 mm). '
              'Individual pieces shown on the website are examples; availability is confirmed through the shop or studio.', '',
-             'English pages show EUR prices; French and Korean pages show KRW. Shipping and final prices are confirmed when ordering. '
+             f'Every language shows prices for both routes: in Korea through Naver, pocket ₩{prices["pocket"]["krw"]:,} and standard ₩{prices["standard"]["krw"]:,}; international orders through Instagram, pocket €{prices["pocket"]["eur"]} and standard €{prices["standard"]["eur"]}. Shipping and final prices are confirmed when ordering. '
              'Company editions begin at 20 copies, with Brand and Illustration options. Current details are on the linked pages.', '',
              '## Website', '']
     for page in ROUTES:
@@ -201,7 +202,7 @@ def write_discovery(copy):
                   '- [Full public page text](https://studiomonjo.com/llms-full.txt): Text extracted from the current English, French and Korean pages.',
                   '- [XML sitemap](https://studiomonjo.com/sitemap.xml): Canonical pages and their language equivalents.', ''])
     (ROOT / 'llms.txt').write_text('\n'.join(guide))
-    full = ['# Studio Monjo — public website text', '',
+    full = ['# Studio Monjo: public website text', '',
             'Generated from the visible pages listed below. Refer to each canonical URL for the current page and ordering details.', '']
     for locale in LOCALES:
         for page, route in ROUTES.items():
