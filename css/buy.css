@@ -6,3 +6,4 @@
 .buy-selection img{flex-shrink:0}
 .buy-selection p{min-width:0;overflow-wrap:anywhere}
 .buy-close{top:8px;right:12px;width:44px;height:44px}
+.buy-route>.buy-price{margin:-10px 0 22px;font-size:12px;font-weight:500;font-variant-numeric:tabular-nums}

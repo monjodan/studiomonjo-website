@@ -48,8 +48,11 @@
         try { route = localStorage.getItem('sm-order-route') || route; } catch (_) { /* No location lookup. */ }
         const unique = link.dataset.buyKind === 'unique';
         panels.forEach((panel, index) => {
-          if (panel.dataset.buyPanel !== 'international') return;
           panel.innerHTML = originalRoutes[index];
+          // Individual pieces are priced one by one, so the edition prices stay hidden.
+          const price = panel.querySelector('[data-buy-price]');
+          if (price) price.hidden = unique;
+          if (panel.dataset.buyPanel !== 'international') return;
           if (unique) {
             panel.querySelector('h3').textContent = dialog.dataset.uniqueTitle;
             panel.querySelector('p').textContent = dialog.dataset.uniqueText;

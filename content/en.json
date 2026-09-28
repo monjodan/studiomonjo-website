@@ -20,8 +20,8 @@
   "notebooks": {
     "title": "The notebooks",
     "description": "Explore hand-bound notebooks made by Jordan Monnet in Seoul, from illustrated Robey editions with blank 105gsm pages to one-of-a-kind pieces.",
-    "eyebrow": "Made by hand in Seoul",
-    "heading": "A little world.\nRoom for yours.",
+    "eyebrow": "Hand-bound in Seoul",
+    "heading": "Made with care,\nfor people who take the time.",
     "intro": "I make each notebook by hand in my Seoul studio. Choose a cover you feel close to; the pages inside are yours to fill.",
     "robeyNav": "Robey editions",
     "uniqueNav": "One of a kind",
@@ -29,14 +29,9 @@
     "collection": "The Robey collection",
     "collectionIntro": "Meet Robey, a small robot discovering our world. I draw his adventures, then turn each scene into a notebook with its own story.",
     "prices": {
-      "label": "Prices",
-      "format": "Format",
-      "korea": "Korea",
-      "international": "International",
       "pocket": "Pocket A6",
       "standard": "Standard A5"
     },
-    "priceNote": "Korea: order on Naver. International: shipping confirmed with your order.",
     "sizeGuide": {
       "open": "Size guide",
       "title": "Size guide",
@@ -88,6 +83,8 @@
     "guidesText": "Lined and grid guide sheets slip beneath the page when you want them, and lift out when you don’t.",
     "bindingTitle": "Folded, sewn, checked",
     "bindingText": "I fold, sew and check each notebook at my studio table in Seoul.",
+    "sizesTitle": "Two sizes",
+    "sizesText": "A pocket notebook the size of a postcard, or an A5 with room to write and draw.",
     "videoCaption": "A visitor adding their own words and drawings.",
     "videoAlt": "A visitor writing beneath a sketch in an open notebook on a navy table",
     "guideCaption": "Blank pages, with removable lined and grid guides.",
@@ -304,6 +301,7 @@
     "koreaLink": "Open the Naver shop",
     "internationalTitle": "Let’s arrange your order.",
     "internationalText": "Message the studio on Instagram with the notebook you like and your delivery country. I’ll confirm availability, shipping and how to pay before you order.",
+    "shipping": "plus shipping",
     "internationalLink": "Message on Instagram",
     "businessTitle": "Make an edition together.",
     "businessText": "Tell me your quantity, occasion and timing. Use the enquiry form, or connect with the studio on LinkedIn.",

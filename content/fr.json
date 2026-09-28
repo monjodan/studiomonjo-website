@@ -20,8 +20,8 @@
   "notebooks": {
     "title": "Les cahiers",
     "description": "Les cahiers de Jordan Monnet, reliés à la main à Séoul : éditions illustrées de Roby aux pages blanches de 105 g/m², et pièces uniques.",
-    "eyebrow": "Faits main à Séoul",
-    "heading": "Un petit monde.\nÀ vous d’écrire.",
+    "eyebrow": "Reliés à la main à Séoul",
+    "heading": "Faits avec soin,\npour celles et ceux qui prennent le temps.",
     "intro": "Je fabrique chaque cahier à la main dans mon atelier à Séoul. Choisissez une couverture qui vous touche ; les pages intérieures sont à vous.",
     "robeyNav": "Les éditions Roby",
     "uniqueNav": "Les pièces uniques",
@@ -29,14 +29,9 @@
     "collection": "La collection Roby",
     "collectionIntro": "Voici Roby, un petit robot qui découvre notre monde. Je dessine ses aventures, puis chaque scène devient un cahier avec sa propre histoire.",
     "prices": {
-      "label": "Prix",
-      "format": "Format",
-      "korea": "Corée",
-      "international": "International",
       "pocket": "Poche A6",
       "standard": "Standard A5"
     },
-    "priceNote": "Corée : commande sur Naver. International : frais d’envoi confirmés avec la commande.",
     "sizeGuide": {
       "open": "Guide des formats",
       "title": "Guide des formats",
@@ -88,6 +83,8 @@
     "guidesText": "Les guides lignés et quadrillés se glissent sous la page quand vous en avez besoin, puis se retirent.",
     "bindingTitle": "Plié, cousu, vérifié",
     "bindingText": "Je plie, couds et vérifie chaque cahier à ma table de travail, à Séoul.",
+    "sizesTitle": "Deux formats",
+    "sizesText": "Un cahier de poche au format carte postale, ou un A5 avec de la place pour écrire et dessiner.",
     "videoCaption": "Une personne y ajoute ses mots et ses dessins.",
     "videoAlt": "Une personne écrit sous un croquis dans un cahier ouvert sur une table bleu nuit",
     "guideCaption": "Des pages blanches et des guides lignés et quadrillés amovibles.",
@@ -304,6 +301,7 @@
     "koreaLink": "Ouvrir la boutique Naver",
     "internationalTitle": "Préparons votre commande.",
     "internationalText": "Écrivez au studio sur Instagram en indiquant le cahier qui vous plaît et le pays de livraison. Je confirmerai la disponibilité, les frais d’envoi et le moyen de paiement avant votre commande.",
+    "shipping": "hors frais d’envoi",
     "internationalLink": "Écrire sur Instagram",
     "businessTitle": "Créons une édition ensemble.",
     "businessText": "Indiquez la quantité, l’occasion et votre calendrier. Utilisez le formulaire de demande ou contactez le studio sur LinkedIn.",
