@@ -119,7 +119,7 @@ html:not(.walking) .s-paint img { visibility: visible; position: static; }
 
 /* ——— Night: one lit window ——— */
 .night { background: var(--navy-tex); color: #fff; position: relative; }
-.walking .night { height: 250vh; }
+.walking .night { height: 330vh; }
 .night-stage { position: relative; display: grid; place-items: center; min-height: 100vh; padding: 12vh 24px; }
 .walking .night-stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 0; padding: 0; overflow: hidden; }
 .night-l1 { font: 400 clamp(24px, 2.5vw, 34px)/1.4 var(--book); text-align: center; max-width: 17em; margin: 0 0 6vh; }

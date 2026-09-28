@@ -472,14 +472,15 @@
       update(sy, vh, dt) {
         const rTop = top - sy, visible = !(rTop + h <= 0 || rTop >= vh);
         const q = clamp(-rTop / Math.max(1, h - vh), 0, 1);
-        qS = qS < 0 || !visible ? q : smoothDamp(qS, q, vel, 0.5, 0.9, dt);
+        qS = qS < 0 || !visible ? q : smoothDamp(qS, q, vel, 0.5, 0.6, dt);
         if (!visible) { if (playing) { vid.pause(); playing = false; } return; }
         if (!playing) { const pr = vid.play(); if (pr) pr.catch(() => {}); playing = true; }
         if (Math.abs(qS - lastQ) < 0.0003) return; lastQ = qS;
-        const g = easeSine(smooth(0.1, 0.7, qS)), small = Math.min(vh * 0.17, 150) / full, sc = lerp(small, 1, g);
+        const g = easeSine(smooth(0.08, 0.5, qS)), small = Math.min(vh * 0.17, 150) / full, sc = lerp(small, 1, g);
         win.style.setProperty('--s', sc.toFixed(4)); sec.style.setProperty('--ww', (full * sc * 9 / 16).toFixed(1) + 'px');
-        l1.style.opacity = (1 - smooth(0.06, 0.3, qS)).toFixed(3);
-        l2.classList.toggle('on', qS > 0.68 && qS < 0.975);
+        l1.style.opacity = (1 - smooth(0.1, 0.32, qS)).toFixed(3);
+        // Jordan's words stay with the window until the night scrolls away, so a quick reader still meets them.
+        l2.classList.toggle('on', qS > 0.5);
       }
     };
   })();

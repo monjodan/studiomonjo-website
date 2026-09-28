@@ -25,6 +25,7 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.7 var(--book); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img, video, canvas, svg { display: block; max-width: 100%; }
+img { height: auto; }   /* width and height attributes reserve space; they never fix the height */
 button, input, select, textarea { font: inherit; color: inherit; }
 a { color: inherit; }
 h1, h2, h3 { font-weight: 400; margin: 0; text-wrap: balance; }

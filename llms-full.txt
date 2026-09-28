@@ -130,7 +130,7 @@ Maison France Festival, Seoul
 
 The maker
 
-A notebook carries my time. Then it begins to carry yours.
+I put my soul into each notebook, so you can fill it with your own.
 
 My grandmother learned to write with a dip pen. I grew up with fountain pens. Later, I spent many years working in artificial intelligence. The tools changed, but the physical act of writing stayed with me: a pen, ink, paper, and the pause before a line.
 
@@ -408,7 +408,7 @@ Folding the sheets, drawing the thread through the spine, checking a finished no
 
 I leave the pages blank. There are lined and grid guides if you need them, but no prescribed way to fill the book. I want the care I put into making it to become an invitation for someone else to use it.
 
-A notebook carries my time. Then it begins to carry yours.
+I put my soul into each notebook, so you can fill it with your own.
 
 Studio Monjo
 
@@ -676,7 +676,7 @@ Maison France Festival, Séoul
 
 L’artisan
 
-Un cahier porte un peu de mon temps. Puis il commence à porter le vôtre.
+Je mets mon âme dans chaque cahier, pour que vous puissiez le remplir de la vôtre.
 
 Ma grand-mère a appris à écrire au porte-plume. J’ai grandi avec des stylos-plume. Plus tard, j’ai travaillé de nombreuses années dans l’intelligence artificielle. Les outils ont changé, mais le geste d’écrire m’est resté : un stylo, de l’encre, du papier et la pause avant une ligne.
 
@@ -954,7 +954,7 @@ Plier les feuilles, passer le fil dans le dos, vérifier le cahier terminé : ce
 
 Je laisse les pages blanches. Il y a des guides lignés et quadrillés si vous en avez besoin, mais aucune manière imposée de remplir le cahier. J’aimerais que le soin que je mets à le fabriquer donne à quelqu’un d’autre l’envie de s’en servir.
 
-Un cahier porte un peu de mon temps. Puis il commence à porter le vôtre.
+Je mets mon âme dans chaque cahier, pour que vous puissiez le remplir de la vôtre.
 
 Studio Monjo
 
@@ -1222,7 +1222,7 @@ Language: ko
 
 만드는 사람
 
-제 시간을 담은 노트가 이제 당신의 시간을 담기 시작합니다.
+노트 한 권 한 권에 제 마음을 담습니다. 당신의 마음으로 채워 갈 수 있도록.
 
 할머니는 딥펜으로 글쓰기를 배우셨고, 저는 만년필을 쓰며 자랐습니다. 이후에는 오랫동안 인공지능 분야에서 일했습니다. 도구는 달라졌지만 손으로 쓰는 감각은 늘 제 곁에 있었습니다. 펜, 잉크, 종이, 그리고 한 줄을 쓰기 전의 짧은 멈춤.
 
@@ -1500,7 +1500,7 @@ Studio Monjo
 
 내지는 비워둡니다. 필요할 때 쓸 수 있는 줄·모눈 가이드는 있지만, 노트를 채우는 방법은 정해두지 않았습니다. 만드는 동안 제가 기울인 정성이 누군가에게 이 노트를 써보고 싶은 마음으로 전해지면 좋겠습니다.
 
-제 시간을 담은 노트가 이제 당신의 시간을 담기 시작합니다.
+노트 한 권 한 권에 제 마음을 담습니다. 당신의 마음으로 채워 갈 수 있도록.
 
 Studio Monjo
 
