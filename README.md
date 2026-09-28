@@ -45,6 +45,8 @@ Raise `VERSION` in `scripts/build-studio.py` whenever a stylesheet or script cha
 
 Share cards (`media/web/og/`, 1200 × 630, one per page and language) are drawn by `python3 scripts/render-share-cards.py`, which needs Playwright with Chrome and Pillow. Run it after changing a headline or the walk's opening.
 
+The walk's five films (`media/web/world/video/`) are cut and graded by `python3 scripts/render-films.py`, which needs ffmpeg, numpy and Pillow, plus macOS `avconvert` to tone-map the iPhone's HDR clips. It reads the originals from the studio's shared drive (`04 Media Library/Originals/Video`) and Jordan's Desktop, crops each film to its window (4:5 for the studio steps, 9:16 for the night), plays it at 24 frames a second, loops it with a soft crossfade, brings each to the same warm paper white and gives all five one shared look. Cuts and crops are listed at the top of the script; run it only when a film changes.
+
 The map was painted from OpenStreetMap geometry by the renderer kept with the design prototype (`../prototypes/monjo-slow/tools/`). Its credit, map data © OpenStreetMap contributors, appears in the walk's footer.
 
 ## Buying and enquiries
