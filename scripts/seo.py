@@ -9,27 +9,62 @@ BASE = 'https://studiomonjo.com'
 LOCALES = ('en', 'fr', 'ko')
 ROUTES = {'home': '', 'notebooks': 'notebooks/', 'about': 'about/', 'company': 'company-editions/'}
 # Change only when published page content changes, not on every CI run.
-CONTENT_MODIFIED = '2026-09-22'
+CONTENT_MODIFIED = '2026-09-28'
 
 
 def page_url(locale, page):
     return f'{BASE}/{locale}/{ROUTES[page]}'
 
 
+def image_size(path):
+    """Pixel size of a WebP, PNG or JPEG file, read from its header with the standard library."""
+    data = Path(path).read_bytes()
+    if data.startswith(b'\x89PNG\r\n\x1a\n'):
+        return int.from_bytes(data[16:20], 'big'), int.from_bytes(data[20:24], 'big')
+    if data.startswith(b'RIFF') and data[8:12] == b'WEBP':
+        if data[12:16] == b'VP8X':
+            return 1 + int.from_bytes(data[24:27], 'little'), 1 + int.from_bytes(data[27:30], 'little')
+        if data[12:16] == b'VP8L':
+            bits = int.from_bytes(data[21:25], 'little')
+            return 1 + (bits & 0x3fff), 1 + ((bits >> 14) & 0x3fff)
+        marker = data.find(b'\x9d\x01\x2a', 20, 40)
+        return (int.from_bytes(data[marker+3:marker+5], 'little') & 0x3fff,
+                int.from_bytes(data[marker+5:marker+7], 'little') & 0x3fff)
+    if data.startswith(b'\xff\xd8'):
+        position = 2
+        while position + 9 < len(data):
+            if data[position] != 0xff:
+                position += 1
+                continue
+            marker = data[position + 1]
+            if marker in (0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf):
+                return int.from_bytes(data[position+7:position+9], 'big'), int.from_bytes(data[position+5:position+7], 'big')
+            if marker in (0xd8, 0x01) or 0xd0 <= marker <= 0xd7:
+                position += 2
+                continue
+            position += 2 + int.from_bytes(data[position+2:position+4], 'big')
+    raise ValueError(f'Unsupported or unreadable image: {path}')
+
+
+# The walk's share card is its opening: Robey's postcard on the map. scripts/render-share-cards.py draws every card.
+HOME_CARD = {'en': 'Robey’s postcard on a drawn map of Seoul.',
+             'fr': 'La carte postale de Roby sur une carte dessinée de Séoul.',
+             'ko': '그림으로 그린 서울 지도 위, 러비가 보낸 엽서.'}
+
+
+def plain(text):
+    return ' '.join(text.replace('<br>', ' ').replace('\n', ' ').replace('\u00a0', ' ').split())
+
+
 def image_info(page, t):
-    if page == 'home':
-        return ('/media/web/notebooks/studio-monjo-writing-objects-og.jpg', 1200, 630,
-                'image/jpeg', {'en': 'Studio Monjo notebooks and writing tools on a studio worktable.',
-                               'fr': 'Cahiers Studio Monjo et outils d’écriture sur une table d’atelier.',
-                               'ko': '공방 작업대 위에 놓인 스튜디오 몬조 노트와 필기구.'}[t.get('_locale', 'en')])
-    if page == 'notebooks':
-        return ('/media/web/studio/robey-003-cover.webp', 1000, 1000,
-                'image/webp', t['notebooks']['products'][2]['alt'])
-    if page == 'about':
-        return ('/media/web/studio/jordan-market.webp', 1125, 1500,
-                'image/webp', t['about']['portraitAlt'])
-    return ('/media/web/studio/company-cover.webp', 1600, 1066,
-            'image/webp', t['company']['heroAlt'])
+    """One 1200 × 630 JPEG card per page and language, with its headline in the language of the page."""
+    locale = t.get('_locale', 'en')
+    w = t['world']
+    alt = {'home': f'{plain(w["j.title"])}. {HOME_CARD[locale]}',
+           'notebooks': f'{plain(w["nb.h2"])} {w["visit.alt1"]}.',
+           'about': f'{plain(t["about"]["heading"])} {t["about"]["portraitAlt"]}.',
+           'company': f'{plain(t["company"]["heading"])} {t["company"]["heroAlt"]}.'}[page]
+    return (f'/media/web/og/{page}-{locale}.jpg', 1200, 630, 'image/jpeg', alt)
 
 
 def structured_data(locale, page, t):
@@ -118,7 +153,7 @@ def metadata(locale, page, t):
 
 class MainText(HTMLParser):
     """Extract the same visible editorial text and links, without forms or UI chrome."""
-    blocks = {'p', 'h1', 'h2', 'h3', 'h4', 'section', 'article', 'div', 'li', 'dt', 'dd', 'figcaption'}
+    blocks = {'p', 'h1', 'h2', 'h3', 'h4', 'section', 'article', 'div', 'li', 'dt', 'dd', 'figcaption', 'details'}
     def __init__(self, url):
         super().__init__(convert_charrefs=True)
         self.url, self.parts, self.stack = url, [], []
@@ -129,7 +164,7 @@ class MainText(HTMLParser):
             self.in_main = True
         if not self.in_main:
             return
-        skip = bool(self.stack) or tag in ('script', 'style', 'form', 'nav') or 'hidden' in attrs or attrs.get('aria-hidden') == 'true'
+        skip = bool(self.stack) or tag in ('script', 'style', 'form', 'nav', 'button', 'canvas') or 'hidden' in attrs or attrs.get('aria-hidden') == 'true'
         void = tag in ('img', 'input', 'source', 'br', 'hr', 'meta', 'link', 'wbr')
         if skip:
             if not void:
@@ -183,7 +218,10 @@ def write_discovery(copy):
     prices = json.loads((ROOT / 'content' / 'pricing-reference.json').read_text())['english_prices']
     guide = ['# Studio Monjo', '', '> Hand-bound notebooks made by French maker Jordan Monnet in Seoul, South Korea.', '',
              'Studio Monjo makes illustrated Robey notebooks, individual pieces, and custom company editions. '
-             'Jordan folds, sews and checks each notebook himself. Robey (Roby in French, 러비 in Korean) is a small robot discovering the human world.', '',
+             'Jordan folds, sews and checks each notebook himself. Robey (Roby in French, 러비 in Korean) is a small robot discovering the human world; he can read but cannot write yet, so the blank pages are left to the person who writes in them.', '',
+             'Each language opens with a slow walk with Robey across a drawn map of Seoul, from morning to dusk: Namsan, the Little Library at Starfield COEX, Seokchon Lake in Jamsil, and three scenes found on the way (petals at a window, a tree, an orange balloon). '
+             'Each place is one of the six Robey editions, painted by Jordan and sewn into a notebook, and each notebook ships with a letter from Robey. '
+             'The same page shows how the notebooks are folded, sewn and stamped, a blank page to write on (nothing written there is sent or saved), company editions, and where to find the notebooks. Map data © OpenStreetMap contributors.', '',
              'Robey notebooks have blank 105gsm pages and removable lined and grid guides. They come in pocket A6 (about 105 × 148 mm, 52 pages from 13 folded sheets) and standard A5 (about 148 × 210 mm, 56 pages from 14 folded sheets). '
              'Individual pieces shown on the website are examples; availability is confirmed through the shop or studio.', '',
              f'Every language shows prices for both routes: in Korea through Naver, pocket ₩{prices["pocket"]["krw"]:,} and standard ₩{prices["standard"]["krw"]:,}; international orders through Instagram, pocket €{prices["pocket"]["eur"]} and standard €{prices["standard"]["eur"]}. Shipping and final prices are confirmed when ordering. '

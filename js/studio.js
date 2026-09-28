@@ -1,24 +1,42 @@
-/* Shared navigation, choosing an order route, and the existing company enquiry. */
+/* Shared by every page: the language links, the windows drawn around films, choosing an order route,
+   the size guide and the existing company enquiry. */
 (() => {
   'use strict';
+  // The root address opens the language chosen here next time.
   document.querySelectorAll('[data-language]').forEach(link => {
     link.addEventListener('click', () => {
       try { localStorage.setItem('sm-lang', link.dataset.language); } catch (_) { /* Storage is optional. */ }
     });
   });
-  const picker = document.querySelector('.language-picker');
-  if (picker) {
-    document.addEventListener('click', event => { if (!picker.contains(event.target)) picker.open = false; });
-    picker.addEventListener('focusout', event => {
-      if (event.relatedTarget && !picker.contains(event.relatedTarget)) picker.open = false;
-    });
-    picker.addEventListener('keydown', event => {
-      if (event.key === 'Escape') { picker.open = false; picker.querySelector('summary').focus(); }
-      if (event.key === 'Tab') setTimeout(() => {
-        if (!picker.contains(document.activeElement)) picker.open = false;
-      }, 0);
-    });
-  }
+  /* ——— Windows drawn around the films, in pale ink, a little uneven like a hand ——— */
+  (() => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const wins = Array.from(document.querySelectorAll('[data-window]')); if (!wins.length) return;
+    const rng = seed => () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const line = (r, x1, y1, x2, y2, wob) => {
+      const n = 7, pts = [];
+      for (let i = 0; i <= n; i++) { const t = i / n; const w = (r() - 0.5) * wob * Math.sin(Math.PI * t); pts.push([x1 + (x2 - x1) * t + (y2 - y1 ? w : 0), y1 + (y2 - y1) * t + (x2 - x1 ? w : 0)]); }
+      return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+    };
+    function draw(el, i) {
+      const w = el.offsetWidth, h = el.offsetHeight; if (!w || !h) return;
+      const r = rng(97 + i * 131), o = 16, W = w + o * 2, Hh = h + o * 2 + 12, j = () => (r() - 0.5) * 5;
+      const L = o - 7, T = o - 7, R = o + w + 7, B = o + h + 7;
+      const outer = [line(r, L - 6 + j(), T + j(), R + 6 + j(), T + j(), 3), line(r, R + j(), T - 6 + j(), R + j(), B + 5 + j(), 3), line(r, R + 6 + j(), B + j(), L - 6 + j(), B + j(), 3), line(r, L + j(), B + 5 + j(), L + j(), T - 6 + j(), 3)].join(' ');
+      const inner = [line(r, o - 2, o - 2, o + w + 2, o - 2, 1.5), line(r, o + w + 2, o - 2, o + w + 2, o + h + 2, 1.5), line(r, o + w + 2, o + h + 2, o - 2, o + h + 2, 1.5), line(r, o - 2, o + h + 2, o - 2, o - 2, 1.5)].join(' ');
+      const sill = line(r, L - 16, B + 9, R + 16, B + 9, 2) + ' ' + line(r, L - 12, B + 15, R + 12, B + 15, 2);
+      const mark = el.dataset.window === 'lit' ? line(r, o + w / 2, T - 2, o + w / 2, T - 16, 1) : '';
+      el.querySelectorAll('.win').forEach(x => x.remove());
+      el.insertAdjacentHTML('beforeend', `<svg class="win" viewBox="0 0 ${W} ${Hh}" style="left:${-o}px;top:${-o}px;width:${W}px;height:${Hh}px" aria-hidden="true"><path class="w1" pathLength="1" d="${outer}"/><path class="w2" pathLength="1" d="${inner}"/><path class="w3" pathLength="1" d="${sill}"/>${mark ? `<path class="w2" pathLength="1" d="${mark}"/>` : ''}</svg>`);
+    }
+    const drawAll = () => wins.forEach(draw);
+    drawAll();
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(es => es.forEach(e => { const i = wins.indexOf(e.target); const was = $('.win', e.target); const on = was && was.classList.contains('drawn'); draw(e.target, i); if (on) $('.win', e.target).classList.add('drawn'); })); wins.forEach(w => ro.observe(w)); }
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const s = $('.win', e.target); if (s) s.classList.add('drawn'); } }), { threshold: 0.3 });
+    wins.forEach(w => io.observe(w));
+    addEventListener('resize', () => { clearTimeout(drawAll._t); drawAll._t = setTimeout(() => { drawAll(); wins.forEach(w => { const s = $('.win', w); if (s) s.classList.add('drawn'); }); }, 200); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
+  })();
   const dialog = document.querySelector('[data-buy-dialog]');
   if (dialog && typeof dialog.showModal === 'function') {
     let previousFocus;

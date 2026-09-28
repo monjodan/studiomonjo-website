@@ -79,6 +79,18 @@ class PackagePagesTests(unittest.TestCase):
         for name in (*private_files, str(PAGES.NAVER_MANIFEST)):
             self.assertFalse((self.output / name).exists(), name)
 
+    def test_structured_data_and_painting_layers_are_published(self):
+        self.write('media/web/branding/logo.png', b'logo fixture')
+        self.write('media/web/world/paint/line.webp', b'line fixture')
+        self.write('en/index.html', '<html><script type="application/ld+json">{"logo":"https://studiomonjo.com/media/web/branding/logo.png"}</script>'
+                   '<img src="/media/web/world/paint/line.webp" data-lines="/media/web/world/paint/line.webp"></html>')
+        self.package()
+        self.assertTrue((self.output / 'media/web/branding/logo.png').is_file())
+        self.assertTrue((self.output / 'media/web/world/paint/line.webp').is_file())
+        self.write('en/index.html', '<html><img src="/media/web/branding/logo.png" data-full="/media/web/world/paint/missing.webp"></html>')
+        with self.assertRaisesRegex(ValueError, 'Missing public file: media/web/world/paint/missing.webp'):
+            self.package()
+
     def test_missing_manifest_fails(self):
         (self.root / PAGES.NAVER_MANIFEST).unlink()
         with self.assertRaisesRegex(ValueError, 'Missing required Naver media manifest'):

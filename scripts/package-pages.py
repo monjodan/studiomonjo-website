@@ -23,13 +23,14 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = ('en', 'fr', 'ko')
 ROUTES = ('', 'notebooks', 'about', 'company-editions', 'workshops')
-ROOT_FILES = {'index.html', 'CNAME', 'robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt', '.nojekyll'}
+ROOT_FILES = {'index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt', '.nojekyll'}
 MEDIA_TYPES = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif',
                '.ico', '.mp4', '.webm', '.mp3', '.ogg'}
 NAVER_MANIFEST = Path('content/naver-media.json')
 CSS_URL = re.compile(r'url\(\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s)]+))\s*\)', re.I)
 CSS_IMPORT = re.compile(r'@import\s+["\']([^"\']+)["\']', re.I)
 JS_URL = re.compile(r'["\']((?:/|\./|\.\./|https?://)[^"\'\s]+)["\']')
+JSONLD_URL = re.compile(r'"(https://studiomonjo\.com/[^"\s]+)"')
 EMAIL = re.compile(rb'[a-z0-9][a-z0-9.!#$%&\x27*+/=?^_`{|}~-]*@'
                    rb'(?:[a-z0-9][a-z0-9-]*\.)+[a-z]{2,63}\b', re.I)
 
@@ -47,10 +48,12 @@ class Page(HTMLParser):
         self.ids = set()
         self.duplicates = []
         self.in_style = False
+        self.in_jsonld = False
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        for key in ('href', 'src', 'poster', 'data-product-image'):
+        # data-lines and data-full hold the line and colour layers of the walk's paintings.
+        for key in ('href', 'src', 'poster', 'data-product-image', 'data-lines', 'data-full'):
             if attrs.get(key):
                 self.urls.append(attrs[key])
         if attrs.get('id'):
@@ -65,6 +68,8 @@ class Page(HTMLParser):
             self.urls.extend(css_urls(attrs['style']))
         if tag == 'style':
             self.in_style = True
+        if tag == 'script' and attrs.get('type', '').lower() == 'application/ld+json':
+            self.in_jsonld = True
         if tag == 'meta':
             key = attrs.get('property', attrs.get('name', ''))
             if key in ('og:image', 'og:image:url', 'og:image:secure_url', 'twitter:image', 'thumbnail'):
@@ -77,10 +82,15 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == 'style':
             self.in_style = False
+        if tag == 'script':
+            self.in_jsonld = False
 
     def handle_data(self, data):
         if self.in_style:
             self.urls.extend(css_urls(data))
+        if self.in_jsonld:
+            # Structured data names the logo and pictures search engines show; publish those files too.
+            self.urls.extend(url for url in JSONLD_URL.findall(data) if Path(urlsplit(url).path).suffix.lower() in MEDIA_TYPES)
 
 
 def allowed(path):
