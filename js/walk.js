@@ -8,6 +8,9 @@
   const doc = document.documentElement;
   doc.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const UA = navigator.userAgent || '';
+  const IN_APP = /KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|FB_IAB|Line\/|DaumApps|; wv\)/i.test(UA);
+  const IOS = /iP(hone|ad|od)/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -611,7 +614,9 @@
     function tail(g, s, color, w, h) { const P = s.pts; if (P.length < 2) return; const a = P[P.length - 2], b = P[P.length - 1]; g.strokeStyle = color; g.lineWidth = b.w * w; g.beginPath(); g.moveTo((a.x + b.x) / 2 * w, (a.y + b.y) / 2 * h); g.lineTo(b.x * w, b.y * h); g.stroke(); }
     function drawStroke(g, s, color, w, h) { g.lineCap = 'round'; g.lineJoin = 'round'; dot(g, s, color, w, h); for (let i = 1; i < s.pts.length; i++) seg(g, s, i, color, w, h); tail(g, s, color, w, h); }
     function size() { const r = leaf.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); PW = Math.max(1, r.width); PH = Math.max(1, r.height); cv.width = Math.round(PW * dpr); cv.height = Math.round(PH * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); strokes.forEach(s => drawStroke(ctx, s, s.dry ? DRY : WET, PW, PH)); }
-    const pt = e => { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) / PW, y: (e.clientY - r.top) / PH, t: e.timeStamp || now(), pen: e.pointerType === 'pen', p: e.pressure || 0.5, w: 0 }; };
+    // Points are kept as fractions of the page as it is now, so the ink stays under the finger even when a
+    // messenger's toolbar slides away and the page changes size in the middle of a line.
+    const pt = e => { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) / Math.max(1, r.width), y: (e.clientY - r.top) / Math.max(1, r.height), t: e.timeStamp || now(), pen: e.pointerType === 'pen', p: e.pressure || 0.5, w: 0 }; };
     function add(e) {
       const q = pt(e), P = cur.pts, prev = P[P.length - 1];
       const dist = Math.hypot((q.x - prev.x) * PW, (q.y - prev.y) * PH); if (dist < 0.8) return;
@@ -655,9 +660,34 @@
       strokes.forEach(s => drawStroke(g, s, DRY, w, h));
       g.save(); g.translate(w - 122, h - 124); g.scale(1.35, 1.35); g.fillStyle = 'rgba(176,57,46,.88)'; MARK.forEach(d => g.fill(new Path2D(d))); g.restore();
       g.fillStyle = 'rgba(19,26,42,.42)'; g.font = '17px "Gowun Dodum", sans-serif'; g.textAlign = 'right'; g.fillText('Studio Monjo · Seoul', w - 124, h - 52);
-      const a = document.createElement('a'); a.download = 'my-page.png'; a.href = c.toDataURL('image/png'); document.body.appendChild(a); a.click(); a.remove();
+      const url = c.toDataURL('image/png');
+      c.toBlob(blob => {
+        const file = blob && typeof File === 'function' ? new File([blob], 'my-page.png', { type: 'image/png' }) : null;
+        const canShare = !!(file && navigator.canShare && navigator.canShare({ files: [file] }));
+        if (canShare && (IN_APP || IOS)) { navigator.share({ files: [file], title: 'Studio Monjo' }).catch(() => {}); return; }
+        if (IN_APP) { showKept(url); return; }
+        const a = document.createElement('a'); a.download = 'my-page.png'; a.href = url; document.body.appendChild(a); a.click(); a.remove();
+      }, 'image/png');
     });
+    // Messenger browsers (KakaoTalk, Naver, Instagram, Facebook, Line) cannot save a page made here as a
+    // download, so it opens as a picture to press and hold.
+    function showKept(url) {
+      let d = $('.kept');
+      if (!d) {
+        d = document.createElement('dialog'); d.className = 'kept';
+        d.innerHTML = '<div class="kept-card"><img alt=""><p></p><button type="button"></button></div>';
+        document.body.appendChild(d);
+        $('button', d).addEventListener('click', () => d.close());
+        d.addEventListener('click', e => { if (e.target === d) d.close(); });
+      }
+      $('img', d).src = url; $('img', d).alt = T('page.aria');
+      $('p', d).textContent = T('page.kept'); $('button', d).textContent = T('reader.close');
+      if (d.showModal) d.showModal(); else window.open(url);
+    }
     size();
+    if ('ResizeObserver' in window) { let rq = 0; new ResizeObserver(() => { cancelAnimationFrame(rq); rq = requestAnimationFrame(size); }).observe(leaf); }
+    // Some in-app browsers still scroll the page under a finger that writes; this page is for ink only.
+    ['touchstart', 'touchmove'].forEach(ev => cv.addEventListener(ev, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
     return { size };
   })();
 

@@ -284,6 +284,7 @@ html:not(.walking) .s-paint img { visibility: visible; position: static; }
 .mobile-prompt .p-main { color: #fff; margin: 12px 0 0; }
 @media (max-width: 760px) {
   .spread { --ph: min(78vh, 128vw); --pw: calc(var(--ph) / 1.419); width: min(90vw, var(--pw)); grid-template-columns: 1fr; }
+  @supports (height: 1svh) { .spread { --ph: min(78svh, 128vw); } }   /* steady while a browser's toolbar comes and goes */
   .spread::before { left: 0; width: 98%; }
   .leaf-left { display: none; }
   .leaf-right { border-radius: 4px; }
@@ -347,3 +348,11 @@ html:not(.walking) .s-paint img { visibility: visible; position: static; }
 .nb-more .quiet-link { color: #fff; }
 html[lang="ko"] :is(.s-time, .c-kicker, .r-where, .clockline, .nb-ed, .sig span, .r-facts span:first-child, .route summary, .j-hint, .p-essence, .p-next, .s-ed, .jump) { letter-spacing: .06em; }
 html[lang="ko"] .l-text p { line-height: 1.34; }
+
+/* ——— A kept page, shown to press and hold where a download is not possible ——— */
+.kept { border: 0; padding: 0; background: none; max-width: min(92vw, 520px); max-height: 92vh; }
+.kept::backdrop { background: rgba(9,14,26,.7); }
+.kept-card { background: var(--card); border-radius: 10px; padding: 16px 16px 18px; text-align: center; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+.kept-card img { width: 100%; height: auto; max-height: 70vh; object-fit: contain; border-radius: 3px; -webkit-touch-callout: default; user-select: auto; }
+.kept-card p { margin: 14px 4px 12px; font: 400 16px/1.5 var(--book); color: var(--text); }
+.kept-card button { appearance: none; border: 1px solid rgba(58,47,40,.3); border-radius: 999px; background: none; padding: 10px 20px; font: 400 12px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase; color: var(--brown); cursor: pointer; }

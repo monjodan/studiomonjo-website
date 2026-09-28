@@ -19,7 +19,7 @@ SHORT = {'en': 'EN', 'fr': 'FR', 'ko': '한국어'}
 PRICES = json.loads((ROOT/'content'/'pricing-reference.json').read_text())['english_prices']
 PROMPTS = json.loads((ROOT/'content'/'prompts.json').read_text())['prompts']
 # Change with every stylesheet or script edit so returning visitors never mix versions.
-VERSION = '20260928-3'
+VERSION = '20260928-4'
 # The walk, in the order of the day: Namsan in the morning to the balloon at dusk.
 # Coordinates place each stop on the map; the rest frames Robey inside each painting.
 STOPS = [
@@ -213,7 +213,7 @@ def steps(w):
 def walk_copy(locale, t):
     """Words the walk writes in as it goes: the way between places, the reader, the clock, the questions."""
     w = world(t); ko = world(copy_for('ko'))
-    keys = ['j.next', 'studio.clock', 'nb.ed', 'stop.rest', 'stop.002.line', 'reader.bindingT', 'reader.t1', 'reader.t2', 'reader.t3', 'reader.t4', 'find.together', 'find.minutes']
+    keys = ['j.next', 'studio.clock', 'nb.ed', 'stop.rest', 'stop.002.line', 'reader.bindingT', 'reader.t1', 'reader.t2', 'reader.t3', 'reader.t4', 'reader.close', 'page.aria', 'page.kept', 'find.together', 'find.minutes']
     keys += [f'stop.{s["id"]}.way' for s in STOPS[1:]] + [f'stop.{s["id"]}.letter' for s in STOPS[:-1]]
     keys += [f'book.{s["id"]}.{part}' for s in STOPS for part in ('name', 'line')] + [f'thread.{c}' for c in ('red', 'navy', 'green', 'orange')]
     data = {'lang': locale, 't': {k: w[k] for k in keys}, 'words': w['words'], 'ko': {s['id']: ko[f'book.{s["id"]}.name'] for s in STOPS},
