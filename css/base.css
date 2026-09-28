@@ -58,8 +58,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 
 /* ——— Robey's postcard ——— */
 .pcard { position: relative; background: var(--card); border-radius: 3px; box-shadow: 0 1px 1px rgba(40,30,20,.1), 0 30px 60px -24px rgba(40,30,20,.45); display: grid; grid-template-columns: 40% 1fr; padding: 28px; gap: 28px; aspect-ratio: 148 / 100; color: var(--brown); }
-.pc-art { position: relative; border-right: 1px dashed rgba(58,47,40,.25); padding-right: 18px; }
-.pc-art img, .pc-art canvas { position: absolute; top: 0; bottom: 0; left: calc(50% - 9px); height: 100%; width: auto; max-width: calc(100% - 18px); aspect-ratio: 2 / 3; transform: translateX(-50%); object-fit: contain; mix-blend-mode: multiply; }
+.pc-art { position: relative; border-right: 1px dashed rgba(58,47,40,.25); padding-right: 18px; container-type: size; }
+/* Robey keeps the shape of his drawing (2:3). The painter's canvas stretches to its box, so the box itself has that shape. */
+.pc-art img, .pc-art canvas { position: absolute; top: 50%; left: calc(50% - 9px); width: calc(100% - 18px); height: auto; aspect-ratio: 2 / 3; transform: translate(-50%, -50%); mix-blend-mode: multiply; }
 .pc-text { align-self: center; padding: 14px 58px 0 0; }
 .pc-text p { margin: 0 0 10px; font: 400 clamp(22px, 1.9vw, 27px)/1.2 var(--hand); color: var(--brown); }
 .pc-stamp { position: absolute; right: 24px; top: 22px; width: 58px; height: 70px; border: 2px dotted rgba(176,57,46,.55); display: grid; place-items: center; transform: rotate(4deg); }
@@ -67,7 +68,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 @media (max-width: 760px) {
   .pcard { aspect-ratio: auto; grid-template-columns: 30% 1fr; padding: 16px 18px; gap: 14px; }
   .pc-art { padding: 0 10px 0 0; min-height: 150px; }
-  .pc-art img, .pc-art canvas { left: calc(50% - 5px); max-width: calc(100% - 10px); }
+  .pc-art img, .pc-art canvas { left: calc(50% - 5px); width: calc(100% - 10px); }
   .pc-text { padding: 0; }
   .pc-text p { font-size: 20px; margin-bottom: 5px; }
   .pc-stamp { display: none; }
@@ -107,5 +108,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 html[lang="ko"] body { word-break: keep-all; }
 html[lang="ko"] :is(.eyebrow, .quiet-link, .foot-links a, .lang a) { letter-spacing: .06em; }
 html[lang="ko"] .pc-text p { line-height: 1.34; }
+/* As large as the card allows in both directions, never stretched. */
+@supports (width: 1cqh) { .pc-art img, .pc-art canvas { width: min(100cqw, 100cqh * 2 / 3); } }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }

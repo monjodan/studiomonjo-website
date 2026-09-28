@@ -122,8 +122,9 @@
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     }
     resize() {
-      const r = this.c.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
-      const w = Math.max(2, Math.round(r.width * dpr)), h = Math.max(2, Math.round(r.height * dpr));
+      // The layout size, not the box on screen: the cards are tilted, and a tilted box is wider than the drawing.
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      const w = Math.max(2, Math.round(this.c.offsetWidth * dpr)), h = Math.max(2, Math.round(this.c.offsetHeight * dpr));
       if (this.c.width !== w || this.c.height !== h) { this.c.width = w; this.c.height = h; this.dirty = true; }
     }
     set(line, color) { if (line !== this.line || color !== this.color) { this.line = line; this.color = color; this.dirty = true; } }
@@ -259,6 +260,16 @@
       nextXY = project(NEXT[0], NEXT[1]);
     }
 
+    // A phone has no room beside a painting, so nothing may cover it: the name, the painting and the letter
+    // stack down the left, and the painting grows smaller when a short screen needs the room.
+    function stack(st) {
+      const top = st.label.offsetTop + st.label.offsetHeight + 14, gap = 12, foot = 78;
+      const room = H - top - st.letter.offsetHeight - gap - foot;
+      const w = clamp(room * st.ar, W * 0.3, W * 0.46);
+      st.paint.style.top = top + 'px'; st.paint.style.width = w + 'px'; st.paint.style.height = (w / st.ar) + 'px';
+      st.letter.style.top = (top + w / st.ar + gap) + 'px';
+    }
+
     function layout() {
       if (!M) return;
       W = stage.clientWidth; H = stage.clientHeight; mobile = W < 760;
@@ -271,8 +282,17 @@
       }
       vOver = [over.cx + (W / 2 - over.ax) / over.z, over.cy + (H / 2 - over.ay) / over.z, W / over.z];
       zStop = mobile ? 0.62 : clamp(W / 1440, 0.62, 1.1);
-      stopA = mobile ? [W * 0.22, H * 0.25] : [W * 0.22, H * 0.62];
-      stops.forEach(st => { const w = st.paint.getBoundingClientRect().width || 300; st.paint.style.height = (w / st.ar) + 'px'; if (st.painter && st.painter.ok) { st.painter.resize(); st.painter.dirty = true; st.painter.draw(); } });
+      // On a phone Robey waits on the map at the right, beside his place's name, painting and letter.
+      stopA = mobile ? [W * 0.8, H * 0.3] : [W * 0.22, H * 0.62];
+      // and his first card sits as low as it can while clearing the title above and the scroll hint below
+      const ch = postcard.offsetHeight / 2, cy = Math.max(cart.offsetTop + cart.offsetHeight + 12 + ch, Math.min(H * 0.73, H - 72 - ch));
+      postcard.style.top = mobile ? cy + 'px' : '';
+      hint.style.visibility = mobile && cy + ch > H - 70 ? 'hidden' : '';   // the smallest phones have no room for both
+      stops.forEach(st => {
+        if (mobile) stack(st);
+        else { st.paint.style.top = st.paint.style.width = st.letter.style.top = ''; const w = st.paint.offsetWidth || 300; st.paint.style.height = (w / st.ar) + 'px'; }
+        if (st.painter && st.painter.ok) { st.painter.resize(); st.painter.dirty = true; st.painter.draw(); }
+      });
       // every stretch of scroll is as long as the distance it covers, so the pace never changes
       segs = []; let y = 0;
       const add = (type, len, data = {}) => { segs.push(Object.assign({ type, y0: y, y1: y + len }, data)); y += len; };

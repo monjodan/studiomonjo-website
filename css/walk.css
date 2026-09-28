@@ -94,16 +94,17 @@ html:not(.walking) .j-route, html:not(.walking) .j-robey { display: none; }
   .j-postcard { left: 50%; top: 73%; width: 88vw; }
   .j-hint { left: 22px; bottom: 16px; transform: none; align-items: flex-start; font-size: 11px; }
   .j-hint i { height: 30px; margin-left: 2px; }
-  .js .s-label { left: 40vw; top: 76px; right: 16px; }
+  .js .s-label { left: 6vw; top: 76px; right: 26vw; }
   .s-name { font-size: 24px; }
-  .js .s-paint { left: 6vw; top: 31vh; width: 44vw; }
+  .js .s-paint { left: 6vw; top: 31vh; width: 44vw; }   /* walk.js stacks the painting under the name */
   .s-name .s-sub { display: none; }
-  .js .s-letter { left: auto; right: 5vw; top: calc(31vh + 44vw * 1.02); width: 70vw; padding: 20px 18px 12px; }
+  .js .s-letter { left: 6vw; right: 6vw; top: calc(31vh + 70vw); width: auto; padding: 18px 18px 12px; }   /* and the letter under the painting */
   .l-text p { font-size: 19.5px; margin-bottom: 7px; } .l-rest { margin-top: 10px; padding-top: 9px; font-size: 12px; }
   html[lang="ko"] .l-text p { font-size: 20.5px; }
   .j-way { top: auto; bottom: 9vh; font-size: 15px; }
   .j-end { bottom: 14vh; }
 }
+@media (max-width: 760px) and (max-height: 720px) { .l-text p { font-size: 18px; } html[lang="ko"] .l-text p { font-size: 19px; } }   /* short phones: more room for the painting */
 
 /* ——— Without JavaScript, or with reduced motion: the walk as a quiet sequence ——— */
 html:not(.walking) .j-map, html:not(.walking) .j-light, html:not(.walking) .j-balloon, html:not(.walking) .j-hint, html:not(.walking) .j-way, html:not(.walking) .j-end, html:not(.walking) .j-pace { display: none; }

@@ -19,7 +19,7 @@ SHORT = {'en': 'EN', 'fr': 'FR', 'ko': '한국어'}
 PRICES = json.loads((ROOT/'content'/'pricing-reference.json').read_text())['english_prices']
 PROMPTS = json.loads((ROOT/'content'/'prompts.json').read_text())['prompts']
 # Change with every stylesheet or script edit so returning visitors never mix versions.
-VERSION = '20260928-2'
+VERSION = '20260928-3'
 # The walk, in the order of the day: Namsan in the morning to the balloon at dusk.
 # Coordinates place each stop on the map; the rest frames Robey inside each painting.
 STOPS = [
