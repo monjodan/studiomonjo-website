@@ -23,7 +23,7 @@ Each of `/en/`, `/fr/` and `/ko/` contains:
 
 The former localized `workshops/` URLs redirect to the story page. The root `/` chooses the saved or browser language. `/404.html` answers missing addresses in the three languages. `sitemap.xml` lists the current public pages.
 
-The walk's motion is calm by construction: the camera follows the scroll through a critically damped spring with a speed limit (Robey's walking pace), and pan and zoom travel together along the smoothest path between two views. The dotted route is drawn on a canvas, which keeps Safari at 60 frames per second. With reduced motion, or without JavaScript, the walk becomes a quiet sequence of the six places. Changing language keeps the reader's place on the page.
+The walk's motion is calm by construction: the camera follows the scroll through a critically damped spring with a speed limit (Robey's walking pace), and pan and zoom travel together along the smoothest path between two views. The dotted route is drawn on a canvas, which keeps Safari at 60 frames per second. When the reader's hand comes to rest near a place, the page settles on it: a short overshoot goes back, anything further walks on to the next place, and a reader leaving a place is never pulled back to it. With reduced motion, or without JavaScript, the walk becomes a quiet sequence of the six places. Changing language keeps the reader's place on the page.
 
 ## Editing
 

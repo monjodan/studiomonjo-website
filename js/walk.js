@@ -303,7 +303,7 @@
       const dive = zoomPath(vOver, vStop(stops[0].s), 1.0); add('dive', H * clamp(dive.S * 0.95, 1.1, 2.2), { path: dive });
       stops.forEach((st, i) => {
         if (i) { const path = zoomPath(vStop(stops[i - 1].s), vStop(st.s), 1.25); add('travel', H * clamp(path.S * 0.95, 0.6, 2.0), { a: i - 1, b: i, path }); }
-        add('stop', H * (i === stops.length - 1 ? 1.1 : 0.75), { i });
+        add('stop', H * (i === stops.length - 1 ? 1.25 : 0.9), { i });   // long enough to rest on
       });
       const end = zoomPath(vStop(stops[stops.length - 1].s), vOver, 1.0); add('end', H * clamp(end.S * 0.95, 1.0, 2.0), { path: end });
       add('tail', H * 0.45);
@@ -371,6 +371,47 @@
     }
     let nextFall = 0, balloonFrom = null, lastWay = '', nextSide = '';
 
+    /* ——— Settling: when the reader's hand stops near a place, the page comes to rest on it ———
+       A flick or a page down rarely ends where a painting shows in full. Once the hand is still and the
+       scroll has stopped, a position that ended close to a place is moved onto it, and Robey walks there
+       at his own pace, as after any scroll. Nothing moves while the reader is scrolling or holding the
+       page, and a place never pulls the reader back once they move on from it. */
+    let lastHand = 0, lastScroll = 0, held = false, settledAt = -1, restY = -1;
+    ['wheel', 'touchmove', 'pointerdown', 'keydown'].forEach(ev => addEventListener(ev, () => { lastHand = now(); }, { passive: true }));
+    addEventListener('touchstart', () => { lastHand = now(); held = true; }, { passive: true });
+    ['touchend', 'touchcancel'].forEach(ev => addEventListener(ev, () => { lastHand = now(); held = false; }, { passive: true }));
+    addEventListener('scroll', () => { lastScroll = now(); }, { passive: true });
+    // The place to rest on: the one the reader is at; on the way between two, a little past a place
+    // means back to it, further on means on to the next, in the direction the reader was going.
+    // Onward: the next place in that direction, for a reader who is leaving the one they rested at.
+    function placeFor(y, dir, onward) {
+      const places = segs.filter(g => g.type === 'stop'), first = places[0], last = places[places.length - 1];
+      if (y < first.y0 - H * 0.45 || y > last.y1 + H * 0.22) return null;
+      let k = places.findIndex(g => y < g.y1); if (k < 0) k = places.length - 1;
+      let g = places[k]; const back = places[k - 1], between = back && y < g.y0;
+      if (onward) g = dir > 0 ? (between ? g : places[k + 1]) : back;
+      else if (between) {
+        if (dir > 0) g = y < back.y1 + H * 0.22 ? back : g;
+        else if (dir < 0) g = y > g.y0 - H * 0.22 ? g : back;
+        else g = y - back.y1 < g.y0 - y ? back : g;
+      }
+      if (!g) return null;
+      const len = g.y1 - g.y0;
+      return { i: g.i, c: g.y0 + len * 0.52, len };
+    }
+    function settle(t, yT) {
+      if (held || t - lastHand < 340 || t - lastScroll < 170) return;
+      const dir = restY < 0 ? 0 : Math.sign(yT - restY);
+      let p = placeFor(yT, dir);
+      restY = yT;
+      if (!p) { settledAt = -1; return; }
+      if (Math.abs(yT - p.c) <= p.len * 0.34) { settledAt = p.i; return; }   // the painting is in full view
+      // leaving the place rested at, its painting fading: Robey walks on to the next one, never back
+      if (settledAt === p.i) { p = dir ? placeFor(yT, dir, true) : null; if (!p || p.i === settledAt) return; }
+      settledAt = p.i;
+      scrollTo(0, Math.round(top0 + p.c));
+    }
+
     function update(t, dt, sy, vh) {
       if (!ready) return;
       const rTop = top0 - sy, maxY = segs[segs.length - 1].y1;
@@ -381,6 +422,7 @@
       const gap = Math.abs(yT - yS), pace = H * (0.72 + 0.5 * Math.max(0, gap / H - 1.2));
       yS = smoothDamp(yS, yT, vel, 0.6, pace, dt);
       const visible = rTop < vh && rTop + secH > 0;
+      if (visible && yT > 0 && yT < maxY) settle(t, yT);
       // when the reader hurries ahead, Robey keeps his pace, and says so
       const behind = Math.abs(yT - yS) > H * 0.7;
       if (behind && !paceSince) paceSince = t; if (!behind) paceSince = 0;
@@ -409,7 +451,7 @@
       // the places
       stops.forEach((sp, i) => {
         let vv = 0;
-        if (seg.type === 'stop' && seg.i === i) vv = smooth(0, 0.24, st) * (1 - smooth(0.82, 1, st));
+        if (seg.type === 'stop' && seg.i === i) vv = smooth(0, 0.18, st) * (1 - smooth(0.86, 1, st));
         if (seg.type === 'dive' && i === 0) vv = smooth(0.78, 1, st);
         if (vv !== sp.v) {
           sp.v = vv; sp.el.classList.toggle('on', vv > 0.001);
