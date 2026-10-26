@@ -8,9 +8,6 @@
   const doc = document.documentElement;
   doc.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const UA = navigator.userAgent || '';
-  const IN_APP = /KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|FB_IAB|Line\/|DaumApps|; wv\)/i.test(UA);
-  const IOS = /iP(hone|ad|od)/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -24,7 +21,7 @@
 
   /* ——— Words ——— */
   const C = JSON.parse(($('#walk-copy') || {}).textContent || '{"t":{}}');
-  const L = C.lang || doc.lang || 'en', LANGS = ['en', 'fr', 'ko'];
+  const L = C.lang || doc.lang || 'en';
   const T = (k, vars) => {
     const s = C.t[k]; if (s == null) return '';
     return vars ? s.replace(/\{(\w+)\}/g, (m, v) => (vars[v] != null ? vars[v] : m)) : s;
@@ -625,114 +622,6 @@
     $$('.nb').forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); open(btn.dataset.book, btn); }));
   })();
 
-  /* ——— Your page ——— */
-  const MARK = ['M35.75,17.17c-2.12,0-3.68-1.79-3.68-3.82s1.56-3.82,3.68-3.82,3.73,1.75,3.73,3.82-1.65,3.82-3.73,3.82Z',
-    'M14.82,29.2c0-6.96,4.58-11.15,10.86-11.15s10.86,4.19,10.86,11.15v4.43c0,6.96-4.58,11.15-10.86,11.15s-10.86-4.19-10.86-11.15v-4.43ZM25.68,38.89c2.92,0,3.94-2.14,3.94-5.5v-3.94c0-3.36-1.02-5.5-3.94-5.5s-3.94,2.14-3.94,5.5v3.94c0,3.36,1.02,5.5,3.94,5.5Z'];
-  const Page = (() => {
-    const sec = $('#page'); if (!sec) return null;
-    const spread = $('.spread', sec), leaf = $('.leaf-right', sec), cv = $('#ink'), ctx = cv.getContext('2d');
-    const robey = $('.p-robey', sec), after = $('.page-after', sec), folio = $('.folio', sec), prompt = $('.prompt', sec);
-    const btnTurn = $('[data-act="turn"]', sec), btnKeep = $('[data-act="keep"]', sec);
-    const mobilePrompt = document.createElement('div'); mobilePrompt.className = 'mobile-prompt'; mobilePrompt.setAttribute('aria-hidden', 'true'); spread.parentNode.insertBefore(mobilePrompt, spread);
-    let pi = 0;
-    const fillPrompt = () => {
-      const p = C.prompts[pi], others = LANGS.filter(l => l !== L), alts = $$('.p-alt', prompt);
-      $('.p-word', prompt).textContent = p.w; $('.p-roman', prompt).textContent = p.r; $('.p-essence', prompt).textContent = p.e[L];
-      $('.p-main', prompt).textContent = p.q[L]; $('.p-main', prompt).lang = L;
-      others.forEach((l, i) => { alts[i].textContent = p.q[l]; alts[i].lang = l; });
-      mobilePrompt.innerHTML = `<p class="p-word" lang="ko">${p.w}</p><p class="p-essence">${p.e[L]}</p><p class="p-main">${p.q[L]}</p>`;
-    };
-    fillPrompt();
-    $('.p-next', sec).addEventListener('click', () => { prompt.classList.add('swap'); setTimeout(() => { pi = (pi + 1) % C.prompts.length; fillPrompt(); prompt.classList.remove('swap'); }, 450); });
-    $$('.tools [data-guide]', sec).forEach(b => b.addEventListener('click', () => {
-      leaf.dataset.guide = b.dataset.guide; spread.dataset.guide = b.dataset.guide;
-      $$('.tools [data-guide]', sec).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    }));
-    const WET = '#34539a', DRY = '#1c2846';
-    let dpr = 1, PW = 1, PH = 1, strokes = [], cur = null, wrote = false, poolTimer = 0, folioN = 1;
-    const base = () => Math.max(1.3, PW * 0.0048);
-    function seg(g, s, i, color, w, h) { const P = s.pts, a = P[i - 1], b = P[i], pa = i > 1 ? P[i - 2] : a; g.strokeStyle = color; g.lineWidth = (a.w + b.w) / 2 * w; g.beginPath(); if (i > 1) g.moveTo((pa.x + a.x) / 2 * w, (pa.y + a.y) / 2 * h); else g.moveTo(a.x * w, a.y * h); g.quadraticCurveTo(a.x * w, a.y * h, (a.x + b.x) / 2 * w, (a.y + b.y) / 2 * h); g.stroke(); }
-    function dot(g, s, color, w, h) { const a = s.pts[0]; g.fillStyle = color; g.beginPath(); g.arc(a.x * w, a.y * h, a.w * w * 0.5 * s.pool, 0, Math.PI * 2); g.fill(); }
-    function tail(g, s, color, w, h) { const P = s.pts; if (P.length < 2) return; const a = P[P.length - 2], b = P[P.length - 1]; g.strokeStyle = color; g.lineWidth = b.w * w; g.beginPath(); g.moveTo((a.x + b.x) / 2 * w, (a.y + b.y) / 2 * h); g.lineTo(b.x * w, b.y * h); g.stroke(); }
-    function drawStroke(g, s, color, w, h) { g.lineCap = 'round'; g.lineJoin = 'round'; dot(g, s, color, w, h); for (let i = 1; i < s.pts.length; i++) seg(g, s, i, color, w, h); tail(g, s, color, w, h); }
-    function size() { const r = leaf.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); PW = Math.max(1, r.width); PH = Math.max(1, r.height); cv.width = Math.round(PW * dpr); cv.height = Math.round(PH * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); strokes.forEach(s => drawStroke(ctx, s, s.dry ? DRY : WET, PW, PH)); }
-    // Points are kept as fractions of the page as it is now, so the ink stays under the finger even when a
-    // messenger's toolbar slides away and the page changes size in the middle of a line.
-    const pt = e => { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) / Math.max(1, r.width), y: (e.clientY - r.top) / Math.max(1, r.height), t: e.timeStamp || now(), pen: e.pointerType === 'pen', p: e.pressure || 0.5, w: 0 }; };
-    function add(e) {
-      const q = pt(e), P = cur.pts, prev = P[P.length - 1];
-      const dist = Math.hypot((q.x - prev.x) * PW, (q.y - prev.y) * PH); if (dist < 0.8) return;
-      const v = dist / Math.max(1, q.t - prev.t), pf = q.pen ? lerp(0.45, 1.4, q.p) : 1;
-      q.w = lerp(prev.w, base() * pf * clamp(1.28 - v * 0.42, 0.5, 1.28) / PW, 0.28);
-      P.push(q); seg(ctx, cur, P.length - 1, WET, PW, PH); clearTimeout(poolTimer);
-    }
-    cv.addEventListener('pointerdown', e => {
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
-      e.preventDefault(); try { cv.setPointerCapture(e.pointerId); } catch (_) { /* nicety */ }
-      const q = pt(e); q.w = base() * 0.95 / PW; cur = { pts: [q], pool: 1, dry: false };
-      ctx.lineCap = 'round'; ctx.lineJoin = 'round'; dot(ctx, cur, WET, PW, PH);
-      leaf.classList.add('has-ink'); robey.classList.add('watching');
-      const grow = () => { if (!cur || cur.pts.length > 1 || cur.pool > 1.7) return; cur.pool += 0.07; dot(ctx, cur, WET, PW, PH); poolTimer = setTimeout(grow, 90); };
-      poolTimer = setTimeout(grow, 280);
-    });
-    cv.addEventListener('pointermove', e => { if (!cur) return; const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : []; (evs.length ? evs : [e]).forEach(add); });
-    const end = () => {
-      if (!cur) return; clearTimeout(poolTimer); tail(ctx, cur, WET, PW, PH);
-      const s = cur; strokes.push(s); cur = null;
-      setTimeout(() => { if (!strokes.includes(s)) return; s.dry = true; drawStroke(ctx, s, DRY, PW, PH); }, 1300);
-      if (!wrote) { wrote = true; setTimeout(() => after.classList.add('on'), 1500); }
-      btnTurn.disabled = false; btnKeep.disabled = false;
-      clearTimeout(robey._t); robey._t = setTimeout(() => robey.classList.remove('watching'), 2400);
-    };
-    cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end); cv.addEventListener('lostpointercapture', end);
-    function clear() { ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.restore(); strokes = []; leaf.classList.remove('has-ink'); }
-    btnTurn.addEventListener('click', () => {
-      if (!strokes.length) return;
-      const snap = document.createElement('div'); snap.className = 'turning'; snap.setAttribute('aria-hidden', 'true');
-      const im = new Image(); im.alt = ''; im.src = cv.toDataURL('image/png'); snap.appendChild(im);
-      const r = leaf.getBoundingClientRect(), sr = spread.getBoundingClientRect();
-      Object.assign(snap.style, { left: (r.left - sr.left) + 'px', top: '0px', width: r.width + 'px', height: r.height + 'px' });
-      spread.appendChild(snap); clear(); btnTurn.disabled = true; btnKeep.disabled = true; folioN += 2; folio.textContent = folioN;
-      requestAnimationFrame(() => requestAnimationFrame(() => snap.classList.add('go'))); setTimeout(() => snap.remove(), 1300);
-    });
-    btnKeep.addEventListener('click', () => {
-      const w = 1240, h = Math.round(w * PH / PW), c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d');
-      g.fillStyle = '#fcfaf5'; g.fillRect(0, 0, w, h);
-      for (let i = 0; i < 16000; i++) { g.fillStyle = `rgba(70,60,50,${(Math.random() * 0.04).toFixed(3)})`; g.fillRect(Math.random() * w, Math.random() * h, 1.3, 1.3); }
-      strokes.forEach(s => drawStroke(g, s, DRY, w, h));
-      g.save(); g.translate(w - 122, h - 124); g.scale(1.35, 1.35); g.fillStyle = 'rgba(176,57,46,.88)'; MARK.forEach(d => g.fill(new Path2D(d))); g.restore();
-      g.fillStyle = 'rgba(19,26,42,.42)'; g.font = '17px "Gowun Dodum", sans-serif'; g.textAlign = 'right'; g.fillText('Studio Monjo · Seoul', w - 124, h - 52);
-      const url = c.toDataURL('image/png');
-      c.toBlob(blob => {
-        const file = blob && typeof File === 'function' ? new File([blob], 'my-page.png', { type: 'image/png' }) : null;
-        const canShare = !!(file && navigator.canShare && navigator.canShare({ files: [file] }));
-        if (canShare && (IN_APP || IOS)) { navigator.share({ files: [file], title: 'Studio Monjo' }).catch(() => {}); return; }
-        if (IN_APP) { showKept(url); return; }
-        const a = document.createElement('a'); a.download = 'my-page.png'; a.href = url; document.body.appendChild(a); a.click(); a.remove();
-      }, 'image/png');
-    });
-    // Messenger browsers (KakaoTalk, Naver, Instagram, Facebook, Line) cannot save a page made here as a
-    // download, so it opens as a picture to press and hold.
-    function showKept(url) {
-      let d = $('.kept');
-      if (!d) {
-        d = document.createElement('dialog'); d.className = 'kept';
-        d.innerHTML = '<div class="kept-card"><img alt=""><p></p><button type="button"></button></div>';
-        document.body.appendChild(d);
-        $('button', d).addEventListener('click', () => d.close());
-        d.addEventListener('click', e => { if (e.target === d) d.close(); });
-      }
-      $('img', d).src = url; $('img', d).alt = T('page.aria');
-      $('p', d).textContent = T('page.kept'); $('button', d).textContent = T('reader.close');
-      if (d.showModal) d.showModal(); else window.open(url);
-    }
-    size();
-    if ('ResizeObserver' in window) { let rq = 0; new ResizeObserver(() => { cancelAnimationFrame(rq); rq = requestAnimationFrame(size); }).observe(leaf); }
-    // Some in-app browsers still scroll the page under a finger that writes; this page is for ink only.
-    ['touchstart', 'touchmove'].forEach(ev => cv.addEventListener(ev, e => { if (e.cancelable) e.preventDefault(); }, { passive: false }));
-    return { size };
-  })();
-
   /* ——— Invite Robey ——— */
   (() => {
     const sec = $('#visit'); if (!sec) return;
@@ -795,7 +684,7 @@
   requestAnimationFrame(frame);
 
   let rz = 0, lastW = innerWidth, lastH = innerHeight;
-  const relayoutAll = () => { if (Journey) Journey.layout(); if (Studio) Studio.layout(); if (Night) Night.layout(); if (Page) Page.size(); measure(); };
+  const relayoutAll = () => { if (Journey) Journey.layout(); if (Studio) Studio.layout(); if (Night) Night.layout(); measure(); };
   addEventListener('resize', () => {
     clearTimeout(rz);
     rz = setTimeout(() => {

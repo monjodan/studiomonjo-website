@@ -2,8 +2,7 @@
 """Rebuild the static pages from reviewed locale copy. No server dependencies.
 
 Each language gets the walk with Robey (its homepage), the notebooks, the studio's
-story and company editions. The walk's words live under "world" in content/{locale}.json;
-Robey's questions for the page you write are shared in content/prompts.json.
+story and company editions. The walk's words live under "world" in content/{locale}.json.
 """
 from pathlib import Path
 from html import escape
@@ -17,9 +16,8 @@ WORLD = '/media/web/world/'
 LOCALES = {'en': 'English', 'fr': 'Français', 'ko': '한국어'}
 SHORT = {'en': 'EN', 'fr': 'FR', 'ko': '한국어'}
 PRICES = json.loads((ROOT/'content'/'pricing-reference.json').read_text())['english_prices']
-PROMPTS = json.loads((ROOT/'content'/'prompts.json').read_text())['prompts']
 # Change with every stylesheet or script edit so returning visitors never mix versions.
-VERSION = '20261013-1'
+VERSION = '20261023-1'
 # The walk, in the order of the day: Namsan in the morning to the balloon at dusk.
 # Coordinates place each stop on the map; the rest frames Robey inside each painting.
 STOPS = [
@@ -211,21 +209,18 @@ def steps(w):
 ''' for v, n in films)
 
 def walk_copy(locale, t):
-    """Words the walk writes in as it goes: the way between places, the reader, the clock, the questions."""
+    """Words the walk writes in as it goes: the way between places, the reader, the clock."""
     w = world(t); ko = world(copy_for('ko'))
-    keys = ['j.next', 'studio.clock', 'nb.ed', 'stop.rest', 'stop.002.line', 'reader.bindingT', 'reader.t1', 'reader.t2', 'reader.t3', 'reader.t4', 'reader.close', 'page.aria', 'page.kept', 'find.together', 'find.minutes']
+    keys = ['j.next', 'studio.clock', 'nb.ed', 'stop.rest', 'stop.002.line', 'reader.bindingT', 'reader.t1', 'reader.t2', 'reader.t3', 'reader.t4', 'reader.close', 'find.together', 'find.minutes']
     keys += [f'stop.{s["id"]}.way' for s in STOPS[1:]] + [f'stop.{s["id"]}.letter' for s in STOPS[:-1]]
     keys += [f'book.{s["id"]}.{part}' for s in STOPS for part in ('name', 'line')] + [f'thread.{c}' for c in ('red', 'navy', 'green', 'orange')]
     data = {'lang': locale, 't': {k: w[k] for k in keys}, 'words': w['words'], 'ko': {s['id']: ko[f'book.{s["id"]}.name'] for s in STOPS},
-            'thread': THREAD, 'prompts': PROMPTS}
+            'thread': THREAD}
     text = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     return f'<script type="application/json" id="walk-copy">{text}</script>'
 
 def home(locale, t):
     w = world(t)
-    langs = list(LOCALES)
-    p = PROMPTS[0]
-    alts = ''.join(f'<p class="p-alt" lang="{l}">{e(p["q"][l])}</p>' for l in langs if l != locale)
     shelf = ''.join(f'''<a class="nb" href="/{locale}/notebooks/#robey-{s['id']}" data-book="{s['id']}">{img(f"{WORLD}photo/{s['id']}-cut.webp", w[f"book.{s['id']}.name"])}<span class="nb-name">{w[f"book.{s['id']}.name"]}</span><span class="nb-ed">{w['nb.ed']} · {s['id']}</span></a>''' for s in STOPS)
     return f'''<main id="main">
 
@@ -294,48 +289,6 @@ def home(locale, t):
 </div>
 <div class="shelf">{shelf}</div>
 <p class="nb-more"><a class="quiet-link" href="/{locale}/notebooks/">{w['nb.more']}</a></p>
-</section>
-
-<section id="page" class="page" data-theme="dark">
-<div class="page-head">
-<p class="eyebrow">{w['page.eyebrow']}</p>
-<h2 class="hand-title">{w['page.title']}</h2>
-<p>{w['page.sub']}</p>
-</div>
-<div class="spread" data-guide="none">
-<div class="leaf leaf-left">
-<div class="prompt" aria-live="polite">
-<p class="p-word" lang="ko">{e(p['w'])}</p>
-<p class="p-roman">{e(p['r'])}</p>
-<p class="p-essence">{e(p['e'][locale])}</p>
-<p class="p-main">{e(p['q'][locale])}</p>
-{alts}
-</div>
-<button class="p-next" type="button">{w['page.next']}</button>
-<img class="p-robey" src="{WORLD}robey/robey-sit.webp" alt="" aria-hidden="true" loading="lazy">
-</div>
-<div class="leaf leaf-right" data-guide="none">
-<div class="guide-sheet lined" aria-hidden="true"></div>
-<div class="guide-sheet grid" aria-hidden="true"></div>
-<canvas id="ink" aria-label="{e(w['page.aria'])}"></canvas>
-<p class="write-here" aria-hidden="true">{w['page.write']}</p>
-<span class="folio" aria-hidden="true">1</span>
-</div>
-</div>
-<div class="tools">
-<p class="tools-note">{w['page.tools']}</p>
-<div class="seg" role="group" aria-label="{e(w['page.group'])}">
-<button type="button" data-guide="none" aria-pressed="true">{w['page.g0']}</button>
-<button type="button" data-guide="lined" aria-pressed="false">{w['page.g1']}</button>
-<button type="button" data-guide="grid" aria-pressed="false">{w['page.g2']}</button>
-</div>
-<div class="tool-row">
-<button class="tool" type="button" data-act="turn" disabled>{w['page.turn']}</button>
-<button class="tool" type="button" data-act="keep" disabled>{w['page.keep']}</button>
-</div>
-</div>
-<p class="page-note">{w['page.note']}</p>
-<p class="page-after">{w['page.after']}</p>
 </section>
 
 <section id="visit" class="visit" data-theme="light">

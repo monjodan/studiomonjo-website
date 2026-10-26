@@ -16,7 +16,7 @@ Open [the local site](http://127.0.0.1:8794/en/). This concurrent server disable
 
 Each of `/en/`, `/fr/` and `/ko/` contains:
 
-- The homepage, **a walk with Robey**: scrolling walks Robey across a drawn map of Seoul, from Namsan in the morning to the orange balloon at dusk. At each of the six places, his painting inks itself in and the first lines of his letter appear. The page then goes on to one lit window at night, the studio (folded, sewn, stamped, with a letter), the six notebooks (each opens up close), a blank page to write on (nothing is sent or saved), Robey's visit for companies, cafés and shops, and where to find the notebooks. A **Skip** pill jumps straight to the notebooks.
+- The homepage, **a walk with Robey**: scrolling walks Robey across a drawn map of Seoul, from Namsan in the morning to the orange balloon at dusk. At each of the six places, his painting inks itself in and the first lines of his letter appear. The page then goes on to one lit window at night, the studio (folded, sewn, stamped, with a letter), the six notebooks (each opens up close), Robey's visit for companies, cafés and shops, and where to find the notebooks. A **Skip** pill jumps straight to the notebooks.
 - `notebooks/`: the six Robey covers, the writing experience with the size guide, individual pieces, questions and how to buy.
 - `about/`: Jordan's writing background, handmaking, Robey and encounters at markets.
 - `company-editions/`: Brand and Illustration editions, practical details and an enquiry form.
@@ -30,10 +30,11 @@ The walk's motion is calm by construction: the camera follows the scroll through
 The site is ordinary static HTML generated from locale copy. No JavaScript framework or runtime build step is required.
 
 - `content/en.json`, `content/fr.json`, `content/ko.json`: reviewed page and ordering copy. The walk's words are under `world`; they may use `<p>`, `<br>` and `<b>`, and prices are written as `{pocket_krw}`, `{standard_eur}` and so on, filled from `content/pricing-reference.json`.
-- `content/prompts.json`: Robey's questions for the page you write (Mindful 12), in the three languages.
 - `scripts/build-studio.py`: writes the twelve pages, the root language entry and the 404 page.
 - `css/base.css`: shared paper, ink, type, header, postcard, prints, drawn windows and footer. `css/walk.css`, `js/walk.js`: the walk. `css/pages.css`: the notebooks, story and company pages. `css/buy.css`, `js/studio.js`: ordering, the size guide, the company form and the drawn windows, on every page.
 - `media/web/world/`: the walk's map tiles, paintings with their line layers, Robey, landmarks, photographs and films. `media/web/studio/`: photographs of the notebooks, the studio and the markets.
+
+Keep the copy close to Robey’s letters: concrete things he notices, small questions and things he is still trying to understand. Use ordinary, conversational sentences; avoid abstract slogans such as “A notebook is not empty. It is waiting.” Robey speaks in the walk and letters; Jordan speaks about making the notebooks, and ordering copy names the studio clearly. Preserve the supplied story excerpts and keep repeated captions consistent across pages and languages.
 
 After editing copy or templates:
 

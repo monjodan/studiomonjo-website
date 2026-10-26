@@ -107,7 +107,7 @@ def text(*folders):
     return ''.join(path.read_text() for folder in folders for path in (ROOT / folder).rglob('*.html'))
 
 
-shared = ''.join(path.read_text() for path in (ROOT / 'js').glob('*.js')) + (ROOT / 'content' / 'prompts.json').read_text()
+shared = ''.join(path.read_text() for path in (ROOT / 'js').glob('*.js'))
 english_french = text('en', 'fr') + (ROOT / '404.html').read_text() + shared
 everything = english_french + text('ko') + ''.join(path.read_text() for path in (ROOT / 'content').glob('*.json'))
 # Latin-1 and the site's typographic marks stay available, so a small edit never falls back to another font.
