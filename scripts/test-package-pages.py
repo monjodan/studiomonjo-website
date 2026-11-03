@@ -163,6 +163,28 @@ class PackagePagesTests(unittest.TestCase):
             self.package()
         self.assertFalse(self.output.exists())
 
+    def test_printing_templates_publish_pdfs_only(self):
+        template = 'printing-templates/house-box-a6-home-template-a4.pdf'
+        self.write(template, b'%PDF-1.4 fixture')
+        self.write('printing-templates/house-box-notes.md', 'private-person@example.com')
+        self.write('printing-templates/.DS_Store', b'')
+        self.package()
+        self.assertEqual((self.output / template).read_bytes(), b'%PDF-1.4 fixture')
+        self.assertFalse((self.output / 'printing-templates/house-box-notes.md').exists())
+        self.assertFalse((self.output / 'printing-templates/.DS_Store').exists())
+
+    def test_printing_template_names_and_privacy_are_checked(self):
+        for name in ('House Box A6.pdf', 'house_box.pdf', 'house-box.PDF', 'house-box.v2.pdf'):
+            with self.subTest(name=name):
+                bad = self.write('printing-templates/' + name, b'%PDF-1.4 fixture')
+                with self.assertRaisesRegex(ValueError, 'unsafe printing template name'):
+                    self.package()
+                bad.unlink()
+        self.write('printing-templates/house-box.pdf', b'%PDF-1.4 private-person@example.com')
+        with self.assertRaisesRegex(ValueError, 'Email address or mailto link in public file'):
+            self.package()
+        self.assertFalse(self.output.exists())
+
     def use_gif(self, data):
         relative = 'media/web/naver/animation.gif'
         self.write(relative, data)

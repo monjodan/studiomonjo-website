@@ -71,6 +71,8 @@ python3 scripts/package-pages.py
 
 The `_site/` output is the complete deployment artifact. The packager checks local links, anchors, missing assets and exposed email addresses, including asset metadata. Copy sources, research notes, scripts and media without a website or Naver dependency are excluded. GitHub Pages serves ordinary static files; Python runs only during preparation. The root-relative URLs target the existing `studiomonjo.com` custom domain in `CNAME`.
 
+`printing-templates/` holds printable PDFs shared by direct link, such as the house box template. Every PDF in that folder is published at `https://studiomonjo.com/printing-templates/<name>.pdf` even before a page links to it. Names are lowercase with hyphens, and the packager runs the same email check on each file. Other files in the folder stay private.
+
 ### Naver shop image hosting
 
 Naver product descriptions embed images directly from `https://studiomonjo.com/media/web/notebooks/`. These URLs are a public dependency even when no website page uses the image. Never delete or rename them merely because they appear unused on the website.

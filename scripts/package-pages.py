@@ -5,6 +5,7 @@ Run build-studio.py first. No dependencies beyond Python's standard library.
 Runtime asset URLs belong in HTML/CSS or complete string literals in JavaScript
 so their dependencies can be included and checked before deployment. Assets
 used by the Naver shop belong in the required content/naver-media.json manifest.
+Printable PDFs shared by direct link belong in printing-templates/.
 """
 from collections import deque
 from html import unescape
@@ -27,6 +28,8 @@ ROOT_FILES = {'index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml', 'l
 MEDIA_TYPES = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif',
                '.ico', '.mp4', '.webm', '.mp3', '.ogg'}
 NAVER_MANIFEST = Path('content/naver-media.json')
+TEMPLATES = Path('printing-templates')
+TEMPLATE_NAME = re.compile(r'[a-z0-9][a-z0-9-]*\.pdf')
 CSS_URL = re.compile(r'url\(\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s)]+))\s*\)', re.I)
 CSS_IMPORT = re.compile(r'@import\s+["\']([^"\']+)["\']', re.I)
 JS_URL = re.compile(r'["\']((?:/|\./|\.\./|https?://)[^"\'\s]+)["\']')
@@ -105,6 +108,8 @@ def allowed(path):
         return path.suffix == '.' + parts[0]
     if parts[:2] == ('assets', 'fonts'):
         return path.suffix in ('.woff', '.woff2', '.ttf', '.otf')
+    if parts[0] == TEMPLATES.name:
+        return len(parts) == 2 and path.suffix == '.pdf'
     return parts[:2] == ('media', 'web') and path.suffix.lower() in MEDIA_TYPES
 
 
@@ -138,6 +143,24 @@ def naver_assets(root):
             raise ValueError(f'{NAVER_MANIFEST}: duplicate media path: {value}')
         seen.add(path)
         paths.append(path)
+    return paths
+
+
+def printing_templates(root):
+    """Publish every PDF in printing-templates/ so it can be shared by direct
+    link before any page mentions it. Names stay lowercase with hyphens so the
+    public URL is clean; anything else in the folder is private and skipped."""
+    folder = root / TEMPLATES
+    if not folder.is_dir():
+        return []
+    paths = []
+    for path in sorted(folder.iterdir()):
+        if path.name.startswith('.') or path.suffix.lower() != '.pdf':
+            continue
+        if not TEMPLATE_NAME.fullmatch(path.name):
+            raise ValueError(f'{TEMPLATES}: unsafe printing template name: {path.name!r} '
+                             '(use lowercase letters, digits and hyphens)')
+        paths.append(TEMPLATES / path.name)
     return paths
 
 
@@ -215,6 +238,7 @@ def build_manifest(root):
     queue = deque(Path(name) for name in sorted(ROOT_FILES - {'.nojekyll'}))
     queue.extend(Path(locale, route, 'index.html') for locale in LOCALES for route in ROUTES)
     queue.extend(naver_assets(root))
+    queue.extend(printing_templates(root))
     manifest, pages, links = {}, {}, []
     errors = []
 
