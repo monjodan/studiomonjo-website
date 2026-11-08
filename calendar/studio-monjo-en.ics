@@ -1,0 +1,94 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:doota-2026-07-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART;VALUE=DATE:20260710
+DTEND;VALUE=DATE:20260713
+SUMMARY:Studio Monjo · Doota Mall
+LOCATION:Dongdaemun\, Seoul
+DESCRIPTION:Market\nhttps://studiomonjo.com/en/dates/#ev-doota-2026-07
+URL:https://studiomonjo.com/en/dates/#ev-doota-2026-07
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:maison-france-festival-2026-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART;VALUE=DATE:20260912
+DTEND;VALUE=DATE:20260914
+SUMMARY:Studio Monjo · Maison France Festival
+LOCATION:Avenue France\, Gwanggyo
+DESCRIPTION:Market\nhttps://studiomonjo.com/en/dates/#ev-maison-france-fest
+ ival-2026
+URL:https://studiomonjo.com/en/dates/#ev-maison-france-festival-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:seongbuk-night-market-2026-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261004
+SUMMARY:Studio Monjo · Seongbuk-dong night market
+LOCATION:Seongbuk-dong\, Seoul
+DESCRIPTION:Market\nhttps://studiomonjo.com/en/dates/#ev-seongbuk-night-mar
+ ket-2026
+URL:https://studiomonjo.com/en/dates/#ev-seongbuk-night-market-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:seongsu-market-2026-10-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART:20261017T010000Z
+DTEND:20261017T080000Z
+SUMMARY:Studio Monjo · Seongsu market
+LOCATION:Seongsu-dong\, Seoul
+DESCRIPTION:Market\nHours 10:00–17:00\nhttps://studiomonjo.com/en/dates/#
+ ev-seongsu-market-2026-10
+URL:https://studiomonjo.com/en/dates/#ev-seongsu-market-2026-10
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:incheon-illustration-korea-2026-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261102
+SUMMARY:Studio Monjo · Incheon Illustration Korea
+LOCATION:Songdo Convensia\, Incheon
+DESCRIPTION:Fair\nBooth F-115\nhttps://studiomonjo.com/en/dates/#ev-incheon
+ -illustration-korea-2026
+URL:https://studiomonjo.com/en/dates/#ev-incheon-illustration-korea-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:xavier-christmas-market-2026-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART:20261212T023000Z
+DTEND:20261212T110000Z
+SUMMARY:Studio Monjo · Christmas market at Lycée International Xavier
+LOCATION:Lycée International Xavier\, Seoul
+DESCRIPTION:Market\nHours 11:30–20:00\nA notebook will be open on the tab
+ le\, with a pen\, for anyone who would like to try the paper.\nhttps://stu
+ diomonjo.com/en/dates/#ev-xavier-christmas-market-2026
+URL:https://studiomonjo.com/en/dates/#ev-xavier-christmas-market-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

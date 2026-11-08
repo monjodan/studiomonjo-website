@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dates · Studio Monjo</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://studiomonjo.com/en/dates/">
+<link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
+<script>
+(function () {
+  try {
+    var qs = new URLSearchParams(location.search);
+    var forced = qs.get('lang');
+    var saved = null;
+    try { saved = localStorage.getItem('sm-lang'); } catch (e) {}
+    var browser = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var locale = forced || saved || (browser.indexOf('fr') === 0 ? 'fr' : (browser.indexOf('ko') === 0 ? 'ko' : 'en'));
+    if (locale !== 'en' && locale !== 'ko' && locale !== 'fr') locale = 'en';
+    try { localStorage.setItem('sm-lang', locale); } catch (e) {}
+    location.replace('/' + locale + '/dates/' + (location.hash || ''));
+  } catch (e) {
+    location.replace('/en/dates/');
+  }
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/en/dates/"></noscript>
+</head>
+<body>
+<main style="font-family:system-ui,sans-serif;padding:24px;color:#16243f"><h1>Studio Monjo</h1><p>The markets, fairs and workshops where you can hold Studio Monjo’s hand-bound notebooks, try the paper with a pen and meet their maker, Jordan Monnet, in Seoul.</p><p><a href="/en/dates/" lang="en">English</a> · <a href="/fr/dates/" lang="fr">Français</a> · <a href="/ko/dates/" lang="ko">한국어</a></p></main>
+</body>
+</html>

@@ -96,4 +96,28 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/company-editions/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/company-editions/" />
   </url>
+  <url>
+    <loc>https://studiomonjo.com/en/dates/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/dates/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/dates/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/dates/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/dates/" />
+  </url>
+  <url>
+    <loc>https://studiomonjo.com/fr/dates/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/dates/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/dates/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/dates/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/dates/" />
+  </url>
+  <url>
+    <loc>https://studiomonjo.com/ko/dates/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiomonjo.com/en/dates/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://studiomonjo.com/fr/dates/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://studiomonjo.com/ko/dates/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://studiomonjo.com/en/dates/" />
+  </url>
 </urlset>

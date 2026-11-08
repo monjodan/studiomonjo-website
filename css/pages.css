@@ -273,3 +273,67 @@ main h3 { font: 400 22px/1.35 var(--book); }
 html[lang="ko"] :is(.page-nav a, .top-buy, .button, .section-links a, .edition-number, .detail-list dt, .size-trigger, .size-guide dt, .signature span, .company-facts span, .edition-commercial span, .form-field > span, .maker-statement span) { letter-spacing: .06em; }
 html[lang="ko"] main h1 { line-height: 1.3; }
 html[lang="ko"] main h2 { line-height: 1.35; }
+
+/* ——— The dates: a wall calendar, one sheet per month, with the markets circled in red pen ——— */
+.dates-hero .page-intro { padding-bottom: 6px; }
+.dates-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 28px; margin-top: 22px; }
+.dates-empty { margin: 0 0 clamp(26px, 4vh, 44px) !important; font: 400 clamp(21px, 1.8vw, 25px)/1.4 var(--hand); color: var(--brown); }
+.dates-calendar { padding-bottom: clamp(40px, 6vh, 70px); }
+.cal-month { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 4vw, 64px); align-items: start; padding-block: clamp(26px, 4vh, 44px); }
+.cal-month + .cal-month { border-top: 1px dashed var(--hair); }
+.cal-sheet { position: relative; padding: clamp(18px, 2.6vw, 32px) clamp(16px, 2.4vw, 30px) clamp(14px, 2vw, 22px); background: var(--card); border-radius: 3px; box-shadow: 0 1px 1px rgba(40,30,20,.1), 0 30px 60px -24px rgba(40,30,20,.45); color: var(--brown); }
+.cal-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--hair); }
+.cal-head h2 { font: 400 clamp(34px, 3.4vw, 46px)/1 var(--hand); color: var(--brown); }
+.cal-year { font: 400 12px/1 var(--ui); letter-spacing: .24em; color: var(--muted); }
+.cal-grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.cal-grid th { padding: 8px 0 10px; font: 400 10.5px/1 var(--ui); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.cal-grid td { position: relative; height: clamp(58px, 6vw, 72px); padding: 0; vertical-align: top; text-align: center; border-top: 1px solid var(--hair); }
+.cal-num { display: inline-block; margin-top: 9px; font: 400 14px/1 var(--ui); color: var(--brown); }
+.cal-wkend .cal-num { color: var(--muted); }
+.cal-mark { display: block; height: 100%; color: inherit; text-decoration: none; }
+.cal-mark:hover .cal-num, .cal-mark:focus-visible .cal-num { color: var(--red); }
+.cal-mark:focus-visible { outline-offset: -2px; }
+.cal-ring { position: absolute; left: 50%; top: 1px; width: 40px; max-width: none; height: 32px; transform: translateX(-50%); pointer-events: none; overflow: visible; }
+.cal-ring path, .cal-line path { fill: none; stroke: var(--red); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+.cal-line { position: absolute; top: 26px; left: calc(50% - 16px); width: calc(var(--span) * 100% + 32px); max-width: none; height: 10px; pointer-events: none; overflow: visible; }
+.cal-line[data-from-ring] { left: calc(50% + 17px); width: calc(var(--span) * 100% - 1px); }
+.cal-line[data-lane="1"] { top: 43px; }
+.cal-pen { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); font: 400 15px/1 var(--hand); color: var(--red); white-space: nowrap; pointer-events: none; }
+.cal-pen[data-lane="1"] { top: 51px; }
+.is-today .cal-num::after { content: ""; display: block; width: 4px; height: 4px; margin: 3px auto 0; border-radius: 50%; background: var(--navy); }
+.cal-notes { display: grid; gap: 28px; padding-top: 8px; }
+.cal-note { padding-left: 22px; border-left: 1px solid var(--hair); transition: border-color .5s; }
+.cal-note:target { border-left-color: var(--red); }
+.cal-when { margin: 0 0 8px !important; font: 400 27px/1.1 var(--hand); color: var(--red); }
+.cal-when span { color: var(--brown); font-size: 21px; }
+.cal-note h3 { margin-bottom: 8px; font: 400 21px/1.35 var(--book); }
+.cal-meta { font: 400 14.5px/1.65 var(--book); color: var(--muted); }
+.cal-meta a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hair); }
+.cal-map { white-space: nowrap; }
+.cal-meta a:hover { border-color: currentColor; }
+.cal-kind { display: inline-block; margin-right: 10px; font: 400 10.5px/1 var(--ui); letter-spacing: .2em; text-transform: uppercase; color: var(--red); vertical-align: 2px; }
+.cal-text { margin-top: 10px !important; font: 400 15.5px/1.7 var(--book); color: var(--text); }
+.cal-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 16px !important; }
+.cal-links a { font: 400 11.5px/1 var(--ui); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; padding-bottom: 6px; border-bottom: 1px solid currentColor; opacity: .8; transition: opacity .3s; }
+.cal-links a:hover { opacity: 1; }
+.cal-past { padding-top: clamp(70px, 10vh, 120px); }
+.cal-past-list { list-style: none; margin: 26px 0 0 !important; padding: 0; max-width: 34em; }
+.cal-past-list li { display: grid; grid-template-columns: minmax(150px, .9fr) 1.1fr; gap: 2px 18px; padding: 12px 0; border-top: 1px solid var(--hair); }
+.cal-past-list li:last-child { border-bottom: 1px solid var(--hair); }
+.cal-past-when { font: 400 20px/1.3 var(--hand); color: var(--red); }
+.cal-past-name { font: 400 16px/1.5 var(--book); color: var(--ink); }
+.cal-past-place { grid-column: 2; font: 400 14px/1.5 var(--book); color: var(--muted); }
+@media (max-width: 900px) { .cal-month { grid-template-columns: 1fr; gap: 26px; } .cal-notes { padding-top: 0; } }
+@media (max-width: 480px) {
+  .cal-grid td { height: 60px; }
+  .cal-num { font-size: 13px; margin-top: 8px; }
+  .cal-head h2 { font-size: 32px; }
+  .cal-ring { width: 34px; height: 28px; top: 0; }
+  .cal-line { top: 24px; left: calc(50% - 14px); width: calc(var(--span) * 100% + 28px); }
+  .cal-line[data-from-ring] { left: calc(50% + 14px); width: calc(var(--span) * 100% + 0px); }
+  .cal-line[data-lane="1"] { top: 41px; }
+  .cal-pen { top: 31px; font-size: 13.5px; }
+  .cal-pen[data-lane="1"] { top: 48px; }
+  .cal-past-list li { grid-template-columns: 1fr; }
+  .cal-past-place { grid-column: 1; }
+}

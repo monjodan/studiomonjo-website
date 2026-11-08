@@ -2,13 +2,15 @@
 """Rebuild the static pages from reviewed locale copy. No server dependencies.
 
 Each language gets the walk with Robey (its homepage), the notebooks, the studio's
-story and company editions. The walk's words live under "world" in content/{locale}.json.
+story, company editions and the dates (a wall calendar of markets and fairs, drawn by
+scripts/dates.py from content/events.json). The walk's words live under "world" in content/{locale}.json.
 """
 from pathlib import Path
 from html import escape
 import json
 import re
 from seo import metadata, structured_data, write_discovery, image_size
+import dates as dates_page
 
 ROOT = Path(__file__).resolve().parents[1]
 MEDIA = '/media/web/studio/'
@@ -17,7 +19,7 @@ LOCALES = {'en': 'English', 'fr': 'Français', 'ko': '한국어'}
 SHORT = {'en': 'EN', 'fr': 'FR', 'ko': '한국어'}
 PRICES = json.loads((ROOT/'content'/'pricing-reference.json').read_text())['english_prices']
 # Change with every stylesheet or script edit so returning visitors never mix versions.
-VERSION = '20261023-1'
+VERSION = '20261108-1'
 # The walk, in the order of the day: Namsan in the morning to the balloon at dusk.
 # Coordinates place each stop on the map; the rest frames Robey inside each painting.
 STOPS = [
@@ -126,6 +128,9 @@ def languages(locale, route, t):
     links = ''.join(f'<a href="/{l}/{route}" lang="{l}" hreflang="{l}" data-language="{l}"' + (' aria-current="true"' if l == locale else '') + f'>{SHORT[l]}</a>' for l in LOCALES)
     return f'<nav class="lang" aria-label="{e(t["nav"]["language"])}">{links}</nav>'
 
+# The inner pages, in the order of the menu and the footer.
+NAV = [('notebooks','notebooks'),('about','about'),('company','company-editions'),('dates','dates')]
+
 def header(locale,page,t):
     route={'home':'','company':'company-editions/'}.get(page,page+'/')
     if page == 'home':
@@ -137,7 +142,7 @@ def header(locale,page,t):
 </header>
 <a class="jump" href="#notebooks" aria-label="{e(w['nav.skip'])}"><span aria-hidden="true">{e(w['nav.jump'])}</span><i aria-hidden="true"></i></a>
 '''
-    nav=''.join(f'<a href="/{locale}/{r}/"'+(' aria-current="page"' if key==page else '')+f'>{e(t["nav"][key])}</a>' for key,r in [('notebooks','notebooks'),('about','about'),('company','company-editions')])
+    nav=''.join(f'<a href="/{locale}/{r}/"'+(' aria-current="page"' if key==page else '')+f'>{e(t["nav"][key])}</a>' for key,r in NAV)
     return f'''<a class="skip" href="#main">{e(t['nav']['skip'])}</a>
 <header class="top top-page">
 <a class="brand" href="/{locale}/" aria-label="Studio Monjo · {e(t['nav']['home'])}"><svg aria-hidden="true"><use href="#wordmark"/></svg></a>
@@ -148,7 +153,7 @@ def header(locale,page,t):
 
 def footer(locale,page,t):
     f=t['footer']; n=t['nav']
-    nav=''.join(f'<a href="/{locale}/{r}/"'+(' aria-current="page"' if key==page else '')+f'>{e(n[key])}</a>' for key,r in [('notebooks','notebooks'),('about','about'),('company','company-editions')])
+    nav=''.join(f'<a href="/{locale}/{r}/"'+(' aria-current="page"' if key==page else '')+f'>{e(n[key])}</a>' for key,r in NAV)
     credit=f'<p class="foot-credit">© Studio Monjo' + (f' · {e(world(t)["foot.osm"])}' if page == 'home' else '') + '</p>'
     return f'''<footer class="foot">
 <a class="foot-home" href="/{locale}/" aria-label="Studio Monjo · {e(n['home'])}"><svg class="foot-mark" aria-hidden="true"><use href="#mark"/></svg></a>
@@ -379,6 +384,9 @@ def about(locale,t):
 <section class="simple-close wrap"><h2>{e(a['close'])}</h2><a class="button" href="/{locale}/notebooks/">{e(a['closeLink'])} <span aria-hidden="true">→</span></a></section>
 </main>'''
 
+def dates(locale,t):
+    return dates_page.page(locale, t, image, print_photo, external)
+
 def company(locale,t):
     c=t['company']; w=world(t)
     facts=''.join(f'<div><strong>{e(a)}</strong><span>{e(b)}</span></div>' for a,b in c['facts'])
@@ -421,12 +429,12 @@ def copy_for(locale): return copy[locale]
 for locale in LOCALES:
     copy[locale]=json.loads((ROOT/'content'/f'{locale}.json').read_text())
 for locale,t in copy.items():
-    for key,build in [('notebooks',notebooks),('about',about),('company',company)]:
+    for key,build in [('notebooks',notebooks),('about',about),('company',company),('dates',dates)]:
         route='company-editions' if key=='company' else key
         dest=ROOT/locale/route/'index.html'; dest.parent.mkdir(parents=True,exist_ok=True)
         dest.write_text(head(locale,key,t)+header(locale,key,t)+build(locale,t)+'\n'+footer(locale,key,t)+buying(locale,t)+f'\n<script src="/js/studio.js?v={VERSION}" defer></script>\n</body>\n</html>\n')
     (ROOT/locale/'index.html').write_text(head(locale,'home',t)+header(locale,'home',t)+home(locale,t)+footer(locale,'home',t)+reader(locale,t)+'\n'+walk_copy(locale,t)+f'\n<script src="/js/walk.js?v={VERSION}" defer></script>\n<script src="/js/studio.js?v={VERSION}" defer></script>\n</body>\n</html>\n')
-    print(f'Built {locale}: the walk, notebooks, story and company editions.')
+    print(f'Built {locale}: the walk, notebooks, story, company editions and dates.')
 
 LOST = [('en', 'Robey took a wrong turn.', 'This page is not here, or no longer. The walk begins again from the start.', 'Back to the walk'),
         ('fr', 'Roby s’est trompé de chemin.', 'Cette page n’est pas ici, ou plus. La promenade reprend depuis le début.', 'Revenir à la promenade'),
@@ -482,5 +490,6 @@ def check_fonts():
 
 update_root(copy['en'])
 (ROOT/'404.html').write_text(not_found())
+dates_page.write_files(copy)
 write_discovery(copy)
 check_fonts()

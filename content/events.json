@@ -1,0 +1,162 @@
+{
+  "_readme": [
+    "The dates page: markets, fairs, workshops and meet-ups where the notebooks leave the studio.",
+    "A date is published only when its status is confirmed, meaning the organiser has confirmed the place or the booth. Keep applications as pending until then; they stay out of the pages and the calendar files.",
+    "Fields: id (lowercase, hyphens, unique), status (confirmed | pending | cancelled), kind (market | fair | workshop | meetup), start and end (YYYY-MM-DD, Seoul dates, end may equal start), hours (optional, like 11:30–20:00), booth (optional), name and place and note (per language), map (Google Maps link, optional), naverMap (Naver Map link, shown on Korean pages when present), url (the organiser's page, optional).",
+    "Past confirmed dates stay in the file and are listed under 'Where we have been'."
+  ],
+  "updated": "2026-11-08",
+  "events": [
+    {
+      "id": "doota-2026-07",
+      "status": "confirmed",
+      "kind": "market",
+      "start": "2026-07-10",
+      "end": "2026-07-12",
+      "name": {
+        "en": "Doota Mall",
+        "fr": "Doota Mall",
+        "ko": "두타몰"
+      },
+      "place": {
+        "en": "Dongdaemun, Seoul",
+        "fr": "Dongdaemun, Séoul",
+        "ko": "동대문, 서울"
+      }
+    },
+    {
+      "id": "maison-france-festival-2026",
+      "status": "confirmed",
+      "kind": "market",
+      "start": "2026-09-12",
+      "end": "2026-09-13",
+      "name": {
+        "en": "Maison France Festival",
+        "fr": "Maison France Festival",
+        "ko": "메종 프랑스 페스티벌"
+      },
+      "place": {
+        "en": "Avenue France, Gwanggyo",
+        "fr": "Avenue France, Gwanggyo",
+        "ko": "애비뉴프랑스 광교"
+      }
+    },
+    {
+      "id": "seongbuk-night-market-2026",
+      "status": "confirmed",
+      "kind": "market",
+      "start": "2026-10-02",
+      "end": "2026-10-03",
+      "name": {
+        "en": "Seongbuk-dong night market",
+        "fr": "Marché de nuit de Seongbuk-dong",
+        "ko": "성북동 야시장"
+      },
+      "place": {
+        "en": "Seongbuk-dong, Seoul",
+        "fr": "Seongbuk-dong, Séoul",
+        "ko": "성북동, 서울"
+      }
+    },
+    {
+      "id": "seongsu-market-2026-10",
+      "status": "confirmed",
+      "kind": "market",
+      "start": "2026-10-17",
+      "end": "2026-10-17",
+      "hours": "10:00–17:00",
+      "name": {
+        "en": "Seongsu market",
+        "fr": "Marché de Seongsu",
+        "ko": "성수 마켓"
+      },
+      "place": {
+        "en": "Seongsu-dong, Seoul",
+        "fr": "Seongsu-dong, Séoul",
+        "ko": "성수동, 서울"
+      }
+    },
+    {
+      "id": "incheon-illustration-korea-2026",
+      "status": "confirmed",
+      "kind": "fair",
+      "start": "2026-10-30",
+      "end": "2026-11-01",
+      "booth": "F-115",
+      "name": {
+        "en": "Incheon Illustration Korea",
+        "fr": "Incheon Illustration Korea",
+        "ko": "인천 일러스트레이션 코리아"
+      },
+      "place": {
+        "en": "Songdo Convensia, Incheon",
+        "fr": "Songdo Convensia, Incheon",
+        "ko": "송도컨벤시아, 인천"
+      }
+    },
+    {
+      "id": "xavier-christmas-market-2026",
+      "status": "confirmed",
+      "kind": "market",
+      "start": "2026-12-12",
+      "end": "2026-12-12",
+      "hours": "11:30–20:00",
+      "name": {
+        "en": "Christmas market at Lycée International Xavier",
+        "fr": "Marché de Noël du Lycée International Xavier",
+        "ko": "하비에르 국제학교 크리스마스 마켓"
+      },
+      "place": {
+        "en": "Lycée International Xavier, Seoul",
+        "fr": "Lycée International Xavier, Séoul",
+        "ko": "서울 하비에르 국제학교"
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=Lyc%C3%A9e+International+Xavier+Seoul",
+      "note": {
+        "en": "A notebook will be open on the table, with a pen, for anyone who would like to try the paper.",
+        "fr": "Un cahier sera ouvert sur la table, avec un stylo, pour qui voudra essayer le papier.",
+        "ko": "종이를 써 보고 싶은 분을 위해 펜과 함께 노트 한 권을 테이블 위에 펼쳐 둡니다."
+      },
+      "naverMap": "https://map.naver.com/p/search/%ED%95%98%EB%B9%84%EC%97%90%EB%A5%B4%EA%B5%AD%EC%A0%9C%ED%95%99%EA%B5%90"
+    },
+    {
+      "id": "gwanghwamun-market-2026-season-2",
+      "status": "pending",
+      "kind": "market",
+      "start": "2026-12-21",
+      "end": "2026-12-30",
+      "name": {
+        "en": "Gwanghwamun Market, Season 2",
+        "fr": "Gwanghwamun Market, saison 2",
+        "ko": "광화문 마켓 시즌 2"
+      },
+      "place": {
+        "en": "Gwanghwamun Square and Sejongno Park, Seoul",
+        "fr": "Place Gwanghwamun et parc Sejongno, Séoul",
+        "ko": "광화문광장과 세종로공원, 서울"
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=Gwanghwamun+Square+Seoul",
+      "naverMap": "https://map.naver.com/p/search/%EA%B4%91%ED%99%94%EB%AC%B8%EA%B4%91%EC%9E%A5",
+      "url": "https://gwanghwamunmarket.com"
+    },
+    {
+      "id": "seoul-illustration-fair-2026",
+      "status": "pending",
+      "kind": "fair",
+      "start": "2026-12-24",
+      "end": "2026-12-27",
+      "name": {
+        "en": "Seoul Illustration Fair V.22",
+        "fr": "Seoul Illustration Fair V.22",
+        "ko": "서울일러스트레이션페어 V.22"
+      },
+      "place": {
+        "en": "COEX Hall C, Seoul",
+        "fr": "COEX, hall C, Séoul",
+        "ko": "코엑스 C홀, 서울"
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=COEX+Hall+C+Seoul",
+      "naverMap": "https://map.naver.com/p/search/%EC%BD%94%EC%97%91%EC%8A%A4"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ whenever a headline, a page's opening or the design changes; the cards are commi
 
 The walk's card is its real opening, Robey's postcard on the map, captured from each homepage.
 The notebooks, the story and company editions are set with the site's own fonts, prints and linen.
+The dates' card carries one sheet of the wall calendar, taken from the page itself.
 """
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -37,6 +38,9 @@ html[lang="ko"] .copy h1 {{ line-height: 1.32; }}
 .visual {{ position: absolute; right: 0; top: 0; width: 560px; height: 630px; }}
 .nb {{ position: absolute; bottom: 74px; height: 420px; filter: drop-shadow(0 26px 30px rgba(0,0,0,.5)) drop-shadow(0 4px 6px rgba(0,0,0,.3)); }}
 .visual .print {{ position: absolute; }}
+.visual .card-cal {{ position: absolute; left: 36px; top: 64px; width: 470px; transform: rotate(1.2deg); }}
+.visual .card-cal .cal-sheet {{ padding: 26px 26px 18px; }}
+.visual .card-cal .cal-grid td {{ height: 58px; }}
 </style></head><body><div class="card {theme}">{symbols}
 <span class="brand"><svg aria-hidden="true"><use href="#wordmark"/></svg></span>
 <div class="copy"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1></div>
@@ -94,12 +98,18 @@ def main():
             html = page.content()
             fonts = re.search(r'<style>@font-face.*?</style>', html, re.S).group(0)
             symbols = re.search(r'<svg width="0" height="0" class="symbols".*?</svg>', html, re.S).group(0)
+            # The dates' card: the first sheet with a date marked on it, or else the first sheet.
+            page.goto(f'{base}/{locale}/dates/', wait_until='networkidle')
+            sheet = page.evaluate("() => { const m = document.querySelector('.cal-month:has(.has-event) .cal-sheet') || document.querySelector('.cal-sheet'); if (!m) return ''; const c = m.cloneNode(true); c.querySelectorAll('.is-today').forEach(x => x.classList.remove('is-today')); c.querySelectorAll('.visually-hidden').forEach(x => x.remove()); return c.outerHTML; }")
+            visuals = dict(VISUALS, dates=f'<div class="card-cal">{sheet}</div>')
             cards = {'notebooks': ('navy', t['notebooks']['eyebrow'], plain(t['world']['nb.h2'])),
                      'about': ('', t['about']['eyebrow'], t['about']['heading'].replace('\n', '<br>')),
-                     'company': ('', t['company']['eyebrow'], t['company']['heading'].replace('\n', '<br>'))}
+                     'company': ('', t['company']['eyebrow'], t['company']['heading'].replace('\n', '<br>')),
+                     'dates': ('', t['dates']['eyebrow'], t['dates']['heading'].replace('\n', '<br>'))}
             for name, (theme, eyebrow, title) in cards.items():
                 page.goto(f'{base}/robots.txt')
-                page.set_content(CARD.format(locale=locale, fonts=fonts, symbols=symbols, theme=theme, eyebrow=eyebrow, title=title, visual=VISUALS[name]), wait_until='networkidle')
+                sheets = fonts + '<link rel="stylesheet" href="/css/pages.css">' if name == 'dates' else fonts
+                page.set_content(CARD.format(locale=locale, fonts=sheets, symbols=symbols, theme=theme, eyebrow=eyebrow, title=title, visual=visuals[name]), wait_until='networkidle')
                 page.evaluate('document.fonts.ready')
                 page.wait_for_timeout(300)
                 save(page.screenshot(), OUT / f'{name}-{locale}.jpg')

@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://studiomonjo.com'
 LOCALES = ('en', 'fr', 'ko')
-ROUTES = {'home': '', 'notebooks': 'notebooks/', 'about': 'about/', 'company': 'company-editions/'}
+ROUTES = {'home': '', 'notebooks': 'notebooks/', 'about': 'about/', 'company': 'company-editions/', 'dates': 'dates/'}
 # Change only when published page content changes, not on every CI run.
 CONTENT_MODIFIED = '2026-09-28'
 
@@ -50,6 +50,10 @@ def image_size(path):
 HOME_CARD = {'en': 'Robey’s postcard on a drawn map of Seoul.',
              'fr': 'La carte postale de Roby sur une carte dessinée de Séoul.',
              'ko': '그림으로 그린 서울 지도 위, 러비가 보낸 엽서.'}
+# The dates' card shows one sheet of the studio's wall calendar.
+DATES_CARD = {'en': 'A month of the studio’s wall calendar, with a market day circled in red pen.',
+              'fr': 'Un mois du calendrier mural de l’atelier, un jour de marché entouré au stylo rouge.',
+              'ko': '스튜디오 벽 달력의 한 달, 마켓 날짜에 빨간 펜으로 동그라미가 그려져 있습니다.'}
 
 
 def plain(text):
@@ -63,7 +67,8 @@ def image_info(page, t):
     alt = {'home': f'{plain(w["j.title"])}. {HOME_CARD[locale]}',
            'notebooks': f'{plain(w["nb.h2"])} {w["visit.alt1"]}.',
            'about': f'{plain(t["about"]["heading"])} {t["about"]["portraitAlt"]}.',
-           'company': f'{plain(t["company"]["heading"])} {t["company"]["heroAlt"]}.'}[page]
+           'company': f'{plain(t["company"]["heading"])} {t["company"]["heroAlt"]}.',
+           'dates': f'{plain(t["dates"]["heading"])} {DATES_CARD[locale]}'}[page]
     return (f'/media/web/og/{page}-{locale}.jpg', 1200, 630, 'image/jpeg', alt)
 
 
@@ -117,6 +122,17 @@ def structured_data(locale, page, t):
                    'provider': {'@id': studio}, 'serviceType': 'Custom hand-bound company notebooks'}
         graph.append(service)
         webpage['mainEntity'] = {'@id': service['@id']}
+    elif page == 'dates':
+        from dates import graph as events_graph   # the published dates still to come
+        events = events_graph(locale, t, url, studio, picture)
+        if events:
+            graph.extend(events)
+            dates_list = {'@type': 'ItemList', '@id': url + '#dates', 'name': t['dates']['title'],
+                          'numberOfItems': len(events),
+                          'itemListElement': [{'@type': 'ListItem', 'position': i, 'item': {'@id': event['@id']}}
+                                              for i, event in enumerate(events, 1)]}
+            graph.append(dates_list)
+            webpage['mainEntity'] = {'@id': dates_list['@id']}
     graph.append(webpage)
     return {'@context': 'https://schema.org', '@graph': graph}
 
@@ -226,6 +242,7 @@ def write_discovery(copy):
              'Individual pieces shown on the website are examples; availability is confirmed through the shop or studio.', '',
              f'Every language shows prices for both routes: in Korea through Naver, pocket ₩{prices["pocket"]["krw"]:,} and standard ₩{prices["standard"]["krw"]:,}; international orders through Instagram, pocket €{prices["pocket"]["eur"]} and standard €{prices["standard"]["eur"]}. Shipping and final prices are confirmed when ordering. '
              'Company editions begin at 20 copies, with Brand and Illustration options. Current details are on the linked pages.', '',
+             'The dates page is a calendar of the markets, fairs and workshops where the notebooks can be seen in person; only confirmed dates are listed, and each can be added to a calendar app from https://studiomonjo.com/calendar/.', '',
              '## Website', '']
     for page in ROUTES:
         for locale in LOCALES:

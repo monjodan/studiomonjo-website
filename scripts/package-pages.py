@@ -5,7 +5,8 @@ Run build-studio.py first. No dependencies beyond Python's standard library.
 Runtime asset URLs belong in HTML/CSS or complete string literals in JavaScript
 so their dependencies can be included and checked before deployment. Assets
 used by the Naver shop belong in the required content/naver-media.json manifest.
-Printable PDFs shared by direct link belong in printing-templates/.
+Printable PDFs shared by direct link belong in printing-templates/. The dates'
+calendar files (.ics) and language chooser live in calendar/.
 """
 from collections import deque
 from html import unescape
@@ -23,12 +24,14 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = ('en', 'fr', 'ko')
-ROUTES = ('', 'notebooks', 'about', 'company-editions', 'workshops')
+ROUTES = ('', 'notebooks', 'about', 'company-editions', 'dates', 'workshops')
 ROOT_FILES = {'index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt', '.nojekyll'}
 MEDIA_TYPES = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif',
                '.ico', '.mp4', '.webm', '.mp3', '.ogg'}
 NAVER_MANIFEST = Path('content/naver-media.json')
 TEMPLATES = Path('printing-templates')
+CALENDAR = Path('calendar')   # the dates as calendar files, plus the language chooser
+CALENDAR_NAME = re.compile(r'[a-z0-9][a-z0-9-]*\.ics')
 TEMPLATE_NAME = re.compile(r'[a-z0-9][a-z0-9-]*\.pdf')
 CSS_URL = re.compile(r'url\(\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s)]+))\s*\)', re.I)
 CSS_IMPORT = re.compile(r'@import\s+["\']([^"\']+)["\']', re.I)
@@ -110,6 +113,8 @@ def allowed(path):
         return path.suffix in ('.woff', '.woff2', '.ttf', '.otf')
     if parts[0] == TEMPLATES.name:
         return len(parts) == 2 and path.suffix == '.pdf'
+    if parts[0] == CALENDAR.name:
+        return len(parts) == 2 and (path.name == 'index.html' or bool(CALENDAR_NAME.fullmatch(path.name)))
     return parts[:2] == ('media', 'web') and path.suffix.lower() in MEDIA_TYPES
 
 
@@ -237,6 +242,8 @@ def build_manifest(root):
     base = 'https://' + domain
     queue = deque(Path(name) for name in sorted(ROOT_FILES - {'.nojekyll'}))
     queue.extend(Path(locale, route, 'index.html') for locale in LOCALES for route in ROUTES)
+    if (root / CALENDAR / 'index.html').is_file():
+        queue.append(CALENDAR / 'index.html')
     queue.extend(naver_assets(root))
     queue.extend(printing_templates(root))
     manifest, pages, links = {}, {}, []

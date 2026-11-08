@@ -37,6 +37,21 @@
     addEventListener('resize', () => { clearTimeout(drawAll._t); drawAll._t = setTimeout(() => { drawAll(); wins.forEach(w => { const s = $('.win', w); if (s) s.classList.add('drawn'); }); }, 200); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
   })();
+  /* ——— The dates: months already over fold away, and today gets a small mark ——— */
+  (() => {
+    const months = Array.from(document.querySelectorAll('[data-month]')); if (!months.length) return;
+    const now = new Date(), pad = n => String(n).padStart(2, '0');
+    const month = now.getFullYear() + '-' + pad(now.getMonth() + 1), day = month + '-' + pad(now.getDate());
+    const left = months.filter(m => m.dataset.month >= month);
+    if (left.length) months.forEach(m => { if (m.dataset.month < month) m.hidden = true; });
+    const cell = document.querySelector('[data-date="' + day + '"]');
+    if (cell) {
+      cell.classList.add('is-today');
+      const table = cell.closest('table'), note = document.createElement('span');
+      note.className = 'visually-hidden'; note.textContent = ' ' + (table && table.dataset.today || 'Today');
+      (cell.querySelector('.cal-num') || cell).appendChild(note);
+    }
+  })();
   const dialog = document.querySelector('[data-buy-dialog]');
   if (dialog && typeof dialog.showModal === 'function') {
     let previousFocus;

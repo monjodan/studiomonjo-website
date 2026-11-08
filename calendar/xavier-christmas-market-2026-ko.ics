@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//KO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo · 하비에르 국제학교 크리스마스 마
+ 켓
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:xavier-christmas-market-2026-ko.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART:20261212T023000Z
+DTEND:20261212T110000Z
+SUMMARY:Studio Monjo · 하비에르 국제학교 크리스마스 마켓
+LOCATION:서울 하비에르 국제학교
+DESCRIPTION:마켓\n시간 11:30–20:00\n종이를 써 보고 싶은 분
+ 을 위해 펜과 함께 노트 한 권을 테이블 위에 펼쳐 둡니
+ 다.\nhttps://studiomonjo.com/ko/dates/#ev-xavier-christmas-market-2026
+URL:https://studiomonjo.com/ko/dates/#ev-xavier-christmas-market-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

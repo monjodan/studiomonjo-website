@@ -20,7 +20,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://studiomonjo.com'
 LOCALES = ('en', 'fr', 'ko')
-ROUTES = ('', 'notebooks', 'about', 'company-editions')
+ROUTES = ('', 'notebooks', 'about', 'company-editions', 'dates')
 PAGE_TYPES = {'WebPage', 'AboutPage', 'CollectionPage', 'ContactPage', 'ItemPage', 'ProfilePage'}
 EMAIL = re.compile(r'[a-z0-9][a-z0-9.!#$%&\x27*+/=?^_`{|}~-]*@(?:[a-z0-9][a-z0-9-]*\.)+[a-z]{2,63}\b', re.I)
 
@@ -329,7 +329,7 @@ class Audit:
                         datetime.datetime.fromisoformat(node.text.replace('Z', '+00:00'))
                     except ValueError:
                         self.errors.append(f'{url}: invalid sitemap lastmod')
-        self.check(set(urls) == set(self.expected), 'sitemap.xml must contain exactly the 12 indexable locale URLs')
+        self.check(set(urls) == set(self.expected), f'sitemap.xml must contain exactly the {len(self.expected)} indexable locale URLs')
         self.check(len(urls) == len(set(urls)), 'sitemap.xml contains duplicate URLs')
         robots = self.root / 'robots.txt'
         if not self.check(robots.is_file(), 'robots.txt is missing'):

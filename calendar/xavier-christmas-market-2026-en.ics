@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo · Christmas market at Lycée International Xavie
+ r
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:xavier-christmas-market-2026-en.dates.studiomonjo.com
+DTSTAMP:20261108T000000Z
+LAST-MODIFIED:20261108T000000Z
+DTSTART:20261212T023000Z
+DTEND:20261212T110000Z
+SUMMARY:Studio Monjo · Christmas market at Lycée International Xavier
+LOCATION:Lycée International Xavier\, Seoul
+DESCRIPTION:Market\nHours 11:30–20:00\nA notebook will be open on the tab
+ le\, with a pen\, for anyone who would like to try the paper.\nhttps://stu
+ diomonjo.com/en/dates/#ev-xavier-christmas-market-2026
+URL:https://studiomonjo.com/en/dates/#ev-xavier-christmas-market-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
