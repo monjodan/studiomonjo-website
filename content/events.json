@@ -5,7 +5,7 @@
     "Fields: id (lowercase, hyphens, unique), status (confirmed | pending | cancelled), kind (market | fair | workshop | meetup), start and end (YYYY-MM-DD, Seoul dates, end may equal start), hours (optional, like 11:30–20:00), booth (optional), name and place and note (per language), map (Google Maps link, optional), naverMap (Naver Map link, shown on Korean pages when present), url (the organiser's page, optional).",
     "Past confirmed dates stay in the file and are listed under 'Where we have been'."
   ],
-  "updated": "2026-11-08",
+  "updated": "2026-11-13",
   "events": [
     {
       "id": "doota-2026-07",
@@ -121,7 +121,7 @@
     },
     {
       "id": "gwanghwamun-market-2026-season-2",
-      "status": "pending",
+      "status": "confirmed",
       "kind": "market",
       "start": "2026-12-21",
       "end": "2026-12-30",
@@ -137,7 +137,12 @@
       },
       "map": "https://www.google.com/maps/search/?api=1&query=Gwanghwamun+Square+Seoul",
       "naverMap": "https://map.naver.com/p/search/%EA%B4%91%ED%99%94%EB%AC%B8%EA%B4%91%EC%9E%A5",
-      "url": "https://gwanghwamunmarket.com"
+      "url": "https://gwanghwamunmarket.com",
+      "note": {
+        "en": "An evening market. It opens at 17:30 and closes at 22:00 from Sunday to Thursday, and at 22:30 on Friday and Saturday. The closing times for 24 and 25 December and the booth number will follow.",
+        "fr": "Un marché du soir. Il ouvre à 17 h 30 et ferme à 22 h du dimanche au jeudi, à 22 h 30 le vendredi et le samedi. Les horaires de fermeture des 24 et 25 décembre et le numéro du stand suivront.",
+        "ko": "저녁에 열리는 마켓입니다. 17:30에 문을 열고 일요일부터 목요일까지는 22:00, 금요일과 토요일에는 22:30에 닫습니다. 12월 24일과 25일의 마감 시간과 부스 번호는 정해지는 대로 알려 드리겠습니다."
+      }
     },
     {
       "id": "seoul-illustration-fair-2026",

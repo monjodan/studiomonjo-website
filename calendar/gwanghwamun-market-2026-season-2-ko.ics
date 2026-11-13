@@ -1,0 +1,27 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//KO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo · 광화문 마켓 시즌 2
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:gwanghwamun-market-2026-season-2-ko.dates.studiomonjo.com
+DTSTAMP:20261113T000000Z
+LAST-MODIFIED:20261113T000000Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261231
+SUMMARY:Studio Monjo · 광화문 마켓 시즌 2
+LOCATION:광화문광장과 세종로공원\, 서울
+DESCRIPTION:마켓\n저녁에 열리는 마켓입니다. 17:30에 문을 
+ 열고 일요일부터 목요일까지는 22:00\, 금요일과 토요일
+ 에는 22:30에 닫습니다. 12월 24일과 25일의 마감 시간과 부
+ 스 번호는 정해지는 대로 알려 드리겠습니다.\nhttps://stud
+ iomonjo.com/ko/dates/#ev-gwanghwamun-market-2026-season-2
+URL:https://studiomonjo.com/ko/dates/#ev-gwanghwamun-market-2026-season-2
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

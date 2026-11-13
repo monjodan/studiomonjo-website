@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo · Gwanghwamun Market\, saison 2
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:gwanghwamun-market-2026-season-2-fr.dates.studiomonjo.com
+DTSTAMP:20261113T000000Z
+LAST-MODIFIED:20261113T000000Z
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261231
+SUMMARY:Studio Monjo · Gwanghwamun Market\, saison 2
+LOCATION:Place Gwanghwamun et parc Sejongno\, Séoul
+DESCRIPTION:Marché\nUn marché du soir. Il ouvre à 17 h 30 et ferme à 22
+  h du dimanche au jeudi\, à 22 h 30 le vendredi et le samedi. Les horaire
+ s de fermeture des 24 et 25 décembre et le numéro du stand suivront.\nht
+ tps://studiomonjo.com/fr/dates/#ev-gwanghwamun-market-2026-season-2
+URL:https://studiomonjo.com/fr/dates/#ev-gwanghwamun-market-2026-season-2
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
