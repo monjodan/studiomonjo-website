@@ -44,6 +44,12 @@
 .steps{position:absolute;inset:0;z-index:1;pointer-events:none}
 .step{position:absolute;left:0;right:0;height:var(--sh)}
 .steps a{pointer-events:auto}
+/* On a touch screen one swipe moves one step: the page stops at each step and never passes one (26 November: visitors skipped steps). */
+@media (pointer:coarse){
+  html.steps-snap{scroll-snap-type:y mandatory}
+  html.steps-snap .step{scroll-snap-align:start;scroll-snap-stop:always}
+  html.steps-snap .after{scroll-snap-align:start}
+}
 .travel .card{transition:none;transform:translateY(-50%);will-change:opacity}
 .travel.tall .card{transform:none}
 .title{margin:0;font:400 clamp(30px,3.5vw,54px)/1.16 var(--serif);letter-spacing:-.012em;text-wrap:balance}

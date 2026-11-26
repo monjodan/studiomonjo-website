@@ -330,7 +330,38 @@ function monjoFilm(cfg){
   window.addEventListener("touchstart", function(){ touching = true; clearTimeout(restT); stopGlide(); }, {passive: true});
   window.addEventListener("touchend", function(){ touching = false; plan(); }, {passive: true});
   window.addEventListener("touchcancel", function(){ touching = false; plan(); }, {passive: true});
-  window.addEventListener("wheel", stopGlide, {passive: true});
+  // One push of the wheel or the trackpad moves the page one step, however hard or long it is (26 November 2026: visitors of the live
+  // site "scroll and it skips steps and they struggle to scroll gently"). A wheel sends a burst of events and a trackpad goes on
+  // sending them after the fingers have left; here the first of them starts the step and the rest of that push is swallowed.
+  // A new push is a pause in the events, or a delta that jumps up again. Above the film, and below its last step, the page
+  // scrolls as any page does.
+  var wLast = 0, wDelta = 0, wSum = 0, wSpent = false, wLock = 0, wBelow = false;
+  function onWheel(ev){
+    if (!playing || ev.ctrlKey || Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) { stopGlide(); return; }      // pinch, or sideways
+    var n = STOPS.length - 1, u = (top() - film.offsetTop) / (STEP * ch), dy = ev.deltaY * (ev.deltaMode === 1 ? 40 : ev.deltaMode === 2 ? ch : 1);
+    var now = performance.now(), fresh = now - wLast > 140 || (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(wDelta) * 1.7);
+    wLast = now; wDelta = dy;
+    if (fresh) { wSum = 0; wSpent = false; wBelow = false; }
+    if (u > n + 0.02) wBelow = true;                        // this push began under the film: coming up, it stops at the last step
+    if (u < -0.02 || u > n + 0.02 || (dy > 0 && u >= n - 0.02) || (dy < 0 && u <= 0.02)) {                  // not the film's to answer
+      if (!wSpent) stopGlide();                             // (the tail of a push that has had its step does not carry the page on)
+      else if (ev.cancelable) ev.preventDefault();
+      return;
+    }
+    if (ev.cancelable) ev.preventDefault();
+    if (wSpent || glide || now < wLock) return;
+    wSum += dy;
+    if (Math.abs(wSum) < 24) return;                        // a brush of the fingers is not a push
+    var to = wBelow && wSum < 0 ? n : (wSum > 0 ? Math.floor(u + 0.02) + 1 : Math.ceil(u - 0.02) - 1);
+    to = Math.min(Math.max(to, 0), n);
+    wSpent = true; wSum = 0; clearTimeout(restT);
+    glideTo(film.offsetTop + to * STEP * ch);
+    wLock = now + 260;
+  }
+  window.addEventListener("wheel", onWheel, {passive: false});
+  // On a touch screen the browser itself stops the page at each step and never passes one in a single swipe (CSS scroll snap,
+  // set in the page for coarse pointers under html.steps-snap).
+  if (playing && window.CSS && CSS.supports && CSS.supports("scroll-snap-stop", "always")) root.classList.add("steps-snap");
   window.addEventListener("keydown", stopGlide);
   window.addEventListener("mousedown", stopGlide);
   window.addEventListener("scroll", function(){ read(); kick(); solid(); plan(); }, {passive: true});

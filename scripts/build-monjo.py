@@ -112,11 +112,53 @@ def sync(proto):
                 left.append(p.name)
     if left:
         print(f'Left in the workspace, no page uses them: {", ".join(left)}')
+    share_cards()
     sizes = {p.stem: Image.open(p).size for p in sorted((MEDIA / 'photo').glob('*.jpg'))}
     (SRC / 'photo-sizes.json').write_text(json.dumps(sizes, separators=(',', ':'), sort_keys=True))
     total = sum(p.stat().st_size for p in MEDIA.rglob('*') if p.is_file())
     print(f'Synced {len(list(SRC.iterdir()))} sources and {total / 1e6:.1f} MB of pictures from {proto}')
     assert 'frames:' in home
+
+
+def share_cards():
+    """One picture of 1200 x 630 per page, for the links people send (KakaoTalk, Instagram, messages): no words on them,
+    the title travels beside the picture. Made from the pictures already in media/web/monjo."""
+    from PIL import Image, ImageDraw, ImageFilter
+    W, H, NAVY = 1200, 630, (11, 19, 34)
+    out = MEDIA / 'og'
+    out.mkdir(parents=True, exist_ok=True)
+    def fill(im, focus=0.5):                              # cover the card, keeping the given height of the picture in view
+        im = im.convert('RGB'); k = max(W / im.size[0], H / im.size[1])
+        im = im.resize((round(im.size[0] * k) + 1, round(im.size[1] * k) + 1), Image.LANCZOS)
+        x = (im.size[0] - W) // 2; y = round((im.size[1] - H) * focus)
+        return im.crop((x, y, x + W, y + H))
+    save = lambda im, name: im.save(out / f'{name}.jpg', quality=86, optimize=True, progressive=True)
+    save(fill(Image.open(MEDIA / 'film/d/poster.jpg'), 0.62), 'home')
+    save(fill(Image.open(MEDIA / 'photo/story-write.jpg'), 0.5), 'story')
+    stall = Image.open(MEDIA / 'photo/story-stall.jpg')    # the notebooks on their stands at a market, without the price board below them
+    sw, sh_ = stall.size
+    save(fill(stall.crop((round(sw * 0.20), round(sh_ * 0.28), round(sw * 0.95), round(sh_ * 0.542)))), 'dates')
+    card = Image.new('RGB', (W, H), NAVY)                 # the four covers of Robey in Seoul, as on his map
+    covers = [Image.open(MEDIA / f'photo/pin-{n}.jpg').convert('RGB') for n in ('namsan', 'wall', 'coex', 'seokchon')]
+    tall = 350; sized = [c.resize((round(c.size[0] * tall / max(c.size)), round(c.size[1] * tall / max(c.size))), Image.LANCZOS) for c in covers]
+    gap = 34; x = (W - sum(c.size[0] for c in sized) - gap * 3) // 2
+    for c in sized:
+        y = (H - c.size[1]) // 2
+        shade = Image.new('L', (W, H), 0); ImageDraw.Draw(shade).rounded_rectangle([x + 4, y + 14, x + c.size[0] + 4, y + c.size[1] + 14], 9, fill=170)
+        card.paste((3, 7, 15), (0, 0), shade.filter(ImageFilter.GaussianBlur(14)))
+        mask = Image.new('L', c.size, 0); ImageDraw.Draw(mask).rounded_rectangle([0, 0, c.size[0] - 1, c.size[1] - 1], 9, fill=255)
+        card.paste(c, (x, y), mask); x += c.size[0] + gap
+    save(card, 'robey')
+    card = Image.new('RGB', (W, H), NAVY)                 # four of the papers, side by side
+    for i, n in enumerate(('hanji', 'tea', 'coffee', 'somokushi')):
+        strip = Image.open(MEDIA / f'photo/paper-{n}.jpg').convert('RGB'); k = max(300 / strip.size[0], H / strip.size[1])
+        strip = strip.resize((round(strip.size[0] * k) + 1, round(strip.size[1] * k) + 1), Image.LANCZOS)
+        card.paste(strip.crop(((strip.size[0] - 300) // 2, (strip.size[1] - H) // 2, (strip.size[0] - 300) // 2 + 300, (strip.size[1] - H) // 2 + H)), (i * 300, 0))
+    save(card, 'editions')
+    card = Image.new('RGB', (W, H), NAVY)                 # the sleeve, open, on the navy of the pages
+    sleeve = Image.open(MEDIA / 'photo/sleeve-open.webp').convert('RGBA').resize((640, 640), Image.LANCZOS)
+    card.paste(sleeve, ((W - 640) // 2, (H - 640) // 2), sleeve)
+    save(card, 'objects')
 
 
 def dates_module():
@@ -203,6 +245,67 @@ def translate(doc, table, missing):
     return ''.join(out)
 
 
+def identity(locale):
+    """The studio, its maker and the site, as the earlier pages state them: read from the company page, which is unchanged."""
+    doc = (SITE / locale / 'company-editions' / 'index.html').read_text(encoding='utf-8')
+    nodes = []
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', doc, flags=re.S):
+        data = json.loads(block)
+        nodes += data.get('@graph', [data]) if isinstance(data, dict) else data
+    keep = [n for n in nodes if n.get('@type') in ('Organization', 'Person', 'WebSite')]
+    for n in keep:
+        if n['@type'] == 'Person':
+            n['url'] = f'{BASE}/{locale}/story/'
+    return keep
+
+
+ROBEY = [('namsan', 'Namsan', 'One step, then another, towards the tower.', 'namsan-cover.jpg', True),
+         ('wall', 'The fortress wall', 'A landscape notebook, for drawing.', 'wall-cover.jpg', False),
+         ('coex', 'The COEX library', 'So many stories still to discover.', 'library-cover.jpg', True),
+         ('seokchon', 'Seokchon Lake', 'Looking across the water, looking up.', 'seokchon-cover.jpg', True)]
+PAPERS = [('hanji', 'Hanji', 'Chunyang P&B · Jeonju, Korea'), ('baegunji', 'Baegunji', 'Gogam Hanji & Paper · Jeonju, Korea'),
+          ('tea', 'Tea Paper', 'CYP · Shanghai, China'), ('coffee', 'Coffee Paper', 'CYP · Shanghai, China'),
+          ('somokushi', 'Somokushi', 'Tokushu Tokai Paper · Shizuoka, Japan')]
+OBJECTS = [('sleeve', 'Notebook sleeve'), ('mini-notebook', 'Mini notebook'), ('mini-block', 'Mini block of notes')]
+NAVER = 'https://smartstore.naver.com/studiomonjo'
+
+
+def facts(route, locale, title, text, url, image, ko):
+    """The page's structured data: who makes this, what the page is, and what it lists (the notebooks with their price,
+    the papers, the objects, the coming dates). Nothing is stated here that the page itself does not say."""
+    say = (lambda x: ko['strings'].get(x, x)) if locale == 'ko' and ko else (lambda x: x)
+    studio, site = f'{BASE}/#studio', f'{BASE}/#website'
+    kind = {'': 'WebPage', 'story': 'AboutPage'}.get(route, 'CollectionPage')
+    page = {'@type': kind, '@id': url + '#page', 'url': url, 'name': title, 'description': text, 'inLanguage': locale,
+            'isPartOf': {'@id': site}, 'about': {'@id': studio}, 'primaryImageOfPage': image}
+    nodes = identity(locale) + [page]
+    if route:
+        nodes.append({'@type': 'BreadcrumbList', '@id': url + '#path', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': BRAND, 'item': f'{BASE}/{locale}/'},
+            {'@type': 'ListItem', 'position': 2, 'name': title.split(' | ')[0].split(' · ')[0], 'item': url}]})
+    items = []
+    if route == 'robey':
+        for i, (pid, name, line, pic, on_naver) in enumerate(ROBEY):
+            items.append({'@type': 'ListItem', 'position': i + 1, 'item': {
+                '@type': 'Product', '@id': f'{url}#{pid}', 'name': f'{say("Robey")} · {say(name)}', 'description': say(line),
+                'image': f'{BASE}{MEDIA_URL}/photo/{pic}', 'url': f'{url}#{pid}', 'category': 'Notebook', 'size': 'A6',
+                'brand': {'@id': studio},
+                'offers': {'@type': 'Offer', 'price': '21000', 'priceCurrency': 'KRW', 'url': NAVER if on_naver else f'{BASE}/{locale}/dates/',
+                           'seller': {'@id': studio}}}})
+    elif route == 'editions':
+        items = [{'@type': 'ListItem', 'position': i + 1, 'name': f'{say(name)} · {say(maker)}', 'url': f'{url}#{pid}'} for i, (pid, name, maker) in enumerate(PAPERS)]
+    elif route == 'objects':
+        items = [{'@type': 'ListItem', 'position': i + 1, 'name': say(name), 'url': f'{url}#{pid}'} for i, (pid, name) in enumerate(OBJECTS)]
+    if items:
+        page['mainEntity'] = {'@id': url + '#list'}
+        nodes.append({'@type': 'ItemList', '@id': url + '#list', 'numberOfItems': len(items), 'itemListElement': items})
+    if route == 'dates':
+        t = json.loads((ROOT / 'content' / f'{locale}.json').read_text(encoding='utf-8'))
+        nodes += dates_module().graph(locale, t, url, studio, image)
+    block = json.dumps({'@context': 'https://schema.org', '@graph': nodes}, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return f'<script type="application/ld+json">{block}</script>\n'
+
+
 # Korean breaks a line between words, never inside one (without this a title reads 접 / 고)
 KEEP = 'body{word-break:keep-all;overflow-wrap:break-word}'
 
@@ -210,7 +313,7 @@ KEEP = 'body{word-break:keep-all;overflow-wrap:break-word}'
 def head(route, page, locale='en', ko=None):
     tail = f'{route}/' if route else ''
     url = f'{BASE}/{locale}/{tail}'
-    image = f'{BASE}{MEDIA_URL}/film/d/poster.jpg'
+    image = f'{BASE}{MEDIA_URL}/og/{route or "home"}.jpg'           # 1200 x 630, made by --sync
     title, text = page['title'], page['text']
     if locale == 'ko' and ko:
         key = route or 'home'
@@ -236,8 +339,15 @@ def head(route, page, locale='en', ko=None):
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="{'ko_KR' if locale == 'ko' else 'en_US'}">
+<meta property="og:locale:alternate" content="{'en_US' if locale == 'ko' else 'ko_KR'}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{escape(title)}">
+<meta name="twitter:description" content="{escape(text)}">
+<meta name="twitter:image" content="{image}">
+{facts(route, locale, title, text, url, image, ko)}
 <link rel="icon" type="image/png" sizes="32x32" href="/media/web/branding/favicon-32.png">
 <link rel="apple-touch-icon" href="/media/web/branding/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -368,6 +478,94 @@ def check(written, film):
     return problems
 
 
+def plain(doc):
+    """What a visitor reads on a page, as lines of text."""
+    body = doc[doc.index('<body'):] if '<body' in doc else doc
+    body = re.sub(r'<(script|style|svg|noscript)\b.*?</\1>', ' ', body, flags=re.S)
+    body = re.sub(r'<(br|/p|/h[1-6]|/li|/figcaption|/div|/section|/tr|/time|/small|/strong)\b[^>]*>', '\n', body)
+    lines = [re.sub(r'\s+', ' ', unescape(re.sub(r'<[^>]+>', ' ', line))).strip() for line in body.split('\n')]
+    out = []
+    for line in lines:
+        if line and (not out or out[-1] != line):
+            out.append(line)
+    return '\n'.join(out)
+
+
+def llms(ko):
+    """llms.txt (a short guide for AI assistants) and llms-full.txt (the text of every page), written again for the pages as
+    they now are. scripts/seo.py writes both for the earlier pages; here the English and Korean entries follow the new ones."""
+    D = dates_module()
+    t = json.loads((ROOT / 'content' / 'en.json').read_text(encoding='utf-8'))
+    upcoming, _ = D.split(D.published(D.load()[1]), D.today())
+    dates = []
+    for ev in upcoming:
+        bits = [D.when('en', t, ev['start'], ev['end'], True), D.words(ev, 'en', 'place')]
+        if ev.get('booth'):
+            bits.append(f'booth {ev["booth"]}')
+        if ev.get('hours'):
+            bits.append(ev['hours'])
+        dates.append(f'- {D.words(ev, "en", "name")}: ' + ', '.join(bits))
+    pages = []
+    for locale in LOCALES:
+        for route, page in PAGES.items():
+            title, text = page['title'], page['text']
+            if locale == 'ko' and ko:
+                key = route or 'home'
+                title, text = ko['meta'].get(f'{key}_title', title), ko['meta'].get(f'{key}_text', text)
+            pages.append((f'{BASE}/{locale}/{route + "/" if route else ""}', locale, title, text))
+    others = []                                           # the pages this build does not write: French, and the company page
+    for path in sorted(SITE.glob('*/**/index.html')) + sorted(SITE.glob('*/index.html')):
+        rel = path.relative_to(SITE).as_posix()[:-len('index.html')]
+        url = f'{BASE}/{rel}'
+        if any(url == p[0] for p in pages) or rel.split('/')[0] not in ('en', 'fr', 'ko'):
+            continue
+        doc = path.read_text(encoding='utf-8')
+        if 'http-equiv="refresh"' in doc or 'noindex' in doc[:doc.find('</head>')]:
+            continue
+        title = re.search(r'<title>(.*?)</title>', doc, flags=re.S)
+        text = re.search(r'<meta name="description" content="([^"]*)"', doc)
+        entry = (url, rel.split('/')[0], unescape(title.group(1)).strip() if title else url, unescape(text.group(1)) if text else '')
+        if entry not in others:
+            others.append(entry)
+    guide = f'''# Studio Monjo
+
+> Notebooks folded and sewn by hand in Seoul, South Korea, by Jordan Monnet, a French bookbinder and illustrator.
+
+Studio Monjo is a one-person studio. Every notebook has blank pages of a 105 g/m² paper chosen because it takes fountain pen ink well (New April Bride, Ultra White). Each is sewn through its fold with one thread and no glue, so it opens flat. Two loose guides, one lined and one grid, come with it, and a card that carries the maker's red seal.
+
+The website shows the work and sells nothing itself. Notebooks are bought in the Naver shop ({NAVER}), at markets and fairs in Seoul, or by writing on Instagram (https://www.instagram.com/studio.monjo/).
+
+## What the studio makes
+
+- Robey Notebooks: Pocket notebooks (A6, 105 × 148 mm, 52 pages) with a painting of Robey, a small robot who wanders Seoul and keeps what he finds. The series "Robey in Seoul" has four places: Namsan, the fortress wall (a landscape notebook, for drawing), the COEX library, Seokchon Lake. Each notebook leaves with a card carrying Robey's letter from that place. Price: ₩21,000. Robey is written Roby in French and 러비 in Korean.
+- Unique and Limited editions: Standard notebooks (A5, 148 × 210 mm) with a bare cover in one paper from one named maker, nothing printed on it: hanji from Chunyang P&B (Jeonju, Korea); Baegunji from Gogam Hanji & Paper (Jeonju, Korea), in white, ivory or grey; Tea Paper and Coffee Paper from CYP (Shanghai, China); Somokushi from Tokushu Tokai Paper (Shizuoka, Japan). These are first samples, seen at the studio's table; no price is published. A limited edition is being finished.
+- Accessories and Unique Objects: a navy notebook sleeve in microfibre suede for A5 and for A6 notebooks (made in a sewing factory in China, not by the studio); a mini notebook at the size of a name card; a mini block of tear-off notes.
+- Company editions: custom notebooks for companies, from 20 copies ({BASE}/en/company-editions/).
+
+## Where to see the notebooks
+
+{chr(10).join(dates) if dates else 'No date is confirmed at the moment.'}
+
+Only confirmed dates are listed. The calendar is at {BASE}/en/dates/ and each date can be added to a calendar app from {BASE}/calendar/.
+
+## Pages
+
+''' + '\n'.join(f'- [{title} ({locale})]({url}): {text}' for url, locale, title, text in pages + others) + f'''
+- [Full public page text]({BASE}/llms-full.txt): the text of every page listed above.
+
+## Languages
+
+English and Korean share the same pages. French still shows the earlier design of the site, with the same notebooks.
+'''
+    (SITE / 'llms.txt').write_text(guide, encoding='utf-8')
+    full = ['# Studio Monjo: public website text', '', 'Generated from the visible pages listed below. Refer to each canonical URL for the current page.', '']
+    for url, locale, title, text in pages + others:
+        rel = url[len(BASE) + 1:]
+        doc = (SITE / rel / 'index.html').read_text(encoding='utf-8')
+        full += ['---', '', f'## {title}', f'Canonical URL: {url}', f'Language: {locale}', '', plain(doc), '']
+    (SITE / 'llms-full.txt').write_text('\n'.join(full), encoding='utf-8')
+
+
 def sitemap():
     path = SITE / 'sitemap.xml'
     text = path.read_text(encoding='utf-8')
@@ -418,6 +616,7 @@ def main():
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(redirect(new, locale), encoding='utf-8')
     sitemap()
+    llms(ko)
     problems = check(written, film)
     size = sum(p.stat().st_size for p in SITE.rglob('*') if p.is_file())
     print(f'New pages, in {" and ".join(LOCALES)}: {", ".join("/" + (r + "/" if r else "") for r in PAGES)}')
