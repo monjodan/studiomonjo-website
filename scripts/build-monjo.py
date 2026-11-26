@@ -203,6 +203,10 @@ def translate(doc, table, missing):
     return ''.join(out)
 
 
+# Korean breaks a line between words, never inside one (without this a title reads 접 / 고)
+KEEP = 'body{word-break:keep-all;overflow-wrap:break-word}'
+
+
 def head(route, page, locale='en', ko=None):
     tail = f'{route}/' if route else ''
     url = f'{BASE}/{locale}/{tail}'
@@ -238,7 +242,7 @@ def head(route, page, locale='en', ko=None):
 <link rel="apple-touch-icon" href="/media/web/branding/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<style>:root{{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+<style>:root{{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}{KEEP if locale == 'ko' else ''}</style>
 '''
 
 
