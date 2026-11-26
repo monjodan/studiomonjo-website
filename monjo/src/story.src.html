@@ -1,0 +1,190 @@
+<title>Studio Monjo Story Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@400;600&display=swap">
+<style>
+/*SHARED_CSS*/
+/* Our story, in his own words where he has written them (reworked 26 November: see the notes in the foot). Why we make notebooks;
+   writing by hand; how they are made, on film; the paper; the maker, speaking as "I"; the notebooks; our table; his closing line. */
+.two{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,76px);align-items:start}
+.rev > :first-child{order:2}
+.have{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:start}
+.dates{margin:0;padding:0;list-style:none}
+.dates li{display:grid;grid-template-columns:minmax(0,13.5em) minmax(0,1fr);gap:6px 24px;padding-block:20px;border-top:1px solid var(--hair)}
+.dates li:last-child{border-bottom:1px solid var(--hair)}
+.dates time{font:400 18px/1.4 var(--serif);font-variant-numeric:tabular-nums}
+.dates span{display:block;color:var(--mist);font-size:15px}
+.dates strong{display:block;font-weight:400;color:var(--paper);font-size:16px}
+.name{margin:0;font:400 clamp(28px,3vw,44px)/1.14 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.line{margin:10px 0 20px;font:400 17px/1.5 var(--serif);color:var(--mist)}
+.big img{aspect-ratio:1/1;object-fit:cover}
+.thumbs{display:flex;gap:10px;margin-top:10px}
+.thumbs button{flex:none;width:clamp(62px,7.5vw,92px);aspect-ratio:1;padding:0;border:1px solid transparent;background:var(--navy);cursor:pointer;opacity:.62;transition:opacity .3s ease,border-color .3s ease}
+.thumbs button:hover{opacity:.9}
+.thumbs button[aria-pressed=true]{opacity:1;border-color:var(--paper)}
+.thumbs img{display:block;width:100%;height:100%;object-fit:cover}
+.belief{max-width:22em;font:400 clamp(21px,2.1vw,30px)/1.42 var(--serif);margin:0;text-wrap:balance}
+.films{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.6vw,20px);margin-top:clamp(26px,4vw,48px)}
+.films video{aspect-ratio:1/1;object-fit:cover}
+.tall img{aspect-ratio:4/5;object-fit:cover}
+.wide img{aspect-ratio:3/2;object-fit:cover}
+.lines{margin:22px 0 0;padding:0;list-style:none;border-top:1px solid var(--hair);max-width:34em}
+.lines a{display:grid;grid-template-columns:minmax(0,6.5em) minmax(0,1fr) auto;gap:4px 18px;align-items:baseline;padding-block:15px;border-bottom:1px solid var(--hair);text-decoration:none}
+.lines strong{font:400 20px/1.3 var(--serif)}
+.lines span{font-size:14.5px;color:var(--mist)}
+.lines i{font-style:normal;color:var(--faint);transition:transform .3s ease,color .3s ease}
+.lines a:hover i{transform:translateX(4px);color:var(--paper)}
+.quote{margin:18px 0 0;font:400 clamp(19px,1.8vw,25px)/1.45 var(--serif);max-width:22em}
+.quote + .small{margin-top:8px}
+.films figcaption b{font-weight:400;color:var(--paper)}
+.dates{margin:18px 0 0;padding:0;list-style:none;max-width:34em}
+.dates li{display:grid;grid-template-columns:minmax(0,10.5em) minmax(0,1fr);gap:4px 20px;padding-block:14px;border-top:1px solid var(--hair)}
+.dates li:last-child{border-bottom:1px solid var(--hair)}
+.dates time{font:400 16.5px/1.4 var(--serif);font-variant-numeric:tabular-nums}
+.dates span{display:block;color:var(--mist);font-size:14px}
+.dates strong{display:block;font-weight:400;color:var(--paper);font-size:15px}
+.closing{padding-block:clamp(60px,8vw,110px);text-align:center;border-top:1px solid var(--hair)}
+.closing .said{margin:0;font-size:clamp(22px,2.4vw,32px)}
+@media (max-width:820px){
+  .two,.have{grid-template-columns:minmax(0,1fr)}
+  .rev > :first-child{order:0}
+  .dates li{grid-template-columns:minmax(0,1fr)}
+  .films{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+
+<header class="top solid" id="bar">
+  <div class="wrap bar">
+    <a class="mark" href="index.html">Studio Monjo</a>
+    <nav class="menu" aria-label="Studio Monjo">
+      <a href="robey.html"><span class="full">Robey Notebooks</span><span class="short">Robey</span></a>
+      <a href="editions.html"><span class="full">Unique and Limited editions</span><span class="short">Editions</span></a>
+      <a href="objects.html"><span class="full">Accessories and Unique Objects</span><span class="short">Accessories</span></a>
+      <a href="story.html" aria-current="page">Our story</a>
+      <a href="dates.html">Find us</a>
+    </nav>
+    <a class="ig" href="https://www.instagram.com/studio.monjo/" target="_blank" rel="noopener" aria-label="Studio Monjo on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a>
+    <a class="bagbtn" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener">Naver shop</a>
+  </div>
+</header>
+
+<main>
+<section class="page-top">
+  <div class="wrap pagehead">
+    <div>
+      <p class="eye">Our story</p>
+      <h1>Why we make notebooks</h1>
+      <p class="belief">With a pen you slow down, and you spend some time with yourself. We make our notebooks with care, because your thoughts deserve it.</p>
+    </div>
+    <figure class="ph wide"><img src="photo/story-write.jpg" alt="A hand writing with a fountain pen in a blank notebook, a laptop pushed to the side of the desk."><figcaption>Writing with a fountain pen in a blank notebook.</figcaption></figure>
+  </div>
+</section>
+
+<section class="band" id="writing">
+  <div class="wrap two">
+    <div>
+      <p class="eye">Taking the time</p>
+      <h2 class="h">Writing by hand</h2>
+      <p class="p">We like taking the time to write by hand, and letting a thought wander.</p>
+      <p class="p">In a notebook you can turn an idea over, cross something out, draw beside it, or leave a page unfinished.</p>
+    </div>
+    <figure class="ph wide"><img src="photo/inside-blank.jpg" alt="A notebook open flat on a white desk between two fountain pens, its pages blank." loading="lazy"><figcaption>For writing, drawing, or a bit of both.</figcaption></figure>
+  </div>
+</section>
+
+<section class="band" id="making">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <p class="eye">In the studio</p>
+        <h2 class="h">Folded and sewn by hand</h2>
+        <p class="said">Our notebooks are not all perfect, and that is what makes them unique.</p>
+      </div>
+      <figure class="ph wide"><img src="photo/story-table.jpg" alt="The studio table from above: covers and folded sheets of several Robey notebooks laid out on a cutting mat, tools around them." loading="lazy"><figcaption>The studio table, before sewing.</figcaption></figure>
+    </div>
+    <div class="films">
+      <figure class="ph"><video data-play muted loop playsinline preload="none" poster="photo/film-fold.jpg" src="photo/film-fold.mp4" aria-label="Film: hands folding a sheet of paper"></video><figcaption><b>Folded.</b> Each sheet, one at a time.</figcaption></figure>
+      <figure class="ph"><video data-play muted loop playsinline preload="none" poster="photo/film-sew.jpg" src="photo/film-sew.mp4" aria-label="Film: thread drawn through the fold of a notebook"></video><figcaption><b>Sewn.</b> Along the spine, with no glue, so the notebook opens flat.</figcaption></figure>
+      <figure class="ph"><video data-play muted loop playsinline preload="none" poster="photo/film-paint.jpg" src="photo/film-paint.mp4" aria-label="Film: a small scene being drawn by hand"></video><figcaption><b>Drawn.</b> Robey, the small robot on some of our covers.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="paper">
+  <div class="wrap two rev">
+    <figure class="ph wide"><img src="photo/inside-thread.jpg" alt="The fold of an open notebook, very close: a thread lying in it, the paper's fine tooth visible on both pages." loading="lazy"><figcaption>The thread in the fold.</figcaption></figure>
+    <div>
+      <p class="eye">The page</p>
+      <h2 class="h">A paper that takes ink well</h2>
+      <p class="p">We picked this paper for handwriting, including fountain pens. It has feedback: your pen glides, but you still feel the paper. The ink dries slowly, so you can take the time to find your words.</p>
+      <p class="p">We leave every page blank. Each notebook comes with two loose guides, one lined and one grid, to slip beneath the page when you want them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="maker">
+  <div class="wrap two">
+    <figure class="ph tall"><img src="photo/story-market.jpg" alt="Jordan Monnet smiling behind his market table, Robey notebooks standing in front of him." loading="lazy"><figcaption>At the Maison France Festival.</figcaption></figure>
+    <div>
+      <p class="eye">The maker</p>
+      <h2 class="h">Jordan Monnet</h2>
+      <p class="p">I’m a French maker in Seoul. I fold, sew and check every notebook myself, and I draw Robey. What interests me most is what happens after a notebook leaves my hands.</p>
+      <p class="quote">“I put my soul into each notebook, so you can fill it with your own.”</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="lines">
+  <div class="wrap two">
+    <div>
+      <p class="eye">What we make</p>
+      <h2 class="h">The notebooks</h2>
+      <p class="p">We hope you find a notebook you’d like to use.</p>
+      <ul class="lines">
+        <li><a href="robey.html"><strong>Robey Notebooks</strong><span>A small robot discovering our world. Every place he visits becomes a notebook.</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="editions.html"><strong>Unique and Limited editions</strong><span>We print nothing on these covers. Each paper’s story is on a card.</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="objects.html"><strong>Accessories and Unique Objects</strong><span>A sleeve for the notebook, a mini notebook, a mini block of notes.</span><i aria-hidden="true">→</i></a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eye">Where to find us</p>
+      <h2 class="h">At our table</h2>
+      <p class="p">A few times a year we take the notebooks to a market or a fair. You can hold them, try the paper with a pen, and ask us anything about how they are made. These are the next dates.</p>
+    <ul class="dates">
+      <li><time datetime="2026-12-12">12 December 2026</time><div><strong>Christmas market at Lycée International Xavier</strong><span>Seoul · 11:30 to 20:00</span></div></li>
+      <li><time datetime="2026-12-21">21 to 30 December 2026</time><div><strong>Gwanghwamun Market</strong><span>Gwanghwamun Square and Sejongno Park, Seoul · evenings from 17:30</span></div></li>
+      <li><time datetime="2026-12-24">24 to 27 December 2026</time><div><strong>Seoul Illustration Fair V.22</strong><span>COEX Hall C, Seoul · booth A22 · 10:00 to 18:00</span></div></li>
+    </ul>
+      <p class="small"><a href="dates.html">All our dates, on the calendar</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <p class="said">Enjoy writing, enjoy being present.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <ul class="links"><li><a href="story.html">Our story</a></li><li><a href="dates.html">Find us</a></li><li><a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener">Naver shop</a></li><li><a href="https://www.instagram.com/studio.monjo/" target="_blank" rel="noopener">Instagram</a></li><li>For companies</li><li>Français · 한국어</li></ul>
+    <details>
+      <summary>About this prototype</summary>
+      <ul>
+        <li>The words were reworked on 26 November by a team of three editors and three judges, from Jordan's own texts: his text for the back of the box (27 October), the live site's English copy, and what he said on 23 November.</li>
+        <li>What they found: more than half of the earlier page came from the team-written story of 23 November, not from him. Those sentences are gone (“What you hear is the pen”, “One hand holds the notebook still”, “A maker can be checked”, “A sentence needs a chair”).</li>
+        <li>His own sentences here: “because your thoughts deserve it”, “not all perfect, and that is what makes them unique”, the paper paragraph, “I put my soul into each notebook…”, “Enjoy writing, enjoy being present.”, and the lines from his live site about taking the time to write and about the markets.</li>
+        <li>The team's joins, to check: the first sentence of the page, the three film captions, “We hope you find a notebook you'd like to use”, and the three lines under “The notebooks”.</li>
+        <li>26 November, later: the three lines under “The notebooks” carry the section names Jordan gave that day (Robey Notebooks, Unique and Limited editions, Accessories and Unique Objects). The third sentence is mine, to check.</li>
+        <li>Questions only he can answer: does “your pen glides, but you still feel the paper” describe this paper; is “I” right in the maker section; should the sound of the pen be on this page.</li>
+        <li>Photographs and films are Jordan's, from the live site. The film of the stamp is left out, since the seal now goes on a card.</li>
+      </ul>
+    </details>
+  </div>
+</footer>
+</main>
+
+<script>
+/*SHOP_JS*/
+monjoShop();
+</script>

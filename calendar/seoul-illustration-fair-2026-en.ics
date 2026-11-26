@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Studio Monjo//Dates//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Studio Monjo · Seoul Illustration Fair V.22
+X-WR-TIMEZONE:Asia/Seoul
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:seoul-illustration-fair-2026-en.dates.studiomonjo.com
+DTSTAMP:20261126T000000Z
+LAST-MODIFIED:20261126T000000Z
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261228
+SUMMARY:Studio Monjo · Seoul Illustration Fair V.22
+LOCATION:COEX Hall C\, Seoul
+DESCRIPTION:Fair\nHours 10:00–18:00\nBooth A22\nhttps://studiomonjo.com/e
+ n/dates/#ev-seoul-illustration-fair-2026
+URL:https://studiomonjo.com/en/dates/#ev-seoul-illustration-fair-2026
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,347 @@
+<title>Studio Monjo Desk Prototype</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+<style>
+/*SHARED_CSS*/
+/* The home page. One photograph of a desk, held on the screen, that plays like a film from one resting place to the next.
+   The words ride the page over it (wide screens: the left third; phones: the title on the blue, the rest on the desk). After the film: three doors, the next table. */
+.film{position:relative;height:calc(var(--sh) * 9.6)}
+.stage{position:sticky;top:0;height:var(--sh);overflow:hidden;background:var(--deep)}
+.poster,#cv{position:absolute;inset:0;width:100%;height:100%}
+.poster{object-fit:cover;max-width:none}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,19,34,.62),rgba(11,19,34,.18) 34%,rgba(11,19,34,0) 48%)}
+/* On a phone the picture fills the screen too. The title sits on the blue above the notebooks, the words on the desk below them, all
+   inside what Safari shows with its toolbar. The player slides the picture so the notebooks land between the two. */
+.film{--tb:0px}                                       /* the height of Safari's toolbar: what the large viewport has over the small one */
+@supports (height:100lvh){.film{--tb:calc(100lvh - 100svh)}}
+/* no veil on a phone: the words are white, straight on the picture. Only the menu keeps a darker band right behind it,
+   because at two moments the standing notebooks pass behind it and white letters on white paper cannot be read */
+.tall .shade{background:linear-gradient(180deg,rgba(11,19,34,.90),rgba(11,19,34,.84) 58px,rgba(11,19,34,0) 112px)}
+.tall .poster{opacity:0}
+
+.card{position:absolute;left:max(28px,5.2vw);top:50%;width:min(27vw,380px);transform:translateY(-46%);opacity:0;visibility:hidden;
+  transition:opacity .55s ease,transform .7s ease,visibility 0s linear .55s;text-shadow:0 1px 18px rgba(8,13,24,.55)}
+.card.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .55s ease,transform .7s ease,visibility 0s}
+.tall .card{left:0;right:0;top:auto;bottom:0;width:auto;isolation:isolate;padding:0 max(20px,env(safe-area-inset-right,0px)) calc(26px + var(--tb) + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));transform:translateY(10px)}
+.tall .card.on{transform:none}
+/* white on the picture itself: on the blue of the wall at the top, on the wood of the desk at the bottom. No veil behind the words;
+   a soft dark edge on the letters only, so a pale streak of grain never eats a stroke. Readability is measured (wk-read.py). */
+.tall .card,.tall .card .p,.tall .card .eye,.tall .card .sub,.tall .card .hint{color:var(--paper)}
+.tall .card{text-shadow:0 1px 2px rgba(4,7,14,.55),0 0 12px rgba(4,7,14,.38)}
+.tall .hint::before{background:var(--paper)}
+.tall .card.hero{top:calc(92px + env(safe-area-inset-top,0px));bottom:0;padding-bottom:0}
+.tall .start{position:absolute;left:max(20px,env(safe-area-inset-left,0px));right:max(20px,env(safe-area-inset-right,0px));bottom:calc(30px + var(--tb) + env(safe-area-inset-bottom,0px))}
+.tall .start .hint{margin-top:0}
+.tall .card .small{display:none}
+.tall .card .said{font-size:16.5px;line-height:1.46;margin-bottom:10px}
+.tall .card .h{margin-bottom:10px}
+.tall .card .eye{margin-bottom:10px}
+.tall .card .p:last-of-type{margin-bottom:0}
+.tall.short .start .hint{display:none}
+.tall.short .title{font-size:25px}
+.tall.short .sub{margin-top:6px}
+/* "steps": the words leave the held picture and ride the page, one screen-sized block per resting place */
+.steps{position:absolute;inset:0;z-index:1;pointer-events:none}
+.step{position:absolute;left:0;right:0;height:var(--sh)}
+.steps a{pointer-events:auto}
+.travel .card{transition:none;transform:translateY(-50%);will-change:opacity}
+.travel.tall .card{transform:none}
+.title{margin:0;font:400 clamp(30px,3.5vw,54px)/1.16 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.sub{margin:18px 0 0;font:400 clamp(16px,1.3vw,20px)/1.5 var(--serif);color:var(--mist);text-wrap:balance}
+.hint{margin:26px 0 0;font-size:13px;letter-spacing:.04em;color:var(--mist)}
+.hint::before{content:"";display:inline-block;width:26px;height:1px;background:var(--mist);vertical-align:middle;margin-right:10px}
+/* right under the invitation to scroll: the way past the film */
+.skiplink{display:inline-block;margin-top:14px;padding:10px 16px 11px;border:1px solid var(--mist);border-radius:999px;font:400 13.5px/1 var(--sans);letter-spacing:.02em;
+  color:var(--paper);text-decoration:none;text-shadow:none;background:rgba(11,19,34,.45);transition:background-color .3s ease,border-color .3s ease}
+.skiplink:hover{background:rgba(243,245,248,.10);border-color:var(--paper)}
+.skiplink::after{content:"";display:inline-block;width:6px;height:6px;margin-left:10px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-3px) rotate(45deg)}
+
+/* names that sit on the picture: only the three parts of the notebook, when it is taken apart */
+.tag{position:absolute;left:0;top:0;margin:0;font:400 13px/1.35 var(--sans);white-space:nowrap;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.tag.on{opacity:1}
+.tag span{display:inline-block;padding:5px 11px 6px;background:rgba(11,19,34,.80);border-radius:3px}
+.tag.part{padding-left:40px}
+.tag.part::before{content:"";position:absolute;left:3px;top:50%;width:37px;height:1px;background:var(--paper);opacity:.85}
+.tag.part::after{content:"";position:absolute;left:-3px;top:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:var(--paper)}
+.tag.part.flip{padding-left:0;padding-right:40px}
+.tag.part.flip::before{left:auto;right:3px}
+.tag.part.flip::after{left:auto;right:-3px}
+
+.rail{position:absolute;right:max(16px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:grid;gap:11px;margin:0;padding:0;list-style:none}
+.rail li{width:5px;height:5px;border-radius:50%;background:var(--paper);opacity:.28;transition:opacity .4s ease,transform .4s ease}
+.rail li.on{opacity:.95;transform:scale(1.5)}
+
+/* while the film is still arriving, say so */
+.loader{position:absolute;left:max(28px,5.2vw);bottom:calc(30px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;padding:9px 14px 10px;border-radius:999px;
+  background:rgba(11,19,34,.72);border:1px solid var(--hair);font:400 12.5px/1 var(--sans);letter-spacing:.03em;color:var(--mist);transition:opacity .7s ease .6s,visibility 0s linear 1.3s}
+.loader .ring{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--hair);border-top-color:var(--paper);animation:turn 1s linear infinite;flex:none}
+.loader .lbar{position:relative;width:74px;height:2px;background:var(--hair);border-radius:2px;overflow:hidden;flex:none}
+.loader .lbar i{position:absolute;inset:0 auto 0 0;width:0;background:var(--paper);transition:width .3s ease}
+.loader b{font-weight:400;color:var(--paper);font-variant-numeric:tabular-nums;margin-left:8px}
+.loader{pointer-events:none}
+.loader.done{opacity:0;visibility:hidden}
+.loader.done .ring{animation:none;border-color:var(--paper)}
+/* on a phone: small, at the end of the menu row, where it covers nothing */
+.tall .loader{left:auto;right:max(20px,env(safe-area-inset-right,0px));bottom:auto;top:calc(51px + env(safe-area-inset-top,0px));padding:0;gap:7px;background:none;border:0;z-index:31}
+.tall .loader .lbar,.tall .loader .lw{display:none}
+.tall .loader b{margin-left:0}
+.tall .loader .ring{width:12px;height:12px}
+@keyframes turn{to{transform:rotate(360deg)}}
+
+/* without motion: the same pictures, one under the other */
+.stills{display:none}
+.still .film{height:auto}
+.still .stage{display:none}
+.still .stills{display:grid;gap:0;padding-top:64px}
+.stills figure{margin:0;position:relative}
+.stills img{display:block;width:100%;height:auto}
+.stills figcaption{padding-block:26px 46px}
+.stills figcaption .card{position:static;opacity:1;visibility:visible;transform:none;width:auto;max-width:36em;padding:0}
+
+/* after the film */
+.after{background:var(--deep)}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,36px);margin-top:clamp(30px,4vw,54px)}
+.door{display:grid;gap:16px;align-content:start;text-decoration:none;min-width:0}
+.door .pic{aspect-ratio:4/5;overflow:hidden;background:var(--navy);max-width:100%}
+.door img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.door:hover img{transform:scale(1.035)}
+.door h3{margin:0;font:400 26px/1.2 var(--serif)}
+.door p{margin:4px 0 0;font-size:15px;color:var(--mist)}
+.door .price{margin-top:10px;font-size:13.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+.door .go{margin-top:12px;font-size:13.5px;color:var(--paper)}
+.door .go::after{content:"";display:inline-block;width:22px;height:1px;background:currentColor;vertical-align:middle;margin-left:10px;transition:width .4s ease}
+.door:hover .go::after{width:34px}
+.find{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:start}
+.dates{margin:0;padding:0;list-style:none;display:grid;gap:0}
+.dates li{display:grid;grid-template-columns:minmax(0,13.5em) minmax(0,1fr);gap:6px 24px;padding-block:20px;border-top:1px solid var(--hair)}
+.dates li:last-child{border-bottom:1px solid var(--hair)}
+.dates time{font:400 18px/1.4 var(--serif);font-variant-numeric:tabular-nums}
+.dates span{display:block;color:var(--mist);font-size:15px}
+.dates strong{display:block;font-weight:400;color:var(--paper);font-size:16px}
+.filmway{margin:0 0 26px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;color:var(--mist);font-size:14px}
+.filmway button{background:none;border:1px solid var(--hair);border-radius:999px;padding:7px 13px 8px;font-size:13px;color:var(--mist);cursor:pointer}
+.filmway button[aria-pressed=true]{border-color:var(--paper);color:var(--paper)}
+@media (max-width:820px){
+  .doors{grid-template-columns:minmax(0,1fr);gap:44px}
+  .door .pic{aspect-ratio:5/4}
+  .find{grid-template-columns:minmax(0,1fr)}
+  .dates li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  .card,.tag,.door img{transition:none}
+  .loader .ring{animation:none}
+}
+</style>
+
+<header class="top" id="bar">
+  <div class="wrap bar">
+    <a class="mark" href="#top">Studio Monjo</a>
+    <nav class="menu" aria-label="Studio Monjo">
+      <a href="robey.html"><span class="full">Robey Notebooks</span><span class="short">Robey</span></a>
+      <a href="editions.html"><span class="full">Unique and Limited editions</span><span class="short">Editions</span></a>
+      <a href="objects.html"><span class="full">Accessories and Unique Objects</span><span class="short">Accessories</span></a>
+      <a href="story.html">Our story</a>
+      <a href="dates.html">Find us</a>
+    </nav>
+    <a class="ig" href="https://www.instagram.com/studio.monjo/" target="_blank" rel="noopener" aria-label="Studio Monjo on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a>
+    <a class="bagbtn" href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener">Naver shop</a>
+  </div>
+</header>
+
+<main>
+<section class="film" id="top" aria-label="A notebook on the desk: it opens, a line is written, it comes apart">
+  <div class="stage" id="stage">
+    <img class="poster" id="poster" src="d/poster.jpg" alt="Two notebooks standing open on a navy mat on a walnut desk, their pages fanned, a third lying in front beside a fountain pen. To the right, a navy fabric sleeve lies on the wood beside the mat, near a lit paper lamp.">
+    <canvas id="cv" aria-hidden="true"></canvas>
+    <div class="shade"></div>
+
+    <div class="card hero on" data-show="-1,14" data-still="0">
+      <h1 class="title">Notebooks folded and sewn by hand</h1>
+      <p class="sub">We picked a paper that takes ink well.</p>
+      <div class="start">
+        <p class="hint">Scroll, and one opens</p>
+        <a class="skiplink" href="#lines">Skip to the notebooks</a>
+      </div>
+    </div>
+    <div class="card" data-show="28,93.2" data-still="68">
+      <p class="eye">One thread, no glue</p>
+      <h2 class="h">It opens flat on a table</h2>
+      <p class="p">The notebook is sewn through its fold, so both pages lie down and the pen reaches the fold.</p>
+    </div>
+    <div class="card" data-show="95,137" data-still="132">
+      <p class="eye">The page</p>
+      <p class="said">On this paper the ink dries slowly: it wants you to be present, to feel the nib, to write slowly and read what you think.</p>
+      <p class="p">Every page is blank. Lines are a choice: a guide slips under the page when you want them.</p>
+      <p class="small">Pages: New April Bride, Ultra White · blank · 105 g/m²</p>
+    </div>
+    <div class="card" data-show="144,194" data-still="188">
+      <p class="eye">Inside every cover, the same notebook</p>
+      <h2 class="h">Here is a Pocket, taken apart</h2>
+      <p class="p">One cover, thirteen sheets, one thread. The sheets are folded by hand.</p>
+      <p class="said">They are not all perfect, and that is what makes them unique.</p>
+    </div>
+    <div class="card" data-show="202,249" data-still="160">
+      <p class="eye">By its maker</p>
+      <p class="said">Writing by hand, you hear the pen and read your own thought. That deserves an object made with care.</p>
+      <p class="p">We fold and sew each notebook by hand in Seoul. Every page is blank, for you.</p>
+      <p class="small">With each notebook: two loose guides, one lined and one grid, and a card that carries the maker's red seal.</p>
+    </div>
+    <div class="card" data-show="264,293" data-still="236">
+      <p class="eye">What changes is the cover</p>
+      <h2 class="h">Three ways in</h2>
+      <p class="p">Robey Notebooks, Unique and Limited editions, Accessories and Unique Objects.</p>
+    </div>
+
+    <p class="tag part" data-at="cover" data-side="left" data-show="170,196"><span>The cover</span></p>
+    <p class="tag part" data-at="sheets" data-side="right" data-show="170,196"><span>Thirteen sheets, folded</span></p>
+    <p class="tag part" data-at="thread" data-side="right" data-show="174,196"><span>One thread</span></p>
+
+    <ol class="rail" id="rail" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+    <div class="loader" id="loader" role="status"><span class="ring"></span><span><span class="lw">Loading the film</span><b id="pct">0%</b></span><span class="lbar"><i id="lbar"></i></span></div>
+  </div>
+  <div class="stills" id="stills"></div>
+</section>
+
+<div class="after">
+  <section class="band" id="lines">
+    <div class="wrap">
+      <p class="eye">On our table</p>
+      <h2 class="h lead">Three ways in</h2>
+      <div class="doors">
+        <a class="door" href="robey.html">
+          <div class="pic"><img src="img/door-robey.jpg" alt="A Robey notebook standing open, alone on the navy mat: a small robot reads at the foot of shelves full of books."></div>
+          <div>
+            <h3>Robey Notebooks</h3>
+            <p>A place in Seoul, a letter.</p>
+            <p class="go">Robey in Seoul</p>
+          </div>
+        </a>
+        <a class="door" href="editions.html">
+          <div class="pic"><img src="img/door-papers.jpg" alt="A notebook standing open, alone on the navy mat: a pale flecked cover paper with nothing printed on it."></div>
+          <div>
+            <h3>Unique and Limited editions</h3>
+            <p>One cover paper, its maker.</p>
+            <p class="go">The five papers</p>
+          </div>
+        </a>
+        <a class="door" href="objects.html">
+          <div class="pic"><img src="img/door-objects.jpg" alt="The navy fabric sleeve lying closed on the walnut table beside the navy mat, its flap folded over the front."></div>
+          <div>
+            <h3>Accessories and Unique Objects</h3>
+            <p>A sleeve, a mini notebook, a mini block of notes.</p>
+            <p class="go">Beside the notebooks</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="find">
+    <div class="wrap find">
+      <div>
+        <p class="eye">Find us</p>
+        <h2 class="h">At our table</h2>
+        <p class="p">Sit down, try a pen, hold a paper. A notebook will be open on the table for anyone who would like to try it.</p>
+        <p class="small">The shop in Seoul is planned. It is not open yet.</p>
+        <p class="small"><a class="more" href="dates.html">All our dates, on the calendar</a></p>
+      </div>
+      <ul class="dates">
+        <li><time datetime="2026-12-12">12 December 2026</time><div><strong>Christmas market at Lycée International Xavier</strong><span>Seoul · 11:30 to 20:00</span></div></li>
+        <li><time datetime="2026-12-21">21 to 30 December 2026</time><div><strong>Gwanghwamun Market</strong><span>Gwanghwamun Square and Sejongno Park, Seoul · evenings from 17:30</span></div></li>
+        <li><time datetime="2026-12-24">24 to 27 December 2026</time><div><strong>Seoul Illustration Fair V.22</strong><span>COEX Hall C, Seoul · booth A22 · 10:00 to 18:00</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <ul class="links"><li><a href="story.html">Our story</a></li><li><a href="dates.html">Find us</a></li><li><a href="https://smartstore.naver.com/studiomonjo" target="_blank" rel="noopener">Naver shop</a></li><li><a href="https://www.instagram.com/studio.monjo/" target="_blank" rel="noopener">Instagram</a></li><li>For companies</li><li>Français · 한국어</li></ul>
+      <p class="filmway">How the film moves:
+        <button type="button" data-film="steps">one scroll, one step</button>
+        <button type="button" data-film="scrub">it follows the scroll, as before</button>
+      </p>
+      <details>
+        <summary>About this prototype</summary>
+        <ul>
+          <li>The desk is a 3D scene, and so are the three pictures above: they are the same objects the film shows. The cover's linen, the walnut grain, the lamp's weave and the navy are cut from Jordan's own photographs.</li>
+          <li>Stand-ins on this page: the handwriting (a font, not his hand), the cover of the Papers notebook, the pen, the ink bottle, the bobbin of thread, the shape of the lamp.</li>
+          <li>The three other pages are made of photographs. Only this page has a film.</li>
+          <li>26 November: the three sections carry the names Jordan gave: Robey Notebooks, Unique and Limited editions, Accessories and Unique Objects. The top bar shows them in full on wide screens and as Robey, Editions, Accessories on narrow ones, where the full names do not fit on one row.</li>
+          <li>Each of the three pictures above shows one object alone. The third is the sleeve: on 26 November it replaced Yeobaek on the desk, in the film too, which was rendered again for it.</li>
+          <li>The sleeve on the desk is a 3D model read from his two photographs: a pouch, a flap that comes round the left edge and lies over the front, a band under the flap. Its size is the estimate on file for the Pocket sleeve (110 × 156 mm), not a measure. It lies flat on the wood of the table, close beside the mat (he tried it standing, then half on the mat, and chose this). It is built as cloth, thin at its seams and fuller in the middle, but with straight lines: his word was that wavy edges look badly made. Its suede is a patch of his own photograph of the sleeve, with the photograph's light taken out. The mat is 44 mm narrower on the right than before, to give the sleeve its place.</li>
+          <li>The two standing notebooks are no longer in a row (his idea, the same day): Robey's is a little forward and turned to the visitor, the paper one further back and more closed, and both stand further to the right. Their pages now fan across the opening: before, they left a wide empty wedge in the middle, which he found stiff. The ink bottle moved behind the mat so it does not stand in front of the sleeve. On a phone the film is cut narrower, and the sleeve is only at its right edge.</li>
+          <li>Robey is A6 only and the paper notebooks A5 only, so “Inside every cover, the same notebook” now means the same pages and the same sewing, in two sizes: to check.</li>
+          <li>My wording, to check: “Three ways in” and the sentence under it in the film.</li>
+          <li>One scroll now takes the page to the next step: the words move with your scroll, the film plays that move by itself, and when your hand rests the page finishes the step. The buttons above this note switch back to the earlier way, to compare.</li>
+          <li>A showcase for now: nothing is sold on these pages. They link to the Naver shop, to our dates and to Instagram.</li>
+          <li>Not built: For companies, French and Korean.</li>
+        </ul>
+      </details>
+    </div>
+  </footer>
+</div>
+</main>
+
+<script>
+/*PLAYER*/
+/*SHOP_JS*/
+(function(){
+  "use strict";
+  monjoShop();
+  var stage = document.getElementById("stage"), reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) {                                    // no film: the same pictures, each with its words
+    document.documentElement.classList.add("still"); document.getElementById("bar").classList.add("solid");
+    var box = document.getElementById("stills");
+    [].forEach.call(stage.querySelectorAll(".card"), function(c){
+      var fig = document.createElement("figure"), im = new Image(), cap = document.createElement("figcaption");
+      im.src = "d/still-" + ("00" + c.getAttribute("data-still")).slice(-3) + ".jpg"; im.alt = ""; im.loading = "lazy";
+      cap.className = "wrap"; var k = c.cloneNode(true); k.classList.add("on"); cap.appendChild(k);
+      fig.appendChild(im); fig.appendChild(cap); box.appendChild(fig);
+    });
+    return;
+  }
+  // The film's timeline has 237 frames (0 the desk, 92 open, 132 written, 188 apart, 236 the desk again). RATE is how many pictures
+  // were rendered per frame: 1 plays at 30 pictures a second, 2 at 60. Everything below is counted in pictures.
+  var RATE = /*RATE*/1/*END*/, R = function(x){ return x * RATE; };
+  // the order the pictures play in: forward to "apart", back together, then the step back
+  var PLAY = [], i;
+  for (i = 0; i <= R(188); i++) PLAY.push(i);
+  for (i = R(188) - 1; i >= R(132); i--) PLAY.push(i);
+  for (i = R(188) + 1; i <= R(236); i++) PLAY.push(i);          // 293 places at RATE 1, 0 to 292
+  var loader = document.getElementById("loader"), pct = document.getElementById("pct"), lbar = document.getElementById("lbar");
+  // two ways for the film to move, to compare: "steps" (one scroll, one step) or "scrub" (it follows the scroll, as before)
+  var mode = "steps";
+  try { if (localStorage.getItem("monjo-film") === "scrub") mode = "scrub"; } catch (e) {}
+  [].forEach.call(document.querySelectorAll("[data-film]"), function(b){
+    b.setAttribute("aria-pressed", b.getAttribute("data-film") === mode ? "true" : "false");
+    b.addEventListener("click", function(){ try { localStorage.setItem("monjo-film", b.getAttribute("data-film")); } catch (e) {} window.scrollTo(0, 0); location.reload(); });
+  });
+  monjoFilm({
+    stage: stage, canvas: document.getElementById("cv"), poster: document.getElementById("poster"),
+    rail: document.getElementById("rail"), bar: document.getElementById("bar"),
+    progress: function(f){                           // people should know the film is still arriving
+      var n = Math.round(f * 100);
+      pct.textContent = n + "%"; lbar.style.width = n + "%";
+      loader.classList.toggle("done", f >= 1);
+    },
+    frames: R(236) + 1, play: PLAY, cap: R(104), rate: RATE,
+    // "steps": the film's resting places, one per block of words, and how far apart those blocks are down the page (in screens).
+    mode: mode, fps: R(30), stops: [0, 92, 132, 188, 244, 292].map(R), step: 0.8,
+    // phones: where the notebooks sit in the tall picture at each resting moment (top, bottom, as parts of its height; measured on the frames),
+    // and the moments filmed from one fixed camera, which share one place on the screen
+    subjects: [[0.319, 0.725], [0.354, 0.660], [0.354, 0.660], [0.330, 0.677], [0.354, 0.660], [0.319, 0.725]], still: [1, 2, 4],
+    // and how much of the top of the tall picture is better kept off the screen at that moment, when there is room: the feet of the
+    // standing notebooks, which would otherwise sit behind the menu
+    hide: [0, 0.206, 0.206, 0, 0.206, 0],
+    // scroll (in screens) -> place in the film. Flat stretches are rests, where the words are read.
+    keys: [[0,0],[0.3,0],[1.3,44],[2.3,92],[2.6,92],[3.6,132],[4.0,132],[5.2,188],[5.7,188],[6.6,244],[6.9,244],[8.0,292],[8.6,292]].map(function(k){ return [k[0], R(k[1])]; }), len: 8.6,
+    beats: [14, 93, 138, 196, 252, 293].map(R),
+    rests: [[0, 0.3], [2.3, 2.6], [3.6, 4.0], [5.2, 5.7], [6.6, 6.9], [8.0, 8.6]],
+    anchors: /*ANCHORS*/{}/*END*/,
+    sets: {
+      d: {dir: "d", w: 1440, h: 922, map: function(a){ return [a[0], (a[1] - 0.18) / 0.64]; }},
+      p: {dir: "p", w: 600, h: 1072, map: function(a){ return [(a[0] - 0.32) / 0.56, a[1]]; }}
+    }
+  });
+})();
+</script>

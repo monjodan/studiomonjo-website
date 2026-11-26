@@ -74,8 +74,10 @@ class PreviewHandler(SimpleHTTPRequestHandler):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8794)
+    parser.add_argument('--packaged', action='store_true',
+                        help='serve _site, the packaged site as GitHub Pages will publish it (build it first)')
     args = parser.parse_args()
-    handler = functools.partial(PreviewHandler, directory=str(ROOT))
+    handler = functools.partial(PreviewHandler, directory=str(ROOT / '_site' if args.packaged else ROOT))
     with ThreadingHTTPServer(('127.0.0.1', args.port), handler) as server:
         print(f'Studio Monjo: http://127.0.0.1:{args.port}/en/', flush=True)
         server.serve_forever()

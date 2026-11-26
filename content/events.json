@@ -5,7 +5,7 @@
     "Fields: id (lowercase, hyphens, unique), status (confirmed | pending | cancelled), kind (market | fair | workshop | meetup), start and end (YYYY-MM-DD, Seoul dates, end may equal start), hours (optional, like 11:30–20:00), booth (optional), name and place and note (per language), map (Google Maps link, optional), naverMap (Naver Map link, shown on Korean pages when present), url (the organiser's page, optional).",
     "Past confirmed dates stay in the file and are listed under 'Where we have been'."
   ],
-  "updated": "2026-11-13",
+  "updated": "2026-11-26",
   "events": [
     {
       "id": "doota-2026-07",
@@ -146,10 +146,12 @@
     },
     {
       "id": "seoul-illustration-fair-2026",
-      "status": "pending",
+      "status": "confirmed",
       "kind": "fair",
       "start": "2026-12-24",
       "end": "2026-12-27",
+      "hours": "10:00–18:00",
+      "booth": "A22",
       "name": {
         "en": "Seoul Illustration Fair V.22",
         "fr": "Seoul Illustration Fair V.22",

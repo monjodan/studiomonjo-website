@@ -12,6 +12,29 @@ python3 scripts/serve.py
 
 Open [the local site](http://127.0.0.1:8794/en/). This concurrent server disables caching and supports video byte-range requests. Use one server at a time on port 8794; the older single-threaded parent-directory server is superseded. Root-relative links require HTTP rather than opening HTML files directly.
 
+## The new pages, in English and Korean (since 26 November 2026)
+
+The English and Korean pages are the new design: the desk film on the home page, then Robey Notebooks, Unique and Limited editions, Accessories and Unique Objects, Our story and the calendar ("Find us"). French keeps its earlier pages until the new ones are translated, and the company page is unchanged in every language. The new pages sell nothing: they link to the Naver shop, to the dates and to Instagram.
+
+- `scripts/build-monjo.py` lays the new pages over the packaged site. Run it after the usual two steps; the GitHub Pages workflow does the same.
+
+  ```sh
+  python3 scripts/build-studio.py
+  python3 scripts/package-pages.py
+  python3 scripts/build-monjo.py
+  python3 scripts/serve.py --packaged --port 8796    # then open http://127.0.0.1:8796/en/
+  ```
+
+- `monjo/src/`: the page sources (`home`, `robey`, `editions`, `objects`, `story`, `dates`), the shared stylesheet, the film player and the small page script. They are written in the design workspace (`../prototypes/monjo-notebook-3d`, outside this repository) and brought here with `python3 scripts/build-monjo.py --sync ../prototypes/monjo-notebook-3d`, which needs Pillow. Edit there, sync, build.
+- `media/web/monjo/`: the film (`film/d` for wide screens, `film/p` for phones, four pictures to a file), the photographs resized for the new pages, and the three door pictures.
+- The calendar's month sheets are drawn again at every build from `content/events.json` by `scripts/dates.py`, as before: confirm a date there and it appears on the new page too. `/calendar/` and the calendar files are unchanged, so the short address shared on Instagram keeps working.
+- Korean: `monjo/ko.json` holds every sentence of the new pages in Korean, keyed by its English. The build writes each page once in English and once in Korean (`/ko/…`), replacing each piece of text by its Korean; a piece with no Korean stays in English and the build lists it. `monjo/strings.en.json` is the list the translation was made from. After changing English words, add their Korean to `monjo/ko.json`.
+- The short lists of coming dates on the home page and at the foot of other pages are drawn from `content/events.json` at each build, like the calendar.
+- Old addresses lead to their new page, in English and in Korean: `/notebooks/` to `/robey/`, `/about/` and `/workshops/` to `/story/`.
+- The build ends with checks: every address used by a new page exists in `_site`, the film has all its files, and every picture the Naver shop uses (`content/naver-media.json`) is still there. `python3 scripts/check-naver-media.py --base-url http://127.0.0.1:8796` compares those pictures byte for byte against a local server.
+
+Not done: a French version of the new pages, share cards for them, and `llms.txt`, which still describes the earlier pages. The name is Studio Monjo on every page.
+
 ## Pages
 
 Each of `/en/`, `/fr/` and `/ko/` contains:

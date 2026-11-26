@@ -31,6 +31,7 @@ jobs:
           python3 scripts/check-seo.py
           python3 scripts/test-package-pages.py
           python3 scripts/package-pages.py
+          python3 scripts/build-monjo.py
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
